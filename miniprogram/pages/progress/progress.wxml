@@ -1,0 +1,87 @@
+<view class="page">
+
+  <view class="page-header">
+    <view class="eyebrow">DAILY LEARNING</view>
+    <view class="page-title">每日学字</view>
+    <view class="page-subtitle">随机解锁《说文》字头，记录每日学习足迹。</view>
+  </view>
+
+  <view wx:if="{{offline}}" class="banner banner-info mb-md">
+    <text>当前离线模式，本次解锁仅保存在本地。</text>
+  </view>
+
+  <!-- Stats grid -->
+  <view class="stats-grid mb-md">
+    <view class="stat-cell">
+      <view class="stat-value">{{progress.unlockedCount}}</view>
+      <view class="stat-label">已解锁</view>
+    </view>
+    <view class="stat-cell">
+      <view class="stat-value">{{streakDays}}</view>
+      <view class="stat-label">连续打卡 (天)</view>
+    </view>
+    <view class="stat-cell">
+      <view class="stat-value">{{todayCount}}</view>
+      <view class="stat-label">今日学习</view>
+    </view>
+  </view>
+
+  <!-- Progress card -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">学习进度</view>
+        <view class="section-sub">{{progress.unlockedCount}} / {{progress.total}} 字</view>
+      </view>
+      <view class="level-badge">{{levelName}}</view>
+    </view>
+
+    <view class="progress mt-sm">
+      <view class="progress-fill" style="width: {{percent}}%"></view>
+    </view>
+    <view class="progress-row">
+      <view class="text-muted">完成度 {{percentText}}%</view>
+      <view class="text-muted">{{levelHint}}</view>
+    </view>
+
+    <!-- Unlock button -->
+    <view class="unlock-wrap mt-md">
+      <button class="unlock-btn" loading="{{loading}}" bindtap="unlock">解锁新字</button>
+      <view wx:if="{{rippleActive}}" class="unlock-ripple"></view>
+    </view>
+
+    <!-- Last unlock callout -->
+    <view wx:if="{{lastUnlock}}" class="last-unlock">
+      <view class="last-unlock-char">{{lastUnlock.char}}</view>
+      <view class="last-unlock-msg">{{lastUnlock.message}}</view>
+    </view>
+  </view>
+
+  <!-- Recent unlocks -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">最近学习</view>
+        <view class="section-sub">点击查看字形演变</view>
+      </view>
+    </view>
+
+    <view wx:if="{{hasRecentUnlocks}}" class="recent-list">
+      <view wx:for="{{recentUnlocks}}" wx:key="id" class="recent-row" data-char="{{item.char}}" bindtap="goToEvolution">
+        <view class="recent-char">{{item.char}}</view>
+        <view class="recent-meta">
+          <view class="recent-label">已收录</view>
+          <view class="recent-time">{{item.timeLabel}}</view>
+        </view>
+        <view class="recent-chev">›</view>
+      </view>
+    </view>
+
+    <view wx:else class="empty">
+      <view class="empty-icon">字</view>
+      <view class="empty-title">还没有学习记录</view>
+      <view class="empty-body">点击「解锁新字」开始今日学习。</view>
+    </view>
+  </view>
+
+</view>

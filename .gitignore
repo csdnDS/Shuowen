@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+miniprogram/node_modules/
+backend/node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# WeChat private config (contains AppID and local paths)
+project.private.config.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build output
+dist/
+build/

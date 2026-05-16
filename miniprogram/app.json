@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/evolution/evolution",
+    "pages/radicals/radicals",
+    "pages/heatmap/heatmap",
+    "pages/progress/progress",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarTitleText": "说文",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FAFAF8",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#A0A0A0",
+    "selectedColor": "#1A1A1A",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/evolution/evolution",
+        "text": "字形"
+      },
+      {
+        "pagePath": "pages/radicals/radicals",
+        "text": "部首"
+      },
+      {
+        "pagePath": "pages/heatmap/heatmap",
+        "text": "园区"
+      },
+      {
+        "pagePath": "pages/progress/progress",
+        "text": "学习"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

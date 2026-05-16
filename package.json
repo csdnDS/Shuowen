@@ -1,0 +1,10 @@
+{
+  "name": "shuowen",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix backend",
+    "dev": "sh scripts/dev.sh",
+    "start:backend": "npm --prefix backend start"
+  }
+}

@@ -1,0 +1,90 @@
+<view class="page">
+
+  <!-- Page header -->
+  <view class="page-header">
+    <view class="eyebrow">CHAR EVOLUTION</view>
+    <view class="page-title">字形演变</view>
+    <view class="page-subtitle">从甲骨、金文到楷书，追溯一个汉字的五段形体。</view>
+  </view>
+
+  <!-- Offline banner -->
+  <view wx:if="{{offline}}" class="banner banner-info mb-md">
+    <text>当前未连接到本地服务，显示离线示例数据。</text>
+  </view>
+
+  <!-- Search card -->
+  <view class="card">
+    <view class="search-row">
+      <input class="search-input" maxlength="2" value="{{query}}" bindinput="onInput" placeholder="输入一个汉字" placeholder-class="search-placeholder" />
+      <view class="search-icon">🔍</view>
+    </view>
+
+    <view wx:if="{{hasSearchHistory}}" class="history-row">
+      <view class="history-label">最近搜索</view>
+      <view class="history-chips">
+        <view wx:for="{{searchHistory}}" wx:key="*this" class="chip" data-char="{{item}}" bindtap="useHistory">{{item}}</view>
+        <view class="chip chip-outline" bindtap="clearHistory">清空</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Catalog card -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">字库索引</view>
+        <view class="section-sub">共 {{catalogTotal}} 字 · 当前展示 {{catalogReturned}}</view>
+      </view>
+    </view>
+    <view class="catalog-grid">
+      <view wx:for="{{catalog}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
+        <text class="catalog-char">{{item.char}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Current character card -->
+  <view wx:if="{{loading}}" class="card current-card">
+    <view class="loading-shimmer" style="height:200rpx; border-radius:12rpx"></view>
+  </view>
+
+  <view wx:elif="{{character}}" class="card current-card">
+    <view class="current-row">
+      <view class="current-glyph">{{character.char}}</view>
+      <view class="current-meta">
+        <view wx:if="{{character.pinyin}}" class="current-pinyin">{{character.pinyin}}</view>
+        <view wx:if="{{character.radical}}" class="current-radical">部首 · {{character.radical}}</view>
+        <view class="current-meaning">{{character.meaning}}</view>
+      </view>
+      <view class="bookmark-btn {{bookmarked ? 'on' : ''}}" bindtap="toggleBookmark">
+        <text>{{bookmarked ? '★' : '☆'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="card empty">
+    <view class="empty-icon">字</view>
+    <view class="empty-title">未找到该字</view>
+    <view class="empty-body">可尝试：说、人、水、山、日、月、火、木。</view>
+  </view>
+
+  <!-- Stages timeline -->
+  <view wx:if="{{character && character.stages.length > 0}}" class="stages">
+    <view class="section-title mb-md" style="padding-left:8rpx">五段形体</view>
+    <view wx:for="{{character.stages}}" wx:key="name" class="stage-card">
+      <view class="stage-rail"></view>
+      <view class="stage-dot"></view>
+
+      <view class="stage-body">
+        <view class="stage-head">
+          <view class="stage-index">{{item.indexLabel}}</view>
+          <view class="stage-name">{{item.name}}</view>
+          <view class="stage-copy" data-glyph="{{item.glyph}}" catchtap="copyGlyph">复制</view>
+        </view>
+        <view class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
+        <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

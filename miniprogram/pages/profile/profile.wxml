@@ -1,0 +1,120 @@
+<view class="page">
+
+  <view class="page-header">
+    <view class="eyebrow">USER CENTER</view>
+    <view class="page-title">我的</view>
+  </view>
+
+  <!-- User card -->
+  <view class="user-card card">
+    <view wx:if="{{isLoggedIn}}" class="user-row">
+      <image wx:if="{{user.avatarUrl}}" class="avatar" src="{{user.avatarUrl}}"></image>
+      <view wx:else class="avatar avatar-fallback">{{userInitial}}</view>
+      <view class="user-meta">
+        <view class="user-name">{{user.nickname}}</view>
+        <view class="user-sub">已登录 · 学习数据云同步</view>
+      </view>
+      <view class="btn btn-sm" bindtap="logout">退出</view>
+    </view>
+
+    <view wx:else class="user-row">
+      <view class="avatar avatar-fallback">访</view>
+      <view class="user-meta">
+        <view class="user-name">说文访客</view>
+        <view class="user-sub">登录后云端同步学习进度与收藏</view>
+      </view>
+      <view class="btn btn-primary btn-sm" bindtap="wechatLogin">微信登录</view>
+    </view>
+  </view>
+
+  <view wx:if="{{offline}}" class="banner banner-info mb-md">
+    <text>当前未连接到本地服务，仅展示本地数据。</text>
+  </view>
+
+  <!-- Stats grid -->
+  <view class="stats-grid">
+    <view class="stat-cell">
+      <view class="stat-value">{{stats.unlockedCount}}</view>
+      <view class="stat-label">已解锁</view>
+    </view>
+    <view class="stat-cell">
+      <view class="stat-value">{{stats.streakDays}}</view>
+      <view class="stat-label">连续打卡</view>
+    </view>
+    <view class="stat-cell">
+      <view class="stat-value">{{bookmarks.length}}</view>
+      <view class="stat-label">已收藏</view>
+    </view>
+  </view>
+
+  <!-- Progress / level card -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">学习等级</view>
+        <view class="section-sub">{{levelHint}}</view>
+      </view>
+      <view class="level-badge">{{levelName}}</view>
+    </view>
+    <view class="progress mt-sm">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <view class="text-muted mt-sm" style="font-size:22rpx">总进度 {{progressPercent}}% · 共 {{stats.total}} 字</view>
+  </view>
+
+  <!-- Bookmarks -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">我的收藏</view>
+        <view class="section-sub">{{bookmarks.length}} 字 · 长按删除</view>
+      </view>
+      <view class="btn btn-ghost btn-sm" bindtap="goEvolution">去添加</view>
+    </view>
+    <view wx:if="{{hasBookmarks}}" class="bookmark-grid">
+      <view wx:for="{{bookmarks}}" wx:key="*this" class="bookmark-cell" data-char="{{item}}" bindtap="openBookmark" bindlongpress="removeBookmark">
+        <text>{{item}}</text>
+      </view>
+    </view>
+    <view wx:else class="empty">
+      <view class="empty-icon">★</view>
+      <view class="empty-title">尚无收藏</view>
+      <view class="empty-body">在「字形」页面查看字形时点击右侧星标即可收藏。</view>
+    </view>
+  </view>
+
+  <!-- Quick actions -->
+  <view class="card">
+    <view class="section-title mb-sm">快捷入口</view>
+    <view class="row row-chev" bindtap="goLearning">
+      <view class="row-label">继续解字</view>
+      <view class="row-value">今日 {{stats.todayCount}} 次</view>
+    </view>
+    <view class="row row-chev" bindtap="goEvolution">
+      <view class="row-label">查看字形演变</view>
+      <view class="row-value">字源流变</view>
+    </view>
+  </view>
+
+  <!-- Settings -->
+  <view class="card">
+    <view class="section-title mb-sm">设置</view>
+    <view class="row" bindtap="toggleFontSize">
+      <view class="row-label">字号</view>
+      <view class="row-value">{{settings.fontSize === 'small' ? '小' : settings.fontSize === 'large' ? '大' : '中'}}</view>
+    </view>
+    <view class="row row-chev" bindtap="copyContact">
+      <view class="row-label">联系我们</view>
+      <view class="row-value">复制邮箱</view>
+    </view>
+    <view class="row row-chev" bindtap="showAbout">
+      <view class="row-label">关于说文</view>
+      <view class="row-value">v1.0.0</view>
+    </view>
+    <view class="row" bindtap="clearCache">
+      <view class="row-label" style="color:#DC2626">清除缓存</view>
+      <view class="row-value">›</view>
+    </view>
+  </view>
+
+</view>

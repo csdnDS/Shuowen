@@ -1,0 +1,94 @@
+/* User card */
+
+.user-card {
+  padding: 24rpx;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.user-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name {
+  color: #1A1A1A;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: -0.2rpx;
+}
+
+.user-sub {
+  color: #6B6B6B;
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}
+
+/* Stats grid */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.stat-cell {
+  background: #FFFFFF;
+  border: 1rpx solid #ECECEA;
+  border-radius: 12rpx;
+  padding: 20rpx 16rpx;
+  text-align: center;
+}
+
+.stat-cell .stat-value {
+  font-size: 44rpx;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-cell .stat-label {
+  font-size: 22rpx;
+}
+
+/* Level badge */
+
+.level-badge {
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 24rpx;
+  font-weight: 600;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+}
+
+/* Bookmarks */
+
+.bookmark-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10rpx;
+  margin-top: 4rpx;
+}
+
+.bookmark-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  background: #FAFAF8;
+  border: 1rpx solid #ECECEA;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+  color: #1A1A1A;
+  font-weight: 500;
+}
+
+.bookmark-cell:active {
+  background: #FFF7E8;
+  border-color: #F5C770;
+  color: #D97706;
+}

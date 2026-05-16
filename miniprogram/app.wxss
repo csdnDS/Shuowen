@@ -1,0 +1,447 @@
+/* ============================================================
+   Shuowen · Design System
+   ============================================================
+   Tokens
+   --bg              #FAFAF8   page background
+   --surface         #FFFFFF   card surface
+   --surface-2       #F5F5F3   subtle surface
+   --border          #ECECEA   1rpx border
+   --border-strong   #DCDCD8   hover/focus border
+   --text-primary    #1A1A1A
+   --text-secondary  #6B6B6B
+   --text-muted      #A0A0A0
+   --accent          #2563EB
+   --accent-soft     #EFF6FF
+   --accent-strong   #1D4ED8
+   --ink             #1F2937   secondary action
+   --danger          #DC2626
+   --success         #16A34A
+   ============================================================ */
+
+page {
+  min-height: 100%;
+  background: #FAFAF8;
+  color: #1A1A1A;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-size: 28rpx;
+  line-height: 1.55;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 32rpx 28rpx 140rpx;
+  box-sizing: border-box;
+  background: #FAFAF8;
+}
+
+/* ── Page header ────────────────────────────────────────────── */
+
+.page-header {
+  margin-bottom: 32rpx;
+}
+
+.page-title {
+  color: #1A1A1A;
+  font-size: 48rpx;
+  font-weight: 700;
+  letter-spacing: -0.5rpx;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  color: #6B6B6B;
+  font-size: 26rpx;
+  line-height: 1.55;
+  margin-top: 8rpx;
+}
+
+.eyebrow {
+  color: #2563EB;
+  font-size: 22rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+  margin-bottom: 10rpx;
+}
+
+/* ── Cards ──────────────────────────────────────────────────── */
+
+.card {
+  background: #FFFFFF;
+  border: 1rpx solid #ECECEA;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  box-sizing: border-box;
+}
+
+.card + .card {
+  margin-top: 20rpx;
+}
+
+.card-flat {
+  background: #FFFFFF;
+  border: 1rpx solid #ECECEA;
+  border-radius: 14rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.card-tint {
+  background: #F5F5F3;
+  border-radius: 14rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* ── Section headings inside cards ──────────────────────────── */
+
+.section-title {
+  color: #1A1A1A;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: -0.2rpx;
+}
+
+.section-sub {
+  color: #A0A0A0;
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}
+
+.section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 72rpx;
+  padding: 0 28rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border: 1rpx solid #ECECEA;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.btn:active {
+  background: #F5F5F3;
+  border-color: #DCDCD8;
+}
+
+.btn-primary {
+  background: #2563EB;
+  color: #FFFFFF;
+  border-color: #2563EB;
+}
+
+.btn-primary:active {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: #2563EB;
+}
+
+.btn-ghost:active {
+  background: #EFF6FF;
+}
+
+.btn-sm {
+  height: 56rpx;
+  padding: 0 20rpx;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Strip miniprogram default button styling */
+
+button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  line-height: 1;
+}
+
+button::after {
+  border: none;
+}
+
+/* ── Chips / Pills ──────────────────────────────────────────── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 48rpx;
+  padding: 0 16rpx;
+  border-radius: 999rpx;
+  background: #F5F5F3;
+  color: #6B6B6B;
+  font-size: 24rpx;
+  border: 1rpx solid transparent;
+}
+
+.chip-active {
+  background: #EFF6FF;
+  color: #2563EB;
+  border-color: #BFDBFE;
+}
+
+.chip-outline {
+  background: transparent;
+  border-color: #ECECEA;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 36rpx;
+  padding: 0 12rpx;
+  border-radius: 6rpx;
+  background: #F5F5F3;
+  color: #6B6B6B;
+  font-size: 22rpx;
+}
+
+.tag-blue {
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+/* ── Inputs ─────────────────────────────────────────────────── */
+
+.input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #ECECEA;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.input-lg {
+  height: 96rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  padding: 0 28rpx;
+}
+
+.input-focus {
+  border-color: #2563EB;
+}
+
+/* ── Stats / numbers ────────────────────────────────────────── */
+
+.stat-value {
+  color: #1A1A1A;
+  font-size: 56rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  line-height: 1.1;
+}
+
+.stat-label {
+  color: #A0A0A0;
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}
+
+.stat-sub {
+  color: #6B6B6B;
+  font-size: 22rpx;
+}
+
+/* ── Dividers ───────────────────────────────────────────────── */
+
+.divider {
+  height: 1rpx;
+  background: #ECECEA;
+  margin: 20rpx 0;
+}
+
+.divider-vert {
+  width: 1rpx;
+  height: 100%;
+  background: #ECECEA;
+}
+
+/* ── Empty / loading states ─────────────────────────────────── */
+
+.empty {
+  padding: 80rpx 0;
+  text-align: center;
+}
+
+.empty-icon {
+  display: inline-block;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: #F5F5F3;
+  color: #A0A0A0;
+  font-size: 44rpx;
+  text-align: center;
+  line-height: 96rpx;
+  margin-bottom: 16rpx;
+}
+
+.empty-title {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.empty-body {
+  color: #A0A0A0;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #F5F5F3 0%, #EAEAE7 50%, #F5F5F3 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8rpx;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Common rows ────────────────────────────────────────────── */
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 0;
+}
+
+.row + .row {
+  border-top: 1rpx solid #F0F0EE;
+}
+
+.row-label {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.row-value {
+  color: #6B6B6B;
+  font-size: 26rpx;
+}
+
+.row-chev::after {
+  content: "›";
+  color: #C0C0BE;
+  font-size: 32rpx;
+  margin-left: 6rpx;
+}
+
+/* ── Avatars ────────────────────────────────────────────────── */
+
+.avatar {
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: #F5F5F3 center/cover no-repeat;
+  border: 1rpx solid #ECECEA;
+}
+
+.avatar-sm {
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.avatar-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+/* ── Progress bar ───────────────────────────────────────────── */
+
+.progress {
+  width: 100%;
+  height: 8rpx;
+  background: #F0F0EE;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2563EB;
+  border-radius: 4rpx;
+  transition: width 0.4s ease;
+}
+
+/* ── Utility ────────────────────────────────────────────────── */
+
+.flex { display: flex; }
+.flex-1 { flex: 1; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 12rpx; }
+.gap-md { gap: 20rpx; }
+.gap-lg { gap: 28rpx; }
+.text-secondary { color: #6B6B6B; }
+.text-muted { color: #A0A0A0; }
+.text-accent { color: #2563EB; }
+.mt-sm { margin-top: 12rpx; }
+.mt-md { margin-top: 20rpx; }
+.mt-lg { margin-top: 32rpx; }
+.mb-sm { margin-bottom: 12rpx; }
+.mb-md { margin-bottom: 20rpx; }
+
+/* ── Toast / banner ─────────────────────────────────────────── */
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 18rpx 24rpx;
+  background: #FFFBEB;
+  border: 1rpx solid #FCE7AA;
+  color: #92400E;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+}
+
+.banner-info {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+  color: #1D4ED8;
+}
+
+.banner-error {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #B91C1C;
+}
