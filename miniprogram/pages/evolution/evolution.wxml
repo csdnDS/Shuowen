@@ -40,6 +40,7 @@
     <view class="catalog-grid">
       <view wx:for="{{catalog}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
         <text class="catalog-char">{{item.char}}</text>
+        <text wx:if="{{item.pinyin}}" class="catalog-pinyin">{{item.pinyin}}</text>
       </view>
     </view>
   </view>
@@ -97,7 +98,11 @@
           <view class="stage-name">{{item.label}}</view>
           <view class="stage-copy" data-glyph="{{item.glyph}}" catchtap="copyGlyph">复制</view>
         </view>
-        <view class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
+        <view wx:if="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
+          <image class="oracle-svg" src="{{item.oracleSrc}}" mode="aspectFit"></image>
+          <view class="oracle-char-sub">{{item.glyph}}</view>
+        </view>
+        <view wx:else class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
         <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
       </view>
     </view>

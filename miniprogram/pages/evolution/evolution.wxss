@@ -62,21 +62,30 @@
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 12rpx;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10rpx;
   margin-top: 4rpx;
 }
 
 .catalog-cell {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1 / 1;
+  padding: 10rpx 4rpx;
   background: #F5F5F3;
   border-radius: 10rpx;
-  font-size: 32rpx;
   color: #6B6B6B;
   transition: background 0.15s ease, color 0.15s ease;
+}
+
+.catalog-pinyin {
+  font-size: 16rpx;
+  color: #C0C0BE;
+  letter-spacing: 0;
+  margin-top: 2rpx;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .catalog-cell.has-detail {
@@ -91,6 +100,7 @@
 }
 
 .catalog-char {
+  font-size: 36rpx;
   font-weight: 500;
 }
 
@@ -307,4 +317,23 @@
   color: #6B6B6B;
   font-size: 24rpx;
   line-height: 1.65;
+}
+
+/* Oracle SVG rendering */
+
+.oracle-svg-wrap {
+  position: relative;
+  flex-direction: column;
+  gap: 0;
+}
+
+.oracle-svg {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.oracle-char-sub {
+  font-size: 22rpx;
+  color: #A0A0A0;
+  margin-top: 6rpx;
 }

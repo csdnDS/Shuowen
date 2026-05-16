@@ -18,11 +18,11 @@
     </view>
     <view class="stat-cell">
       <view class="stat-value">{{streakDays}}</view>
-      <view class="stat-label">连续打卡 (天)</view>
+      <view class="stat-label">连续打卡</view>
     </view>
-    <view class="stat-cell">
-      <view class="stat-value">{{todayCount}}</view>
-      <view class="stat-label">今日学习</view>
+    <view class="stat-cell stat-cell-today {{todayCount >= dailyGoal ? 'goal-done' : ''}}">
+      <view class="stat-value">{{todayCount}}<text class="stat-goal">/{{dailyGoal}}</text></view>
+      <view class="stat-label">今日目标</view>
     </view>
   </view>
 

@@ -1,6 +1,7 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
+const { getOracleSrc } = require('../../utils/oracleSVGs');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
 
@@ -193,10 +194,15 @@ Page({
   },
 
   _applyCharacter(character) {
-    const stages = (character.stages || []).map((stage, idx) => ({
-      ...stage,
-      indexLabel: INDEX_LABELS[idx] || ''
-    }));
+    const stages = (character.stages || []).map((stage, idx) => {
+      const enriched = { ...stage, indexLabel: INDEX_LABELS[idx] || '' };
+      // Inject SVG oracle bone image for 甲骨文 stage when available
+      if (stage.era === 'oracle') {
+        const src = getOracleSrc(character.char);
+        if (src) enriched.oracleSrc = src;
+      }
+      return enriched;
+    });
     const searchHistory = this._saveSearchHistory(character.char);
     // Find related chars from radical group (fallback.radicals has rich examples)
     const radicalEntry = character.radical

@@ -1,14 +1,40 @@
 const { loadHistoricalFonts } = require('./utils/historicalFonts');
 
+// Detect environment to choose API base URL.
+// In WeChat DevTools: __wxConfig.envVersion === 'develop'
+// Production mini-program should point to the real HTTPS backend domain.
+function resolveApiBase() {
+  try {
+    const env = __wxConfig && __wxConfig.envVersion;
+    if (env === 'release') return 'https://api.shuowen.example.com';
+    if (env === 'trial')   return 'https://api.shuowen.example.com';
+  } catch (e) { /* __wxConfig not available outside DevTools */ }
+  return 'http://localhost:3001';
+}
+
 App({
   globalData: {
-    apiBaseUrl: 'http://localhost:3001',
-    // Toggled true by request.js after a network failure so pages can show
-    // a single banner without each guessing connectivity independently.
+    apiBaseUrl: resolveApiBase(),
     backendUnreachable: false
   },
 
   onLaunch() {
     loadHistoricalFonts();
+    this._checkBackend();
+  },
+
+  // Proactively ping the backend so all pages inherit connectivity status.
+  async _checkBackend() {
+    const url = this.globalData.apiBaseUrl + '/api/characters?limit=1';
+    wx.request({
+      url,
+      timeout: 4000,
+      success: (res) => {
+        this.globalData.backendUnreachable = !(res.statusCode >= 200 && res.statusCode < 300);
+      },
+      fail: () => {
+        this.globalData.backendUnreachable = true;
+      }
+    });
   }
 });

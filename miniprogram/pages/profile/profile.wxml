@@ -60,6 +60,15 @@
       <view class="progress-fill" style="width: {{progressPercent}}%"></view>
     </view>
     <view class="text-muted mt-sm" style="font-size:22rpx">总进度 {{progressPercent}}% · 共 {{stats.total}} 字</view>
+
+    <!-- Streak bar: last 7 days -->
+    <view class="streak-bar mt-md">
+      <view class="streak-label">连续打卡 {{stats.streakDays}} 天</view>
+      <view class="streak-dots">
+        <view wx:for="{{7}}" wx:key="*this"
+              class="streak-dot {{index < stats.streakDays ? 'dot-on' : ''}}"></view>
+      </view>
+    </view>
   </view>
 
   <!-- Bookmarks -->

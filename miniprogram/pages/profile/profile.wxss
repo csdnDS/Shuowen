@@ -65,6 +65,35 @@
   border-radius: 999rpx;
 }
 
+/* Streak bar */
+
+.streak-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.streak-label {
+  color: #6B6B6B;
+  font-size: 22rpx;
+}
+
+.streak-dots {
+  display: flex;
+  gap: 10rpx;
+}
+
+.streak-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #ECECEA;
+}
+
+.dot-on {
+  background: #2563EB;
+}
+
 /* Bookmarks */
 
 .bookmark-grid {

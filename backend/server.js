@@ -165,22 +165,53 @@ async function findCharacter(char) {
   return null;
 }
 
+// Normalize Chinese pinyin tones for comparison
+function normPinyin(s) {
+  return (s || '').toLowerCase()
+    .replace(/[āáǎà]/g, 'a').replace(/[ēéěè]/g, 'e')
+    .replace(/[īíǐì]/g, 'i').replace(/[ōóǒò]/g, 'o')
+    .replace(/[ūúǔù]/g, 'u').replace(/[ǖǘǚǜ]/g, 'v');
+}
+
 async function listCharacters(query = '', limit = 80) {
   const mongoDb = await getMongoDb();
   if (mongoDb) {
-    const filter = query ? { char: { $regex: query } } : {};
+    const filter = query ? {
+      $or: [
+        { char: { $regex: query } },
+        { pinyin: { $regex: query, $options: 'i' } }
+      ]
+    } : {};
     const docs = await mongoDb
       .collection('characters')
-      .find(filter, { projection: { _id: 0, char: 1, title: 1, radical: 1, hasDetail: 1 } })
+      .find(filter, { projection: { _id: 0, char: 1, pinyin: 1, radical: 1, strokes: 1, hasDetail: 1 } })
       .limit(limit)
       .toArray();
 
     if (docs.length) return docs;
   }
 
-  const normalized = query.trim();
-  return characterCatalog
-    .filter((item) => !normalized || item.char.includes(normalized) || item.title.includes(normalized))
+  const normalized = query.trim().toLowerCase();
+  // Build a catalog from characterData (rich entries) + presetCharacters
+  const richChars = Object.values(characterData).map((d) => ({
+    char: d.char,
+    pinyin: d.pinyin || '',
+    radical: d.radical || '',
+    strokes: d.strokes || 0,
+    hasDetail: true
+  }));
+  const richSet = new Set(richChars.map((c) => c.char));
+  const baseChars = presetCharacters
+    .filter((c) => !richSet.has(c))
+    .map((c) => ({ char: c, pinyin: '', radical: '', strokes: 0, hasDetail: false }));
+  const all = [...richChars, ...baseChars];
+
+  return all
+    .filter((item) => !normalized ||
+      item.char.includes(normalized) ||
+      normPinyin(item.pinyin).startsWith(normPinyin(normalized)) ||
+      (item.radical || '').includes(normalized)
+    )
     .slice(0, limit);
 }
 
@@ -947,6 +978,27 @@ app.get('/api/oss/signature', async (req, res) => {
 
   const url = ossClient.signatureUrl(key, { expires: 3600 });
   return res.json({ enabled: true, key, url });
+});
+
+// Global stats (useful for dashboard / admin)
+app.get('/api/stats', async (_req, res) => {
+  const totalUsers = memoryUsers.size;
+  const totalActivities = [...memoryActivities.values()].reduce((acc, list) => acc + list.length, 0);
+  const totalUnlocked = [...userProgress.values()].reduce((acc, list) => acc + list.length, 0);
+  res.json({
+    characters: TOTAL_SHUOWEN_COUNT,
+    richEntries: Object.keys(characterData).length,
+    radicals: radicals.length,
+    users: totalUsers,
+    totalActivities,
+    totalUnlocked,
+    uptime: Math.floor(process.uptime())
+  });
+});
+
+// Health check
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok', ts: Date.now() });
 });
 
 app.listen(port, () => {
