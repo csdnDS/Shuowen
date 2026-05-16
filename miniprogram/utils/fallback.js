@@ -80,7 +80,14 @@ const catalog = [
   { char: '白', pinyin: 'bái',  hasDetail: true },
   { char: '玉', pinyin: 'yù',   hasDetail: true },
   { char: '石', pinyin: 'shí',  hasDetail: true },
-  { char: '刀', pinyin: 'dāo',  hasDetail: true }
+  { char: '刀', pinyin: 'dāo',  hasDetail: true },
+  { char: '禾', pinyin: 'hé',   hasDetail: true },
+  { char: '竹', pinyin: 'zhú',  hasDetail: true },
+  { char: '生', pinyin: 'shēng',hasDetail: true },
+  { char: '老', pinyin: 'lǎo',  hasDetail: true },
+  { char: '明', pinyin: 'míng', hasDetail: true },
+  { char: '龙', pinyin: 'lóng', hasDetail: true },
+  { char: '家', pinyin: 'jiā',  hasDetail: true }
 ];
 
 const radicals = [
@@ -101,7 +108,9 @@ const radicals = [
   { radical: '火', pinyin: 'huǒ',  strokes: 4, meaning: '火光热能相关', examples: ['炎', '灯', '炽', '烟', '烛', '焰', '燃', '热'] },
   { radical: '目', pinyin: 'mù',   strokes: 5, meaning: '眼目视觉相关', examples: ['看', '相', '省', '眉', '睡', '眼', '盲', '督'] },
   { radical: '言', pinyin: 'yán',  strokes: 7, meaning: '言语表达相关', examples: ['说', '语', '诗', '话', '论', '读', '议', '词'] },
-  { radical: '金', pinyin: 'jīn',  strokes: 8, meaning: '金属器物相关', examples: ['银', '铜', '铁', '铅', '锡', '钢', '针', '钟'] }
+  { radical: '金', pinyin: 'jīn',  strokes: 8, meaning: '金属器物相关', examples: ['银', '铜', '铁', '铅', '锡', '钢', '针', '钟'] },
+  { radical: '禾', pinyin: 'hé',   strokes: 5, meaning: '谷物农作物相关', examples: ['年', '秀', '秋', '种', '积', '稻', '穗', '稼'] },
+  { radical: '竹', pinyin: 'zhú',  strokes: 6, meaning: '竹器文具相关', examples: ['笔', '篇', '簿', '箱', '筐', '管', '篮', '筒'] }
 ];
 
 const heatmap = {

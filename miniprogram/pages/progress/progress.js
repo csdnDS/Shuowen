@@ -48,7 +48,8 @@ Page({
     offline: false,
     quizActive: false,
     quiz: null,
-    quizResult: null
+    quizResult: null,
+    quizScore: { total: 0, correct: 0 }
   },
 
   onLoad() {
@@ -203,12 +204,11 @@ Page({
 
   startQuiz() {
     const unlocked = this.data.progress.unlocked;
+    // Use unlocked chars first; fall back to full catalog for new users
     const eligible = unlocked.filter((c) => glyphs.byChar[c]);
-    if (eligible.length === 0) {
-      wx.showToast({ title: '先解锁更多汉字再测验', icon: 'none' });
-      return;
-    }
-    const correct = eligible[Math.floor(Math.random() * eligible.length)];
+    const pool = eligible.length >= 3 ? eligible : glyphs.catalog.map((c) => c.char).filter((c) => glyphs.byChar[c]);
+    if (pool.length === 0) return;
+    const correct = pool[Math.floor(Math.random() * pool.length)];
     const correctData = glyphs.byChar[correct];
 
     // Build distractors from catalog
@@ -223,12 +223,15 @@ Page({
       const t = options[i]; options[i] = options[j]; options[j] = t;
     }
 
+    // Pick the most evocative stage description (prefer 金文 or 甲骨文)
+    const hintStage = correctData.stages[1] || correctData.stages[0];
     this.setData({
       quizActive: true,
       quiz: {
         correct,
         options,
-        hint: correctData.stages[0].desc,
+        hint: hintStage.desc,
+        hintEra: hintStage.label,
         meaning: correctData.meaning,
         pinyin: correctData.pinyin
       },
@@ -242,10 +245,21 @@ Page({
     const correct = this.data.quiz.correct;
     const isCorrect = chosen === correct;
     if (isCorrect) wx.vibrateShort({ type: 'light' });
-    this.setData({ quizResult: { chosen, correct, isCorrect } });
+    const prev = this.data.quizScore;
+    this.setData({
+      quizResult: { chosen, correct, isCorrect },
+      quizScore: { total: prev.total + 1, correct: prev.correct + (isCorrect ? 1 : 0) }
+    });
   },
 
   closeQuiz() {
     this.setData({ quizActive: false, quiz: null, quizResult: null });
+  },
+
+  goToQuizChar() {
+    if (!this.data.quiz) return;
+    const char = this.data.quiz.correct;
+    wx.setStorageSync('pendingEvolutionChar', char);
+    wx.switchTab({ url: '/pages/evolution/evolution' });
   }
 });

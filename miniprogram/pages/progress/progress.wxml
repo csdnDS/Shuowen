@@ -68,14 +68,19 @@
 
     <view wx:if="{{!quizActive}}">
       <view class="text-muted mb-sm" style="font-size:24rpx; line-height:1.6">
-        从已解锁的汉字中随机出题，根据古文字描述猜测对应汉字。
+        根据古文字描述猜测汉字，检验学习成果。
+      </view>
+      <view wx:if="{{quizScore.total > 0}}" class="quiz-prev-score">
+        上次得分：{{quizScore.correct}} / {{quizScore.total}}
+        （正确率 {{quizScore.total > 0 ? (quizScore.correct * 100 / quizScore.total).toFixed(0) : 0}}%）
       </view>
       <button class="unlock-btn" bindtap="startQuiz">开始测验</button>
     </view>
 
     <view wx:else class="quiz-panel">
+      <view class="quiz-era-tag">{{quiz.hintEra}} 描述</view>
       <view class="quiz-hint">{{quiz.hint}}</view>
-      <view class="quiz-question">根据上述古文字描述，这是哪个汉字？</view>
+      <view class="quiz-question">根据上述描述，这是哪个汉字？</view>
       <view class="quiz-options">
         <view wx:for="{{quiz.options}}" wx:key="*this"
               class="quiz-opt {{quizResult ? (item === quiz.correct ? 'opt-correct' : (item === quizResult.chosen && !quizResult.isCorrect ? 'opt-wrong' : 'opt-dim')) : ''}}"
@@ -87,8 +92,9 @@
         <view class="quiz-explain">{{quiz.meaning}}</view>
         <view class="quiz-actions mt-sm">
           <view class="btn btn-primary" style="flex:1" bindtap="startQuiz">再来一题</view>
-          <view class="btn" style="flex:1" bindtap="closeQuiz">结束</view>
+          <view class="btn btn-ghost" style="flex:1" bindtap="goToQuizChar">查看演变</view>
         </view>
+        <view class="btn btn-block mt-sm" bindtap="closeQuiz">结束（{{quizScore.correct}}/{{quizScore.total}}）</view>
       </view>
       <view wx:else class="quiz-skip">
         <view class="btn btn-ghost btn-sm" bindtap="closeQuiz">跳过</view>

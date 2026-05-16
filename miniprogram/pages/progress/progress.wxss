@@ -234,6 +234,25 @@
   justify-content: flex-end;
 }
 
+.quiz-era-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 36rpx;
+  padding: 0 12rpx;
+  border-radius: 6rpx;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 20rpx;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.quiz-prev-score {
+  color: #6B6B6B;
+  font-size: 22rpx;
+  margin-bottom: 14rpx;
+}
+
 /* Recent list */
 
 .recent-list {
