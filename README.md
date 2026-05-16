@@ -66,7 +66,7 @@ npm run dev
 ## 运行小程序
 
 1. 打开微信开发者工具。
-2. 导入本目录 `/Users/tangyu/Downloads/Shuowen`。
+2. 导入本项目根目录。
 3. AppID 可选择测试号，或使用微信开发者工具的测试能力。
 4. 本地开发时开启“不校验合法域名、web-view（业务域名）、TLS 版本以及 HTTPS 证书”。
 5. 确保后端已通过 `npm run dev` 启动。
