@@ -319,6 +319,38 @@
   line-height: 1.65;
 }
 
+/* Char nav bar */
+
+.char-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F0F0EE;
+}
+
+.char-nav-btn {
+  font-size: 24rpx;
+  color: #2563EB;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  background: #EFF6FF;
+}
+
+.char-nav-btn:active {
+  background: #DBEAFE;
+}
+
+.char-nav-btn.disabled {
+  color: #C0C0BE;
+  background: #F5F5F3;
+}
+
+.char-nav-pos {
+  font-size: 22rpx;
+  color: #A0A0A0;
+}
+
 /* Oracle SVG rendering */
 
 .oracle-svg-wrap {

@@ -224,7 +224,7 @@ Page({
       success: (res) => {
         if (res.confirm) {
           ['searchHistory', 'unlockHistory', 'unlockTimes', 'bookmarks',
-           'radicalExpanded', 'streakState', 'token', 'userInfo', 'userSettings']
+           'radicalExpanded', 'streakState', 'quizLastScore', 'token', 'userInfo', 'userSettings']
             .forEach((k) => wx.removeStorageSync(k));
           this.setData({
             isLoggedIn: false,

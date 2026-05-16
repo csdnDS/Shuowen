@@ -62,6 +62,11 @@
         <text>{{bookmarked ? '★' : '☆'}}</text>
       </view>
     </view>
+    <view class="char-nav mt-sm">
+      <view class="char-nav-btn {{hasPrev ? '' : 'disabled'}}" bindtap="prevChar">‹ 上一字</view>
+      <view class="char-nav-pos">{{catalogIndex >= 0 ? catalogIndex + 1 : '-'}} / {{catalogReturned}}</view>
+      <view class="char-nav-btn {{hasNext ? '' : 'disabled'}}" bindtap="nextChar">下一字 ›</view>
+    </view>
   </view>
 
   <view wx:else class="card empty">

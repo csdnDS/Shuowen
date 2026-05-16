@@ -30,7 +30,10 @@ Page({
     bookmarked: false,
     offline: false,
     loading: false,
-    related: []
+    related: [],
+    catalogIndex: -1,
+    hasPrev: false,
+    hasNext: false
   },
 
   _debounce: null,
@@ -100,6 +103,21 @@ Page({
     const item = pool[Math.floor(Math.random() * pool.length)];
     this.setData({ query: item.char });
     this._loadCharacter(item.char);
+  },
+
+  prevChar() {
+    const idx = this.data.catalogIndex;
+    if (idx <= 0) return;
+    const item = this.data.catalog[idx - 1];
+    if (item) this._loadCharacter(item.char);
+  },
+
+  nextChar() {
+    const idx = this.data.catalogIndex;
+    const catalog = this.data.catalog;
+    if (idx < 0 || idx >= catalog.length - 1) return;
+    const item = catalog[idx + 1];
+    if (item) this._loadCharacter(item.char);
   },
 
   useHistory(event) {
@@ -214,12 +232,17 @@ Page({
           .slice(0, 8)
           .map((c) => ({ char: c, hasDetail: Boolean(glyphs.byChar[c]) }))
       : [];
+    const catalog = this.data.catalog;
+    const catalogIndex = catalog.findIndex((c) => c.char === character.char);
     this.setData({
       query: character.char,
       character: { ...character, stages },
       related,
       searchHistory,
-      hasSearchHistory: searchHistory.length > 0
+      hasSearchHistory: searchHistory.length > 0,
+      catalogIndex,
+      hasPrev: catalogIndex > 0,
+      hasNext: catalogIndex >= 0 && catalogIndex < catalog.length - 1
     });
     this._refreshBookmarkState(character.char);
   },

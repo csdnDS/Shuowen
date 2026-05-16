@@ -87,7 +87,15 @@ const catalog = [
   { char: '老', pinyin: 'lǎo',  hasDetail: true },
   { char: '明', pinyin: 'míng', hasDetail: true },
   { char: '龙', pinyin: 'lóng', hasDetail: true },
-  { char: '家', pinyin: 'jiā',  hasDetail: true }
+  { char: '家', pinyin: 'jiā',  hasDetail: true },
+  { char: '雨', pinyin: 'yǔ',   hasDetail: true },
+  { char: '鸟', pinyin: 'niǎo', hasDetail: true },
+  { char: '马', pinyin: 'mǎ',   hasDetail: true },
+  { char: '鱼', pinyin: 'yú',   hasDetail: true },
+  { char: '羊', pinyin: 'yáng', hasDetail: true },
+  { char: '牛', pinyin: 'niú',  hasDetail: true },
+  { char: '田', pinyin: 'tián', hasDetail: true },
+  { char: '风', pinyin: 'fēng', hasDetail: true }
 ];
 
 const radicals = [
@@ -110,7 +118,14 @@ const radicals = [
   { radical: '言', pinyin: 'yán',  strokes: 7, meaning: '言语表达相关', examples: ['说', '语', '诗', '话', '论', '读', '议', '词'] },
   { radical: '金', pinyin: 'jīn',  strokes: 8, meaning: '金属器物相关', examples: ['银', '铜', '铁', '铅', '锡', '钢', '针', '钟'] },
   { radical: '禾', pinyin: 'hé',   strokes: 5, meaning: '谷物农作物相关', examples: ['年', '秀', '秋', '种', '积', '稻', '穗', '稼'] },
-  { radical: '竹', pinyin: 'zhú',  strokes: 6, meaning: '竹器文具相关', examples: ['笔', '篇', '簿', '箱', '筐', '管', '篮', '筒'] }
+  { radical: '竹', pinyin: 'zhú',  strokes: 6, meaning: '竹器文具相关', examples: ['笔', '篇', '簿', '箱', '筐', '管', '篮', '筒'] },
+  { radical: '雨', pinyin: 'yǔ',   strokes: 8, meaning: '天气气象相关', examples: ['雪', '霜', '露', '雷', '霞', '霓', '雾', '霹'] },
+  { radical: '鸟', pinyin: 'niǎo', strokes: 5, meaning: '鸟禽飞翔相关', examples: ['鸡', '鸭', '鹅', '鸽', '鹤', '鸦', '鹰', '雀'] },
+  { radical: '马', pinyin: 'mǎ',   strokes: 3, meaning: '马匹驾驭相关', examples: ['驾', '驱', '骑', '驰', '骏', '驹', '驯', '骤'] },
+  { radical: '鱼', pinyin: 'yú',   strokes: 8, meaning: '鱼类水产相关', examples: ['鲤', '鲫', '鲸', '鲨', '鳊', '鳍', '鳞', '鲜'] },
+  { radical: '羊', pinyin: 'yáng', strokes: 6, meaning: '羊牧祥瑞相关', examples: ['祥', '美', '善', '义', '羔', '群', '羹', '羞'] },
+  { radical: '牛', pinyin: 'niú',  strokes: 4, meaning: '牛畜耕作相关', examples: ['牧', '物', '犁', '牲', '犀', '特', '牟', '牺'] },
+  { radical: '田', pinyin: 'tián', strokes: 5, meaning: '田地农耕相关', examples: ['男', '留', '畜', '界', '畏', '畔', '甸', '略'] }
 ];
 
 const heatmap = {

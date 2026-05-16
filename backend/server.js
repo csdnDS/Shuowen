@@ -810,6 +810,104 @@ const characterData = {
       { name: '隶书',   glyph: '口', description: '隶书"口"方框定型，笔画方折，横竖分明，与今体基本相同。' },
       { name: '楷书',   glyph: '口', description: '楷书"口"方正稳固，三笔成形，是部首中最常用的构件之一。' }
     ]
+  },
+  禾: {
+    char: '禾',
+    pinyin: 'hé',
+    radical: '禾',
+    strokes: 5,
+    meaning: '《说文解字》释"禾，嘉谷也。二月始生，八月而孰，得时之中，故谓之禾"。字形象一株谷物成熟、穗头低垂之形，本义为谷物，引申为庄稼、农作物。',
+    stages: [
+      { name: '甲骨文', glyph: '禾', description: '甲骨文"禾"象一株谷物，茎直枝叶相交，顶端穗粒低垂，是农业文明早期的重要字形。' },
+      { name: '金文',   glyph: '禾', description: '金文"禾"穗粒垂头之象更明，茎叶结构规整，禾苗之态栩栩如生。' },
+      { name: '篆书',   glyph: '禾', description: '篆书"禾"线条修长，垂穗在上，左右分枝对称，与《说文》所载吻合。' },
+      { name: '隶书',   glyph: '禾', description: '隶书"禾"撇、横、竖、捺笔画分明，方折化，今体雏形已具。' },
+      { name: '楷书',   glyph: '禾', description: '楷书"禾"五画成形，是偏旁"禾"字旁的基础，用于稻、秋、种等字。' }
+    ]
+  },
+  竹: {
+    char: '竹',
+    pinyin: 'zhú',
+    radical: '竹',
+    strokes: 6,
+    meaning: '《说文解字》释"竹，冬生草也。象形。下垂者，箁箬也"。字形象两竿竹并立、叶片弯曲下垂之形，本义为竹子，引申为竹器、文具。',
+    stages: [
+      { name: '甲骨文', glyph: '竹', description: '甲骨文"竹"象两竿竹节并立、竹叶弯曲下垂之形，取竹之全貌，左右对称。' },
+      { name: '金文',   glyph: '竹', description: '金文"竹"双竿双叶，竹形规整，竹节与叶形更为清晰。' },
+      { name: '篆书',   glyph: '竹', description: '篆书"竹"两竿对称，下垂叶形明确，字形规范，《说文》据此释义。' },
+      { name: '隶书',   glyph: '竹', description: '隶书"竹"笔画简化，竹头定型，成为笔、篇、簿等字的重要偏旁。' },
+      { name: '楷书',   glyph: '竹', description: '楷书"竹"六画对称，上为竹头部首，今日用作笔、管、篮等字的构件。' }
+    ]
+  },
+  生: {
+    char: '生',
+    pinyin: 'shēng',
+    radical: '生',
+    strokes: 5,
+    meaning: '《说文解字》释"生，进也。象草木生出土上"。字形象草木破土而生之形，本义为出生、生长，引申为生命、生活。',
+    stages: [
+      { name: '甲骨文', glyph: '生', description: '甲骨文"生"象草木从土中破土而出之形，下横为地，上竖带分枝为萌芽，生机勃勃。' },
+      { name: '金文',   glyph: '生', description: '金文"生"形体规整，土上草芽之象清晰，生命力之形已稳定。' },
+      { name: '篆书',   glyph: '生', description: '篆书"生"上部草木芽形，下部土横，整体修长，《说文》据此解义。' },
+      { name: '隶书',   glyph: '生', description: '隶书"生"竖横化，结构简洁方正，已与今体相近。' },
+      { name: '楷书',   glyph: '生', description: '楷书"生"五画成形，横竖撇结体简洁，今日通行字形。' }
+    ]
+  },
+  老: {
+    char: '老',
+    pinyin: 'lǎo',
+    radical: '老',
+    strokes: 6,
+    meaning: '《说文解字》释"老，考也。七十曰老。从人毛匕，言须发变白也"。字形象老者背驼、发长之形，本义为年老，引申为经验丰富、尊重长者。',
+    stages: [
+      { name: '甲骨文', glyph: '老', description: '甲骨文"老"象老者背驼、发长、手持杖之形，"人"与"毛"结合，表示年长貌。' },
+      { name: '金文',   glyph: '老', description: '金文"老"拄杖老者之象稳定，毛发与身躯之形可辨，整体形态更圆润。' },
+      { name: '篆书',   glyph: '老', description: '篆书"老"上部人毛形，下部匕（化）形，整体修长规范，与《说文》吻合。' },
+      { name: '隶书',   glyph: '老', description: '隶书"老"上下结构简化，土形可见，笔画方折，与今体已十分接近。' },
+      { name: '楷书',   glyph: '老', description: '楷书"老"六画成形，上部耂头、下部匕，是汉字部首之一。' }
+    ]
+  },
+  明: {
+    char: '明',
+    pinyin: 'míng',
+    radical: '日',
+    strokes: 8,
+    meaning: '《说文解字》释"明，照也。从月，从囧"。字形以日月并照会意光明，本义为明亮、清晰，引申为聪慧、明白。',
+    stages: [
+      { name: '甲骨文', glyph: '明', description: '甲骨文"明"左日右月，或从窗（囧）与月，会意日月共照之光明，形象直观。' },
+      { name: '金文',   glyph: '明', description: '金文"明"日月并举，光明义显，有时以窗形（囧）代日，取窗透光之意。' },
+      { name: '篆书',   glyph: '明', description: '篆书"明"日月结构稳定，左右分明，《说文》从月、从囧的释义在此清晰可见。' },
+      { name: '隶书',   glyph: '明', description: '隶书"明"日月方化，左右分工明确，结体渐趋今形。' },
+      { name: '楷书',   glyph: '明', description: '楷书"明"左日右月，八画成形，今日通行字形。' }
+    ]
+  },
+  龙: {
+    char: '龙',
+    pinyin: 'lóng',
+    radical: '龙',
+    strokes: 5,
+    meaning: '《说文解字》释"龙，鳞虫之长，能幽能明，能细能钜，能短能长。春分而登天，秋分而潜渊"。字形象龙之整体形貌，本义为神话中的神兽。',
+    stages: [
+      { name: '甲骨文', glyph: '龙', description: '甲骨文"龙"象龙首鳞身、腾跃之形，头部冠饰与蜿蜒身躯相连，神态威仪。' },
+      { name: '金文',   glyph: '龙', description: '金文"龙"形更具体，头身尾可辨，冠形与鳞身细节丰富，造型精美。' },
+      { name: '篆书',   glyph: '龙', description: '篆书"龙"（繁体"龍"）笔画繁多，身躯盘曲，形态复杂，为《说文》所收标准形。' },
+      { name: '隶书',   glyph: '龙', description: '隶书"龙"笔画逐渐简化，繁体"龍"趋今形，横竖点化。' },
+      { name: '楷书',   glyph: '龙', description: '楷书简体"龙"五画成形，是繁体"龍"的简化字，今日通行。' }
+    ]
+  },
+  家: {
+    char: '家',
+    pinyin: 'jiā',
+    radical: '宀',
+    strokes: 10,
+    meaning: '《说文解字》释"家，居也。从宀，豭省声"。字形象屋宇之下有豕（猪）之形，以猪的豢养表示定居生活，本义为居所，引申为家庭、家族。',
+    stages: [
+      { name: '甲骨文', glyph: '家', description: '甲骨文"家"象屋宇之下豢养猪豕之形，屋顶与墙体可辨，猪豕在其中，表示定居。' },
+      { name: '金文',   glyph: '家', description: '金文"家"屋盖宀形与猪豕之象稳定，家庭定居的文化含义明确。' },
+      { name: '篆书',   glyph: '家', description: '篆书"家"宀形规整，下部豕形修长，整体线条流畅，《说文》所录标准形。' },
+      { name: '隶书',   glyph: '家', description: '隶书"家"宀下豕形简化，今体雏形已具，笔画方折。' },
+      { name: '楷书',   glyph: '家', description: '楷书"家"十画成形，宀头清晰，是常用字中笔画较多的一个，今日通行。' }
+    ]
   }
 };
 
@@ -837,7 +935,15 @@ const radicals = [
   { radical: '言', pinyin: 'yán', strokes: 7, meaning: '言语表达相关', examples: ['言', '说', '语', '诗', '话', '论', '读', '议'] },
   { radical: '金', pinyin: 'jīn', strokes: 8, meaning: '金属器物相关', examples: ['金', '银', '铜', '铁', '铅', '锡', '钢', '针'] },
   { radical: '宀', pinyin: 'mián',strokes: 3, meaning: '屋宇居所相关', examples: ['字', '家', '安', '室', '宅', '宫', '宝', '守'] },
-  { radical: '足', pinyin: 'zú',  strokes: 7, meaning: '行走步履相关', examples: ['足', '跑', '跟', '路', '跃', '距', '跳', '踏'] }
+  { radical: '足', pinyin: 'zú',  strokes: 7, meaning: '行走步履相关', examples: ['足', '跑', '跟', '路', '跃', '距', '跳', '踏'] },
+  { radical: '禾', pinyin: 'hé',  strokes: 5, meaning: '谷物农作物相关', examples: ['禾', '年', '秀', '秋', '种', '积', '稻', '穗'] },
+  { radical: '竹', pinyin: 'zhú', strokes: 6, meaning: '竹器文具相关', examples: ['竹', '笔', '篇', '簿', '箱', '管', '篮', '筒'] },
+  { radical: '生', pinyin: 'shēng',strokes: 5, meaning: '生长出生相关', examples: ['生', '星', '胜', '性', '姓', '产', '甥', '牲'] },
+  { radical: '老', pinyin: 'lǎo', strokes: 6, meaning: '年老尊长相关', examples: ['老', '孝', '考', '者', '耆', '耄', '耋', '耉'] },
+  { radical: '雨', pinyin: 'yǔ',  strokes: 8, meaning: '天气气象相关', examples: ['雨', '雪', '霜', '露', '雷', '霞', '雾', '霹'] },
+  { radical: '鱼', pinyin: 'yú',  strokes: 8, meaning: '鱼类水产相关', examples: ['鱼', '鲤', '鲫', '鲸', '鳊', '鳍', '鳞', '鲜'] },
+  { radical: '马', pinyin: 'mǎ',  strokes: 3, meaning: '马匹驾驭相关', examples: ['马', '驾', '驱', '骑', '驰', '骏', '驹', '驯'] },
+  { radical: '田', pinyin: 'tián',strokes: 5, meaning: '田地农耕相关', examples: ['田', '男', '留', '畜', '界', '畏', '畔', '略'] }
 ];
 
 const heatmap = [

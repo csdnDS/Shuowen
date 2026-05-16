@@ -53,6 +53,8 @@ Page({
   },
 
   onLoad() {
+    const saved = wx.getStorageSync('quizLastScore');
+    if (saved && saved.total > 0) this.setData({ quizScore: saved });
     this.fetchProgress();
     this._loadStreak();
   },
@@ -91,8 +93,8 @@ Page({
       });
       this._loadStreak();
     } catch (err) {
-      // Mock unlock for offline mode
-      const pool = ['人', '水', '山', '日', '月', '火', '木', '文', '字', '说'];
+      // Mock unlock for offline mode (use full bundled catalog)
+      const pool = glyphs.catalog.map((c) => c.char);
       const pickFrom = pool.filter((c) => this.data.progress.unlocked.indexOf(c) === -1);
       if (pickFrom.length === 0) {
         wx.showToast({ title: '离线字库已全部解锁', icon: 'none' });
@@ -162,6 +164,7 @@ Page({
   _applyProgress(progress) {
     const total = progress.total || 9353;
     const count = progress.unlockedCount || (progress.unlocked || []).length;
+    const prevCount = (this.data.progress || {}).unlockedCount || 0;
     const percent = Math.min(100, (count / total) * 100);
     let levelName, nextMilestone;
     if (count >= 300) {
@@ -185,6 +188,19 @@ Page({
       levelName,
       levelHint: remaining > 0 ? `再解 ${remaining} 字，晋级下一阶` : '已达最高「通识」阶段'
     });
+    // Milestone celebration
+    const milestones = [30, 100, 300];
+    for (const m of milestones) {
+      if (prevCount < m && count >= m) {
+        const titles = { 30: '初学达成！解锁 30 字', 100: '入门达成！解锁 100 字', 300: '通识达成！解锁 300 字' };
+        setTimeout(() => wx.showModal({
+          title: '🎉 阶段达成',
+          content: titles[m],
+          showCancel: false
+        }), 400);
+        break;
+      }
+    }
   },
 
   _playRipple() {
@@ -203,6 +219,7 @@ Page({
   // ── Quiz ───────────────────────────────────────────────────
 
   startQuiz() {
+    this.setData({ quizScore: { total: 0, correct: 0 } });
     const unlocked = this.data.progress.unlocked;
     // Use unlocked chars first; fall back to full catalog for new users
     const eligible = unlocked.filter((c) => glyphs.byChar[c]);
@@ -223,8 +240,9 @@ Page({
       const t = options[i]; options[i] = options[j]; options[j] = t;
     }
 
-    // Pick the most evocative stage description (prefer 金文 or 甲骨文)
-    const hintStage = correctData.stages[1] || correctData.stages[0];
+    // Randomly pick hint era: 甲骨文 (index 0) or 金文 (index 1) or 小篆 (index 2)
+    const eraIdx = Math.floor(Math.random() * 3);
+    const hintStage = correctData.stages[eraIdx] || correctData.stages[0];
     this.setData({
       quizActive: true,
       quiz: {
@@ -253,6 +271,9 @@ Page({
   },
 
   closeQuiz() {
+    if (this.data.quizScore.total > 0) {
+      wx.setStorageSync('quizLastScore', this.data.quizScore);
+    }
     this.setData({ quizActive: false, quiz: null, quizResult: null });
   },
 
