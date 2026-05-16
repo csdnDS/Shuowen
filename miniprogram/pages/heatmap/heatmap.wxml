@@ -15,7 +15,7 @@
     <view class="section-row">
       <view>
         <view class="section-title">区域热度排行</view>
-        <view class="section-sub">点击区域查看详情</view>
+        <view class="section-sub">更新于 {{lastUpdated}} · 点击查看详情</view>
       </view>
       <view class="btn btn-sm" bindtap="refreshHeatmap">刷新</view>
     </view>
@@ -65,7 +65,9 @@
       <view class="sheet-stat-value">{{active.heat}}</view>
       <view class="sheet-stat-label">当前热度指数</view>
     </view>
-    <view class="btn btn-primary btn-block" bindtap="refreshHeatmap">刷新热度</view>
+    <view wx:if="{{active.desc}}" class="sheet-desc">{{active.desc}}</view>
+    <view class="btn btn-primary btn-block mt-md" bindtap="refreshHeatmap">刷新热度</view>
+    <view class="btn btn-block mt-sm" bindtap="hideDetail">关闭</view>
   </view>
 
 </view>

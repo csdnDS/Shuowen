@@ -49,43 +49,59 @@ const characters = {
 };
 
 const catalog = [
-  { char: '说', pinyin: 'shuō', hasDetail: true },
   { char: '人', pinyin: 'rén',  hasDetail: true },
+  { char: '大', pinyin: 'dà',   hasDetail: true },
+  { char: '女', pinyin: 'nǚ',   hasDetail: true },
+  { char: '子', pinyin: 'zǐ',   hasDetail: true },
+  { char: '山', pinyin: 'shān', hasDetail: true },
   { char: '水', pinyin: 'shuǐ', hasDetail: true },
-  { char: '山', pinyin: 'shān', hasDetail: false },
-  { char: '日', pinyin: 'rì',   hasDetail: false },
-  { char: '月', pinyin: 'yuè',  hasDetail: false },
-  { char: '火', pinyin: 'huǒ',  hasDetail: false },
-  { char: '木', pinyin: 'mù',   hasDetail: false },
-  { char: '文', pinyin: 'wén',  hasDetail: false },
-  { char: '字', pinyin: 'zì',   hasDetail: false }
+  { char: '火', pinyin: 'huǒ',  hasDetail: true },
+  { char: '木', pinyin: 'mù',   hasDetail: true },
+  { char: '日', pinyin: 'rì',   hasDetail: true },
+  { char: '月', pinyin: 'yuè',  hasDetail: true },
+  { char: '口', pinyin: 'kǒu',  hasDetail: true },
+  { char: '手', pinyin: 'shǒu', hasDetail: true },
+  { char: '心', pinyin: 'xīn',  hasDetail: true },
+  { char: '目', pinyin: 'mù',   hasDetail: true },
+  { char: '上', pinyin: 'shàng',hasDetail: true },
+  { char: '下', pinyin: 'xià',  hasDetail: true },
+  { char: '中', pinyin: 'zhōng',hasDetail: true },
+  { char: '王', pinyin: 'wáng', hasDetail: true },
+  { char: '文', pinyin: 'wén',  hasDetail: true },
+  { char: '字', pinyin: 'zì',   hasDetail: true },
+  { char: '言', pinyin: 'yán',  hasDetail: true },
+  { char: '说', pinyin: 'shuō', hasDetail: true },
+  { char: '行', pinyin: 'xíng', hasDetail: true },
+  { char: '土', pinyin: 'tǔ',   hasDetail: true },
+  { char: '金', pinyin: 'jīn',  hasDetail: true },
+  { char: '天', pinyin: 'tiān', hasDetail: true },
+  { char: '年', pinyin: 'nián', hasDetail: true },
+  { char: '力', pinyin: 'lì',   hasDetail: true },
+  { char: '白', pinyin: 'bái',  hasDetail: true },
+  { char: '玉', pinyin: 'yù',   hasDetail: true },
+  { char: '石', pinyin: 'shí',  hasDetail: true },
+  { char: '刀', pinyin: 'dāo',  hasDetail: true }
 ];
 
 const radicals = [
-  {
-    radical: '人',
-    name: '人部',
-    meaning: '人类与人事相关',
-    examples: ['仁', '从', '众', '休', '伐', '位', '何']
-  },
-  {
-    radical: '水',
-    name: '水部',
-    meaning: '与水、流体相关',
-    examples: ['江', '河', '海', '湖', '泉', '波', '流']
-  },
-  {
-    radical: '言',
-    name: '言部',
-    meaning: '与言语、表达相关',
-    examples: ['说', '语', '论', '议', '词', '诗']
-  },
-  {
-    radical: '心',
-    name: '心部',
-    meaning: '与情感、思维相关',
-    examples: ['思', '想', '念', '忆', '怀', '感']
-  }
+  { radical: '人', pinyin: 'rén',  strokes: 2, meaning: '人物动作相关', examples: ['仁', '从', '众', '休', '信', '仕', '仰', '位'] },
+  { radical: '刀', pinyin: 'dāo',  strokes: 2, meaning: '刀刃割切相关', examples: ['分', '切', '刊', '则', '刻', '刺', '剑', '刃'] },
+  { radical: '口', pinyin: 'kǒu',  strokes: 3, meaning: '口舌言语相关', examples: ['古', '名', '君', '品', '唱', '问', '吐', '叫'] },
+  { radical: '土', pinyin: 'tǔ',   strokes: 3, meaning: '土地地面相关', examples: ['地', '城', '坊', '坛', '墙', '坐', '基', '坏'] },
+  { radical: '大', pinyin: 'dà',   strokes: 3, meaning: '大广阔相关',   examples: ['天', '太', '夫', '夷', '奇', '奔', '奥', '奖'] },
+  { radical: '女', pinyin: 'nǚ',   strokes: 3, meaning: '女性婚姻相关', examples: ['妇', '妈', '姐', '妹', '嫂', '婆', '姻', '姑'] },
+  { radical: '子', pinyin: 'zǐ',   strokes: 3, meaning: '幼童孳生相关', examples: ['字', '孩', '孙', '孝', '孕', '学', '存', '孤'] },
+  { radical: '山', pinyin: 'shān', strokes: 3, meaning: '山岳地势相关', examples: ['峰', '岭', '岩', '岳', '峡', '崖', '嶂', '峻'] },
+  { radical: '心', pinyin: 'xīn',  strokes: 4, meaning: '情感思维相关', examples: ['思', '想', '念', '忆', '怀', '感', '恩', '志'] },
+  { radical: '手', pinyin: 'shǒu', strokes: 4, meaning: '手部动作相关', examples: ['打', '持', '扶', '择', '推', '拿', '握', '搬'] },
+  { radical: '日', pinyin: 'rì',   strokes: 4, meaning: '日光时间相关', examples: ['明', '晴', '晖', '晓', '时', '昼', '暮', '星'] },
+  { radical: '月', pinyin: 'yuè',  strokes: 4, meaning: '月体阴阳相关', examples: ['朗', '朔', '望', '朝', '期', '朦', '胧', '朋'] },
+  { radical: '木', pinyin: 'mù',   strokes: 4, meaning: '树木植物相关', examples: ['林', '森', '枝', '根', '桥', '树', '桌', '板'] },
+  { radical: '水', pinyin: 'shuǐ', strokes: 4, meaning: '水流液体相关', examples: ['江', '河', '清', '泉', '海', '洗', '流', '湖'] },
+  { radical: '火', pinyin: 'huǒ',  strokes: 4, meaning: '火光热能相关', examples: ['炎', '灯', '炽', '烟', '烛', '焰', '燃', '热'] },
+  { radical: '目', pinyin: 'mù',   strokes: 5, meaning: '眼目视觉相关', examples: ['看', '相', '省', '眉', '睡', '眼', '盲', '督'] },
+  { radical: '言', pinyin: 'yán',  strokes: 7, meaning: '言语表达相关', examples: ['说', '语', '诗', '话', '论', '读', '议', '词'] },
+  { radical: '金', pinyin: 'jīn',  strokes: 8, meaning: '金属器物相关', examples: ['银', '铜', '铁', '铅', '锡', '钢', '针', '钟'] }
 ];
 
 const heatmap = {

@@ -87,12 +87,16 @@
   <view class="card">
     <view class="section-title mb-sm">快捷入口</view>
     <view class="row row-chev" bindtap="goLearning">
-      <view class="row-label">继续解字</view>
+      <view class="row-label">继续解字 / 字形测验</view>
       <view class="row-value">今日 {{stats.todayCount}} 次</view>
     </view>
     <view class="row row-chev" bindtap="goEvolution">
       <view class="row-label">查看字形演变</view>
       <view class="row-value">字源流变</view>
+    </view>
+    <view class="row row-chev" bindtap="goRadicals">
+      <view class="row-label">部首索引</view>
+      <view class="row-value">汉字字族</view>
     </view>
   </view>
 

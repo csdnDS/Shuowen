@@ -1,5 +1,6 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
+const glyphs = require('../../data/glyphs');
 
 function pad(value) {
   return `${value}`.padStart(2, '0');
@@ -10,6 +11,11 @@ function formatClock(timestamp) {
   return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
+function formatDate(timestamp) {
+  const d = new Date(timestamp);
+  return `${d.getMonth() + 1}月${d.getDate()}日`;
+}
+
 function formatRelativeTime(timestamp) {
   const diff = Date.now() - timestamp;
   const minute = 60 * 1000;
@@ -18,7 +24,10 @@ function formatRelativeTime(timestamp) {
   if (diff < minute) return '刚刚';
   if (diff < hour) return `${Math.floor(diff / minute)} 分钟前`;
   if (diff < day) return `${Math.floor(diff / hour)} 小时前`;
-  return formatClock(timestamp);
+  const days = Math.floor(diff / day);
+  if (days === 1) return '昨天 ' + formatClock(timestamp);
+  if (days < 30) return `${days} 天前`;
+  return formatDate(timestamp);
 }
 
 Page({
@@ -30,12 +39,16 @@ Page({
     hasRecentUnlocks: false,
     streakDays: 0,
     todayCount: 0,
+    dailyGoal: 3,
     levelName: '初识',
     levelHint: '继续解字，逐级累进',
     rippleActive: false,
     lastUnlock: null,
     loading: false,
-    offline: false
+    offline: false,
+    quizActive: false,
+    quiz: null,
+    quizResult: null
   },
 
   onLoad() {
@@ -149,15 +162,27 @@ Page({
     const total = progress.total || 9353;
     const count = progress.unlockedCount || (progress.unlocked || []).length;
     const percent = Math.min(100, (count / total) * 100);
-    const levelName = count >= 100 ? '通识' : count >= 30 ? '入门' : '初识';
-    const nextMilestone = count < 10 ? 10 : count < 30 ? 30 : count < 100 ? 100 : 300;
-    const remaining = Math.max(0, nextMilestone - count);
+    let levelName, nextMilestone;
+    if (count >= 300) {
+      levelName = '通识';
+      nextMilestone = 0;
+    } else if (count >= 100) {
+      levelName = '入门';
+      nextMilestone = 300;
+    } else if (count >= 30) {
+      levelName = '初学';
+      nextMilestone = 100;
+    } else {
+      levelName = '初识';
+      nextMilestone = 30;
+    }
+    const remaining = nextMilestone > 0 ? Math.max(0, nextMilestone - count) : 0;
     this.setData({
       progress: { total, unlocked: progress.unlocked || [], unlockedCount: count },
       percent,
       percentText: percent.toFixed(3),
       levelName,
-      levelHint: remaining > 0 ? `再解 ${remaining} 字，晋级下一阶` : '已达最高阶段'
+      levelHint: remaining > 0 ? `再解 ${remaining} 字，晋级下一阶` : '已达最高「通识」阶段'
     });
   },
 
@@ -172,5 +197,55 @@ Page({
     if (!char) return;
     wx.setStorageSync('pendingEvolutionChar', char);
     wx.switchTab({ url: '/pages/evolution/evolution' });
+  },
+
+  // ── Quiz ───────────────────────────────────────────────────
+
+  startQuiz() {
+    const unlocked = this.data.progress.unlocked;
+    const eligible = unlocked.filter((c) => glyphs.byChar[c]);
+    if (eligible.length === 0) {
+      wx.showToast({ title: '先解锁更多汉字再测验', icon: 'none' });
+      return;
+    }
+    const correct = eligible[Math.floor(Math.random() * eligible.length)];
+    const correctData = glyphs.byChar[correct];
+
+    // Build distractors from catalog
+    const others = glyphs.catalog.map((c) => c.char).filter((c) => c !== correct);
+    for (let i = others.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const t = others[i]; others[i] = others[j]; others[j] = t;
+    }
+    const options = [correct, ...others.slice(0, 3)];
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const t = options[i]; options[i] = options[j]; options[j] = t;
+    }
+
+    this.setData({
+      quizActive: true,
+      quiz: {
+        correct,
+        options,
+        hint: correctData.stages[0].desc,
+        meaning: correctData.meaning,
+        pinyin: correctData.pinyin
+      },
+      quizResult: null
+    });
+  },
+
+  quizAnswer(event) {
+    if (this.data.quizResult) return;
+    const chosen = event.currentTarget.dataset.char;
+    const correct = this.data.quiz.correct;
+    const isCorrect = chosen === correct;
+    if (isCorrect) wx.vibrateShort({ type: 'light' });
+    this.setData({ quizResult: { chosen, correct, isCorrect } });
+  },
+
+  closeQuiz() {
+    this.setData({ quizActive: false, quiz: null, quizResult: null });
   }
 });

@@ -312,6 +312,9 @@ async function addUserUnlocked(openid, char) {
 const characterData = {
   说: {
     char: '说',
+    pinyin: 'shuō',
+    radical: '言',
+    strokes: 9,
     meaning:
       '《说文解字》释“说”为“释也”，从言、兑声，本义偏向解释、陈说，使意义得以开解。这个字不是单纯象形字，而是形声兼会意：言旁标明与语言有关，兑旁兼表读音，并含有舒解、悦怿的语义联想。',
     stages: [
@@ -349,6 +352,9 @@ const characterData = {
   },
   文: {
     char: '文',
+    pinyin: 'wén',
+    radical: '文',
+    strokes: 4,
     meaning:
       '《说文解字》释“文”为“错画也，象交文”，本义指交错的纹理、纹饰。它最初并非专指文章，而是由身体、器物或自然表面的交错纹样引申为文采、文字和文化制度。',
     stages: [
@@ -386,6 +392,9 @@ const characterData = {
   },
   字: {
     char: '字',
+    pinyin: 'zì',
+    radical: '宀',
+    strokes: 6,
     meaning:
       '《说文解字》释“字”为“乳也，从子在宀下”，本义与生育、养育有关，像孩子在屋宇之下。后来“字”由孳乳、繁衍引申为文字单位，表示由基础文形孳生出的书写符号。',
     stages: [
@@ -423,6 +432,9 @@ const characterData = {
   },
   人: {
     char: '人',
+    pinyin: 'rén',
+    radical: '人',
+    strokes: 2,
     meaning:
       '《说文解字》称“人，天地之性最贵者也”，并说“象臂胫之形”，说明其本义为侧身站立的人形。古文字中的“人”不是正面肖像，而是以躯干、手臂和腿部的侧面轮廓来概括人的形体。',
     stages: [
@@ -460,6 +472,9 @@ const characterData = {
   },
   水: {
     char: '水',
+    pinyin: 'shuǐ',
+    radical: '水',
+    strokes: 4,
     meaning:
       '《说文解字》释“水”为“准也”，又说它是“北方之行”，字形“象众水并流，中有微阳之气”。本义为水流，古文字以中间主流和两侧支流表现水势流动。',
     stages: [
@@ -497,6 +512,9 @@ const characterData = {
   },
   山: {
     char: '山',
+    pinyin: 'shān',
+    radical: '山',
+    strokes: 3,
     meaning:
       '《说文解字》释“山”为“宣也”，并说明山能宣散地气、生育万物，且“有石而高”。其字形为象形，古文字以几个并立的峰峦表现高起的山体。',
     stages: [
@@ -534,6 +552,9 @@ const characterData = {
   },
   日: {
     char: '日',
+    pinyin: 'rì',
+    radical: '日',
+    strokes: 4,
     meaning:
       '《说文解字》释“日”为“实也，太阳之精不亏”，从圆形轮廓与中间一画来象太阳。古文字最初多近圆形或方圆形，中间一点或一横表示太阳充实有光。',
     stages: [
@@ -571,6 +592,9 @@ const characterData = {
   },
   月: {
     char: '月',
+    pinyin: 'yuè',
+    radical: '月',
+    strokes: 4,
     meaning:
       '《说文解字》释“月”为“阙也，太阴之精”，以月亮有盈亏缺损来说明其名义。古文字多像弯月或半月，内部短画表示月中阴影或月体分界。',
     stages: [
@@ -608,6 +632,9 @@ const characterData = {
   },
   火: {
     char: '火',
+    pinyin: 'huǒ',
+    radical: '火',
+    strokes: 4,
     meaning:
       '《说文解字》释“火”为“毁也”，又称其为“南方之行，炎而上，象形”。本义为火焰燃烧，古文字以中间火苗和两侧上扬的焰舌表现火势向上。',
     stages: [
@@ -645,6 +672,9 @@ const characterData = {
   },
   木: {
     char: '木',
+    pinyin: 'mù',
+    radical: '木',
+    strokes: 4,
     meaning:
       '《说文解字》释“木”为“冒也，冒地而生”，并说它属东方之行，下部像根。古文字以树干、枝条和根部构成，表现树木从土地中向上生长。',
     stages: [
@@ -679,25 +709,104 @@ const characterData = {
           '楷书“木”以横、竖、撇、捺四笔定型，结构简洁稳定。现代字形虽抽象，但仍保留树干贯通上下、枝根左右分展的基本构意。'
       }
     ]
+  },
+  土: {
+    char: '土',
+    pinyin: 'tǔ',
+    radical: '土',
+    strokes: 3,
+    meaning: '《说文解字》释"土"为"地之吐生物者也"，二象地之下、地之中，丨，物出形也。本义为大地，引申为泥土、土地。',
+    stages: [
+      { name: '甲骨文', glyph: '土', description: '甲骨文"土"象地面隆起土堆之形，一横为地，一短竖上耸，表示土从地中隆起。' },
+      { name: '金文',   glyph: '土', description: '金文"土"笔画圆厚，上横粗重，下横稳固，中竖连接上下，形态规整。' },
+      { name: '篆书',   glyph: '土', description: '篆书"土"三画修长，中竖居中，上下横画均衡，体现土堆之象。' },
+      { name: '隶书',   glyph: '土', description: '隶书"土"横平竖直，笔画方折，三画规整，已近今体。' },
+      { name: '楷书',   glyph: '土', description: '楷书"土"横竖分明，结体方正，沿用至今。' }
+    ]
+  },
+  金: {
+    char: '金',
+    pinyin: 'jīn',
+    radical: '金',
+    strokes: 8,
+    meaning: '《说文解字》释"金"为"五色金也，黄为之长"，字形象矿石埋于土中，旁有金粒点缀。五行之一，本义为金属，引申为金子、货币。',
+    stages: [
+      { name: '甲骨文', glyph: '金', description: '甲骨文"金"象矿石埋藏土中，上部为土覆，两旁有点示金粒。' },
+      { name: '金文',   glyph: '金', description: '金文"金"字形更完整，上部人形或土形，中部有矿脉之意，两旁金粒明显。' },
+      { name: '篆书',   glyph: '金', description: '篆书"金"结构规范，上从人从土，下有两点象金粒，整体修长。' },
+      { name: '隶书',   glyph: '金', description: '隶书"金"笔画方折，上下结构分明，点画清晰。' },
+      { name: '楷书',   glyph: '金', description: '楷书"金"结构紧凑，上部人字头，下部两横两点，今体定型。' }
+    ]
+  },
+  天: {
+    char: '天',
+    pinyin: 'tiān',
+    radical: '大',
+    strokes: 4,
+    meaning: '《说文解字》释"天"为"颠也，至高无上，从一大"。字形在"大"（正面人形）之上加一横，指人头顶之上的广阔天空。',
+    stages: [
+      { name: '甲骨文', glyph: '天', description: '甲骨文"天"在人形头顶处加一圆或方形，直指头顶以上的天空范围。' },
+      { name: '金文',   glyph: '天', description: '金文"天"头顶标记变为横画，大形更规整，上横明确标示天之位置。' },
+      { name: '篆书',   glyph: '天', description: '篆书"天"上横宽平，下大形修长，整体稳定，"至高无上"之意明确。' },
+      { name: '隶书',   glyph: '天', description: '隶书"天"横画舒展，大字趋平，整体扁宽化，结构趋近今体。' },
+      { name: '楷书',   glyph: '天', description: '楷书"天"两横一撇一捺，稳健大方，沿用至今。' }
+    ]
+  },
+  心: {
+    char: '心',
+    pinyin: 'xīn',
+    radical: '心',
+    strokes: 4,
+    meaning: '《说文解字》释"心，人心，土藏，在身之中，象形"。古文字象心脏外形，有窍有瓣，本义为心脏，引申为思想、情感、意志。',
+    stages: [
+      { name: '甲骨文', glyph: '心', description: '甲骨文"心"象心脏轮廓，外形圆曲，内有点画表示心室心房之窍。' },
+      { name: '金文',   glyph: '心', description: '金文"心"线条圆润，心形更饱满，内部三点象心之三窍。' },
+      { name: '篆书',   glyph: '心', description: '篆书"心"形体修长，三点居中，外曲线对称，结构规范。' },
+      { name: '隶书',   glyph: '心', description: '隶书"心"将圆曲线条化为点、卧钩，三点分布，今体雏形显现。' },
+      { name: '楷书',   glyph: '心', description: '楷书"心"三点一卧钩，笔画秩序分明，成为偏旁"忄"的基础。' }
+    ]
+  },
+  口: {
+    char: '口',
+    pinyin: 'kǒu',
+    radical: '口',
+    strokes: 3,
+    meaning: '《说文解字》释"口，人所以言食也，象形"。古文字象人张口之形，本义为口腔，引申为言语、出入之口。',
+    stages: [
+      { name: '甲骨文', glyph: '口', description: '甲骨文"口"象人张口之形，外框椭圆或方圆，简洁而直观。' },
+      { name: '金文',   glyph: '口', description: '金文"口"方框雏形稳定，线条圆厚，已可见今体框形之意。' },
+      { name: '篆书',   glyph: '口', description: '篆书"口"呈圆方形，四边圆转，上下略窄，修长规整。' },
+      { name: '隶书',   glyph: '口', description: '隶书"口"方框定型，笔画方折，横竖分明，与今体基本相同。' },
+      { name: '楷书',   glyph: '口', description: '楷书"口"方正稳固，三笔成形，是部首中最常用的构件之一。' }
+    ]
   }
 };
 
 const radicals = [
-  { radical: '言', meaning: '言语', examples: ['说', '语', '诗', '话', '论', '读'] },
-  { radical: '文', meaning: '纹饰', examples: ['文', '斋', '斌', '斐', '斑', '斓'] },
-  { radical: '宀', meaning: '屋宇', examples: ['字', '家', '安', '室', '宅', '宫'] },
-  { radical: '人', meaning: '人物', examples: ['人', '仁', '休', '信', '仕', '仰'] },
-  { radical: '水', meaning: '水流', examples: ['水', '江', '河', '清', '泉', '海'] },
-  { radical: '山', meaning: '山岳', examples: ['山', '峰', '岭', '岩', '岳', '峡'] },
-  { radical: '日', meaning: '日光', examples: ['日', '明', '晴', '晖', '晓', '时'] },
-  { radical: '月', meaning: '月体', examples: ['月', '朗', '朔', '望', '朝', '期'] },
-  { radical: '火', meaning: '火光', examples: ['火', '炎', '灯', '炽', '烟', '烛'] },
-  { radical: '木', meaning: '树木', examples: ['木', '林', '森', '枝', '根', '桥'] },
-  { radical: '口', meaning: '口舌', examples: ['口', '古', '名', '君', '品', '唱'] },
-  { radical: '手', meaning: '执持', examples: ['手', '打', '持', '扶', '择', '推'] },
-  { radical: '心', meaning: '心意', examples: ['心', '志', '思', '念', '恭', '愿'] },
-  { radical: '目', meaning: '眼目', examples: ['目', '看', '相', '省', '眉', '睡'] },
-  { radical: '足', meaning: '行走', examples: ['足', '跑', '跟', '路', '跃', '距'] }
+  { radical: '人', pinyin: 'rén', strokes: 2, meaning: '人物动作相关', examples: ['人', '仁', '休', '从', '众', '信', '仰', '仕'] },
+  { radical: '刀', pinyin: 'dāo', strokes: 2, meaning: '刀刃、割切相关', examples: ['刀', '分', '切', '刊', '则', '刻', '刺', '剑'] },
+  { radical: '力', pinyin: 'lì',  strokes: 2, meaning: '力量、功用相关', examples: ['力', '加', '功', '助', '勤', '努', '勉', '勇'] },
+  { radical: '口', pinyin: 'kǒu', strokes: 3, meaning: '口舌言语相关', examples: ['口', '古', '名', '君', '品', '唱', '问', '吐'] },
+  { radical: '土', pinyin: 'tǔ',  strokes: 3, meaning: '土地、地面相关', examples: ['土', '地', '城', '坊', '坛', '墙', '坐', '基'] },
+  { radical: '大', pinyin: 'dà',  strokes: 3, meaning: '大、广阔相关', examples: ['大', '天', '太', '夫', '夷', '奇', '奔', '奥'] },
+  { radical: '女', pinyin: 'nǚ',  strokes: 3, meaning: '女性、婚姻相关', examples: ['女', '妇', '妈', '姐', '妹', '嫂', '婆', '姻'] },
+  { radical: '子', pinyin: 'zǐ',  strokes: 3, meaning: '幼童、孳生相关', examples: ['子', '字', '孩', '孙', '孝', '孕', '学', '存'] },
+  { radical: '山', pinyin: 'shān',strokes: 3, meaning: '山岳、地势相关', examples: ['山', '峰', '岭', '岩', '岳', '峡', '崖', '嶂'] },
+  { radical: '心', pinyin: 'xīn', strokes: 4, meaning: '情感、思维相关', examples: ['心', '志', '思', '念', '忆', '怀', '感', '恩'] },
+  { radical: '手', pinyin: 'shǒu',strokes: 4, meaning: '手部动作相关', examples: ['手', '打', '持', '扶', '择', '推', '拿', '握'] },
+  { radical: '日', pinyin: 'rì',  strokes: 4, meaning: '日光时间相关', examples: ['日', '明', '晴', '晖', '晓', '时', '昼', '暮'] },
+  { radical: '月', pinyin: 'yuè', strokes: 4, meaning: '月体阴阳相关', examples: ['月', '朗', '朔', '望', '朝', '期', '朦', '胧'] },
+  { radical: '木', pinyin: 'mù',  strokes: 4, meaning: '树木植物相关', examples: ['木', '林', '森', '枝', '根', '桥', '树', '桌'] },
+  { radical: '水', pinyin: 'shuǐ',strokes: 4, meaning: '水流液体相关', examples: ['水', '江', '河', '清', '泉', '海', '洗', '流'] },
+  { radical: '火', pinyin: 'huǒ', strokes: 4, meaning: '火光热能相关', examples: ['火', '炎', '灯', '炽', '烟', '烛', '焰', '燃'] },
+  { radical: '目', pinyin: 'mù',  strokes: 5, meaning: '眼目视觉相关', examples: ['目', '看', '相', '省', '眉', '睡', '眼', '盲'] },
+  { radical: '石', pinyin: 'shí', strokes: 5, meaning: '石材矿物相关', examples: ['石', '岩', '矿', '砖', '破', '硬', '碎', '磨'] },
+  { radical: '玉', pinyin: 'yù',  strokes: 5, meaning: '玉器珍宝相关', examples: ['玉', '珍', '珠', '班', '琴', '瑞', '瑶', '璧'] },
+  { radical: '白', pinyin: 'bái', strokes: 5, meaning: '白色、明亮相关', examples: ['白', '百', '皆', '皇', '皓', '皎', '皙', '皤'] },
+  { radical: '言', pinyin: 'yán', strokes: 7, meaning: '言语表达相关', examples: ['言', '说', '语', '诗', '话', '论', '读', '议'] },
+  { radical: '金', pinyin: 'jīn', strokes: 8, meaning: '金属器物相关', examples: ['金', '银', '铜', '铁', '铅', '锡', '钢', '针'] },
+  { radical: '宀', pinyin: 'mián',strokes: 3, meaning: '屋宇居所相关', examples: ['字', '家', '安', '室', '宅', '宫', '宝', '守'] },
+  { radical: '足', pinyin: 'zú',  strokes: 7, meaning: '行走步履相关', examples: ['足', '跑', '跟', '路', '跃', '距', '跳', '踏'] }
 ];
 
 const heatmap = [

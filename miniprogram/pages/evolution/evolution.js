@@ -4,6 +4,19 @@ const glyphs = require('../../data/glyphs');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
 
+const TONE_MAP = {
+  'ā':'a','á':'a','ǎ':'a','à':'a',
+  'ē':'e','é':'e','ě':'e','è':'e',
+  'ī':'i','í':'i','ǐ':'i','ì':'i',
+  'ō':'o','ó':'o','ǒ':'o','ò':'o',
+  'ū':'u','ú':'u','ǔ':'u','ù':'u',
+  'ǖ':'v','ǘ':'v','ǚ':'v','ǜ':'v'
+};
+
+function normPinyin(s) {
+  return (s || '').toLowerCase().replace(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/g, c => TONE_MAP[c] || c);
+}
+
 Page({
   data: {
     query: '说',
@@ -15,7 +28,8 @@ Page({
     catalogReturned: 0,
     bookmarked: false,
     offline: false,
-    loading: false
+    loading: false,
+    related: []
   },
 
   _debounce: null,
@@ -60,9 +74,31 @@ Page({
     this.setData({ query: val });
     if (this._debounce) clearTimeout(this._debounce);
     this._debounce = setTimeout(() => {
-      const char = Array.from((val || '').trim())[0];
-      if (char) this._loadCharacter(char);
+      const trimmed = (val || '').trim();
+      if (!trimmed) return;
+      const firstChar = Array.from(trimmed)[0];
+      // Chinese character — load directly
+      if (/[一-鿿㐀-䶿]/.test(firstChar)) {
+        this._loadCharacter(firstChar);
+        return;
+      }
+      // ASCII — treat as pinyin prefix search
+      const norm = normPinyin(trimmed);
+      const match = this.data.catalog.find(
+        (item) => normPinyin(item.pinyin) === norm
+      ) || this.data.catalog.find(
+        (item) => normPinyin(item.pinyin).startsWith(norm)
+      );
+      if (match) this._loadCharacter(match.char);
     }, 400);
+  },
+
+  randomChar() {
+    const pool = this.data.catalog.filter((item) => item.hasDetail);
+    if (!pool.length) return;
+    const item = pool[Math.floor(Math.random() * pool.length)];
+    this.setData({ query: item.char });
+    this._loadCharacter(item.char);
   },
 
   useHistory(event) {
@@ -162,9 +198,20 @@ Page({
       indexLabel: INDEX_LABELS[idx] || ''
     }));
     const searchHistory = this._saveSearchHistory(character.char);
+    // Find related chars from radical group (fallback.radicals has rich examples)
+    const radicalEntry = character.radical
+      ? fallback.radicals.find((r) => r.radical === character.radical)
+      : null;
+    const related = radicalEntry
+      ? radicalEntry.examples
+          .filter((c) => c !== character.char)
+          .slice(0, 8)
+          .map((c) => ({ char: c, hasDetail: Boolean(glyphs.byChar[c]) }))
+      : [];
     this.setData({
       query: character.char,
       character: { ...character, stages },
+      related,
       searchHistory,
       hasSearchHistory: searchHistory.length > 0
     });

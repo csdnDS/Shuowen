@@ -194,3 +194,10 @@
   font-size: 24rpx;
   margin-top: 4rpx;
 }
+
+.sheet-desc {
+  color: #6B6B6B;
+  font-size: 24rpx;
+  line-height: 1.7;
+  padding: 0 4rpx;
+}

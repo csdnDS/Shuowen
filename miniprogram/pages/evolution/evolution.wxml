@@ -15,9 +15,10 @@
   <!-- Search card -->
   <view class="card">
     <view class="search-row">
-      <input class="search-input" maxlength="2" value="{{query}}" bindinput="onInput" placeholder="输入一个汉字" placeholder-class="search-placeholder" />
-      <view class="search-icon">🔍</view>
+      <input class="search-input" maxlength="10" value="{{query}}" bindinput="onInput" placeholder="汉字 或 拼音（如 shui）" placeholder-class="search-placeholder" />
+      <view class="search-icon" bindtap="randomChar">🎲</view>
     </view>
+    <view class="search-hint">支持拼音检索，点击 🎲 随机一字</view>
 
     <view wx:if="{{hasSearchHistory}}" class="history-row">
       <view class="history-label">最近搜索</view>
@@ -53,7 +54,7 @@
       <view class="current-glyph">{{character.char}}</view>
       <view class="current-meta">
         <view wx:if="{{character.pinyin}}" class="current-pinyin">{{character.pinyin}}</view>
-        <view wx:if="{{character.radical}}" class="current-radical">部首 · {{character.radical}}</view>
+        <view wx:if="{{character.radical}}" class="current-radical">部首 · {{character.radical}}<text wx:if="{{character.strokes}}" class="current-strokes">  {{character.strokes}} 画</text></view>
         <view class="current-meaning">{{character.meaning}}</view>
       </view>
       <view class="bookmark-btn {{bookmarked ? 'on' : ''}}" bindtap="toggleBookmark">
@@ -68,6 +69,21 @@
     <view class="empty-body">可尝试：说、人、水、山、日、月、火、木。</view>
   </view>
 
+  <!-- Related characters -->
+  <view wx:if="{{related.length > 0}}" class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">同部首汉字</view>
+        <view class="section-sub">{{character.radical}}部</view>
+      </view>
+    </view>
+    <view class="catalog-grid">
+      <view wx:for="{{related}}" wx:key="char" class="catalog-cell has-detail" data-char="{{item.char}}" bindtap="useCatalog">
+        <text class="catalog-char">{{item.char}}</text>
+      </view>
+    </view>
+  </view>
+
   <!-- Stages timeline -->
   <view wx:if="{{character && character.stages.length > 0}}" class="stages">
     <view class="section-title mb-md" style="padding-left:8rpx">五段形体</view>
@@ -78,7 +94,7 @@
       <view class="stage-body">
         <view class="stage-head">
           <view class="stage-index">{{item.indexLabel}}</view>
-          <view class="stage-name">{{item.name}}</view>
+          <view class="stage-name">{{item.label}}</view>
           <view class="stage-copy" data-glyph="{{item.glyph}}" catchtap="copyGlyph">复制</view>
         </view>
         <view class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
