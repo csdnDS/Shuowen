@@ -908,6 +908,62 @@ const characterData = {
       { name: '隶书',   glyph: '家', description: '隶书"家"宀下豕形简化，今体雏形已具，笔画方折。' },
       { name: '楷书',   glyph: '家', description: '楷书"家"十画成形，宀头清晰，是常用字中笔画较多的一个，今日通行。' }
     ]
+  },
+  止: {
+    char: '止',
+    pinyin: 'zhǐ',
+    radical: '止',
+    strokes: 4,
+    meaning: '《说文解字》释"止，下基也。象草木出有址，故以止为足"。字形象人脚趾正面形，本义为足，后借为停止义。',
+    stages: [
+      { name: '甲骨文', glyph: '止', description: '甲骨文"止"象人脚趾正面之形，三趾并列，脚踝可辨，是"足"的初文。' },
+      { name: '金文',   glyph: '止', description: '金文"止"脚形更规整，三趾形态稳固，行走停止之意兼备。' },
+      { name: '篆书',   glyph: '止', description: '篆书"止"线条修长，三趾形简化为三竖，整体向规范字形过渡。' },
+      { name: '隶书',   glyph: '止', description: '隶书"止"竖横化，三趾变三横，今体雏形已具。' },
+      { name: '楷书',   glyph: '止', description: '楷书"止"四画成形，是步、正、武等字的重要组成部首。' }
+    ]
+  },
+  光: {
+    char: '光',
+    pinyin: 'guāng',
+    radical: '儿',
+    strokes: 6,
+    meaning: '《说文解字》释"光，明也。从火在人上，光明意也"。字形象人跪立、头顶持火炬之形，本义为光明。',
+    stages: [
+      { name: '甲骨文', glyph: '光', description: '甲骨文"光"象人跪立、头顶持火炬之形，上为火焰，下为人形，光明之意直观。' },
+      { name: '金文',   glyph: '光', description: '金文"光"火形人形并存，光明之象稳固，线条圆润。' },
+      { name: '篆书',   glyph: '光', description: '篆书"光"上火下人，结构规整，《说文》所载字形清晰。' },
+      { name: '隶书',   glyph: '光', description: '隶书"光"人火结构简化，上部火点可见，今体雏形确立。' },
+      { name: '楷书',   glyph: '光', description: '楷书"光"六画成形，上部三点象火，下部儿形象人，今日通行。' }
+    ]
+  },
+  虫: {
+    char: '虫',
+    pinyin: 'chóng',
+    radical: '虫',
+    strokes: 6,
+    meaning: '《说文解字》释"虫，一名蝮，博三寸，首大如擘指。象其卧形"。古代"虫"泛指一切爬行动物及昆虫。',
+    stages: [
+      { name: '甲骨文', glyph: '虫', description: '甲骨文"虫"象蛇蜿蜒盘曲之形，头大身长，古代虫蛇统称，此为其初文。' },
+      { name: '金文',   glyph: '虫', description: '金文"虫"蛇形更卷曲，头部眼睛可辨，蜿蜒之态生动。' },
+      { name: '篆书',   glyph: '虫', description: '篆书"虫"头圆体卷，象蛇盘绕，《说文》据此释为毒蛇形貌。' },
+      { name: '隶书',   glyph: '虫', description: '隶书"虫"笔画化，蛇形趋近今体，圆头竖身口形可辨。' },
+      { name: '楷书',   glyph: '虫', description: '楷书"虫"六画，今义扩展为一切昆虫，是蛇、蝶、蚂等字的偏旁。' }
+    ]
+  },
+  贝: {
+    char: '贝',
+    pinyin: 'bèi',
+    radical: '贝',
+    strokes: 4,
+    meaning: '《说文解字》释"贝，海介虫也，居陆名猋，在水名蜬。象形"。古代以贝壳为货币，引申为财货、钱币相关。',
+    stages: [
+      { name: '甲骨文', glyph: '贝', description: '甲骨文"贝"象贝壳正面之形，外框为贝壳轮廓，中有纵向纹路，古代以贝为货币。' },
+      { name: '金文',   glyph: '贝', description: '金文"贝"贝壳形态完整，纹路可见，已有繁体"貝"之雏形。' },
+      { name: '篆书',   glyph: '贝', description: '篆书"贝"上为贝壳口形，下有触须足形，整体繁复，《说文》所载标准形。' },
+      { name: '隶书',   glyph: '隶书', description: '隶书"贝"贝形简化，纵向纹路演化为今形，下部触须化为两点。' },
+      { name: '楷书',   glyph: '贝', description: '楷书简体"贝"四画，是财、货、贸、贵等字的偏旁部首。' }
+    ]
   }
 };
 
@@ -943,7 +999,13 @@ const radicals = [
   { radical: '雨', pinyin: 'yǔ',  strokes: 8, meaning: '天气气象相关', examples: ['雨', '雪', '霜', '露', '雷', '霞', '雾', '霹'] },
   { radical: '鱼', pinyin: 'yú',  strokes: 8, meaning: '鱼类水产相关', examples: ['鱼', '鲤', '鲫', '鲸', '鳊', '鳍', '鳞', '鲜'] },
   { radical: '马', pinyin: 'mǎ',  strokes: 3, meaning: '马匹驾驭相关', examples: ['马', '驾', '驱', '骑', '驰', '骏', '驹', '驯'] },
-  { radical: '田', pinyin: 'tián',strokes: 5, meaning: '田地农耕相关', examples: ['田', '男', '留', '畜', '界', '畏', '畔', '略'] }
+  { radical: '田', pinyin: 'tián',strokes: 5, meaning: '田地农耕相关', examples: ['田', '男', '留', '畜', '界', '畏', '畔', '略'] },
+  { radical: '止', pinyin: 'zhǐ', strokes: 4, meaning: '行走停止相关', examples: ['止', '步', '正', '武', '歧', '此', '涉', '趋'] },
+  { radical: '见', pinyin: 'jiàn',strokes: 4, meaning: '视觉观察相关', examples: ['见', '观', '览', '觉', '视', '觑', '觐', '觖'] },
+  { radical: '虫', pinyin: 'chóng',strokes: 6, meaning: '虫豸爬行相关', examples: ['虫', '蛇', '蝶', '蚂', '蜂', '蛙', '蜘', '蟹'] },
+  { radical: '贝', pinyin: 'bèi', strokes: 4, meaning: '财货钱币相关', examples: ['贝', '财', '货', '贸', '贵', '购', '赋', '贷'] },
+  { radical: '走', pinyin: 'zǒu', strokes: 7, meaning: '行走奔跑相关', examples: ['走', '赶', '起', '超', '越', '趁', '趋', '赴'] },
+  { radical: '光', pinyin: 'guāng',strokes: 6, meaning: '光明照耀相关', examples: ['光', '辉', '晖', '曜', '耀', '灿', '烁', '炯'] }
 ];
 
 const heatmap = [

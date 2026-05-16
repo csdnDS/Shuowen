@@ -95,7 +95,17 @@ const catalog = [
   { char: '羊', pinyin: 'yáng', hasDetail: true },
   { char: '牛', pinyin: 'niú',  hasDetail: true },
   { char: '田', pinyin: 'tián', hasDetail: true },
-  { char: '风', pinyin: 'fēng', hasDetail: true }
+  { char: '风', pinyin: 'fēng', hasDetail: true },
+  { char: '止', pinyin: 'zhǐ',  hasDetail: true },
+  { char: '光', pinyin: 'guāng',hasDetail: true },
+  { char: '虫', pinyin: 'chóng',hasDetail: true },
+  { char: '贝', pinyin: 'bèi',  hasDetail: true },
+  { char: '走', pinyin: 'zǒu',  hasDetail: true },
+  { char: '来', pinyin: 'lái',  hasDetail: true },
+  { char: '东', pinyin: 'dōng', hasDetail: true },
+  { char: '西', pinyin: 'xī',   hasDetail: true },
+  { char: '正', pinyin: 'zhèng',hasDetail: true },
+  { char: '见', pinyin: 'jiàn', hasDetail: true }
 ];
 
 const radicals = [
@@ -125,7 +135,11 @@ const radicals = [
   { radical: '鱼', pinyin: 'yú',   strokes: 8, meaning: '鱼类水产相关', examples: ['鲤', '鲫', '鲸', '鲨', '鳊', '鳍', '鳞', '鲜'] },
   { radical: '羊', pinyin: 'yáng', strokes: 6, meaning: '羊牧祥瑞相关', examples: ['祥', '美', '善', '义', '羔', '群', '羹', '羞'] },
   { radical: '牛', pinyin: 'niú',  strokes: 4, meaning: '牛畜耕作相关', examples: ['牧', '物', '犁', '牲', '犀', '特', '牟', '牺'] },
-  { radical: '田', pinyin: 'tián', strokes: 5, meaning: '田地农耕相关', examples: ['男', '留', '畜', '界', '畏', '畔', '甸', '略'] }
+  { radical: '田', pinyin: 'tián', strokes: 5, meaning: '田地农耕相关', examples: ['男', '留', '畜', '界', '畏', '畔', '甸', '略'] },
+  { radical: '止', pinyin: 'zhǐ',  strokes: 4, meaning: '行走停止相关', examples: ['步', '正', '武', '歧', '此', '涉', '歼', '趋'] },
+  { radical: '虫', pinyin: 'chóng',strokes: 6, meaning: '虫豸爬行相关', examples: ['蛇', '蝶', '蚂', '蜂', '蛙', '蜘', '蟹', '螃'] },
+  { radical: '贝', pinyin: 'bèi',  strokes: 4, meaning: '财货钱币相关', examples: ['财', '货', '贸', '贵', '购', '赋', '贷', '赢'] },
+  { radical: '走', pinyin: 'zǒu',  strokes: 7, meaning: '行走奔跑相关', examples: ['赶', '起', '超', '越', '趁', '趋', '趣', '赴'] }
 ];
 
 const heatmap = {
