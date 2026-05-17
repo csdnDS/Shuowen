@@ -1,3 +1,29 @@
+/* Visit tip */
+
+.visit-tip-card {
+  background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+  border: 1rpx solid #BBF7D0;
+}
+
+.visit-tip-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.visit-tip-icon {
+  font-size: 36rpx;
+  flex-shrink: 0;
+  margin-top: 2rpx;
+}
+
+.visit-tip-text {
+  color: #15803D;
+  font-size: 24rpx;
+  line-height: 1.7;
+  flex: 1;
+}
+
 /* Area ranking list */
 
 .area-list {

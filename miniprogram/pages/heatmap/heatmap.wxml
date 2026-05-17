@@ -10,6 +10,14 @@
     <text>当前未连接到本地服务，显示离线示例数据。</text>
   </view>
 
+  <!-- Visit tip card -->
+  <view wx:if="{{visitTip}}" class="card visit-tip-card mb-md">
+    <view class="visit-tip-row">
+      <view class="visit-tip-icon">{{visitIcon}}</view>
+      <view class="visit-tip-text">{{visitTip}}</view>
+    </view>
+  </view>
+
   <!-- Park area ranking list (replaces colorful map) -->
   <view class="card">
     <view class="section-row">
