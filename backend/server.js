@@ -1034,6 +1034,72 @@ const characterData = {
       { name: '隶书',   glyph: '矢', description: '隶书"矢"箭形笔画化，横撇捺定型，今体雏形可见。' },
       { name: '楷书',   glyph: '矢', description: '楷书"矢"五画，是知、短、矩、疾等字的组成部分，今日通行。' }
     ]
+  },
+  春: {
+    char: '春', pinyin: 'chūn', radical: '日', strokes: 9,
+    meaning: '《说文解字》释"春，推也。从草，从日，草春时生也，屯声"。字形从草从日，会意草木受日光照射而萌发之义，是四季之首。',
+    stages: [
+      { name: '甲骨文', glyph: '春', description: '甲骨文"春"从屯（草芽初出）从木从日，象草木在阳光下萌发破土之形，春季之义直观。' },
+      { name: '金文',   glyph: '春', description: '金文"春"草木日光三元素结合，春季萌发之象更完整稳固。' },
+      { name: '篆书',   glyph: '春', description: '《说文》据小篆"春"释义，从草从日，屯声，草春时生之意明确。' },
+      { name: '隶书',   glyph: '春', description: '隶书"春"笔画化，草形变为"三"横，日形方化，上下结构定型。' },
+      { name: '楷书',   glyph: '春', description: '楷书"春"九画，春节、青春、春天等词核心字。' }
+    ]
+  },
+  秋: {
+    char: '秋', pinyin: 'qiū', radical: '禾', strokes: 9,
+    meaning: '《说文解字》释"秋，禾谷熟也"。字形从禾从火，以禾谷成熟可用火烘烤表示秋收季节，是农耕文明重要的时令字。',
+    stages: [
+      { name: '甲骨文', glyph: '秋', description: '甲骨文"秋"象蟋蟀之形，或从禾从火，以秋虫鸣叫和禾熟用火表示秋季。' },
+      { name: '金文',   glyph: '秋', description: '金文"秋"禾火之形稳固，秋收丰实之象确立。' },
+      { name: '篆书',   glyph: '秋', description: '小篆"秋"从禾从火，《说文》据此释"禾谷熟也"，形义吻合。' },
+      { name: '隶书',   glyph: '秋', description: '隶书"秋"禾火笔画化，左右结构定型，今体雏形可见。' },
+      { name: '楷书',   glyph: '秋', description: '楷书"秋"九画，秋天、秋收、一日三秋等义沿用至今。' }
+    ]
+  },
+  国: {
+    char: '国', pinyin: 'guó', radical: '囗', strokes: 8,
+    meaning: '《说文解字》释"国，邦也。从口，从或"。字形以四面围墙（囗）围住武器（戈）和人口（口），象征以武力守护的疆域，国家之义直观。',
+    stages: [
+      { name: '甲骨文', glyph: '国', description: '甲骨文"国"从囗（城墙）从戈（武器），象以城墙武力护守的土地，国家疆域之义。' },
+      { name: '金文',   glyph: '国', description: '金文"国"（多写作"或"）围墙武守之形完整，国家之义确立。' },
+      { name: '篆书',   glyph: '國', description: '小篆"國"从囗，内有或（戈+口+土），形象地表达国家疆土的完整性。' },
+      { name: '隶书',   glyph: '國', description: '隶书"國"围墙内形笔画化，四方围墙结构定型。' },
+      { name: '楷书',   glyph: '国', description: '楷书简化自繁体"國"，以"玉"代"或"，引申为珍贵如玉的国土。' }
+    ]
+  },
+  海: {
+    char: '海', pinyin: 'hǎi', radical: '水', strokes: 10,
+    meaning: '《说文解字》释"海，天池也，以纳百川者"。字形从水从每，每兼表音兼有繁茂之义，海为百川所归之地，是古人心目中最广阔的水体。',
+    stages: [
+      { name: '甲骨文', glyph: '海', description: '甲骨文"海"从水从每，以水旁加繁茂声符表示广阔大海，百川所归之义。' },
+      { name: '金文',   glyph: '海', description: '金文"海"水每结合，大海汇聚之象稳固。' },
+      { name: '篆书',   glyph: '海', description: '小篆"海"从水每声，《说文》释"天池也，以纳百川者"，海之博大义确立。' },
+      { name: '隶书',   glyph: '海', description: '隶书"海"三点水与每形笔画化，左右结构定型。' },
+      { name: '楷书',   glyph: '海', description: '楷书"海"十画，大海、海洋、海量等义均用。' }
+    ]
+  },
+  看: {
+    char: '看', pinyin: 'kàn', radical: '目', strokes: 9,
+    meaning: '《说文解字》释"看，睎也。从手，目"。字形以手置于目上遮光远望，是一个会意字，观看瞭望之义直观。',
+    stages: [
+      { name: '甲骨文', glyph: '看', description: '甲骨文"看"象手（爪）置于目（眼）之上以遮光远望之形，观看之义直观生动。' },
+      { name: '金文',   glyph: '看', description: '金文"看"手目结合，遮光远望之象稳固，观看之义确立。' },
+      { name: '篆书',   glyph: '看', description: '小篆"看"从手从目，《说文》释"睎也"（远看），字义明确。' },
+      { name: '隶书',   glyph: '看', description: '隶书"看"手目结构笔画化，上下定型，今体雏形可见。' },
+      { name: '楷书',   glyph: '看', description: '楷书"看"九画，看书、看见、看望等义均用。' }
+    ]
+  },
+  爱: {
+    char: '爱', pinyin: 'ài', radical: '心', strokes: 10,
+    meaning: '《说文解字》释"愛，惠也。从心，夊声"。字形从心（情感）从夊（行走），以心与行并进表示爱护、喜爱之义，体现了爱是发自内心且见于行动的。',
+    stages: [
+      { name: '甲骨文', glyph: '爱', description: '甲骨文"爱"从心从旡（或夊），象心中有爱、行而不舍之形，喜爱之义确立。' },
+      { name: '金文',   glyph: '爱', description: '金文"爱"心行结合，爱护喜爱之象稳固，情感行动并重之义确立。' },
+      { name: '篆书',   glyph: '愛', description: '小篆"愛"从心从夊，《说文》释"惠也"，仁爱惠泽之义完整。' },
+      { name: '隶书',   glyph: '愛', description: '隶书"愛"心夊结构笔画化，上下结构定型。' },
+      { name: '楷书',   glyph: '爱', description: '楷书简化自繁体"愛"，爱心、喜爱、爱护等义沿用至今。' }
+    ]
   }
 };
 
