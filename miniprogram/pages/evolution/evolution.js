@@ -33,7 +33,8 @@ Page({
     related: [],
     catalogIndex: -1,
     hasPrev: false,
-    hasNext: false
+    hasNext: false,
+    suggestChars: ['说', '人', '水', '山', '日', '月', '火', '木', '龙', '鱼']
   },
 
   _debounce: null,

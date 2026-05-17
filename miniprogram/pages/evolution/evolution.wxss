@@ -319,6 +319,16 @@
   line-height: 1.65;
 }
 
+/* Suggest chips in empty state */
+
+.suggest-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 16rpx;
+  justify-content: center;
+}
+
 /* Char nav bar */
 
 .char-nav {
