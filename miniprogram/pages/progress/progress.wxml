@@ -102,7 +102,7 @@
       </view>
       <view wx:if="{{quizScore.total > 0}}" class="quiz-prev-score">
         上次得分：{{quizScore.correct}} / {{quizScore.total}}
-        （正确率 {{quizScore.total > 0 ? (quizScore.correct * 100 / quizScore.total).toFixed(0) : 0}}%）
+        （正确率 {{quizAccuracy}}%）
       </view>
       <button class="unlock-btn" bindtap="startQuiz">开始测验</button>
     </view>

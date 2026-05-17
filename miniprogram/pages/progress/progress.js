@@ -7,6 +7,11 @@ function pad(value) {
   return `${value}`.padStart(2, '0');
 }
 
+function _accuracy(score) {
+  if (!score || !score.total) return '0';
+  return String(Math.round(score.correct * 100 / score.total));
+}
+
 function formatClock(timestamp) {
   const date = new Date(timestamp);
   return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
@@ -51,13 +56,16 @@ Page({
     quiz: null,
     quizResult: null,
     quizScore: { total: 0, correct: 0 },
+    quizAccuracy: '0',
     weekCalendar: [],
     charOfDay: null
   },
 
   onLoad() {
     const saved = wx.getStorageSync('quizLastScore');
-    if (saved && saved.total > 0) this.setData({ quizScore: saved });
+    if (saved && saved.total > 0) {
+      this.setData({ quizScore: saved, quizAccuracy: _accuracy(saved) });
+    }
     this.fetchProgress();
     this._loadStreak();
     this._loadCharOfDay();
@@ -272,7 +280,7 @@ Page({
   // ── Quiz ───────────────────────────────────────────────────
 
   startQuiz() {
-    this.setData({ quizScore: { total: 0, correct: 0 } });
+    this.setData({ quizScore: { total: 0, correct: 0 }, quizAccuracy: '0' });
     const unlocked = this.data.progress.unlocked;
     // Use unlocked chars first; fall back to full catalog for new users
     const eligible = unlocked.filter((c) => glyphs.byChar[c]);
@@ -338,9 +346,11 @@ Page({
     const isCorrect = chosen === correct;
     if (isCorrect) wx.vibrateShort({ type: 'light' });
     const prev = this.data.quizScore;
+    const next = { total: prev.total + 1, correct: prev.correct + (isCorrect ? 1 : 0) };
     this.setData({
       quizResult: { chosen, correct, isCorrect },
-      quizScore: { total: prev.total + 1, correct: prev.correct + (isCorrect ? 1 : 0) }
+      quizScore: next,
+      quizAccuracy: _accuracy(next)
     });
   },
 
