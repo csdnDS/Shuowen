@@ -184,7 +184,13 @@ const catalog = [
   { char: '车', pinyin: 'chē',  hasDetail: true },
   { char: '气', pinyin: 'qì',   hasDetail: true },
   { char: '云', pinyin: 'yún',  hasDetail: true },
-  { char: '桥', pinyin: 'qiáo', hasDetail: true }
+  { char: '桥', pinyin: 'qiáo', hasDetail: true },
+  { char: '江', pinyin: 'jiāng',hasDetail: true },
+  { char: '河', pinyin: 'hé',   hasDetail: true },
+  { char: '湖', pinyin: 'hú',   hasDetail: true },
+  { char: '泉', pinyin: 'quán', hasDetail: true },
+  { char: '林', pinyin: 'lín',  hasDetail: true },
+  { char: '森', pinyin: 'sēn',  hasDetail: true }
 ];
 
 const radicals = [
