@@ -1,3 +1,57 @@
+/* Filter bar */
+
+.filter-card {
+  margin-bottom: 20rpx;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.filter-input {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #ECECEA;
+  background: #FAFAF8;
+  font-size: 28rpx;
+  color: #1A1A1A;
+  box-sizing: border-box;
+}
+
+.filter-placeholder {
+  color: #C0C0BE;
+  font-size: 26rpx;
+}
+
+.filter-clear {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #F5F5F3;
+  color: #6B6B6B;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.filter-clear:active {
+  background: #ECECEA;
+}
+
+.filter-hint {
+  color: #A0A0A0;
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+
+/* Radical cards */
+
 .radical-card {
   background: #FFFFFF;
   border: 1rpx solid #ECECEA;
@@ -40,6 +94,12 @@
   color: #1A1A1A;
   font-size: 30rpx;
   font-weight: 600;
+}
+
+.radical-pinyin {
+  color: #A0A0A0;
+  font-size: 22rpx;
+  font-weight: 400;
 }
 
 .radical-meaning {
@@ -85,4 +145,20 @@
   background: #EFF6FF;
   color: #2563EB;
   border-color: #BFDBFE;
+}
+
+.char-cell-detail {
+  background: #FFFFFF;
+  border-color: #BFDBFE;
+  color: #1E40AF;
+  font-weight: 500;
+}
+
+.char-cell-detail:active {
+  background: #DBEAFE;
+}
+
+.radical-detail-badge {
+  color: #2563EB;
+  font-size: 20rpx;
 }

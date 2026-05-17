@@ -10,6 +10,26 @@
     <text>当前离线模式，本次解锁仅保存在本地。</text>
   </view>
 
+  <!-- Character of the Day -->
+  <view wx:if="{{charOfDay}}" class="card cod-card mb-md" bindtap="goToCharOfDay">
+    <view class="cod-header">
+      <view class="cod-eyebrow">{{charOfDay.dateStr}} · 今日汉字</view>
+      <view class="cod-chev">›</view>
+    </view>
+    <view class="cod-body">
+      <view wx:if="{{charOfDay.hasOracle}}" class="cod-oracle-wrap">
+        <image class="cod-oracle" src="{{charOfDay.oracleSrc}}" mode="aspectFit"></image>
+        <view class="cod-oracle-label">甲骨文</view>
+      </view>
+      <view wx:else class="cod-char-big">{{charOfDay.char}}</view>
+      <view class="cod-meta">
+        <view class="cod-char">{{charOfDay.char}}<text class="cod-pinyin"> {{charOfDay.pinyin}}</text></view>
+        <view class="cod-radical">部首：{{charOfDay.radical}}</view>
+        <view class="cod-meaning">{{charOfDay.meaning}}</view>
+      </view>
+    </view>
+  </view>
+
   <!-- Stats grid -->
   <view class="stats-grid mb-md">
     <view class="stat-cell">
@@ -18,11 +38,11 @@
     </view>
     <view class="stat-cell">
       <view class="stat-value">{{streakDays}}</view>
-      <view class="stat-label">连续打卡 (天)</view>
+      <view class="stat-label">连续打卡</view>
     </view>
-    <view class="stat-cell">
-      <view class="stat-value">{{todayCount}}</view>
-      <view class="stat-label">今日学习</view>
+    <view class="stat-cell stat-cell-today {{todayCount >= dailyGoal ? 'goal-done' : ''}}">
+      <view class="stat-value">{{todayCount}}<text class="stat-goal">/{{dailyGoal}}</text></view>
+      <view class="stat-label">今日目标</view>
     </view>
   </view>
 
@@ -44,6 +64,16 @@
       <view class="text-muted">{{levelHint}}</view>
     </view>
 
+    <!-- 7-day calendar -->
+    <view wx:if="{{weekCalendar.length > 0}}" class="week-cal mt-md">
+      <view wx:for="{{weekCalendar}}" wx:key="dateNum" class="cal-day {{item.active ? 'cal-active' : ''}} {{item.isToday ? 'cal-today' : ''}}">
+        <view class="cal-label">{{item.label}}</view>
+        <view class="cal-dot"></view>
+        <view class="cal-num">{{item.dateNum}}</view>
+        <view wx:if="{{item.count > 0}}" class="cal-count">+{{item.count}}</view>
+      </view>
+    </view>
+
     <!-- Unlock button -->
     <view class="unlock-wrap mt-md">
       <button class="unlock-btn" loading="{{loading}}" bindtap="unlock">解锁新字</button>
@@ -54,6 +84,54 @@
     <view wx:if="{{lastUnlock}}" class="last-unlock">
       <view class="last-unlock-char">{{lastUnlock.char}}</view>
       <view class="last-unlock-msg">{{lastUnlock.message}}</view>
+    </view>
+  </view>
+
+  <!-- Quiz card -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">字形测验</view>
+        <view class="section-sub">检验学习成果</view>
+      </view>
+    </view>
+
+    <view wx:if="{{!quizActive}}">
+      <view class="text-muted mb-sm" style="font-size:24rpx; line-height:1.6">
+        根据古文字描述猜测汉字，检验学习成果。
+      </view>
+      <view wx:if="{{quizScore.total > 0}}" class="quiz-prev-score">
+        上次得分：{{quizScore.correct}} / {{quizScore.total}}
+        （正确率 {{quizAccuracy}}%）
+      </view>
+      <button class="unlock-btn" bindtap="startQuiz">开始测验</button>
+    </view>
+
+    <view wx:else class="quiz-panel">
+      <view class="quiz-era-tag">{{quiz.hintEra}} 描述</view>
+      <view class="quiz-hint">{{quiz.hint}}</view>
+      <view wx:if="{{quiz.canRevealMore && !quizResult}}" class="quiz-more-hint" bindtap="revealNextHint">
+        查看更多提示 ›
+      </view>
+      <view class="quiz-question">根据上述描述，这是哪个汉字？</view>
+      <view class="quiz-options">
+        <view wx:for="{{quiz.options}}" wx:key="*this"
+              class="quiz-opt {{quizResult ? (item === quiz.correct ? 'opt-correct' : (item === quizResult.chosen && !quizResult.isCorrect ? 'opt-wrong' : 'opt-dim')) : ''}}"
+              data-char="{{item}}" bindtap="quizAnswer">{{item}}</view>
+      </view>
+      <view wx:if="{{quizResult}}" class="quiz-result">
+        <view wx:if="{{quizResult.isCorrect}}" class="quiz-msg quiz-msg-ok">✓ 回答正确！</view>
+        <view wx:else class="quiz-msg quiz-msg-err">✗ 正确答案是「{{quiz.correct}}」（{{quiz.pinyin}}）</view>
+        <view class="quiz-explain">{{quiz.meaning}}</view>
+        <view class="quiz-actions mt-sm">
+          <view class="btn btn-primary" style="flex:1" bindtap="startQuiz">再来一题</view>
+          <view class="btn btn-ghost" style="flex:1" bindtap="goToQuizChar">查看演变</view>
+        </view>
+        <view class="btn btn-block mt-sm" bindtap="closeQuiz">结束（{{quizScore.correct}}/{{quizScore.total}}）</view>
+      </view>
+      <view wx:else class="quiz-skip">
+        <view class="btn btn-ghost btn-sm" bindtap="closeQuiz">跳过</view>
+      </view>
     </view>
   </view>
 

@@ -165,22 +165,53 @@ async function findCharacter(char) {
   return null;
 }
 
+// Normalize Chinese pinyin tones for comparison
+function normPinyin(s) {
+  return (s || '').toLowerCase()
+    .replace(/[āáǎà]/g, 'a').replace(/[ēéěè]/g, 'e')
+    .replace(/[īíǐì]/g, 'i').replace(/[ōóǒò]/g, 'o')
+    .replace(/[ūúǔù]/g, 'u').replace(/[ǖǘǚǜ]/g, 'v');
+}
+
 async function listCharacters(query = '', limit = 80) {
   const mongoDb = await getMongoDb();
   if (mongoDb) {
-    const filter = query ? { char: { $regex: query } } : {};
+    const filter = query ? {
+      $or: [
+        { char: { $regex: query } },
+        { pinyin: { $regex: query, $options: 'i' } }
+      ]
+    } : {};
     const docs = await mongoDb
       .collection('characters')
-      .find(filter, { projection: { _id: 0, char: 1, title: 1, radical: 1, hasDetail: 1 } })
+      .find(filter, { projection: { _id: 0, char: 1, pinyin: 1, radical: 1, strokes: 1, hasDetail: 1 } })
       .limit(limit)
       .toArray();
 
     if (docs.length) return docs;
   }
 
-  const normalized = query.trim();
-  return characterCatalog
-    .filter((item) => !normalized || item.char.includes(normalized) || item.title.includes(normalized))
+  const normalized = query.trim().toLowerCase();
+  // Build a catalog from characterData (rich entries) + presetCharacters
+  const richChars = Object.values(characterData).map((d) => ({
+    char: d.char,
+    pinyin: d.pinyin || '',
+    radical: d.radical || '',
+    strokes: d.strokes || 0,
+    hasDetail: true
+  }));
+  const richSet = new Set(richChars.map((c) => c.char));
+  const baseChars = presetCharacters
+    .filter((c) => !richSet.has(c))
+    .map((c) => ({ char: c, pinyin: '', radical: '', strokes: 0, hasDetail: false }));
+  const all = [...richChars, ...baseChars];
+
+  return all
+    .filter((item) => !normalized ||
+      item.char.includes(normalized) ||
+      normPinyin(item.pinyin).startsWith(normPinyin(normalized)) ||
+      (item.radical || '').includes(normalized)
+    )
     .slice(0, limit);
 }
 
@@ -312,6 +343,9 @@ async function addUserUnlocked(openid, char) {
 const characterData = {
   说: {
     char: '说',
+    pinyin: 'shuō',
+    radical: '言',
+    strokes: 9,
     meaning:
       '《说文解字》释“说”为“释也”，从言、兑声，本义偏向解释、陈说，使意义得以开解。这个字不是单纯象形字，而是形声兼会意：言旁标明与语言有关，兑旁兼表读音，并含有舒解、悦怿的语义联想。',
     stages: [
@@ -349,6 +383,9 @@ const characterData = {
   },
   文: {
     char: '文',
+    pinyin: 'wén',
+    radical: '文',
+    strokes: 4,
     meaning:
       '《说文解字》释“文”为“错画也，象交文”，本义指交错的纹理、纹饰。它最初并非专指文章，而是由身体、器物或自然表面的交错纹样引申为文采、文字和文化制度。',
     stages: [
@@ -386,6 +423,9 @@ const characterData = {
   },
   字: {
     char: '字',
+    pinyin: 'zì',
+    radical: '宀',
+    strokes: 6,
     meaning:
       '《说文解字》释“字”为“乳也，从子在宀下”，本义与生育、养育有关，像孩子在屋宇之下。后来“字”由孳乳、繁衍引申为文字单位，表示由基础文形孳生出的书写符号。',
     stages: [
@@ -423,6 +463,9 @@ const characterData = {
   },
   人: {
     char: '人',
+    pinyin: 'rén',
+    radical: '人',
+    strokes: 2,
     meaning:
       '《说文解字》称“人，天地之性最贵者也”，并说“象臂胫之形”，说明其本义为侧身站立的人形。古文字中的“人”不是正面肖像，而是以躯干、手臂和腿部的侧面轮廓来概括人的形体。',
     stages: [
@@ -460,6 +503,9 @@ const characterData = {
   },
   水: {
     char: '水',
+    pinyin: 'shuǐ',
+    radical: '水',
+    strokes: 4,
     meaning:
       '《说文解字》释“水”为“准也”，又说它是“北方之行”，字形“象众水并流，中有微阳之气”。本义为水流，古文字以中间主流和两侧支流表现水势流动。',
     stages: [
@@ -497,6 +543,9 @@ const characterData = {
   },
   山: {
     char: '山',
+    pinyin: 'shān',
+    radical: '山',
+    strokes: 3,
     meaning:
       '《说文解字》释“山”为“宣也”，并说明山能宣散地气、生育万物，且“有石而高”。其字形为象形，古文字以几个并立的峰峦表现高起的山体。',
     stages: [
@@ -534,6 +583,9 @@ const characterData = {
   },
   日: {
     char: '日',
+    pinyin: 'rì',
+    radical: '日',
+    strokes: 4,
     meaning:
       '《说文解字》释“日”为“实也，太阳之精不亏”，从圆形轮廓与中间一画来象太阳。古文字最初多近圆形或方圆形，中间一点或一横表示太阳充实有光。',
     stages: [
@@ -571,6 +623,9 @@ const characterData = {
   },
   月: {
     char: '月',
+    pinyin: 'yuè',
+    radical: '月',
+    strokes: 4,
     meaning:
       '《说文解字》释“月”为“阙也，太阴之精”，以月亮有盈亏缺损来说明其名义。古文字多像弯月或半月，内部短画表示月中阴影或月体分界。',
     stages: [
@@ -608,6 +663,9 @@ const characterData = {
   },
   火: {
     char: '火',
+    pinyin: 'huǒ',
+    radical: '火',
+    strokes: 4,
     meaning:
       '《说文解字》释“火”为“毁也”，又称其为“南方之行，炎而上，象形”。本义为火焰燃烧，古文字以中间火苗和两侧上扬的焰舌表现火势向上。',
     stages: [
@@ -645,6 +703,9 @@ const characterData = {
   },
   木: {
     char: '木',
+    pinyin: 'mù',
+    radical: '木',
+    strokes: 4,
     meaning:
       '《说文解字》释“木”为“冒也，冒地而生”，并说它属东方之行，下部像根。古文字以树干、枝条和根部构成，表现树木从土地中向上生长。',
     stages: [
@@ -679,25 +740,408 @@ const characterData = {
           '楷书“木”以横、竖、撇、捺四笔定型，结构简洁稳定。现代字形虽抽象，但仍保留树干贯通上下、枝根左右分展的基本构意。'
       }
     ]
+  },
+  土: {
+    char: '土',
+    pinyin: 'tǔ',
+    radical: '土',
+    strokes: 3,
+    meaning: '《说文解字》释"土"为"地之吐生物者也"，二象地之下、地之中，丨，物出形也。本义为大地，引申为泥土、土地。',
+    stages: [
+      { name: '甲骨文', glyph: '土', description: '甲骨文"土"象地面隆起土堆之形，一横为地，一短竖上耸，表示土从地中隆起。' },
+      { name: '金文',   glyph: '土', description: '金文"土"笔画圆厚，上横粗重，下横稳固，中竖连接上下，形态规整。' },
+      { name: '篆书',   glyph: '土', description: '篆书"土"三画修长，中竖居中，上下横画均衡，体现土堆之象。' },
+      { name: '隶书',   glyph: '土', description: '隶书"土"横平竖直，笔画方折，三画规整，已近今体。' },
+      { name: '楷书',   glyph: '土', description: '楷书"土"横竖分明，结体方正，沿用至今。' }
+    ]
+  },
+  金: {
+    char: '金',
+    pinyin: 'jīn',
+    radical: '金',
+    strokes: 8,
+    meaning: '《说文解字》释"金"为"五色金也，黄为之长"，字形象矿石埋于土中，旁有金粒点缀。五行之一，本义为金属，引申为金子、货币。',
+    stages: [
+      { name: '甲骨文', glyph: '金', description: '甲骨文"金"象矿石埋藏土中，上部为土覆，两旁有点示金粒。' },
+      { name: '金文',   glyph: '金', description: '金文"金"字形更完整，上部人形或土形，中部有矿脉之意，两旁金粒明显。' },
+      { name: '篆书',   glyph: '金', description: '篆书"金"结构规范，上从人从土，下有两点象金粒，整体修长。' },
+      { name: '隶书',   glyph: '金', description: '隶书"金"笔画方折，上下结构分明，点画清晰。' },
+      { name: '楷书',   glyph: '金', description: '楷书"金"结构紧凑，上部人字头，下部两横两点，今体定型。' }
+    ]
+  },
+  天: {
+    char: '天',
+    pinyin: 'tiān',
+    radical: '大',
+    strokes: 4,
+    meaning: '《说文解字》释"天"为"颠也，至高无上，从一大"。字形在"大"（正面人形）之上加一横，指人头顶之上的广阔天空。',
+    stages: [
+      { name: '甲骨文', glyph: '天', description: '甲骨文"天"在人形头顶处加一圆或方形，直指头顶以上的天空范围。' },
+      { name: '金文',   glyph: '天', description: '金文"天"头顶标记变为横画，大形更规整，上横明确标示天之位置。' },
+      { name: '篆书',   glyph: '天', description: '篆书"天"上横宽平，下大形修长，整体稳定，"至高无上"之意明确。' },
+      { name: '隶书',   glyph: '天', description: '隶书"天"横画舒展，大字趋平，整体扁宽化，结构趋近今体。' },
+      { name: '楷书',   glyph: '天', description: '楷书"天"两横一撇一捺，稳健大方，沿用至今。' }
+    ]
+  },
+  心: {
+    char: '心',
+    pinyin: 'xīn',
+    radical: '心',
+    strokes: 4,
+    meaning: '《说文解字》释"心，人心，土藏，在身之中，象形"。古文字象心脏外形，有窍有瓣，本义为心脏，引申为思想、情感、意志。',
+    stages: [
+      { name: '甲骨文', glyph: '心', description: '甲骨文"心"象心脏轮廓，外形圆曲，内有点画表示心室心房之窍。' },
+      { name: '金文',   glyph: '心', description: '金文"心"线条圆润，心形更饱满，内部三点象心之三窍。' },
+      { name: '篆书',   glyph: '心', description: '篆书"心"形体修长，三点居中，外曲线对称，结构规范。' },
+      { name: '隶书',   glyph: '心', description: '隶书"心"将圆曲线条化为点、卧钩，三点分布，今体雏形显现。' },
+      { name: '楷书',   glyph: '心', description: '楷书"心"三点一卧钩，笔画秩序分明，成为偏旁"忄"的基础。' }
+    ]
+  },
+  口: {
+    char: '口',
+    pinyin: 'kǒu',
+    radical: '口',
+    strokes: 3,
+    meaning: '《说文解字》释"口，人所以言食也，象形"。古文字象人张口之形，本义为口腔，引申为言语、出入之口。',
+    stages: [
+      { name: '甲骨文', glyph: '口', description: '甲骨文"口"象人张口之形，外框椭圆或方圆，简洁而直观。' },
+      { name: '金文',   glyph: '口', description: '金文"口"方框雏形稳定，线条圆厚，已可见今体框形之意。' },
+      { name: '篆书',   glyph: '口', description: '篆书"口"呈圆方形，四边圆转，上下略窄，修长规整。' },
+      { name: '隶书',   glyph: '口', description: '隶书"口"方框定型，笔画方折，横竖分明，与今体基本相同。' },
+      { name: '楷书',   glyph: '口', description: '楷书"口"方正稳固，三笔成形，是部首中最常用的构件之一。' }
+    ]
+  },
+  禾: {
+    char: '禾',
+    pinyin: 'hé',
+    radical: '禾',
+    strokes: 5,
+    meaning: '《说文解字》释"禾，嘉谷也。二月始生，八月而孰，得时之中，故谓之禾"。字形象一株谷物成熟、穗头低垂之形，本义为谷物，引申为庄稼、农作物。',
+    stages: [
+      { name: '甲骨文', glyph: '禾', description: '甲骨文"禾"象一株谷物，茎直枝叶相交，顶端穗粒低垂，是农业文明早期的重要字形。' },
+      { name: '金文',   glyph: '禾', description: '金文"禾"穗粒垂头之象更明，茎叶结构规整，禾苗之态栩栩如生。' },
+      { name: '篆书',   glyph: '禾', description: '篆书"禾"线条修长，垂穗在上，左右分枝对称，与《说文》所载吻合。' },
+      { name: '隶书',   glyph: '禾', description: '隶书"禾"撇、横、竖、捺笔画分明，方折化，今体雏形已具。' },
+      { name: '楷书',   glyph: '禾', description: '楷书"禾"五画成形，是偏旁"禾"字旁的基础，用于稻、秋、种等字。' }
+    ]
+  },
+  竹: {
+    char: '竹',
+    pinyin: 'zhú',
+    radical: '竹',
+    strokes: 6,
+    meaning: '《说文解字》释"竹，冬生草也。象形。下垂者，箁箬也"。字形象两竿竹并立、叶片弯曲下垂之形，本义为竹子，引申为竹器、文具。',
+    stages: [
+      { name: '甲骨文', glyph: '竹', description: '甲骨文"竹"象两竿竹节并立、竹叶弯曲下垂之形，取竹之全貌，左右对称。' },
+      { name: '金文',   glyph: '竹', description: '金文"竹"双竿双叶，竹形规整，竹节与叶形更为清晰。' },
+      { name: '篆书',   glyph: '竹', description: '篆书"竹"两竿对称，下垂叶形明确，字形规范，《说文》据此释义。' },
+      { name: '隶书',   glyph: '竹', description: '隶书"竹"笔画简化，竹头定型，成为笔、篇、簿等字的重要偏旁。' },
+      { name: '楷书',   glyph: '竹', description: '楷书"竹"六画对称，上为竹头部首，今日用作笔、管、篮等字的构件。' }
+    ]
+  },
+  生: {
+    char: '生',
+    pinyin: 'shēng',
+    radical: '生',
+    strokes: 5,
+    meaning: '《说文解字》释"生，进也。象草木生出土上"。字形象草木破土而生之形，本义为出生、生长，引申为生命、生活。',
+    stages: [
+      { name: '甲骨文', glyph: '生', description: '甲骨文"生"象草木从土中破土而出之形，下横为地，上竖带分枝为萌芽，生机勃勃。' },
+      { name: '金文',   glyph: '生', description: '金文"生"形体规整，土上草芽之象清晰，生命力之形已稳定。' },
+      { name: '篆书',   glyph: '生', description: '篆书"生"上部草木芽形，下部土横，整体修长，《说文》据此解义。' },
+      { name: '隶书',   glyph: '生', description: '隶书"生"竖横化，结构简洁方正，已与今体相近。' },
+      { name: '楷书',   glyph: '生', description: '楷书"生"五画成形，横竖撇结体简洁，今日通行字形。' }
+    ]
+  },
+  老: {
+    char: '老',
+    pinyin: 'lǎo',
+    radical: '老',
+    strokes: 6,
+    meaning: '《说文解字》释"老，考也。七十曰老。从人毛匕，言须发变白也"。字形象老者背驼、发长之形，本义为年老，引申为经验丰富、尊重长者。',
+    stages: [
+      { name: '甲骨文', glyph: '老', description: '甲骨文"老"象老者背驼、发长、手持杖之形，"人"与"毛"结合，表示年长貌。' },
+      { name: '金文',   glyph: '老', description: '金文"老"拄杖老者之象稳定，毛发与身躯之形可辨，整体形态更圆润。' },
+      { name: '篆书',   glyph: '老', description: '篆书"老"上部人毛形，下部匕（化）形，整体修长规范，与《说文》吻合。' },
+      { name: '隶书',   glyph: '老', description: '隶书"老"上下结构简化，土形可见，笔画方折，与今体已十分接近。' },
+      { name: '楷书',   glyph: '老', description: '楷书"老"六画成形，上部耂头、下部匕，是汉字部首之一。' }
+    ]
+  },
+  明: {
+    char: '明',
+    pinyin: 'míng',
+    radical: '日',
+    strokes: 8,
+    meaning: '《说文解字》释"明，照也。从月，从囧"。字形以日月并照会意光明，本义为明亮、清晰，引申为聪慧、明白。',
+    stages: [
+      { name: '甲骨文', glyph: '明', description: '甲骨文"明"左日右月，或从窗（囧）与月，会意日月共照之光明，形象直观。' },
+      { name: '金文',   glyph: '明', description: '金文"明"日月并举，光明义显，有时以窗形（囧）代日，取窗透光之意。' },
+      { name: '篆书',   glyph: '明', description: '篆书"明"日月结构稳定，左右分明，《说文》从月、从囧的释义在此清晰可见。' },
+      { name: '隶书',   glyph: '明', description: '隶书"明"日月方化，左右分工明确，结体渐趋今形。' },
+      { name: '楷书',   glyph: '明', description: '楷书"明"左日右月，八画成形，今日通行字形。' }
+    ]
+  },
+  龙: {
+    char: '龙',
+    pinyin: 'lóng',
+    radical: '龙',
+    strokes: 5,
+    meaning: '《说文解字》释"龙，鳞虫之长，能幽能明，能细能钜，能短能长。春分而登天，秋分而潜渊"。字形象龙之整体形貌，本义为神话中的神兽。',
+    stages: [
+      { name: '甲骨文', glyph: '龙', description: '甲骨文"龙"象龙首鳞身、腾跃之形，头部冠饰与蜿蜒身躯相连，神态威仪。' },
+      { name: '金文',   glyph: '龙', description: '金文"龙"形更具体，头身尾可辨，冠形与鳞身细节丰富，造型精美。' },
+      { name: '篆书',   glyph: '龙', description: '篆书"龙"（繁体"龍"）笔画繁多，身躯盘曲，形态复杂，为《说文》所收标准形。' },
+      { name: '隶书',   glyph: '龙', description: '隶书"龙"笔画逐渐简化，繁体"龍"趋今形，横竖点化。' },
+      { name: '楷书',   glyph: '龙', description: '楷书简体"龙"五画成形，是繁体"龍"的简化字，今日通行。' }
+    ]
+  },
+  家: {
+    char: '家',
+    pinyin: 'jiā',
+    radical: '宀',
+    strokes: 10,
+    meaning: '《说文解字》释"家，居也。从宀，豭省声"。字形象屋宇之下有豕（猪）之形，以猪的豢养表示定居生活，本义为居所，引申为家庭、家族。',
+    stages: [
+      { name: '甲骨文', glyph: '家', description: '甲骨文"家"象屋宇之下豢养猪豕之形，屋顶与墙体可辨，猪豕在其中，表示定居。' },
+      { name: '金文',   glyph: '家', description: '金文"家"屋盖宀形与猪豕之象稳定，家庭定居的文化含义明确。' },
+      { name: '篆书',   glyph: '家', description: '篆书"家"宀形规整，下部豕形修长，整体线条流畅，《说文》所录标准形。' },
+      { name: '隶书',   glyph: '家', description: '隶书"家"宀下豕形简化，今体雏形已具，笔画方折。' },
+      { name: '楷书',   glyph: '家', description: '楷书"家"十画成形，宀头清晰，是常用字中笔画较多的一个，今日通行。' }
+    ]
+  },
+  止: {
+    char: '止',
+    pinyin: 'zhǐ',
+    radical: '止',
+    strokes: 4,
+    meaning: '《说文解字》释"止，下基也。象草木出有址，故以止为足"。字形象人脚趾正面形，本义为足，后借为停止义。',
+    stages: [
+      { name: '甲骨文', glyph: '止', description: '甲骨文"止"象人脚趾正面之形，三趾并列，脚踝可辨，是"足"的初文。' },
+      { name: '金文',   glyph: '止', description: '金文"止"脚形更规整，三趾形态稳固，行走停止之意兼备。' },
+      { name: '篆书',   glyph: '止', description: '篆书"止"线条修长，三趾形简化为三竖，整体向规范字形过渡。' },
+      { name: '隶书',   glyph: '止', description: '隶书"止"竖横化，三趾变三横，今体雏形已具。' },
+      { name: '楷书',   glyph: '止', description: '楷书"止"四画成形，是步、正、武等字的重要组成部首。' }
+    ]
+  },
+  光: {
+    char: '光',
+    pinyin: 'guāng',
+    radical: '儿',
+    strokes: 6,
+    meaning: '《说文解字》释"光，明也。从火在人上，光明意也"。字形象人跪立、头顶持火炬之形，本义为光明。',
+    stages: [
+      { name: '甲骨文', glyph: '光', description: '甲骨文"光"象人跪立、头顶持火炬之形，上为火焰，下为人形，光明之意直观。' },
+      { name: '金文',   glyph: '光', description: '金文"光"火形人形并存，光明之象稳固，线条圆润。' },
+      { name: '篆书',   glyph: '光', description: '篆书"光"上火下人，结构规整，《说文》所载字形清晰。' },
+      { name: '隶书',   glyph: '光', description: '隶书"光"人火结构简化，上部火点可见，今体雏形确立。' },
+      { name: '楷书',   glyph: '光', description: '楷书"光"六画成形，上部三点象火，下部儿形象人，今日通行。' }
+    ]
+  },
+  虫: {
+    char: '虫',
+    pinyin: 'chóng',
+    radical: '虫',
+    strokes: 6,
+    meaning: '《说文解字》释"虫，一名蝮，博三寸，首大如擘指。象其卧形"。古代"虫"泛指一切爬行动物及昆虫。',
+    stages: [
+      { name: '甲骨文', glyph: '虫', description: '甲骨文"虫"象蛇蜿蜒盘曲之形，头大身长，古代虫蛇统称，此为其初文。' },
+      { name: '金文',   glyph: '虫', description: '金文"虫"蛇形更卷曲，头部眼睛可辨，蜿蜒之态生动。' },
+      { name: '篆书',   glyph: '虫', description: '篆书"虫"头圆体卷，象蛇盘绕，《说文》据此释为毒蛇形貌。' },
+      { name: '隶书',   glyph: '虫', description: '隶书"虫"笔画化，蛇形趋近今体，圆头竖身口形可辨。' },
+      { name: '楷书',   glyph: '虫', description: '楷书"虫"六画，今义扩展为一切昆虫，是蛇、蝶、蚂等字的偏旁。' }
+    ]
+  },
+  贝: {
+    char: '贝',
+    pinyin: 'bèi',
+    radical: '贝',
+    strokes: 4,
+    meaning: '《说文解字》释"贝，海介虫也，居陆名猋，在水名蜬。象形"。古代以贝壳为货币，引申为财货、钱币相关。',
+    stages: [
+      { name: '甲骨文', glyph: '贝', description: '甲骨文"贝"象贝壳正面之形，外框为贝壳轮廓，中有纵向纹路，古代以贝为货币。' },
+      { name: '金文',   glyph: '贝', description: '金文"贝"贝壳形态完整，纹路可见，已有繁体"貝"之雏形。' },
+      { name: '篆书',   glyph: '贝', description: '篆书"贝"上为贝壳口形，下有触须足形，整体繁复，《说文》所载标准形。' },
+      { name: '隶书',   glyph: '隶书', description: '隶书"贝"贝形简化，纵向纹路演化为今形，下部触须化为两点。' },
+      { name: '楷书',   glyph: '贝', description: '楷书简体"贝"四画，是财、货、贸、贵等字的偏旁部首。' }
+    ]
+  },
+  自: {
+    char: '自',
+    pinyin: 'zì',
+    radical: '自',
+    strokes: 6,
+    meaning: '《说文解字》释"自，鼻也。象鼻形"。字形象人鼻子正面形，本义为鼻，古人以鼻指代自己，借为自身、自己义。',
+    stages: [
+      { name: '甲骨文', glyph: '自', description: '甲骨文"自"象人鼻子正面形，鼻梁横竖，鼻翼两侧，古人以手指鼻表示"自己"。' },
+      { name: '金文',   glyph: '自', description: '金文"自"鼻形更完整，鼻梁明显，借义"自己"已广泛流通。' },
+      { name: '篆书',   glyph: '自', description: '篆书"自"形体修长，鼻形规整，《说文》以此为鼻字古形。' },
+      { name: '隶书',   glyph: '自', description: '隶书"自"鼻形方化，横竖分明，今体雏形确立。' },
+      { name: '楷书',   glyph: '自', description: '楷书"自"六画，本义鼻已由"鼻"字承担，此字专用为自己、自身义。' }
+    ]
+  },
+  耳: {
+    char: '耳',
+    pinyin: 'ěr',
+    radical: '耳',
+    strokes: 6,
+    meaning: '《说文解字》释"耳，主听也。象形"。字形象人耳侧面形貌，本义为耳朵，引申为听闻、知晓。',
+    stages: [
+      { name: '甲骨文', glyph: '耳', description: '甲骨文"耳"象人耳侧面之形，耳轮、耳廓均可辨认，外形流畅生动。' },
+      { name: '金文',   glyph: '耳', description: '金文"耳"耳形更规整，耳轮内廓可辨，整体圆润。' },
+      { name: '篆书',   glyph: '耳', description: '篆书"耳"线条规整，内部结构简化，已接近今体框架。' },
+      { name: '隶书',   glyph: '隶书', description: '隶书"耳"方折化，横竖分明，今体雏形可见。' },
+      { name: '楷书',   glyph: '耳', description: '楷书"耳"六画，是聆、聪、聋等字的偏旁部首。' }
+    ]
+  },
+  足: {
+    char: '足',
+    pinyin: 'zú',
+    radical: '足',
+    strokes: 7,
+    meaning: '《说文解字》释"足，人之足也，在体下。从口，从止"。字形象膝盖以下至脚趾的完整足部形貌。',
+    stages: [
+      { name: '甲骨文', glyph: '足', description: '甲骨文"足"象人的膝盖以下至脚趾之形，口形象膝，止形象趾，上下结合。' },
+      { name: '金文',   glyph: '足', description: '金文"足"膝趾结合，足形完整清晰，线条圆润。' },
+      { name: '篆书',   glyph: '足', description: '篆书"足"上部口形、下部止形分明，《说文》所载标准字形。' },
+      { name: '隶书',   glyph: '足', description: '隶书"足"上下结构定型，笔画方折，今体雏形确立。' },
+      { name: '楷书',   glyph: '足', description: '楷书"足"七画，是跑、路、跳、踏等字的偏旁部首。' }
+    ]
+  },
+  弓: {
+    char: '弓',
+    pinyin: 'gōng',
+    radical: '弓',
+    strokes: 3,
+    meaning: '《说文解字》释"弓，以近穷远。象形"。字形象弓弦张满、弓身弯曲之形，本义为弓，是古代重要的狩猎和战争工具。',
+    stages: [
+      { name: '甲骨文', glyph: '弓', description: '甲骨文"弓"象弓弦拉满、弓身弯曲之形，弓臂与弦均可辨认，形态极为生动。' },
+      { name: '金文',   glyph: '弓', description: '金文"弓"弓形更完整，弓臂弦形稳固，已可见今体轮廓。' },
+      { name: '篆书',   glyph: '弓', description: '篆书"弓"弯曲线条规整，弓形与《说文》所载吻合。' },
+      { name: '隶书',   glyph: '弓', description: '隶书"弓"弯曲笔画化，折横竖化，今体雏形确立。' },
+      { name: '楷书',   glyph: '弓', description: '楷书"弓"三画，是弹、强、张等字的偏旁，今日通行字形。' }
+    ]
+  },
+  矢: {
+    char: '矢',
+    pinyin: 'shǐ',
+    radical: '矢',
+    strokes: 5,
+    meaning: '《说文解字》释"矢，弓弩矢也。从入，象镝栝羽之形"。字形象箭之全形——箭头、箭杆、箭羽均可辨。',
+    stages: [
+      { name: '甲骨文', glyph: '矢', description: '甲骨文"矢"象箭之全形，箭头尖锐，箭杆笔直，箭羽对称，是古代射猎武器。' },
+      { name: '金文',   glyph: '矢', description: '金文"矢"箭形更完整，箭镞与羽毛对称均衡，制作精良之态可见。' },
+      { name: '篆书',   glyph: '矢', description: '篆书"矢"箭形规范，《说文》据此释义，镝（箭头）、栝（箭尾）、羽均可辨。' },
+      { name: '隶书',   glyph: '矢', description: '隶书"矢"箭形笔画化，横撇捺定型，今体雏形可见。' },
+      { name: '楷书',   glyph: '矢', description: '楷书"矢"五画，是知、短、矩、疾等字的组成部分，今日通行。' }
+    ]
+  },
+  春: {
+    char: '春', pinyin: 'chūn', radical: '日', strokes: 9,
+    meaning: '《说文解字》释"春，推也。从草，从日，草春时生也，屯声"。字形从草从日，会意草木受日光照射而萌发之义，是四季之首。',
+    stages: [
+      { name: '甲骨文', glyph: '春', description: '甲骨文"春"从屯（草芽初出）从木从日，象草木在阳光下萌发破土之形，春季之义直观。' },
+      { name: '金文',   glyph: '春', description: '金文"春"草木日光三元素结合，春季萌发之象更完整稳固。' },
+      { name: '篆书',   glyph: '春', description: '《说文》据小篆"春"释义，从草从日，屯声，草春时生之意明确。' },
+      { name: '隶书',   glyph: '春', description: '隶书"春"笔画化，草形变为"三"横，日形方化，上下结构定型。' },
+      { name: '楷书',   glyph: '春', description: '楷书"春"九画，春节、青春、春天等词核心字。' }
+    ]
+  },
+  秋: {
+    char: '秋', pinyin: 'qiū', radical: '禾', strokes: 9,
+    meaning: '《说文解字》释"秋，禾谷熟也"。字形从禾从火，以禾谷成熟可用火烘烤表示秋收季节，是农耕文明重要的时令字。',
+    stages: [
+      { name: '甲骨文', glyph: '秋', description: '甲骨文"秋"象蟋蟀之形，或从禾从火，以秋虫鸣叫和禾熟用火表示秋季。' },
+      { name: '金文',   glyph: '秋', description: '金文"秋"禾火之形稳固，秋收丰实之象确立。' },
+      { name: '篆书',   glyph: '秋', description: '小篆"秋"从禾从火，《说文》据此释"禾谷熟也"，形义吻合。' },
+      { name: '隶书',   glyph: '秋', description: '隶书"秋"禾火笔画化，左右结构定型，今体雏形可见。' },
+      { name: '楷书',   glyph: '秋', description: '楷书"秋"九画，秋天、秋收、一日三秋等义沿用至今。' }
+    ]
+  },
+  国: {
+    char: '国', pinyin: 'guó', radical: '囗', strokes: 8,
+    meaning: '《说文解字》释"国，邦也。从口，从或"。字形以四面围墙（囗）围住武器（戈）和人口（口），象征以武力守护的疆域，国家之义直观。',
+    stages: [
+      { name: '甲骨文', glyph: '国', description: '甲骨文"国"从囗（城墙）从戈（武器），象以城墙武力护守的土地，国家疆域之义。' },
+      { name: '金文',   glyph: '国', description: '金文"国"（多写作"或"）围墙武守之形完整，国家之义确立。' },
+      { name: '篆书',   glyph: '國', description: '小篆"國"从囗，内有或（戈+口+土），形象地表达国家疆土的完整性。' },
+      { name: '隶书',   glyph: '國', description: '隶书"國"围墙内形笔画化，四方围墙结构定型。' },
+      { name: '楷书',   glyph: '国', description: '楷书简化自繁体"國"，以"玉"代"或"，引申为珍贵如玉的国土。' }
+    ]
+  },
+  海: {
+    char: '海', pinyin: 'hǎi', radical: '水', strokes: 10,
+    meaning: '《说文解字》释"海，天池也，以纳百川者"。字形从水从每，每兼表音兼有繁茂之义，海为百川所归之地，是古人心目中最广阔的水体。',
+    stages: [
+      { name: '甲骨文', glyph: '海', description: '甲骨文"海"从水从每，以水旁加繁茂声符表示广阔大海，百川所归之义。' },
+      { name: '金文',   glyph: '海', description: '金文"海"水每结合，大海汇聚之象稳固。' },
+      { name: '篆书',   glyph: '海', description: '小篆"海"从水每声，《说文》释"天池也，以纳百川者"，海之博大义确立。' },
+      { name: '隶书',   glyph: '海', description: '隶书"海"三点水与每形笔画化，左右结构定型。' },
+      { name: '楷书',   glyph: '海', description: '楷书"海"十画，大海、海洋、海量等义均用。' }
+    ]
+  },
+  看: {
+    char: '看', pinyin: 'kàn', radical: '目', strokes: 9,
+    meaning: '《说文解字》释"看，睎也。从手，目"。字形以手置于目上遮光远望，是一个会意字，观看瞭望之义直观。',
+    stages: [
+      { name: '甲骨文', glyph: '看', description: '甲骨文"看"象手（爪）置于目（眼）之上以遮光远望之形，观看之义直观生动。' },
+      { name: '金文',   glyph: '看', description: '金文"看"手目结合，遮光远望之象稳固，观看之义确立。' },
+      { name: '篆书',   glyph: '看', description: '小篆"看"从手从目，《说文》释"睎也"（远看），字义明确。' },
+      { name: '隶书',   glyph: '看', description: '隶书"看"手目结构笔画化，上下定型，今体雏形可见。' },
+      { name: '楷书',   glyph: '看', description: '楷书"看"九画，看书、看见、看望等义均用。' }
+    ]
+  },
+  爱: {
+    char: '爱', pinyin: 'ài', radical: '心', strokes: 10,
+    meaning: '《说文解字》释"愛，惠也。从心，夊声"。字形从心（情感）从夊（行走），以心与行并进表示爱护、喜爱之义，体现了爱是发自内心且见于行动的。',
+    stages: [
+      { name: '甲骨文', glyph: '爱', description: '甲骨文"爱"从心从旡（或夊），象心中有爱、行而不舍之形，喜爱之义确立。' },
+      { name: '金文',   glyph: '爱', description: '金文"爱"心行结合，爱护喜爱之象稳固，情感行动并重之义确立。' },
+      { name: '篆书',   glyph: '愛', description: '小篆"愛"从心从夊，《说文》释"惠也"，仁爱惠泽之义完整。' },
+      { name: '隶书',   glyph: '愛', description: '隶书"愛"心夊结构笔画化，上下结构定型。' },
+      { name: '楷书',   glyph: '爱', description: '楷书简化自繁体"愛"，爱心、喜爱、爱护等义沿用至今。' }
+    ]
   }
 };
 
 const radicals = [
-  { radical: '言', meaning: '言语', examples: ['说', '语', '诗', '话', '论', '读'] },
-  { radical: '文', meaning: '纹饰', examples: ['文', '斋', '斌', '斐', '斑', '斓'] },
-  { radical: '宀', meaning: '屋宇', examples: ['字', '家', '安', '室', '宅', '宫'] },
-  { radical: '人', meaning: '人物', examples: ['人', '仁', '休', '信', '仕', '仰'] },
-  { radical: '水', meaning: '水流', examples: ['水', '江', '河', '清', '泉', '海'] },
-  { radical: '山', meaning: '山岳', examples: ['山', '峰', '岭', '岩', '岳', '峡'] },
-  { radical: '日', meaning: '日光', examples: ['日', '明', '晴', '晖', '晓', '时'] },
-  { radical: '月', meaning: '月体', examples: ['月', '朗', '朔', '望', '朝', '期'] },
-  { radical: '火', meaning: '火光', examples: ['火', '炎', '灯', '炽', '烟', '烛'] },
-  { radical: '木', meaning: '树木', examples: ['木', '林', '森', '枝', '根', '桥'] },
-  { radical: '口', meaning: '口舌', examples: ['口', '古', '名', '君', '品', '唱'] },
-  { radical: '手', meaning: '执持', examples: ['手', '打', '持', '扶', '择', '推'] },
-  { radical: '心', meaning: '心意', examples: ['心', '志', '思', '念', '恭', '愿'] },
-  { radical: '目', meaning: '眼目', examples: ['目', '看', '相', '省', '眉', '睡'] },
-  { radical: '足', meaning: '行走', examples: ['足', '跑', '跟', '路', '跃', '距'] }
+  { radical: '人', pinyin: 'rén', strokes: 2, meaning: '人物动作相关', examples: ['人', '仁', '休', '从', '众', '信', '仰', '仕'] },
+  { radical: '刀', pinyin: 'dāo', strokes: 2, meaning: '刀刃、割切相关', examples: ['刀', '分', '切', '刊', '则', '刻', '刺', '剑'] },
+  { radical: '力', pinyin: 'lì',  strokes: 2, meaning: '力量、功用相关', examples: ['力', '加', '功', '助', '勤', '努', '勉', '勇'] },
+  { radical: '口', pinyin: 'kǒu', strokes: 3, meaning: '口舌言语相关', examples: ['口', '古', '名', '君', '品', '唱', '问', '吐'] },
+  { radical: '土', pinyin: 'tǔ',  strokes: 3, meaning: '土地、地面相关', examples: ['土', '地', '城', '坊', '坛', '墙', '坐', '基'] },
+  { radical: '大', pinyin: 'dà',  strokes: 3, meaning: '大、广阔相关', examples: ['大', '天', '太', '夫', '夷', '奇', '奔', '奥'] },
+  { radical: '女', pinyin: 'nǚ',  strokes: 3, meaning: '女性、婚姻相关', examples: ['女', '妇', '妈', '姐', '妹', '嫂', '婆', '姻'] },
+  { radical: '子', pinyin: 'zǐ',  strokes: 3, meaning: '幼童、孳生相关', examples: ['子', '字', '孩', '孙', '孝', '孕', '学', '存'] },
+  { radical: '山', pinyin: 'shān',strokes: 3, meaning: '山岳、地势相关', examples: ['山', '峰', '岭', '岩', '岳', '峡', '崖', '嶂'] },
+  { radical: '心', pinyin: 'xīn', strokes: 4, meaning: '情感、思维相关', examples: ['心', '志', '思', '念', '忆', '怀', '感', '恩'] },
+  { radical: '手', pinyin: 'shǒu',strokes: 4, meaning: '手部动作相关', examples: ['手', '打', '持', '扶', '择', '推', '拿', '握'] },
+  { radical: '日', pinyin: 'rì',  strokes: 4, meaning: '日光时间相关', examples: ['日', '明', '晴', '晖', '晓', '时', '昼', '暮'] },
+  { radical: '月', pinyin: 'yuè', strokes: 4, meaning: '月体阴阳相关', examples: ['月', '朗', '朔', '望', '朝', '期', '朦', '胧'] },
+  { radical: '木', pinyin: 'mù',  strokes: 4, meaning: '树木植物相关', examples: ['木', '林', '森', '枝', '根', '桥', '树', '桌'] },
+  { radical: '水', pinyin: 'shuǐ',strokes: 4, meaning: '水流液体相关', examples: ['水', '江', '河', '清', '泉', '海', '洗', '流'] },
+  { radical: '火', pinyin: 'huǒ', strokes: 4, meaning: '火光热能相关', examples: ['火', '炎', '灯', '炽', '烟', '烛', '焰', '燃'] },
+  { radical: '目', pinyin: 'mù',  strokes: 5, meaning: '眼目视觉相关', examples: ['目', '看', '相', '省', '眉', '睡', '眼', '盲'] },
+  { radical: '石', pinyin: 'shí', strokes: 5, meaning: '石材矿物相关', examples: ['石', '岩', '矿', '砖', '破', '硬', '碎', '磨'] },
+  { radical: '玉', pinyin: 'yù',  strokes: 5, meaning: '玉器珍宝相关', examples: ['玉', '珍', '珠', '班', '琴', '瑞', '瑶', '璧'] },
+  { radical: '白', pinyin: 'bái', strokes: 5, meaning: '白色、明亮相关', examples: ['白', '百', '皆', '皇', '皓', '皎', '皙', '皤'] },
+  { radical: '言', pinyin: 'yán', strokes: 7, meaning: '言语表达相关', examples: ['言', '说', '语', '诗', '话', '论', '读', '议'] },
+  { radical: '金', pinyin: 'jīn', strokes: 8, meaning: '金属器物相关', examples: ['金', '银', '铜', '铁', '铅', '锡', '钢', '针'] },
+  { radical: '宀', pinyin: 'mián',strokes: 3, meaning: '屋宇居所相关', examples: ['字', '家', '安', '室', '宅', '宫', '宝', '守'] },
+  { radical: '足', pinyin: 'zú',  strokes: 7, meaning: '行走步履相关', examples: ['足', '跑', '跟', '路', '跃', '距', '跳', '踏'] },
+  { radical: '禾', pinyin: 'hé',  strokes: 5, meaning: '谷物农作物相关', examples: ['禾', '年', '秀', '秋', '种', '积', '稻', '穗'] },
+  { radical: '竹', pinyin: 'zhú', strokes: 6, meaning: '竹器文具相关', examples: ['竹', '笔', '篇', '簿', '箱', '管', '篮', '筒'] },
+  { radical: '生', pinyin: 'shēng',strokes: 5, meaning: '生长出生相关', examples: ['生', '星', '胜', '性', '姓', '产', '甥', '牲'] },
+  { radical: '老', pinyin: 'lǎo', strokes: 6, meaning: '年老尊长相关', examples: ['老', '孝', '考', '者', '耆', '耄', '耋', '耉'] },
+  { radical: '雨', pinyin: 'yǔ',  strokes: 8, meaning: '天气气象相关', examples: ['雨', '雪', '霜', '露', '雷', '霞', '雾', '霹'] },
+  { radical: '鱼', pinyin: 'yú',  strokes: 8, meaning: '鱼类水产相关', examples: ['鱼', '鲤', '鲫', '鲸', '鳊', '鳍', '鳞', '鲜'] },
+  { radical: '马', pinyin: 'mǎ',  strokes: 3, meaning: '马匹驾驭相关', examples: ['马', '驾', '驱', '骑', '驰', '骏', '驹', '驯'] },
+  { radical: '田', pinyin: 'tián',strokes: 5, meaning: '田地农耕相关', examples: ['田', '男', '留', '畜', '界', '畏', '畔', '略'] },
+  { radical: '止', pinyin: 'zhǐ', strokes: 4, meaning: '行走停止相关', examples: ['止', '步', '正', '武', '歧', '此', '涉', '趋'] },
+  { radical: '见', pinyin: 'jiàn',strokes: 4, meaning: '视觉观察相关', examples: ['见', '观', '览', '觉', '视', '觑', '觐', '觖'] },
+  { radical: '虫', pinyin: 'chóng',strokes: 6, meaning: '虫豸爬行相关', examples: ['虫', '蛇', '蝶', '蚂', '蜂', '蛙', '蜘', '蟹'] },
+  { radical: '贝', pinyin: 'bèi', strokes: 4, meaning: '财货钱币相关', examples: ['贝', '财', '货', '贸', '贵', '购', '赋', '贷'] },
+  { radical: '走', pinyin: 'zǒu', strokes: 7, meaning: '行走奔跑相关', examples: ['走', '赶', '起', '超', '越', '趁', '趋', '赴'] },
+  { radical: '光', pinyin: 'guāng',strokes: 6, meaning: '光明照耀相关', examples: ['光', '辉', '晖', '曜', '耀', '灿', '烁', '炯'] }
 ];
 
 const heatmap = [
@@ -838,6 +1282,27 @@ app.get('/api/oss/signature', async (req, res) => {
 
   const url = ossClient.signatureUrl(key, { expires: 3600 });
   return res.json({ enabled: true, key, url });
+});
+
+// Global stats (useful for dashboard / admin)
+app.get('/api/stats', async (_req, res) => {
+  const totalUsers = memoryUsers.size;
+  const totalActivities = [...memoryActivities.values()].reduce((acc, list) => acc + list.length, 0);
+  const totalUnlocked = [...userProgress.values()].reduce((acc, list) => acc + list.length, 0);
+  res.json({
+    characters: TOTAL_SHUOWEN_COUNT,
+    richEntries: Object.keys(characterData).length,
+    radicals: radicals.length,
+    users: totalUsers,
+    totalActivities,
+    totalUnlocked,
+    uptime: Math.floor(process.uptime())
+  });
+});
+
+// Health check
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok', ts: Date.now() });
 });
 
 app.listen(port, () => {

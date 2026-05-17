@@ -42,7 +42,7 @@
       <view class="stat-label">连续打卡</view>
     </view>
     <view class="stat-cell">
-      <view class="stat-value">{{bookmarks.length}}</view>
+      <view class="stat-value">{{stats.bookmarkCount}}</view>
       <view class="stat-label">已收藏</view>
     </view>
   </view>
@@ -60,6 +60,15 @@
       <view class="progress-fill" style="width: {{progressPercent}}%"></view>
     </view>
     <view class="text-muted mt-sm" style="font-size:22rpx">总进度 {{progressPercent}}% · 共 {{stats.total}} 字</view>
+
+    <!-- Streak bar: last 7 days -->
+    <view class="streak-bar mt-md">
+      <view class="streak-label">连续打卡 {{stats.streakDays}} 天</view>
+      <view class="streak-dots">
+        <view wx:for="{{7}}" wx:key="*this"
+              class="streak-dot {{index < stats.streakDays ? 'dot-on' : ''}}"></view>
+      </view>
+    </view>
   </view>
 
   <!-- Bookmarks -->
@@ -72,8 +81,9 @@
       <view class="btn btn-ghost btn-sm" bindtap="goEvolution">去添加</view>
     </view>
     <view wx:if="{{hasBookmarks}}" class="bookmark-grid">
-      <view wx:for="{{bookmarks}}" wx:key="*this" class="bookmark-cell" data-char="{{item}}" bindtap="openBookmark" bindlongpress="removeBookmark">
-        <text>{{item}}</text>
+      <view wx:for="{{bookmarks}}" wx:key="char" class="bookmark-cell" data-char="{{item.char}}" bindtap="openBookmark" bindlongpress="removeBookmark">
+        <text class="bm-char">{{item.char}}</text>
+        <text wx:if="{{item.pinyin}}" class="bm-pinyin">{{item.pinyin}}</text>
       </view>
     </view>
     <view wx:else class="empty">
@@ -87,12 +97,16 @@
   <view class="card">
     <view class="section-title mb-sm">快捷入口</view>
     <view class="row row-chev" bindtap="goLearning">
-      <view class="row-label">继续解字</view>
+      <view class="row-label">继续解字 / 字形测验</view>
       <view class="row-value">今日 {{stats.todayCount}} 次</view>
     </view>
     <view class="row row-chev" bindtap="goEvolution">
       <view class="row-label">查看字形演变</view>
       <view class="row-value">字源流变</view>
+    </view>
+    <view class="row row-chev" bindtap="goRadicals">
+      <view class="row-label">部首索引</view>
+      <view class="row-value">汉字字族</view>
     </view>
   </view>
 

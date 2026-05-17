@@ -1,5 +1,6 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
+const glyphs = require('../../data/glyphs');
 
 function pad(v) { return `${v}`.padStart(2, '0'); }
 
@@ -9,8 +10,8 @@ function formatTime(value) {
 }
 
 function levelFor(count) {
-  if (count >= 300) return { name: '通识', hint: '已达高阶' };
-  if (count >= 100) return { name: '入门', hint: '再解 200 字达「通识」' };
+  if (count >= 300) return { name: '通识', hint: '已达最高「通识」阶段' };
+  if (count >= 100) return { name: '入门', hint: `再解 ${300 - count} 字达「通识」` };
   if (count >= 30)  return { name: '初学', hint: `再解 ${100 - count} 字达「入门」` };
   return { name: '初识', hint: `再解 ${30 - count} 字达「初学」` };
 }
@@ -27,7 +28,8 @@ Page({
       total: 9353,
       unlockedCount: 0,
       streakDays: 0,
-      todayCount: 0
+      todayCount: 0,
+      bookmarkCount: 0
     },
     progressPercent: '0.00',
     levelName: '初识',
@@ -53,7 +55,11 @@ Page({
   // ── Local state (works offline) ────────────────────────────
 
   _loadLocalState() {
-    const bookmarks = wx.getStorageSync('bookmarks') || [];
+    const rawBookmarks = wx.getStorageSync('bookmarks') || [];
+    const bookmarks = rawBookmarks.map((char) => {
+      const entry = glyphs.byChar[char];
+      return { char, pinyin: entry ? entry.pinyin : '' };
+    });
     const streakState = wx.getStorageSync('streakState') || { lastDay: '', days: 0, todayCount: 0 };
     const today = new Date().toDateString();
     const streakDays = streakState.lastDay === today ? streakState.days : 0;
@@ -65,6 +71,7 @@ Page({
     this.setData({
       bookmarks,
       hasBookmarks: bookmarks.length > 0,
+      'stats.bookmarkCount': bookmarks.length,
       'stats.streakDays': streakDays,
       'stats.todayCount': todayCount,
       settings,
@@ -184,8 +191,9 @@ Page({
 
   // ── Navigation ──────────────────────────────────────────────
 
-  goLearning() { wx.switchTab({ url: '/pages/progress/progress' }); },
+  goLearning()  { wx.switchTab({ url: '/pages/progress/progress' }); },
   goEvolution() { wx.switchTab({ url: '/pages/evolution/evolution' }); },
+  goRadicals()  { wx.switchTab({ url: '/pages/radicals/radicals' }); },
 
   openBookmark(event) {
     const char = event.currentTarget.dataset.char;
@@ -196,8 +204,12 @@ Page({
 
   removeBookmark(event) {
     const char = event.currentTarget.dataset.char;
-    const next = (wx.getStorageSync('bookmarks') || []).filter((c) => c !== char);
-    wx.setStorageSync('bookmarks', next);
+    const rawNext = (wx.getStorageSync('bookmarks') || []).filter((c) => c !== char);
+    wx.setStorageSync('bookmarks', rawNext);
+    const next = rawNext.map((c) => {
+      const entry = glyphs.byChar[c];
+      return { char: c, pinyin: entry ? entry.pinyin : '' };
+    });
     this.setData({ bookmarks: next, hasBookmarks: next.length > 0 });
   },
 
@@ -223,7 +235,7 @@ Page({
       success: (res) => {
         if (res.confirm) {
           ['searchHistory', 'unlockHistory', 'unlockTimes', 'bookmarks',
-           'radicalExpanded', 'streakState', 'token', 'userInfo', 'userSettings']
+           'radicalExpanded', 'streakState', 'quizLastScore', 'token', 'userInfo', 'userSettings']
             .forEach((k) => wx.removeStorageSync(k));
           this.setData({
             isLoggedIn: false,

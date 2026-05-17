@@ -1,8 +1,22 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
+const { getOracleSrc } = require('../../utils/oracleSVGs');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
+
+const TONE_MAP = {
+  'ā':'a','á':'a','ǎ':'a','à':'a',
+  'ē':'e','é':'e','ě':'e','è':'e',
+  'ī':'i','í':'i','ǐ':'i','ì':'i',
+  'ō':'o','ó':'o','ǒ':'o','ò':'o',
+  'ū':'u','ú':'u','ǔ':'u','ù':'u',
+  'ǖ':'v','ǘ':'v','ǚ':'v','ǜ':'v'
+};
+
+function normPinyin(s) {
+  return (s || '').toLowerCase().replace(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/g, c => TONE_MAP[c] || c);
+}
 
 Page({
   data: {
@@ -11,11 +25,25 @@ Page({
     searchHistory: [],
     hasSearchHistory: false,
     catalog: [],
+    catalogFiltered: [],
     catalogTotal: 9353,
     catalogReturned: 0,
     bookmarked: false,
     offline: false,
-    loading: false
+    loading: false,
+    related: [],
+    catalogIndex: -1,
+    hasPrev: false,
+    hasNext: false,
+    suggestChars: ['说', '人', '水', '山', '日', '月', '火', '木', '龙', '鱼'],
+    strokeFilter: 0,
+    strokeOptions: [
+      { label: '全部', value: 0 },
+      { label: '1-3画', value: 3 },
+      { label: '4-6画', value: 6 },
+      { label: '7-10画', value: 10 },
+      { label: '11画+', value: 99 }
+    ]
   },
 
   _debounce: null,
@@ -33,6 +61,7 @@ Page({
       hasSearchHistory: searchHistory.length > 0,
       query: initialChar,
       catalog: glyphs.catalog,
+      catalogFiltered: glyphs.catalog,
       catalogTotal: glyphs.total,
       catalogReturned: glyphs.catalog.length
     });
@@ -60,9 +89,80 @@ Page({
     this.setData({ query: val });
     if (this._debounce) clearTimeout(this._debounce);
     this._debounce = setTimeout(() => {
-      const char = Array.from((val || '').trim())[0];
-      if (char) this._loadCharacter(char);
+      const trimmed = (val || '').trim();
+      if (!trimmed) return;
+      const firstChar = Array.from(trimmed)[0];
+      // Chinese character — load directly
+      if (/[一-鿿㐀-䶿]/.test(firstChar)) {
+        this._loadCharacter(firstChar);
+        return;
+      }
+      // ASCII — treat as pinyin prefix search
+      const norm = normPinyin(trimmed);
+      const match = this.data.catalog.find(
+        (item) => normPinyin(item.pinyin) === norm
+      ) || this.data.catalog.find(
+        (item) => normPinyin(item.pinyin).startsWith(norm)
+      );
+      if (match) this._loadCharacter(match.char);
     }, 400);
+  },
+
+  setStrokeFilter(event) {
+    const value = event.currentTarget.dataset.value;
+    this.setData({ strokeFilter: value });
+    this._applyStrokeFilter(this.data.catalog, value);
+  },
+
+  _applyStrokeFilter(catalog, strokeFilter) {
+    let filtered;
+    if (!strokeFilter) {
+      filtered = catalog;
+    } else if (strokeFilter === 3) {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 1 && entry.strokes <= 3;
+      });
+    } else if (strokeFilter === 6) {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 4 && entry.strokes <= 6;
+      });
+    } else if (strokeFilter === 10) {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 7 && entry.strokes <= 10;
+      });
+    } else {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 11;
+      });
+    }
+    this.setData({ catalogFiltered: filtered, catalogReturned: filtered.length });
+  },
+
+  randomChar() {
+    const pool = this.data.catalogFiltered.filter((item) => item.hasDetail);
+    if (!pool.length) return;
+    const item = pool[Math.floor(Math.random() * pool.length)];
+    this.setData({ query: item.char });
+    this._loadCharacter(item.char);
+  },
+
+  prevChar() {
+    const idx = this.data.catalogIndex;
+    if (idx <= 0) return;
+    const item = this.data.catalog[idx - 1];
+    if (item) this._loadCharacter(item.char);
+  },
+
+  nextChar() {
+    const idx = this.data.catalogIndex;
+    const catalog = this.data.catalog;
+    if (idx < 0 || idx >= catalog.length - 1) return;
+    const item = catalog[idx + 1];
+    if (item) this._loadCharacter(item.char);
   },
 
   useHistory(event) {
@@ -124,12 +224,13 @@ Page({
       const remote = data.items || [];
       const seen = new Set(glyphs.catalog.map((c) => c.char));
       const extras = remote.filter((c) => !seen.has(c.char));
+      const merged = glyphs.catalog.concat(extras).slice(0, 100);
       this.setData({
-        catalog: glyphs.catalog.concat(extras).slice(0, 100),
+        catalog: merged,
         catalogTotal: data.total || glyphs.total,
-        catalogReturned: glyphs.catalog.length + Math.min(extras.length, 100 - glyphs.catalog.length),
         offline: false
       });
+      this._applyStrokeFilter(merged, this.data.strokeFilter);
     } catch (err) {
       // Bundled catalog already shown; mark offline silently.
       this.setData({ offline: true });
@@ -157,16 +258,37 @@ Page({
   },
 
   _applyCharacter(character) {
-    const stages = (character.stages || []).map((stage, idx) => ({
-      ...stage,
-      indexLabel: INDEX_LABELS[idx] || ''
-    }));
+    const stages = (character.stages || []).map((stage, idx) => {
+      const enriched = { ...stage, indexLabel: INDEX_LABELS[idx] || '' };
+      // Inject SVG oracle bone image for 甲骨文 stage when available
+      if (stage.era === 'oracle') {
+        const src = getOracleSrc(character.char);
+        if (src) enriched.oracleSrc = src;
+      }
+      return enriched;
+    });
     const searchHistory = this._saveSearchHistory(character.char);
+    // Find related chars from radical group (fallback.radicals has rich examples)
+    const radicalEntry = character.radical
+      ? fallback.radicals.find((r) => r.radical === character.radical)
+      : null;
+    const related = radicalEntry
+      ? radicalEntry.examples
+          .filter((c) => c !== character.char)
+          .slice(0, 8)
+          .map((c) => ({ char: c, hasDetail: Boolean(glyphs.byChar[c]) }))
+      : [];
+    const catalog = this.data.catalog;
+    const catalogIndex = catalog.findIndex((c) => c.char === character.char);
     this.setData({
       query: character.char,
       character: { ...character, stages },
+      related,
       searchHistory,
-      hasSearchHistory: searchHistory.length > 0
+      hasSearchHistory: searchHistory.length > 0,
+      catalogIndex,
+      hasPrev: catalogIndex > 0,
+      hasNext: catalogIndex >= 0 && catalogIndex < catalog.length - 1
     });
     this._refreshBookmarkState(character.char);
   },

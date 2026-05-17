@@ -15,9 +15,10 @@
   <!-- Search card -->
   <view class="card">
     <view class="search-row">
-      <input class="search-input" maxlength="2" value="{{query}}" bindinput="onInput" placeholder="输入一个汉字" placeholder-class="search-placeholder" />
-      <view class="search-icon">🔍</view>
+      <input class="search-input" maxlength="10" value="{{query}}" bindinput="onInput" placeholder="汉字 或 拼音（如 shui）" placeholder-class="search-placeholder" />
+      <view class="search-icon" bindtap="randomChar">🎲</view>
     </view>
+    <view class="search-hint">支持拼音检索，点击 🎲 随机一字</view>
 
     <view wx:if="{{hasSearchHistory}}" class="history-row">
       <view class="history-label">最近搜索</view>
@@ -33,12 +34,19 @@
     <view class="section-row">
       <view>
         <view class="section-title">字库索引</view>
-        <view class="section-sub">共 {{catalogTotal}} 字 · 当前展示 {{catalogReturned}}</view>
+        <view class="section-sub">共 {{catalogTotal}} 字 · 展示 {{catalogReturned}}</view>
       </view>
     </view>
+    <!-- Stroke filter chips -->
+    <view class="stroke-filter-row">
+      <view wx:for="{{strokeOptions}}" wx:key="value"
+            class="stroke-chip {{strokeFilter === item.value ? 'stroke-chip-active' : ''}}"
+            data-value="{{item.value}}" bindtap="setStrokeFilter">{{item.label}}</view>
+    </view>
     <view class="catalog-grid">
-      <view wx:for="{{catalog}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
+      <view wx:for="{{catalogFiltered}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
         <text class="catalog-char">{{item.char}}</text>
+        <text wx:if="{{item.pinyin}}" class="catalog-pinyin">{{item.pinyin}}</text>
       </view>
     </view>
   </view>
@@ -53,19 +61,42 @@
       <view class="current-glyph">{{character.char}}</view>
       <view class="current-meta">
         <view wx:if="{{character.pinyin}}" class="current-pinyin">{{character.pinyin}}</view>
-        <view wx:if="{{character.radical}}" class="current-radical">部首 · {{character.radical}}</view>
+        <view wx:if="{{character.radical}}" class="current-radical">部首 · {{character.radical}}<text wx:if="{{character.strokes}}" class="current-strokes">  {{character.strokes}} 画</text></view>
         <view class="current-meaning">{{character.meaning}}</view>
       </view>
       <view class="bookmark-btn {{bookmarked ? 'on' : ''}}" bindtap="toggleBookmark">
         <text>{{bookmarked ? '★' : '☆'}}</text>
       </view>
     </view>
+    <view class="char-nav mt-sm">
+      <view class="char-nav-btn {{hasPrev ? '' : 'disabled'}}" bindtap="prevChar">‹ 上一字</view>
+      <view class="char-nav-pos">{{catalogIndex >= 0 ? catalogIndex + 1 : '-'}} / {{catalogReturned}}</view>
+      <view class="char-nav-btn {{hasNext ? '' : 'disabled'}}" bindtap="nextChar">下一字 ›</view>
+    </view>
   </view>
 
   <view wx:else class="card empty">
     <view class="empty-icon">字</view>
     <view class="empty-title">未找到该字</view>
-    <view class="empty-body">可尝试：说、人、水、山、日、月、火、木。</view>
+    <view class="empty-body">可输入汉字或拼音检索（如 shui / 水）。常用示例：</view>
+    <view class="suggest-row">
+      <view wx:for="{{suggestChars}}" wx:key="*this" class="chip" data-char="{{item}}" bindtap="useCatalog">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- Related characters -->
+  <view wx:if="{{related.length > 0}}" class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">同部首汉字</view>
+        <view class="section-sub">{{character.radical}}部</view>
+      </view>
+    </view>
+    <view class="catalog-grid">
+      <view wx:for="{{related}}" wx:key="char" class="catalog-cell has-detail" data-char="{{item.char}}" bindtap="useCatalog">
+        <text class="catalog-char">{{item.char}}</text>
+      </view>
+    </view>
   </view>
 
   <!-- Stages timeline -->
@@ -78,10 +109,14 @@
       <view class="stage-body">
         <view class="stage-head">
           <view class="stage-index">{{item.indexLabel}}</view>
-          <view class="stage-name">{{item.name}}</view>
+          <view class="stage-name">{{item.label}}</view>
           <view class="stage-copy" data-glyph="{{item.glyph}}" catchtap="copyGlyph">复制</view>
         </view>
-        <view class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
+        <view wx:if="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
+          <image class="oracle-svg" src="{{item.oracleSrc}}" mode="aspectFit"></image>
+          <view class="oracle-char-sub">{{item.glyph}}</view>
+        </view>
+        <view wx:else class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
         <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
       </view>
     </view>

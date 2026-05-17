@@ -65,6 +65,35 @@
   border-radius: 999rpx;
 }
 
+/* Streak bar */
+
+.streak-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.streak-label {
+  color: #6B6B6B;
+  font-size: 22rpx;
+}
+
+.streak-dots {
+  display: flex;
+  gap: 10rpx;
+}
+
+.streak-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #ECECEA;
+}
+
+.dot-on {
+  background: #2563EB;
+}
+
 /* Bookmarks */
 
 .bookmark-grid {
@@ -76,15 +105,27 @@
 
 .bookmark-cell {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1 / 1;
+  padding: 10rpx 4rpx;
   background: #FAFAF8;
   border: 1rpx solid #ECECEA;
   border-radius: 10rpx;
-  font-size: 36rpx;
   color: #1A1A1A;
+}
+
+.bm-char {
+  font-size: 36rpx;
   font-weight: 500;
+}
+
+.bm-pinyin {
+  font-size: 16rpx;
+  color: #A0A0A0;
+  margin-top: 2rpx;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .bookmark-cell:active {

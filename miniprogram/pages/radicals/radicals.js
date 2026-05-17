@@ -1,5 +1,6 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
+const glyphs = require('../../data/glyphs');
 
 Page({
   data: {
@@ -8,8 +9,11 @@ Page({
     hasRadicals: false,
     offline: false,
     loading: false,
-    keyword: ''
+    keyword: '',
+    resultCount: 0
   },
+
+  _allRadicals: [],
 
   onLoad() {
     this.fetchRadicals();
@@ -31,24 +35,55 @@ Page({
   },
 
   _applyRadicals(data, storedMap) {
-    const radicals = (data || []).map((item) => {
+    this._allRadicals = (data || []).map((item) => {
       const expanded = Boolean(storedMap[item.radical]);
+      const annotatedExamples = (item.examples || []).map((char) => ({
+        char,
+        hasDetail: Boolean(glyphs.byChar[char])
+      }));
       return {
         ...item,
+        examples: annotatedExamples,
         expanded,
-        countText: `${(item.examples || []).length} 字`,
+        countText: `${annotatedExamples.length} 字`,
+        detailCount: annotatedExamples.filter((e) => e.hasDetail).length,
         expandText: expanded ? '收起' : '展开'
       };
     });
+    this.setData({ expandedMap: storedMap });
+    this._filterAndSet(this.data.keyword);
+  },
+
+  _filterAndSet(keyword) {
+    const kw = (keyword || '').trim();
+    let radicals;
+    if (!kw) {
+      radicals = this._allRadicals;
+    } else {
+      const kwLower = kw.toLowerCase();
+      radicals = this._allRadicals.filter((item) =>
+        item.radical.includes(kw) ||
+        (item.meaning || '').includes(kw) ||
+        (item.examples || []).some((e) => (e.char || e).includes(kw)) ||
+        (item.pinyin || '').toLowerCase().startsWith(kwLower)
+      );
+    }
     this.setData({
       radicals,
-      expandedMap: storedMap,
-      hasRadicals: radicals.length > 0
+      hasRadicals: radicals.length > 0,
+      resultCount: radicals.length
     });
   },
 
   onKeywordInput(event) {
-    this.setData({ keyword: event.detail.value });
+    const keyword = event.detail.value;
+    this.setData({ keyword });
+    this._filterAndSet(keyword);
+  },
+
+  clearKeyword() {
+    this.setData({ keyword: '' });
+    this._filterAndSet('');
   },
 
   toggleRadical(event) {
