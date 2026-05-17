@@ -1,5 +1,6 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
+const glyphs = require('../../data/glyphs');
 
 function pad(v) { return `${v}`.padStart(2, '0'); }
 
@@ -27,7 +28,8 @@ Page({
       total: 9353,
       unlockedCount: 0,
       streakDays: 0,
-      todayCount: 0
+      todayCount: 0,
+      bookmarkCount: 0
     },
     progressPercent: '0.00',
     levelName: '初识',
@@ -53,7 +55,11 @@ Page({
   // ── Local state (works offline) ────────────────────────────
 
   _loadLocalState() {
-    const bookmarks = wx.getStorageSync('bookmarks') || [];
+    const rawBookmarks = wx.getStorageSync('bookmarks') || [];
+    const bookmarks = rawBookmarks.map((char) => {
+      const entry = glyphs.byChar[char];
+      return { char, pinyin: entry ? entry.pinyin : '' };
+    });
     const streakState = wx.getStorageSync('streakState') || { lastDay: '', days: 0, todayCount: 0 };
     const today = new Date().toDateString();
     const streakDays = streakState.lastDay === today ? streakState.days : 0;
@@ -65,6 +71,7 @@ Page({
     this.setData({
       bookmarks,
       hasBookmarks: bookmarks.length > 0,
+      'stats.bookmarkCount': bookmarks.length,
       'stats.streakDays': streakDays,
       'stats.todayCount': todayCount,
       settings,
@@ -197,8 +204,12 @@ Page({
 
   removeBookmark(event) {
     const char = event.currentTarget.dataset.char;
-    const next = (wx.getStorageSync('bookmarks') || []).filter((c) => c !== char);
-    wx.setStorageSync('bookmarks', next);
+    const rawNext = (wx.getStorageSync('bookmarks') || []).filter((c) => c !== char);
+    wx.setStorageSync('bookmarks', rawNext);
+    const next = rawNext.map((c) => {
+      const entry = glyphs.byChar[c];
+      return { char: c, pinyin: entry ? entry.pinyin : '' };
+    });
     this.setData({ bookmarks: next, hasBookmarks: next.length > 0 });
   },
 

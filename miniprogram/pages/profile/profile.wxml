@@ -42,7 +42,7 @@
       <view class="stat-label">连续打卡</view>
     </view>
     <view class="stat-cell">
-      <view class="stat-value">{{bookmarks.length}}</view>
+      <view class="stat-value">{{stats.bookmarkCount}}</view>
       <view class="stat-label">已收藏</view>
     </view>
   </view>
@@ -81,8 +81,9 @@
       <view class="btn btn-ghost btn-sm" bindtap="goEvolution">去添加</view>
     </view>
     <view wx:if="{{hasBookmarks}}" class="bookmark-grid">
-      <view wx:for="{{bookmarks}}" wx:key="*this" class="bookmark-cell" data-char="{{item}}" bindtap="openBookmark" bindlongpress="removeBookmark">
-        <text>{{item}}</text>
+      <view wx:for="{{bookmarks}}" wx:key="char" class="bookmark-cell" data-char="{{item.char}}" bindtap="openBookmark" bindlongpress="removeBookmark">
+        <text class="bm-char">{{item.char}}</text>
+        <text wx:if="{{item.pinyin}}" class="bm-pinyin">{{item.pinyin}}</text>
       </view>
     </view>
     <view wx:else class="empty">
