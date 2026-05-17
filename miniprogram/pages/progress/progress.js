@@ -1,6 +1,7 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
+const { getOracleSrc } = require('../../utils/oracleSVGs');
 
 function pad(value) {
   return `${value}`.padStart(2, '0');
@@ -50,7 +51,8 @@ Page({
     quiz: null,
     quizResult: null,
     quizScore: { total: 0, correct: 0 },
-    weekCalendar: []
+    weekCalendar: [],
+    charOfDay: null
   },
 
   onLoad() {
@@ -58,6 +60,7 @@ Page({
     if (saved && saved.total > 0) this.setData({ quizScore: saved });
     this.fetchProgress();
     this._loadStreak();
+    this._loadCharOfDay();
   },
 
   onShow() {
@@ -228,10 +231,41 @@ Page({
     setTimeout(() => this.setData({ rippleActive: false }), 760);
   },
 
+  _loadCharOfDay() {
+    const pool = glyphs.catalog.filter((c) => glyphs.byChar[c.char]);
+    if (!pool.length) return;
+    // Use date string as a simple daily seed
+    const today = new Date();
+    const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    const entry = pool[seed % pool.length];
+    const data = glyphs.byChar[entry.char];
+    if (!data) return;
+    const oracleSrc = getOracleSrc(data.char);
+    const todayStr = `${today.getMonth() + 1}月${today.getDate()}日`;
+    this.setData({
+      charOfDay: {
+        char: data.char,
+        pinyin: data.pinyin,
+        radical: data.radical,
+        meaning: data.meaning,
+        oracleSrc: oracleSrc || '',
+        hasOracle: Boolean(oracleSrc),
+        dateStr: todayStr
+      }
+    });
+  },
+
   goToEvolution(event) {
     const char = event.currentTarget.dataset.char;
     if (!char) return;
     wx.setStorageSync('pendingEvolutionChar', char);
+    wx.switchTab({ url: '/pages/evolution/evolution' });
+  },
+
+  goToCharOfDay() {
+    const cod = this.data.charOfDay;
+    if (!cod) return;
+    wx.setStorageSync('pendingEvolutionChar', cod.char);
     wx.switchTab({ url: '/pages/evolution/evolution' });
   },
 
@@ -259,20 +293,41 @@ Page({
       const t = options[i]; options[i] = options[j]; options[j] = t;
     }
 
-    // Randomly pick hint era: 甲骨文 (index 0) or 金文 (index 1) or 小篆 (index 2)
-    const eraIdx = Math.floor(Math.random() * 3);
-    const hintStage = correctData.stages[eraIdx] || correctData.stages[0];
+    // Build all available hints from different eras (for progressive reveal)
+    const hints = correctData.stages
+      .filter((s) => s.desc)
+      .map((s) => ({ era: s.label, desc: s.desc }));
+    // Start with a random era hint
+    const startIdx = Math.floor(Math.random() * Math.min(hints.length, 3));
+    const orderedHints = [hints[startIdx], ...hints.filter((_, i) => i !== startIdx)];
     this.setData({
       quizActive: true,
       quiz: {
         correct,
         options,
-        hint: hintStage.desc,
-        hintEra: hintStage.label,
+        hints: orderedHints,
+        hintIdx: 0,
+        hint: orderedHints[0].desc,
+        hintEra: orderedHints[0].era,
+        canRevealMore: orderedHints.length > 1,
         meaning: correctData.meaning,
         pinyin: correctData.pinyin
       },
       quizResult: null
+    });
+  },
+
+  revealNextHint() {
+    const quiz = this.data.quiz;
+    if (!quiz || !quiz.hints) return;
+    const nextIdx = quiz.hintIdx + 1;
+    if (nextIdx >= quiz.hints.length) return;
+    const next = quiz.hints[nextIdx];
+    this.setData({
+      'quiz.hintIdx': nextIdx,
+      'quiz.hint': next.desc,
+      'quiz.hintEra': next.era,
+      'quiz.canRevealMore': nextIdx < quiz.hints.length - 1
     });
   },
 
