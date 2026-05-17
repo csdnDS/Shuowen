@@ -25,6 +25,7 @@ Page({
     searchHistory: [],
     hasSearchHistory: false,
     catalog: [],
+    catalogFiltered: [],
     catalogTotal: 9353,
     catalogReturned: 0,
     bookmarked: false,
@@ -34,7 +35,15 @@ Page({
     catalogIndex: -1,
     hasPrev: false,
     hasNext: false,
-    suggestChars: ['说', '人', '水', '山', '日', '月', '火', '木', '龙', '鱼']
+    suggestChars: ['说', '人', '水', '山', '日', '月', '火', '木', '龙', '鱼'],
+    strokeFilter: 0,
+    strokeOptions: [
+      { label: '全部', value: 0 },
+      { label: '1-3画', value: 3 },
+      { label: '4-6画', value: 6 },
+      { label: '7-10画', value: 10 },
+      { label: '11画+', value: 99 }
+    ]
   },
 
   _debounce: null,
@@ -52,6 +61,7 @@ Page({
       hasSearchHistory: searchHistory.length > 0,
       query: initialChar,
       catalog: glyphs.catalog,
+      catalogFiltered: glyphs.catalog,
       catalogTotal: glyphs.total,
       catalogReturned: glyphs.catalog.length
     });
@@ -98,8 +108,42 @@ Page({
     }, 400);
   },
 
+  setStrokeFilter(event) {
+    const value = event.currentTarget.dataset.value;
+    this.setData({ strokeFilter: value });
+    this._applyStrokeFilter(this.data.catalog, value);
+  },
+
+  _applyStrokeFilter(catalog, strokeFilter) {
+    let filtered;
+    if (!strokeFilter) {
+      filtered = catalog;
+    } else if (strokeFilter === 3) {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 1 && entry.strokes <= 3;
+      });
+    } else if (strokeFilter === 6) {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 4 && entry.strokes <= 6;
+      });
+    } else if (strokeFilter === 10) {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 7 && entry.strokes <= 10;
+      });
+    } else {
+      filtered = catalog.filter((c) => {
+        const entry = glyphs.byChar[c.char];
+        return entry && entry.strokes >= 11;
+      });
+    }
+    this.setData({ catalogFiltered: filtered, catalogReturned: filtered.length });
+  },
+
   randomChar() {
-    const pool = this.data.catalog.filter((item) => item.hasDetail);
+    const pool = this.data.catalogFiltered.filter((item) => item.hasDetail);
     if (!pool.length) return;
     const item = pool[Math.floor(Math.random() * pool.length)];
     this.setData({ query: item.char });
@@ -180,12 +224,13 @@ Page({
       const remote = data.items || [];
       const seen = new Set(glyphs.catalog.map((c) => c.char));
       const extras = remote.filter((c) => !seen.has(c.char));
+      const merged = glyphs.catalog.concat(extras).slice(0, 100);
       this.setData({
-        catalog: glyphs.catalog.concat(extras).slice(0, 100),
+        catalog: merged,
         catalogTotal: data.total || glyphs.total,
-        catalogReturned: glyphs.catalog.length + Math.min(extras.length, 100 - glyphs.catalog.length),
         offline: false
       });
+      this._applyStrokeFilter(merged, this.data.strokeFilter);
     } catch (err) {
       // Bundled catalog already shown; mark offline silently.
       this.setData({ offline: true });

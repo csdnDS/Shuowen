@@ -58,6 +58,31 @@
   gap: 10rpx;
 }
 
+/* Stroke filter */
+
+.stroke-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-bottom: 16rpx;
+}
+
+.stroke-chip {
+  font-size: 22rpx;
+  color: #6B6B6B;
+  padding: 6rpx 18rpx;
+  background: #F5F5F3;
+  border-radius: 999rpx;
+  border: 1rpx solid transparent;
+}
+
+.stroke-chip-active {
+  background: #EFF6FF;
+  color: #2563EB;
+  border-color: #BFDBFE;
+  font-weight: 500;
+}
+
 /* Catalog */
 
 .catalog-grid {

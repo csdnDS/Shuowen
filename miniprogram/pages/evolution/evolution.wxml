@@ -34,11 +34,17 @@
     <view class="section-row">
       <view>
         <view class="section-title">字库索引</view>
-        <view class="section-sub">共 {{catalogTotal}} 字 · 当前展示 {{catalogReturned}}</view>
+        <view class="section-sub">共 {{catalogTotal}} 字 · 展示 {{catalogReturned}}</view>
       </view>
     </view>
+    <!-- Stroke filter chips -->
+    <view class="stroke-filter-row">
+      <view wx:for="{{strokeOptions}}" wx:key="value"
+            class="stroke-chip {{strokeFilter === item.value ? 'stroke-chip-active' : ''}}"
+            data-value="{{item.value}}" bindtap="setStrokeFilter">{{item.label}}</view>
+    </view>
     <view class="catalog-grid">
-      <view wx:for="{{catalog}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
+      <view wx:for="{{catalogFiltered}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
         <text class="catalog-char">{{item.char}}</text>
         <text wx:if="{{item.pinyin}}" class="catalog-pinyin">{{item.pinyin}}</text>
       </view>
