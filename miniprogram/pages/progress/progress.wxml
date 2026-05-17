@@ -44,6 +44,16 @@
       <view class="text-muted">{{levelHint}}</view>
     </view>
 
+    <!-- 7-day calendar -->
+    <view wx:if="{{weekCalendar.length > 0}}" class="week-cal mt-md">
+      <view wx:for="{{weekCalendar}}" wx:key="dateNum" class="cal-day {{item.active ? 'cal-active' : ''}} {{item.isToday ? 'cal-today' : ''}}">
+        <view class="cal-label">{{item.label}}</view>
+        <view class="cal-dot"></view>
+        <view class="cal-num">{{item.dateNum}}</view>
+        <view wx:if="{{item.count > 0}}" class="cal-count">+{{item.count}}</view>
+      </view>
+    </view>
+
     <!-- Unlock button -->
     <view class="unlock-wrap mt-md">
       <button class="unlock-btn" loading="{{loading}}" bindtap="unlock">解锁新字</button>

@@ -49,7 +49,8 @@ Page({
     quizActive: false,
     quiz: null,
     quizResult: null,
-    quizScore: { total: 0, correct: 0 }
+    quizScore: { total: 0, correct: 0 },
+    weekCalendar: []
   },
 
   onLoad() {
@@ -159,6 +160,24 @@ Page({
       timeLabel: formatRelativeTime(item.time)
     }));
     this.setData({ recentUnlocks: recent, hasRecentUnlocks: recent.length > 0 });
+
+    // Build 7-day calendar
+    const unlockTimes = wx.getStorageSync('unlockTimes') || {};
+    const calendar = [];
+    const DAY_LABELS = ['日', '一', '二', '三', '四', '五', '六'];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 86400000);
+      const ds = d.toDateString();
+      const count = rawHistory.filter((item) => new Date(item.time).toDateString() === ds).length;
+      calendar.push({
+        label: DAY_LABELS[d.getDay()],
+        dateNum: d.getDate(),
+        count,
+        active: count > 0,
+        isToday: i === 0
+      });
+    }
+    this.setData({ weekCalendar: calendar });
   },
 
   _applyProgress(progress) {

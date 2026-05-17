@@ -56,6 +56,66 @@
   font-size: 22rpx;
 }
 
+/* 7-day calendar */
+
+.week-cal {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rpx;
+}
+
+.cal-day {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+  padding: 10rpx 0;
+  border-radius: 10rpx;
+  background: #FAFAF8;
+}
+
+.cal-day.cal-active {
+  background: #EFF6FF;
+}
+
+.cal-day.cal-today {
+  border: 1rpx solid #BFDBFE;
+}
+
+.cal-label {
+  font-size: 18rpx;
+  color: #A0A0A0;
+}
+
+.cal-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #DCDCD8;
+}
+
+.cal-active .cal-dot {
+  background: #2563EB;
+}
+
+.cal-num {
+  font-size: 20rpx;
+  color: #6B6B6B;
+  font-variant-numeric: tabular-nums;
+}
+
+.cal-today .cal-num {
+  color: #2563EB;
+  font-weight: 600;
+}
+
+.cal-count {
+  font-size: 16rpx;
+  color: #2563EB;
+  font-weight: 500;
+}
+
 /* Unlock button */
 
 .unlock-wrap {
