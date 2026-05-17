@@ -32,13 +32,18 @@
           <view class="radical-name">{{item.radical}}部<text wx:if="{{item.pinyin}}" class="radical-pinyin"> · {{item.pinyin}}</text></view>
           <view class="radical-meaning">{{item.meaning}}</view>
         </view>
-        <view class="radical-count">{{item.countText}}</view>
+        <view class="radical-count">
+          {{item.countText}}
+          <text wx:if="{{item.detailCount > 0}}" class="radical-detail-badge"> · {{item.detailCount}}详</text>
+        </view>
         <view class="radical-toggle">{{item.expandText}}</view>
       </view>
 
       <view wx:if="{{item.expanded}}" class="radical-body">
-        <view wx:for="{{item.examples}}" wx:for-item="char" wx:key="*this" class="char-cell" data-char="{{char}}" bindtap="goToEvolution">
-          <text>{{char}}</text>
+        <view wx:for="{{item.examples}}" wx:for-item="ex" wx:key="char"
+              class="char-cell {{ex.hasDetail ? 'char-cell-detail' : ''}}"
+              data-char="{{ex.char}}" bindtap="goToEvolution">
+          <text>{{ex.char}}</text>
         </view>
       </view>
     </view>

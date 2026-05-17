@@ -146,3 +146,19 @@
   color: #2563EB;
   border-color: #BFDBFE;
 }
+
+.char-cell-detail {
+  background: #FFFFFF;
+  border-color: #BFDBFE;
+  color: #1E40AF;
+  font-weight: 500;
+}
+
+.char-cell-detail:active {
+  background: #DBEAFE;
+}
+
+.radical-detail-badge {
+  color: #2563EB;
+  font-size: 20rpx;
+}

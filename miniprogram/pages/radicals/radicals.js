@@ -1,5 +1,6 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
+const glyphs = require('../../data/glyphs');
 
 Page({
   data: {
@@ -36,10 +37,16 @@ Page({
   _applyRadicals(data, storedMap) {
     this._allRadicals = (data || []).map((item) => {
       const expanded = Boolean(storedMap[item.radical]);
+      const annotatedExamples = (item.examples || []).map((char) => ({
+        char,
+        hasDetail: Boolean(glyphs.byChar[char])
+      }));
       return {
         ...item,
+        examples: annotatedExamples,
         expanded,
-        countText: `${(item.examples || []).length} 字`,
+        countText: `${annotatedExamples.length} 字`,
+        detailCount: annotatedExamples.filter((e) => e.hasDetail).length,
         expandText: expanded ? '收起' : '展开'
       };
     });
@@ -57,7 +64,7 @@ Page({
       radicals = this._allRadicals.filter((item) =>
         item.radical.includes(kw) ||
         (item.meaning || '').includes(kw) ||
-        (item.examples || []).some((c) => c.includes(kw)) ||
+        (item.examples || []).some((e) => (e.char || e).includes(kw)) ||
         (item.pinyin || '').toLowerCase().startsWith(kwLower)
       );
     }
