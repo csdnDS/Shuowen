@@ -114,7 +114,17 @@ const catalog = [
   { char: '首', pinyin: 'shǒu', hasDetail: true },
   { char: '面', pinyin: 'miàn', hasDetail: true },
   { char: '斤', pinyin: 'jīn',  hasDetail: true },
-  { char: '臣', pinyin: 'chén', hasDetail: true }
+  { char: '臣', pinyin: 'chén', hasDetail: true },
+  { char: '父', pinyin: 'fù',   hasDetail: true },
+  { char: '母', pinyin: 'mǔ',   hasDetail: true },
+  { char: '男', pinyin: 'nán',  hasDetail: true },
+  { char: '友', pinyin: 'yǒu',  hasDetail: true },
+  { char: '名', pinyin: 'míng', hasDetail: true },
+  { char: '宝', pinyin: 'bǎo',  hasDetail: true },
+  { char: '黑', pinyin: 'hēi',  hasDetail: true },
+  { char: '赤', pinyin: 'chì',  hasDetail: true },
+  { char: '青', pinyin: 'qīng', hasDetail: true },
+  { char: '北', pinyin: 'běi',  hasDetail: true }
 ];
 
 const radicals = [
@@ -148,7 +158,13 @@ const radicals = [
   { radical: '止', pinyin: 'zhǐ',  strokes: 4, meaning: '行走停止相关', examples: ['步', '正', '武', '歧', '此', '涉', '歼', '趋'] },
   { radical: '虫', pinyin: 'chóng',strokes: 6, meaning: '虫豸爬行相关', examples: ['蛇', '蝶', '蚂', '蜂', '蛙', '蜘', '蟹', '螃'] },
   { radical: '贝', pinyin: 'bèi',  strokes: 4, meaning: '财货钱币相关', examples: ['财', '货', '贸', '贵', '购', '赋', '贷', '赢'] },
-  { radical: '走', pinyin: 'zǒu',  strokes: 7, meaning: '行走奔跑相关', examples: ['赶', '起', '超', '越', '趁', '趋', '趣', '赴'] }
+  { radical: '走', pinyin: 'zǒu',  strokes: 7, meaning: '行走奔跑相关', examples: ['赶', '起', '超', '越', '趁', '趋', '趣', '赴'] },
+  { radical: '父', pinyin: 'fù',   strokes: 4, meaning: '父辈权威相关', examples: ['父', '爸', '爷', '爹', '翁', '甫', '爰', '釜'] },
+  { radical: '母', pinyin: 'mǔ',   strokes: 5, meaning: '母性养育相关', examples: ['母', '妈', '毋', '每', '毒', '海', '梅', '媒'] },
+  { radical: '弓', pinyin: 'gōng', strokes: 3, meaning: '弓箭弯曲相关', examples: ['弓', '弹', '强', '张', '弧', '弦', '弱', '引'] },
+  { radical: '矢', pinyin: 'shǐ',  strokes: 5, meaning: '箭矢射击相关', examples: ['矢', '知', '短', '矩', '疾', '矮', '候', '族'] },
+  { radical: '首', pinyin: 'shǒu', strokes: 9, meaning: '头部领首相关', examples: ['首', '道', '馗', '馘', '馘', '馐', '馑', '馒'] },
+  { radical: '黑', pinyin: 'hēi',  strokes: 12, meaning: '黑色暗色相关', examples: ['黑', '墨', '默', '黛', '黔', '黯', '黝', '黢'] }
 ];
 
 const heatmap = {

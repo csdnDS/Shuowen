@@ -964,6 +964,76 @@ const characterData = {
       { name: '隶书',   glyph: '隶书', description: '隶书"贝"贝形简化，纵向纹路演化为今形，下部触须化为两点。' },
       { name: '楷书',   glyph: '贝', description: '楷书简体"贝"四画，是财、货、贸、贵等字的偏旁部首。' }
     ]
+  },
+  自: {
+    char: '自',
+    pinyin: 'zì',
+    radical: '自',
+    strokes: 6,
+    meaning: '《说文解字》释"自，鼻也。象鼻形"。字形象人鼻子正面形，本义为鼻，古人以鼻指代自己，借为自身、自己义。',
+    stages: [
+      { name: '甲骨文', glyph: '自', description: '甲骨文"自"象人鼻子正面形，鼻梁横竖，鼻翼两侧，古人以手指鼻表示"自己"。' },
+      { name: '金文',   glyph: '自', description: '金文"自"鼻形更完整，鼻梁明显，借义"自己"已广泛流通。' },
+      { name: '篆书',   glyph: '自', description: '篆书"自"形体修长，鼻形规整，《说文》以此为鼻字古形。' },
+      { name: '隶书',   glyph: '自', description: '隶书"自"鼻形方化，横竖分明，今体雏形确立。' },
+      { name: '楷书',   glyph: '自', description: '楷书"自"六画，本义鼻已由"鼻"字承担，此字专用为自己、自身义。' }
+    ]
+  },
+  耳: {
+    char: '耳',
+    pinyin: 'ěr',
+    radical: '耳',
+    strokes: 6,
+    meaning: '《说文解字》释"耳，主听也。象形"。字形象人耳侧面形貌，本义为耳朵，引申为听闻、知晓。',
+    stages: [
+      { name: '甲骨文', glyph: '耳', description: '甲骨文"耳"象人耳侧面之形，耳轮、耳廓均可辨认，外形流畅生动。' },
+      { name: '金文',   glyph: '耳', description: '金文"耳"耳形更规整，耳轮内廓可辨，整体圆润。' },
+      { name: '篆书',   glyph: '耳', description: '篆书"耳"线条规整，内部结构简化，已接近今体框架。' },
+      { name: '隶书',   glyph: '隶书', description: '隶书"耳"方折化，横竖分明，今体雏形可见。' },
+      { name: '楷书',   glyph: '耳', description: '楷书"耳"六画，是聆、聪、聋等字的偏旁部首。' }
+    ]
+  },
+  足: {
+    char: '足',
+    pinyin: 'zú',
+    radical: '足',
+    strokes: 7,
+    meaning: '《说文解字》释"足，人之足也，在体下。从口，从止"。字形象膝盖以下至脚趾的完整足部形貌。',
+    stages: [
+      { name: '甲骨文', glyph: '足', description: '甲骨文"足"象人的膝盖以下至脚趾之形，口形象膝，止形象趾，上下结合。' },
+      { name: '金文',   glyph: '足', description: '金文"足"膝趾结合，足形完整清晰，线条圆润。' },
+      { name: '篆书',   glyph: '足', description: '篆书"足"上部口形、下部止形分明，《说文》所载标准字形。' },
+      { name: '隶书',   glyph: '足', description: '隶书"足"上下结构定型，笔画方折，今体雏形确立。' },
+      { name: '楷书',   glyph: '足', description: '楷书"足"七画，是跑、路、跳、踏等字的偏旁部首。' }
+    ]
+  },
+  弓: {
+    char: '弓',
+    pinyin: 'gōng',
+    radical: '弓',
+    strokes: 3,
+    meaning: '《说文解字》释"弓，以近穷远。象形"。字形象弓弦张满、弓身弯曲之形，本义为弓，是古代重要的狩猎和战争工具。',
+    stages: [
+      { name: '甲骨文', glyph: '弓', description: '甲骨文"弓"象弓弦拉满、弓身弯曲之形，弓臂与弦均可辨认，形态极为生动。' },
+      { name: '金文',   glyph: '弓', description: '金文"弓"弓形更完整，弓臂弦形稳固，已可见今体轮廓。' },
+      { name: '篆书',   glyph: '弓', description: '篆书"弓"弯曲线条规整，弓形与《说文》所载吻合。' },
+      { name: '隶书',   glyph: '弓', description: '隶书"弓"弯曲笔画化，折横竖化，今体雏形确立。' },
+      { name: '楷书',   glyph: '弓', description: '楷书"弓"三画，是弹、强、张等字的偏旁，今日通行字形。' }
+    ]
+  },
+  矢: {
+    char: '矢',
+    pinyin: 'shǐ',
+    radical: '矢',
+    strokes: 5,
+    meaning: '《说文解字》释"矢，弓弩矢也。从入，象镝栝羽之形"。字形象箭之全形——箭头、箭杆、箭羽均可辨。',
+    stages: [
+      { name: '甲骨文', glyph: '矢', description: '甲骨文"矢"象箭之全形，箭头尖锐，箭杆笔直，箭羽对称，是古代射猎武器。' },
+      { name: '金文',   glyph: '矢', description: '金文"矢"箭形更完整，箭镞与羽毛对称均衡，制作精良之态可见。' },
+      { name: '篆书',   glyph: '矢', description: '篆书"矢"箭形规范，《说文》据此释义，镝（箭头）、栝（箭尾）、羽均可辨。' },
+      { name: '隶书',   glyph: '矢', description: '隶书"矢"箭形笔画化，横撇捺定型，今体雏形可见。' },
+      { name: '楷书',   glyph: '矢', description: '楷书"矢"五画，是知、短、矩、疾等字的组成部分，今日通行。' }
+    ]
   }
 };
 
