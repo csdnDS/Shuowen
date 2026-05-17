@@ -199,7 +199,15 @@ const catalog = [
   { char: '城', pinyin: 'chéng',hasDetail: true },
   { char: '市', pinyin: 'shì',  hasDetail: true },
   { char: '村', pinyin: 'cūn',  hasDetail: true },
-  { char: '京', pinyin: 'jīng', hasDetail: true }
+  { char: '京', pinyin: 'jīng', hasDetail: true },
+  { char: '头', pinyin: 'tóu',  hasDetail: true },
+  { char: '发', pinyin: 'fā',   hasDetail: true },
+  { char: '眼', pinyin: 'yǎn',  hasDetail: true },
+  { char: '鼻', pinyin: 'bí',   hasDetail: true },
+  { char: '齿', pinyin: 'chǐ',  hasDetail: true },
+  { char: '骨', pinyin: 'gǔ',   hasDetail: true },
+  { char: '血', pinyin: 'xuè',  hasDetail: true },
+  { char: '皮', pinyin: 'pí',   hasDetail: true }
 ];
 
 const radicals = [
