@@ -265,7 +265,17 @@ const catalog = [
   { char: '诗', pinyin: 'shī', hasDetail: true },
   { char: '册', pinyin: 'cè',  hasDetail: true },
   { char: '纸', pinyin: 'zhǐ', hasDetail: true },
-  { char: '笔', pinyin: 'bǐ',  hasDetail: true }
+  { char: '笔', pinyin: 'bǐ',   hasDetail: true },
+  { char: '秀', pinyin: 'xiù', hasDetail: true },
+  { char: '梦', pinyin: 'mèng',hasDetail: true },
+  { char: '影', pinyin: 'yǐng',hasDetail: true },
+  { char: '灯', pinyin: 'dēng',hasDetail: true },
+  { char: '酒', pinyin: 'jiǔ', hasDetail: true },
+  { char: '肉', pinyin: 'ròu', hasDetail: true },
+  { char: '米', pinyin: 'mǐ',  hasDetail: true },
+  { char: '豆', pinyin: 'dòu', hasDetail: true },
+  { char: '糖', pinyin: 'táng',hasDetail: true },
+  { char: '盐', pinyin: 'yán', hasDetail: true }
 ];
 
 const radicals = [
