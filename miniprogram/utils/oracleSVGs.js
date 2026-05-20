@@ -248,4 +248,12 @@ function hasOracleSvg(char) {
   return Boolean(_svgs[char]);
 }
 
-module.exports = { getOracleSrc, hasOracleSvg };
+function getOracleSvg(char) {
+  return _svgs[char] || '';
+}
+
+function getOracleSvgMap() {
+  return Object.assign({}, _svgs);
+}
+
+module.exports = { getOracleSrc, hasOracleSvg, getOracleSvg, getOracleSvgMap };

@@ -1,0 +1,1525 @@
+{
+  "generatedAt": "2026-05-20T16:50:05.561Z",
+  "assets": {
+    "人": {
+      "type": "oracle-svg",
+      "key": "oracle/人.svg",
+      "contentType": "image/svg+xml"
+    },
+    "水": {
+      "type": "oracle-svg",
+      "key": "oracle/水.svg",
+      "contentType": "image/svg+xml"
+    },
+    "火": {
+      "type": "oracle-svg",
+      "key": "oracle/火.svg",
+      "contentType": "image/svg+xml"
+    },
+    "月": {
+      "type": "oracle-svg",
+      "key": "oracle/月.svg",
+      "contentType": "image/svg+xml"
+    },
+    "木": {
+      "type": "oracle-svg",
+      "key": "oracle/木.svg",
+      "contentType": "image/svg+xml"
+    },
+    "日": {
+      "type": "oracle-svg",
+      "key": "oracle/日.svg",
+      "contentType": "image/svg+xml"
+    },
+    "文": {
+      "type": "oracle-svg",
+      "key": "oracle/文.svg",
+      "contentType": "image/svg+xml"
+    },
+    "字": {
+      "type": "oracle-svg",
+      "key": "oracle/字.svg",
+      "contentType": "image/svg+xml"
+    },
+    "山": {
+      "type": "oracle-svg",
+      "key": "oracle/山.svg",
+      "contentType": "image/svg+xml"
+    },
+    "大": {
+      "type": "oracle-svg",
+      "key": "oracle/大.svg",
+      "contentType": "image/svg+xml"
+    },
+    "手": {
+      "type": "oracle-svg",
+      "key": "oracle/手.svg",
+      "contentType": "image/svg+xml"
+    },
+    "口": {
+      "type": "oracle-svg",
+      "key": "oracle/口.svg",
+      "contentType": "image/svg+xml"
+    },
+    "女": {
+      "type": "oracle-svg",
+      "key": "oracle/女.svg",
+      "contentType": "image/svg+xml"
+    },
+    "目": {
+      "type": "oracle-svg",
+      "key": "oracle/目.svg",
+      "contentType": "image/svg+xml"
+    },
+    "心": {
+      "type": "oracle-svg",
+      "key": "oracle/心.svg",
+      "contentType": "image/svg+xml"
+    },
+    "王": {
+      "type": "oracle-svg",
+      "key": "oracle/王.svg",
+      "contentType": "image/svg+xml"
+    },
+    "说": {
+      "type": "oracle-svg",
+      "key": "oracle/说.svg",
+      "contentType": "image/svg+xml"
+    },
+    "力": {
+      "type": "oracle-svg",
+      "key": "oracle/力.svg",
+      "contentType": "image/svg+xml"
+    },
+    "土": {
+      "type": "oracle-svg",
+      "key": "oracle/土.svg",
+      "contentType": "image/svg+xml"
+    },
+    "禾": {
+      "type": "oracle-svg",
+      "key": "oracle/禾.svg",
+      "contentType": "image/svg+xml"
+    },
+    "生": {
+      "type": "oracle-svg",
+      "key": "oracle/生.svg",
+      "contentType": "image/svg+xml"
+    },
+    "明": {
+      "type": "oracle-svg",
+      "key": "oracle/明.svg",
+      "contentType": "image/svg+xml"
+    },
+    "竹": {
+      "type": "oracle-svg",
+      "key": "oracle/竹.svg",
+      "contentType": "image/svg+xml"
+    },
+    "子": {
+      "type": "oracle-svg",
+      "key": "oracle/子.svg",
+      "contentType": "image/svg+xml"
+    },
+    "龙": {
+      "type": "oracle-svg",
+      "key": "oracle/龙.svg",
+      "contentType": "image/svg+xml"
+    },
+    "家": {
+      "type": "oracle-svg",
+      "key": "oracle/家.svg",
+      "contentType": "image/svg+xml"
+    },
+    "雨": {
+      "type": "oracle-svg",
+      "key": "oracle/雨.svg",
+      "contentType": "image/svg+xml"
+    },
+    "鸟": {
+      "type": "oracle-svg",
+      "key": "oracle/鸟.svg",
+      "contentType": "image/svg+xml"
+    },
+    "老": {
+      "type": "oracle-svg",
+      "key": "oracle/老.svg",
+      "contentType": "image/svg+xml"
+    },
+    "马": {
+      "type": "oracle-svg",
+      "key": "oracle/马.svg",
+      "contentType": "image/svg+xml"
+    },
+    "田": {
+      "type": "oracle-svg",
+      "key": "oracle/田.svg",
+      "contentType": "image/svg+xml"
+    },
+    "鱼": {
+      "type": "oracle-svg",
+      "key": "oracle/鱼.svg",
+      "contentType": "image/svg+xml"
+    },
+    "风": {
+      "type": "oracle-svg",
+      "key": "oracle/风.svg",
+      "contentType": "image/svg+xml"
+    },
+    "止": {
+      "type": "oracle-svg",
+      "key": "oracle/止.svg",
+      "contentType": "image/svg+xml"
+    },
+    "虫": {
+      "type": "oracle-svg",
+      "key": "oracle/虫.svg",
+      "contentType": "image/svg+xml"
+    },
+    "光": {
+      "type": "oracle-svg",
+      "key": "oracle/光.svg",
+      "contentType": "image/svg+xml"
+    },
+    "贝": {
+      "type": "oracle-svg",
+      "key": "oracle/贝.svg",
+      "contentType": "image/svg+xml"
+    },
+    "来": {
+      "type": "oracle-svg",
+      "key": "oracle/来.svg",
+      "contentType": "image/svg+xml"
+    },
+    "走": {
+      "type": "oracle-svg",
+      "key": "oracle/走.svg",
+      "contentType": "image/svg+xml"
+    },
+    "东": {
+      "type": "oracle-svg",
+      "key": "oracle/东.svg",
+      "contentType": "image/svg+xml"
+    },
+    "见": {
+      "type": "oracle-svg",
+      "key": "oracle/见.svg",
+      "contentType": "image/svg+xml"
+    },
+    "正": {
+      "type": "oracle-svg",
+      "key": "oracle/正.svg",
+      "contentType": "image/svg+xml"
+    },
+    "自": {
+      "type": "oracle-svg",
+      "key": "oracle/自.svg",
+      "contentType": "image/svg+xml"
+    },
+    "天": {
+      "type": "oracle-svg",
+      "key": "oracle/天.svg",
+      "contentType": "image/svg+xml"
+    },
+    "足": {
+      "type": "oracle-svg",
+      "key": "oracle/足.svg",
+      "contentType": "image/svg+xml"
+    },
+    "西": {
+      "type": "oracle-svg",
+      "key": "oracle/西.svg",
+      "contentType": "image/svg+xml"
+    },
+    "矢": {
+      "type": "oracle-svg",
+      "key": "oracle/矢.svg",
+      "contentType": "image/svg+xml"
+    },
+    "牛": {
+      "type": "oracle-svg",
+      "key": "oracle/牛.svg",
+      "contentType": "image/svg+xml"
+    },
+    "斤": {
+      "type": "oracle-svg",
+      "key": "oracle/斤.svg",
+      "contentType": "image/svg+xml"
+    },
+    "首": {
+      "type": "oracle-svg",
+      "key": "oracle/首.svg",
+      "contentType": "image/svg+xml"
+    },
+    "面": {
+      "type": "oracle-svg",
+      "key": "oracle/面.svg",
+      "contentType": "image/svg+xml"
+    },
+    "父": {
+      "type": "oracle-svg",
+      "key": "oracle/父.svg",
+      "contentType": "image/svg+xml"
+    },
+    "羊": {
+      "type": "oracle-svg",
+      "key": "oracle/羊.svg",
+      "contentType": "image/svg+xml"
+    },
+    "臣": {
+      "type": "oracle-svg",
+      "key": "oracle/臣.svg",
+      "contentType": "image/svg+xml"
+    },
+    "弓": {
+      "type": "oracle-svg",
+      "key": "oracle/弓.svg",
+      "contentType": "image/svg+xml"
+    },
+    "友": {
+      "type": "oracle-svg",
+      "key": "oracle/友.svg",
+      "contentType": "image/svg+xml"
+    },
+    "宝": {
+      "type": "oracle-svg",
+      "key": "oracle/宝.svg",
+      "contentType": "image/svg+xml"
+    },
+    "母": {
+      "type": "oracle-svg",
+      "key": "oracle/母.svg",
+      "contentType": "image/svg+xml"
+    },
+    "名": {
+      "type": "oracle-svg",
+      "key": "oracle/名.svg",
+      "contentType": "image/svg+xml"
+    },
+    "黑": {
+      "type": "oracle-svg",
+      "key": "oracle/黑.svg",
+      "contentType": "image/svg+xml"
+    },
+    "青": {
+      "type": "oracle-svg",
+      "key": "oracle/青.svg",
+      "contentType": "image/svg+xml"
+    },
+    "北": {
+      "type": "oracle-svg",
+      "key": "oracle/北.svg",
+      "contentType": "image/svg+xml"
+    },
+    "赤": {
+      "type": "oracle-svg",
+      "key": "oracle/赤.svg",
+      "contentType": "image/svg+xml"
+    },
+    "门": {
+      "type": "oracle-svg",
+      "key": "oracle/门.svg",
+      "contentType": "image/svg+xml"
+    },
+    "户": {
+      "type": "oracle-svg",
+      "key": "oracle/户.svg",
+      "contentType": "image/svg+xml"
+    },
+    "学": {
+      "type": "oracle-svg",
+      "key": "oracle/学.svg",
+      "contentType": "image/svg+xml"
+    },
+    "工": {
+      "type": "oracle-svg",
+      "key": "oracle/工.svg",
+      "contentType": "image/svg+xml"
+    },
+    "书": {
+      "type": "oracle-svg",
+      "key": "oracle/书.svg",
+      "contentType": "image/svg+xml"
+    },
+    "商": {
+      "type": "oracle-svg",
+      "key": "oracle/商.svg",
+      "contentType": "image/svg+xml"
+    },
+    "古": {
+      "type": "oracle-svg",
+      "key": "oracle/古.svg",
+      "contentType": "image/svg+xml"
+    },
+    "农": {
+      "type": "oracle-svg",
+      "key": "oracle/农.svg",
+      "contentType": "image/svg+xml"
+    },
+    "鬼": {
+      "type": "oracle-svg",
+      "key": "oracle/鬼.svg",
+      "contentType": "image/svg+xml"
+    },
+    "神": {
+      "type": "oracle-svg",
+      "key": "oracle/神.svg",
+      "contentType": "image/svg+xml"
+    },
+    "本": {
+      "type": "oracle-svg",
+      "key": "oracle/本.svg",
+      "contentType": "image/svg+xml"
+    },
+    "朱": {
+      "type": "oracle-svg",
+      "key": "oracle/朱.svg",
+      "contentType": "image/svg+xml"
+    },
+    "果": {
+      "type": "oracle-svg",
+      "key": "oracle/果.svg",
+      "contentType": "image/svg+xml"
+    },
+    "末": {
+      "type": "oracle-svg",
+      "key": "oracle/末.svg",
+      "contentType": "image/svg+xml"
+    },
+    "休": {
+      "type": "oracle-svg",
+      "key": "oracle/休.svg",
+      "contentType": "image/svg+xml"
+    },
+    "采": {
+      "type": "oracle-svg",
+      "key": "oracle/采.svg",
+      "contentType": "image/svg+xml"
+    },
+    "主": {
+      "type": "oracle-svg",
+      "key": "oracle/主.svg",
+      "contentType": "image/svg+xml"
+    },
+    "耳": {
+      "type": "oracle-svg",
+      "key": "oracle/耳.svg",
+      "contentType": "image/svg+xml"
+    },
+    "初": {
+      "type": "oracle-svg",
+      "key": "oracle/初.svg",
+      "contentType": "image/svg+xml"
+    },
+    "信": {
+      "type": "oracle-svg",
+      "key": "oracle/信.svg",
+      "contentType": "image/svg+xml"
+    },
+    "和": {
+      "type": "oracle-svg",
+      "key": "oracle/和.svg",
+      "contentType": "image/svg+xml"
+    },
+    "安": {
+      "type": "oracle-svg",
+      "key": "oracle/安.svg",
+      "contentType": "image/svg+xml"
+    },
+    "仁": {
+      "type": "oracle-svg",
+      "key": "oracle/仁.svg",
+      "contentType": "image/svg+xml"
+    },
+    "道": {
+      "type": "oracle-svg",
+      "key": "oracle/道.svg",
+      "contentType": "image/svg+xml"
+    },
+    "德": {
+      "type": "oracle-svg",
+      "key": "oracle/德.svg",
+      "contentType": "image/svg+xml"
+    },
+    "美": {
+      "type": "oracle-svg",
+      "key": "oracle/美.svg",
+      "contentType": "image/svg+xml"
+    },
+    "善": {
+      "type": "oracle-svg",
+      "key": "oracle/善.svg",
+      "contentType": "image/svg+xml"
+    },
+    "利": {
+      "type": "oracle-svg",
+      "key": "oracle/利.svg",
+      "contentType": "image/svg+xml"
+    },
+    "色": {
+      "type": "oracle-svg",
+      "key": "oracle/色.svg",
+      "contentType": "image/svg+xml"
+    },
+    "男": {
+      "type": "oracle-svg",
+      "key": "oracle/男.svg",
+      "contentType": "image/svg+xml"
+    },
+    "长": {
+      "type": "oracle-svg",
+      "key": "oracle/长.svg",
+      "contentType": "image/svg+xml"
+    },
+    "多": {
+      "type": "oracle-svg",
+      "key": "oracle/多.svg",
+      "contentType": "image/svg+xml"
+    },
+    "高": {
+      "type": "oracle-svg",
+      "key": "oracle/高.svg",
+      "contentType": "image/svg+xml"
+    },
+    "少": {
+      "type": "oracle-svg",
+      "key": "oracle/少.svg",
+      "contentType": "image/svg+xml"
+    },
+    "思": {
+      "type": "oracle-svg",
+      "key": "oracle/思.svg",
+      "contentType": "image/svg+xml"
+    },
+    "乐": {
+      "type": "oracle-svg",
+      "key": "oracle/乐.svg",
+      "contentType": "image/svg+xml"
+    },
+    "左": {
+      "type": "oracle-svg",
+      "key": "oracle/左.svg",
+      "contentType": "image/svg+xml"
+    },
+    "后": {
+      "type": "oracle-svg",
+      "key": "oracle/后.svg",
+      "contentType": "image/svg+xml"
+    },
+    "右": {
+      "type": "oracle-svg",
+      "key": "oracle/右.svg",
+      "contentType": "image/svg+xml"
+    },
+    "里": {
+      "type": "oracle-svg",
+      "key": "oracle/里.svg",
+      "contentType": "image/svg+xml"
+    },
+    "前": {
+      "type": "oracle-svg",
+      "key": "oracle/前.svg",
+      "contentType": "image/svg+xml"
+    },
+    "开": {
+      "type": "oracle-svg",
+      "key": "oracle/开.svg",
+      "contentType": "image/svg+xml"
+    },
+    "出": {
+      "type": "oracle-svg",
+      "key": "oracle/出.svg",
+      "contentType": "image/svg+xml"
+    },
+    "入": {
+      "type": "oracle-svg",
+      "key": "oracle/入.svg",
+      "contentType": "image/svg+xml"
+    },
+    "问": {
+      "type": "oracle-svg",
+      "key": "oracle/问.svg",
+      "contentType": "image/svg+xml"
+    },
+    "间": {
+      "type": "oracle-svg",
+      "key": "oracle/间.svg",
+      "contentType": "image/svg+xml"
+    },
+    "时": {
+      "type": "oracle-svg",
+      "key": "oracle/时.svg",
+      "contentType": "image/svg+xml"
+    },
+    "分": {
+      "type": "oracle-svg",
+      "key": "oracle/分.svg",
+      "contentType": "image/svg+xml"
+    },
+    "关": {
+      "type": "oracle-svg",
+      "key": "oracle/关.svg",
+      "contentType": "image/svg+xml"
+    },
+    "全": {
+      "type": "oracle-svg",
+      "key": "oracle/全.svg",
+      "contentType": "image/svg+xml"
+    },
+    "合": {
+      "type": "oracle-svg",
+      "key": "oracle/合.svg",
+      "contentType": "image/svg+xml"
+    },
+    "海": {
+      "type": "oracle-svg",
+      "key": "oracle/海.svg",
+      "contentType": "image/svg+xml"
+    },
+    "雪": {
+      "type": "oracle-svg",
+      "key": "oracle/雪.svg",
+      "contentType": "image/svg+xml"
+    },
+    "树": {
+      "type": "oracle-svg",
+      "key": "oracle/树.svg",
+      "contentType": "image/svg+xml"
+    },
+    "路": {
+      "type": "oracle-svg",
+      "key": "oracle/路.svg",
+      "contentType": "image/svg+xml"
+    },
+    "草": {
+      "type": "oracle-svg",
+      "key": "oracle/草.svg",
+      "contentType": "image/svg+xml"
+    },
+    "花": {
+      "type": "oracle-svg",
+      "key": "oracle/花.svg",
+      "contentType": "image/svg+xml"
+    },
+    "车": {
+      "type": "oracle-svg",
+      "key": "oracle/车.svg",
+      "contentType": "image/svg+xml"
+    },
+    "江": {
+      "type": "oracle-svg",
+      "key": "oracle/江.svg",
+      "contentType": "image/svg+xml"
+    },
+    "湖": {
+      "type": "oracle-svg",
+      "key": "oracle/湖.svg",
+      "contentType": "image/svg+xml"
+    },
+    "河": {
+      "type": "oracle-svg",
+      "key": "oracle/河.svg",
+      "contentType": "image/svg+xml"
+    },
+    "泉": {
+      "type": "oracle-svg",
+      "key": "oracle/泉.svg",
+      "contentType": "image/svg+xml"
+    },
+    "森": {
+      "type": "oracle-svg",
+      "key": "oracle/森.svg",
+      "contentType": "image/svg+xml"
+    },
+    "林": {
+      "type": "oracle-svg",
+      "key": "oracle/林.svg",
+      "contentType": "image/svg+xml"
+    },
+    "夏": {
+      "type": "oracle-svg",
+      "key": "oracle/夏.svg",
+      "contentType": "image/svg+xml"
+    },
+    "秋": {
+      "type": "oracle-svg",
+      "key": "oracle/秋.svg",
+      "contentType": "image/svg+xml"
+    },
+    "桥": {
+      "type": "oracle-svg",
+      "key": "oracle/桥.svg",
+      "contentType": "image/svg+xml"
+    },
+    "国": {
+      "type": "oracle-svg",
+      "key": "oracle/国.svg",
+      "contentType": "image/svg+xml"
+    },
+    "市": {
+      "type": "oracle-svg",
+      "key": "oracle/市.svg",
+      "contentType": "image/svg+xml"
+    },
+    "冬": {
+      "type": "oracle-svg",
+      "key": "oracle/冬.svg",
+      "contentType": "image/svg+xml"
+    },
+    "相": {
+      "type": "oracle-svg",
+      "key": "oracle/相.svg",
+      "contentType": "image/svg+xml"
+    },
+    "眼": {
+      "type": "oracle-svg",
+      "key": "oracle/眼.svg",
+      "contentType": "image/svg+xml"
+    },
+    "发": {
+      "type": "oracle-svg",
+      "key": "oracle/发.svg",
+      "contentType": "image/svg+xml"
+    },
+    "头": {
+      "type": "oracle-svg",
+      "key": "oracle/头.svg",
+      "contentType": "image/svg+xml"
+    },
+    "鼻": {
+      "type": "oracle-svg",
+      "key": "oracle/鼻.svg",
+      "contentType": "image/svg+xml"
+    },
+    "京": {
+      "type": "oracle-svg",
+      "key": "oracle/京.svg",
+      "contentType": "image/svg+xml"
+    },
+    "村": {
+      "type": "oracle-svg",
+      "key": "oracle/村.svg",
+      "contentType": "image/svg+xml"
+    },
+    "骨": {
+      "type": "oracle-svg",
+      "key": "oracle/骨.svg",
+      "contentType": "image/svg+xml"
+    },
+    "春": {
+      "type": "oracle-svg",
+      "key": "oracle/春.svg",
+      "contentType": "image/svg+xml"
+    },
+    "皮": {
+      "type": "oracle-svg",
+      "key": "oracle/皮.svg",
+      "contentType": "image/svg+xml"
+    },
+    "血": {
+      "type": "oracle-svg",
+      "key": "oracle/血.svg",
+      "contentType": "image/svg+xml"
+    },
+    "齿": {
+      "type": "oracle-svg",
+      "key": "oracle/齿.svg",
+      "contentType": "image/svg+xml"
+    },
+    "城": {
+      "type": "oracle-svg",
+      "key": "oracle/城.svg",
+      "contentType": "image/svg+xml"
+    },
+    "读": {
+      "type": "oracle-svg",
+      "key": "oracle/读.svg",
+      "contentType": "image/svg+xml"
+    },
+    "写": {
+      "type": "oracle-svg",
+      "key": "oracle/写.svg",
+      "contentType": "image/svg+xml"
+    },
+    "游": {
+      "type": "oracle-svg",
+      "key": "oracle/游.svg",
+      "contentType": "image/svg+xml"
+    },
+    "飞": {
+      "type": "oracle-svg",
+      "key": "oracle/飞.svg",
+      "contentType": "image/svg+xml"
+    },
+    "爱": {
+      "type": "oracle-svg",
+      "key": "oracle/爱.svg",
+      "contentType": "image/svg+xml"
+    },
+    "跑": {
+      "type": "oracle-svg",
+      "key": "oracle/跑.svg",
+      "contentType": "image/svg+xml"
+    },
+    "听": {
+      "type": "oracle-svg",
+      "key": "oracle/听.svg",
+      "contentType": "image/svg+xml"
+    },
+    "新": {
+      "type": "oracle-svg",
+      "key": "oracle/新.svg",
+      "contentType": "image/svg+xml"
+    },
+    "慢": {
+      "type": "oracle-svg",
+      "key": "oracle/慢.svg",
+      "contentType": "image/svg+xml"
+    },
+    "热": {
+      "type": "oracle-svg",
+      "key": "oracle/热.svg",
+      "contentType": "image/svg+xml"
+    },
+    "重": {
+      "type": "oracle-svg",
+      "key": "oracle/重.svg",
+      "contentType": "image/svg+xml"
+    },
+    "冷": {
+      "type": "oracle-svg",
+      "key": "oracle/冷.svg",
+      "contentType": "image/svg+xml"
+    },
+    "旧": {
+      "type": "oracle-svg",
+      "key": "oracle/旧.svg",
+      "contentType": "image/svg+xml"
+    },
+    "轻": {
+      "type": "oracle-svg",
+      "key": "oracle/轻.svg",
+      "contentType": "image/svg+xml"
+    },
+    "看": {
+      "type": "oracle-svg",
+      "key": "oracle/看.svg",
+      "contentType": "image/svg+xml"
+    },
+    "难": {
+      "type": "oracle-svg",
+      "key": "oracle/难.svg",
+      "contentType": "image/svg+xml"
+    },
+    "昨": {
+      "type": "oracle-svg",
+      "key": "oracle/昨.svg",
+      "contentType": "image/svg+xml"
+    },
+    "易": {
+      "type": "oracle-svg",
+      "key": "oracle/易.svg",
+      "contentType": "image/svg+xml"
+    },
+    "早": {
+      "type": "oracle-svg",
+      "key": "oracle/早.svg",
+      "contentType": "image/svg+xml"
+    },
+    "星": {
+      "type": "oracle-svg",
+      "key": "oracle/星.svg",
+      "contentType": "image/svg+xml"
+    },
+    "晚": {
+      "type": "oracle-svg",
+      "key": "oracle/晚.svg",
+      "contentType": "image/svg+xml"
+    },
+    "今": {
+      "type": "oracle-svg",
+      "key": "oracle/今.svg",
+      "contentType": "image/svg+xml"
+    },
+    "假": {
+      "type": "oracle-svg",
+      "key": "oracle/假.svg",
+      "contentType": "image/svg+xml"
+    },
+    "快": {
+      "type": "oracle-svg",
+      "key": "oracle/快.svg",
+      "contentType": "image/svg+xml"
+    },
+    "期": {
+      "type": "oracle-svg",
+      "key": "oracle/期.svg",
+      "contentType": "image/svg+xml"
+    },
+    "第": {
+      "type": "oracle-svg",
+      "key": "oracle/第.svg",
+      "contentType": "image/svg+xml"
+    },
+    "饭": {
+      "type": "oracle-svg",
+      "key": "oracle/饭.svg",
+      "contentType": "image/svg+xml"
+    },
+    "每": {
+      "type": "oracle-svg",
+      "key": "oracle/每.svg",
+      "contentType": "image/svg+xml"
+    },
+    "食": {
+      "type": "oracle-svg",
+      "key": "oracle/食.svg",
+      "contentType": "image/svg+xml"
+    },
+    "布": {
+      "type": "oracle-svg",
+      "key": "oracle/布.svg",
+      "contentType": "image/svg+xml"
+    },
+    "茶": {
+      "type": "oracle-svg",
+      "key": "oracle/茶.svg",
+      "contentType": "image/svg+xml"
+    },
+    "衣": {
+      "type": "oracle-svg",
+      "key": "oracle/衣.svg",
+      "contentType": "image/svg+xml"
+    },
+    "床": {
+      "type": "oracle-svg",
+      "key": "oracle/床.svg",
+      "contentType": "image/svg+xml"
+    },
+    "房": {
+      "type": "oracle-svg",
+      "key": "oracle/房.svg",
+      "contentType": "image/svg+xml"
+    },
+    "窗": {
+      "type": "oracle-svg",
+      "key": "oracle/窗.svg",
+      "contentType": "image/svg+xml"
+    },
+    "桌": {
+      "type": "oracle-svg",
+      "key": "oracle/桌.svg",
+      "contentType": "image/svg+xml"
+    },
+    "椅": {
+      "type": "oracle-svg",
+      "key": "oracle/椅.svg",
+      "contentType": "image/svg+xml"
+    },
+    "孙": {
+      "type": "oracle-svg",
+      "key": "oracle/孙.svg",
+      "contentType": "image/svg+xml"
+    },
+    "兄": {
+      "type": "oracle-svg",
+      "key": "oracle/兄.svg",
+      "contentType": "image/svg+xml"
+    },
+    "弟": {
+      "type": "oracle-svg",
+      "key": "oracle/弟.svg",
+      "contentType": "image/svg+xml"
+    },
+    "半": {
+      "type": "oracle-svg",
+      "key": "oracle/半.svg",
+      "contentType": "image/svg+xml"
+    },
+    "孩": {
+      "type": "oracle-svg",
+      "key": "oracle/孩.svg",
+      "contentType": "image/svg+xml"
+    },
+    "朋": {
+      "type": "oracle-svg",
+      "key": "oracle/朋.svg",
+      "contentType": "image/svg+xml"
+    },
+    "妻": {
+      "type": "oracle-svg",
+      "key": "oracle/妻.svg",
+      "contentType": "image/svg+xml"
+    },
+    "同": {
+      "type": "oracle-svg",
+      "key": "oracle/同.svg",
+      "contentType": "image/svg+xml"
+    },
+    "亲": {
+      "type": "oracle-svg",
+      "key": "oracle/亲.svg",
+      "contentType": "image/svg+xml"
+    },
+    "共": {
+      "type": "oracle-svg",
+      "key": "oracle/共.svg",
+      "contentType": "image/svg+xml"
+    },
+    "各": {
+      "type": "oracle-svg",
+      "key": "oracle/各.svg",
+      "contentType": "image/svg+xml"
+    },
+    "数": {
+      "type": "oracle-svg",
+      "key": "oracle/数.svg",
+      "contentType": "image/svg+xml"
+    },
+    "科": {
+      "type": "oracle-svg",
+      "key": "oracle/科.svg",
+      "contentType": "image/svg+xml"
+    },
+    "量": {
+      "type": "oracle-svg",
+      "key": "oracle/量.svg",
+      "contentType": "image/svg+xml"
+    },
+    "音": {
+      "type": "oracle-svg",
+      "key": "oracle/音.svg",
+      "contentType": "image/svg+xml"
+    },
+    "画": {
+      "type": "oracle-svg",
+      "key": "oracle/画.svg",
+      "contentType": "image/svg+xml"
+    },
+    "册": {
+      "type": "oracle-svg",
+      "key": "oracle/册.svg",
+      "contentType": "image/svg+xml"
+    },
+    "纸": {
+      "type": "oracle-svg",
+      "key": "oracle/纸.svg",
+      "contentType": "image/svg+xml"
+    },
+    "诗": {
+      "type": "oracle-svg",
+      "key": "oracle/诗.svg",
+      "contentType": "image/svg+xml"
+    },
+    "笔": {
+      "type": "oracle-svg",
+      "key": "oracle/笔.svg",
+      "contentType": "image/svg+xml"
+    },
+    "秀": {
+      "type": "oracle-svg",
+      "key": "oracle/秀.svg",
+      "contentType": "image/svg+xml"
+    },
+    "梦": {
+      "type": "oracle-svg",
+      "key": "oracle/梦.svg",
+      "contentType": "image/svg+xml"
+    },
+    "灯": {
+      "type": "oracle-svg",
+      "key": "oracle/灯.svg",
+      "contentType": "image/svg+xml"
+    },
+    "影": {
+      "type": "oracle-svg",
+      "key": "oracle/影.svg",
+      "contentType": "image/svg+xml"
+    },
+    "酒": {
+      "type": "oracle-svg",
+      "key": "oracle/酒.svg",
+      "contentType": "image/svg+xml"
+    },
+    "肉": {
+      "type": "oracle-svg",
+      "key": "oracle/肉.svg",
+      "contentType": "image/svg+xml"
+    },
+    "豆": {
+      "type": "oracle-svg",
+      "key": "oracle/豆.svg",
+      "contentType": "image/svg+xml"
+    },
+    "唱": {
+      "type": "oracle-svg",
+      "key": "oracle/唱.svg",
+      "contentType": "image/svg+xml"
+    },
+    "糖": {
+      "type": "oracle-svg",
+      "key": "oracle/糖.svg",
+      "contentType": "image/svg+xml"
+    },
+    "米": {
+      "type": "oracle-svg",
+      "key": "oracle/米.svg",
+      "contentType": "image/svg+xml"
+    },
+    "盐": {
+      "type": "oracle-svg",
+      "key": "oracle/盐.svg",
+      "contentType": "image/svg+xml"
+    },
+    "说-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "说",
+      "era": "oracle",
+      "key": "glyphs/说/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "说-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "说",
+      "era": "clerical",
+      "key": "glyphs/说/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "说-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "说",
+      "era": "bronze",
+      "key": "glyphs/说/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "说-seal": {
+      "type": "stage-glyph-svg",
+      "char": "说",
+      "era": "seal",
+      "key": "glyphs/说/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "说-regular": {
+      "type": "stage-glyph-svg",
+      "char": "说",
+      "era": "regular",
+      "key": "glyphs/说/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "文-regular": {
+      "type": "stage-glyph-svg",
+      "char": "文",
+      "era": "regular",
+      "key": "glyphs/文/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "文-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "文",
+      "era": "bronze",
+      "key": "glyphs/文/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "文-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "文",
+      "era": "oracle",
+      "key": "glyphs/文/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "字-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "字",
+      "era": "oracle",
+      "key": "glyphs/字/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "字-seal": {
+      "type": "stage-glyph-svg",
+      "char": "字",
+      "era": "seal",
+      "key": "glyphs/字/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "文-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "文",
+      "era": "clerical",
+      "key": "glyphs/文/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "字-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "字",
+      "era": "bronze",
+      "key": "glyphs/字/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "字-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "字",
+      "era": "clerical",
+      "key": "glyphs/字/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "字-regular": {
+      "type": "stage-glyph-svg",
+      "char": "字",
+      "era": "regular",
+      "key": "glyphs/字/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "人-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "oracle",
+      "key": "glyphs/人/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "人-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "bronze",
+      "key": "glyphs/人/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "人-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "clerical",
+      "key": "glyphs/人/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "人-seal": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "seal",
+      "key": "glyphs/人/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "人-regular": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "regular",
+      "key": "glyphs/人/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "水-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "clerical",
+      "key": "glyphs/水/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "水-seal": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "seal",
+      "key": "glyphs/水/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "水-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "oracle",
+      "key": "glyphs/水/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "山-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "oracle",
+      "key": "glyphs/山/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "水-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "bronze",
+      "key": "glyphs/水/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "山-seal": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "seal",
+      "key": "glyphs/山/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "水-regular": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "regular",
+      "key": "glyphs/水/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "山-regular": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "regular",
+      "key": "glyphs/山/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "山-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "bronze",
+      "key": "glyphs/山/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "日-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "bronze",
+      "key": "glyphs/日/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "山-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "clerical",
+      "key": "glyphs/山/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "日-regular": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "regular",
+      "key": "glyphs/日/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "日-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "clerical",
+      "key": "glyphs/日/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "月-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "bronze",
+      "key": "glyphs/月/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "月-seal": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "seal",
+      "key": "glyphs/月/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "月-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "oracle",
+      "key": "glyphs/月/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "日-seal": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "seal",
+      "key": "glyphs/日/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "月-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "clerical",
+      "key": "glyphs/月/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "火-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "oracle",
+      "key": "glyphs/火/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "火-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "bronze",
+      "key": "glyphs/火/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "月-regular": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "regular",
+      "key": "glyphs/月/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "火-seal": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "seal",
+      "key": "glyphs/火/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "木-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "oracle",
+      "key": "glyphs/木/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "火-regular": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "regular",
+      "key": "glyphs/火/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "木-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "bronze",
+      "key": "glyphs/木/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "木-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "clerical",
+      "key": "glyphs/木/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "文-seal": {
+      "type": "stage-glyph-svg",
+      "char": "文",
+      "era": "seal",
+      "key": "glyphs/文/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "火-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "clerical",
+      "key": "glyphs/火/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "日-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "oracle",
+      "key": "glyphs/日/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "木-seal": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "seal",
+      "key": "glyphs/木/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "木-regular": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "regular",
+      "key": "glyphs/木/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    }
+  }
+}

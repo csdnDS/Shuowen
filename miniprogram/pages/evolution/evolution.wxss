@@ -258,11 +258,20 @@
   font-weight: 600;
 }
 
-.stage-name {
+.stage-title {
   flex: 1;
+}
+
+.stage-name {
   color: #1A1A1A;
   font-size: 28rpx;
   font-weight: 600;
+}
+
+.stage-period {
+  margin-top: 4rpx;
+  color: #A0A0A0;
+  font-size: 20rpx;
 }
 
 .stage-copy {
@@ -342,6 +351,39 @@
   color: #6B6B6B;
   font-size: 24rpx;
   line-height: 1.65;
+}
+
+.stage-asset-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-asset {
+  width: 190rpx;
+  height: 190rpx;
+}
+
+.asset-status {
+  position: absolute;
+  top: 14rpx;
+  right: 14rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 999rpx;
+  font-size: 18rpx;
+  color: #8A5A00;
+  background: rgba(212, 175, 55, 0.16);
+}
+
+.asset-status.draft {
+  color: #9A3412;
+  background: rgba(234, 88, 12, 0.12);
+}
+
+.asset-source {
+  margin-top: 10rpx;
+  color: #9A7A2F;
+  font-size: 21rpx;
+  line-height: 1.5;
 }
 
 /* Suggest chips in empty state */

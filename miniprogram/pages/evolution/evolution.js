@@ -238,12 +238,22 @@ Page({
   },
 
   _mergeRemote(bundled, remote) {
-    if (!bundled) return this._normalizeLegacy(remote);
+    const normalizedRemote = this._normalizeLegacy(remote);
+    if (!bundled) return normalizedRemote;
+    const remoteStages = normalizedRemote.stages || [];
     return {
       ...bundled,
       pinyin: remote.pinyin || bundled.pinyin,
       meaning: remote.meaning || bundled.meaning,
-      radical: remote.radical || bundled.radical
+      radical: remote.radical || bundled.radical,
+      stages: (bundled.stages || []).map((stage, idx) => ({
+        ...stage,
+        ...(remoteStages[idx] || {}),
+        era: stage.era,
+        label: stage.label,
+        glyph: (remoteStages[idx] && remoteStages[idx].glyph) || stage.glyph,
+        desc: stage.desc || (remoteStages[idx] && remoteStages[idx].desc)
+      }))
     };
   },
 
@@ -252,7 +262,15 @@ Page({
       era: ['oracle', 'bronze', 'seal', 'clerical', 'regular'][idx] || 'regular',
       label: stage.name || '',
       glyph: stage.glyph || remote.char,
-      desc: stage.desc || stage.description || ''
+      desc: stage.desc || stage.description || '',
+      period: stage.period || '',
+      assetKey: stage.assetKey || '',
+      assetUrl: stage.assetUrl || '',
+      assetType: stage.assetType || '',
+      assetSource: stage.assetSource || '',
+      assetStatus: stage.assetStatus || '',
+      assetProvider: stage.assetProvider || '',
+      assetEnabled: Boolean(stage.assetEnabled)
     }));
     return { ...remote, stages };
   },
@@ -261,10 +279,15 @@ Page({
     const stages = (character.stages || []).map((stage, idx) => {
       const enriched = { ...stage, indexLabel: INDEX_LABELS[idx] || '' };
       // Inject SVG oracle bone image for 甲骨文 stage when available
-      if (stage.era === 'oracle') {
+      if (!stage.assetUrl && stage.era === 'oracle') {
         const src = getOracleSrc(character.char);
         if (src) enriched.oracleSrc = src;
       }
+      enriched.assetStatusText = stage.assetStatus === 'draft'
+        ? '待精校'
+        : stage.assetStatus === 'reference'
+          ? '参考'
+          : '';
       return enriched;
     });
     const searchHistory = this._saveSearchHistory(character.char);

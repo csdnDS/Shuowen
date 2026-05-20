@@ -109,14 +109,22 @@
       <view class="stage-body">
         <view class="stage-head">
           <view class="stage-index">{{item.indexLabel}}</view>
-          <view class="stage-name">{{item.label}}</view>
+          <view class="stage-title">
+            <view class="stage-name">{{item.label}}</view>
+            <view wx:if="{{item.period}}" class="stage-period">{{item.period}}</view>
+          </view>
           <view class="stage-copy" data-glyph="{{item.glyph}}" catchtap="copyGlyph">复制</view>
         </view>
-        <view wx:if="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
+        <view wx:if="{{item.assetUrl}}" class="stage-glyph stage-asset-wrap">
+          <image class="stage-asset" src="{{item.assetUrl}}" mode="aspectFit"></image>
+          <view wx:if="{{item.assetStatusText}}" class="asset-status {{item.assetStatus}}">{{item.assetStatusText}}</view>
+        </view>
+        <view wx:elif="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
           <image class="oracle-svg" src="{{item.oracleSrc}}" mode="aspectFit"></image>
           <view class="oracle-char-sub">{{item.glyph}}</view>
         </view>
         <view wx:else class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
+        <view wx:if="{{item.assetSource}}" class="asset-source">{{item.assetSource}}</view>
         <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
       </view>
     </view>

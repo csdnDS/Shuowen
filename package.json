@@ -4,7 +4,14 @@
   "private": true,
   "scripts": {
     "install:all": "npm install --prefix backend",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f",
+    "db:init": "npm --prefix backend run mysql:init && npm --prefix backend run mongo:import",
+    "db:smoke": "npm --prefix backend run mysql:smoke",
+    "commons:import": "npm --prefix backend run commons:import",
     "dev": "sh scripts/dev.sh",
-    "start:backend": "npm --prefix backend start"
+    "start:backend": "npm --prefix backend start",
+    "oss:upload": "npm --prefix backend run oss:upload"
   }
 }
