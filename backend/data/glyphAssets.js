@@ -1,4 +1,15 @@
-export const coreGlyphChars = ['说', '文', '字', '人', '水', '山', '日', '月', '火', '木'];
+export const coreGlyphChars = [
+  '人', '水', '山', '日', '月', '火', '木', '文', '字', '说',
+  '大', '女', '子', '口', '手', '心', '目', '王', '土', '天',
+  '力', '禾', '竹', '生', '明', '龙', '家', '老', '雨', '鸟',
+  '马', '鱼', '羊', '牛', '田', '风', '止', '光', '虫', '贝',
+  '走', '来', '东', '西', '正', '见', '自', '耳', '足', '弓',
+  '矢', '首', '面', '斤', '臣', '父', '母', '男', '友', '名',
+  '宝', '黑', '赤', '青', '北', '门', '户', '工', '书', '学',
+  '农', '商', '古', '鬼', '神', '本', '末', '朱', '果', '休',
+  '采', '利', '初', '相', '主', '信', '仁', '安', '和', '道',
+  '德', '善', '美', '思', '乐', '色', '长', '高', '多', '少'
+];
 
 export const glyphCharVariants = {
   '说': ['說', '说']
@@ -44,6 +55,23 @@ export const glyphStageMeta = [
 
 export function getGlyphAssetKey(char, era) {
   return `glyphs/${char}/${era}.svg`;
+}
+
+export function createGlyphBaseCharacter(char) {
+  return {
+    char,
+    meaning:
+      `“${char}”已纳入百字核心字库，当前为基础条目。已建立五阶段字形资产位，后续可继续补充《说文》释义、古文字考释、权威来源与授权图。`,
+    stages: glyphStageMeta.map((stage) => ({
+      name: stage.name,
+      era: stage.era,
+      label: stage.label,
+      glyph: char,
+      period: stage.period,
+      description:
+        `“${char}”在${stage.name}阶段的精校说明待补录。当前先提供字形资产入口和基础时代背景，后续会以授权摹本与文献来源逐步替换。`
+    }))
+  };
 }
 
 export function enrichGlyphAssetStages(character) {

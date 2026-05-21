@@ -195,6 +195,23 @@ npm run commons:import
 
 没有找到明确授权文件的阶段会继续保留本地 draft 资产，不会误标为正式字形。
 
+当前项目已建立“百字核心字库”作为第一阶段资料范围。每个核心字都会生成五阶段本地资产位：
+
+```text
+backend/assets/public/glyphs/{字}/oracle.svg
+backend/assets/public/glyphs/{字}/bronze.svg
+backend/assets/public/glyphs/{字}/seal.svg
+backend/assets/public/glyphs/{字}/clerical.svg
+backend/assets/public/glyphs/{字}/regular.svg
+```
+
+其中 Commons 已校验授权的阶段会在 MongoDB 中标记为 `assetStatus: "verified"`，暂未找到可靠来源的阶段保留 `draft`。重新生成本地资产并导入 MongoDB：
+
+```bash
+npm run oss:upload
+npm --prefix backend run mongo:import
+```
+
 ## 一键启动本地 API
 
 ```bash

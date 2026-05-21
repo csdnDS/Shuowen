@@ -36,6 +36,24 @@ function formatRelativeTime(timestamp) {
   return formatDate(timestamp);
 }
 
+function sameDay(a, b) {
+  return new Date(a).toDateString() === new Date(b).toDateString();
+}
+
+function calculateStreak(history) {
+  if (!history.length) return 0;
+  const days = [...new Set(history.map((item) => new Date(item.time).toDateString()))];
+  let cursor = new Date();
+  let streak = 0;
+
+  while (days.includes(cursor.toDateString())) {
+    streak += 1;
+    cursor = new Date(cursor.getTime() - 86400000);
+  }
+
+  return streak;
+}
+
 Page({
   data: {
     progress: { total: 9353, unlocked: [], unlockedCount: 0 },
@@ -67,12 +85,11 @@ Page({
       this.setData({ quizScore: saved, quizAccuracy: _accuracy(saved) });
     }
     this.fetchProgress();
-    this._loadStreak();
     this._loadCharOfDay();
   },
 
   onShow() {
-    this._loadStreak();
+    this.fetchProgress();
   },
 
   async fetchProgress() {
@@ -94,7 +111,6 @@ Page({
     try {
       const result = await request('/api/progress/unlock', 'POST');
       const char = result.unlockedChar;
-      this._recordUnlock(char);
       this._playRipple();
       this._applyProgress(result);
       this.setData({
@@ -103,7 +119,6 @@ Page({
           message: result.isNew ? '新解锁一字' : '此字已收录'
         }
       });
-      this._loadStreak();
     } catch (err) {
       // Mock unlock for offline mode (use full bundled catalog)
       const pool = glyphs.catalog.map((c) => c.char);
@@ -115,65 +130,34 @@ Page({
       }
       const char = pickFrom[Math.floor(Math.random() * pickFrom.length)];
       const unlocked = [...this.data.progress.unlocked, char];
-      this._recordUnlock(char);
+      const history = [{ char, time: Date.now() }, ...(this.data.progress.history || [])];
       this._playRipple();
       this._applyProgress({
         total: 9353,
         unlocked,
-        unlockedCount: unlocked.length
+        unlockedCount: unlocked.length,
+        history
       });
       this.setData({
         lastUnlock: { char, message: '离线模拟解锁' },
         offline: true
       });
-      this._loadStreak();
     } finally {
       this.setData({ loading: false });
     }
   },
 
-  _recordUnlock(char) {
-    const now = Date.now();
-    const history = [{ char, time: now }, ...(wx.getStorageSync('unlockHistory') || [])].slice(0, 50);
-    wx.setStorageSync('unlockHistory', history);
-
-    const times = wx.getStorageSync('unlockTimes') || {};
-    if (!times[char]) {
-      times[char] = now;
-      wx.setStorageSync('unlockTimes', times);
-    }
-
-    // Update streak / today count
-    const today = new Date().toDateString();
-    const streakState = wx.getStorageSync('streakState') || { lastDay: '', days: 0, todayCount: 0 };
-    if (streakState.lastDay !== today) {
-      const yesterday = new Date(Date.now() - 86400000).toDateString();
-      streakState.days = streakState.lastDay === yesterday ? streakState.days + 1 : 1;
-      streakState.lastDay = today;
-      streakState.todayCount = 0;
-    }
-    streakState.todayCount += 1;
-    wx.setStorageSync('streakState', streakState);
-  },
-
-  _loadStreak() {
-    const streakState = wx.getStorageSync('streakState') || { lastDay: '', days: 0, todayCount: 0 };
-    const today = new Date().toDateString();
-    const days = streakState.lastDay === today ? streakState.days : 0;
-    const todayCount = streakState.lastDay === today ? streakState.todayCount : 0;
-    this.setData({ streakDays: days, todayCount });
-
-    const rawHistory = wx.getStorageSync('unlockHistory') || [];
+  _applyLearningStats(history) {
+    const rawHistory = history || [];
+    const todayCount = rawHistory.filter((item) => sameDay(item.time, Date.now())).length;
     const recent = rawHistory.slice(0, 10).map((item, idx) => ({
       id: `${item.char}-${item.time}-${idx}`,
       char: item.char,
       time: item.time,
       timeLabel: formatRelativeTime(item.time)
     }));
-    this.setData({ recentUnlocks: recent, hasRecentUnlocks: recent.length > 0 });
 
     // Build 7-day calendar
-    const unlockTimes = wx.getStorageSync('unlockTimes') || {};
     const calendar = [];
     const DAY_LABELS = ['日', '一', '二', '三', '四', '五', '六'];
     for (let i = 6; i >= 0; i--) {
@@ -188,7 +172,13 @@ Page({
         isToday: i === 0
       });
     }
-    this.setData({ weekCalendar: calendar });
+    this.setData({
+      streakDays: calculateStreak(rawHistory),
+      todayCount,
+      recentUnlocks: recent,
+      hasRecentUnlocks: recent.length > 0,
+      weekCalendar: calendar
+    });
   },
 
   _applyProgress(progress) {
@@ -212,12 +202,18 @@ Page({
     }
     const remaining = nextMilestone > 0 ? Math.max(0, nextMilestone - count) : 0;
     this.setData({
-      progress: { total, unlocked: progress.unlocked || [], unlockedCount: count },
+      progress: {
+        total,
+        unlocked: progress.unlocked || [],
+        unlockedCount: count,
+        history: progress.history || []
+      },
       percent,
       percentText: percent.toFixed(3),
       levelName,
       levelHint: remaining > 0 ? `再解 ${remaining} 字，晋级下一阶` : '已达最高「通识」阶段'
     });
+    this._applyLearningStats(progress.history || []);
     // Milestone celebration
     const milestones = [30, 100, 300];
     for (const m of milestones) {

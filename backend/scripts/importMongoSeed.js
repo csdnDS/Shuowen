@@ -1,10 +1,53 @@
 import { MongoClient } from 'mongodb';
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { env } from '../config/env.js';
 import { characterData, radicals, works } from '../data/seedData.js';
-import { enrichGlyphAssetStages } from '../data/glyphAssets.js';
+import { coreGlyphChars, createGlyphBaseCharacter, enrichGlyphAssetStages } from '../data/glyphAssets.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const commonsManifestPath = path.resolve(__dirname, '../assets/public/commons-glyph-manifest.json');
 
 function withoutUndefined(value) {
   return JSON.parse(JSON.stringify(value));
+}
+
+async function loadCommonsManifest() {
+  try {
+    return JSON.parse(await fs.readFile(commonsManifestPath, 'utf8'));
+  } catch (_error) {
+    return { assets: {} };
+  }
+}
+
+function applyCommonsMetadata(characterItems, commonsManifest) {
+  const verifiedByCharEra = new Map(
+    Object.values(commonsManifest.assets || {})
+      .filter((asset) => asset.status === 'verified' && asset.char && asset.era)
+      .map((asset) => [`${asset.char}-${asset.era}`, asset])
+  );
+
+  return characterItems.map((character) => ({
+    ...character,
+    stages: (character.stages || []).map((stage) => {
+      const asset = verifiedByCharEra.get(`${character.char}-${stage.era}`);
+      if (!asset) return stage;
+
+      return {
+        ...stage,
+        assetKey: asset.key || stage.assetKey,
+        assetType: 'svg',
+        assetSource: asset.sourceName,
+        assetStatus: 'verified',
+        license: asset.license,
+        sourceUrl: asset.sourceUrl,
+        attribution: asset.attribution,
+        verifiedAt: asset.verifiedAt
+      };
+    })
+  }));
 }
 
 async function upsertMany(collection, items, keyField) {
@@ -63,12 +106,22 @@ async function main() {
   try {
     const db = client.db(env.mongoDbName);
     await ensureIndexes(db);
+    const commonsManifest = await loadCommonsManifest();
 
-    const characterItems = Object.values(characterData).map((item) => ({
+    const richItems = Object.values(characterData).map((item) => ({
       ...enrichGlyphAssetStages(item),
       hasDetail: true,
       source: 'seed'
     }));
+    const richSet = new Set(richItems.map((item) => item.char));
+    const baseCoreItems = coreGlyphChars
+      .filter((char) => !richSet.has(char))
+      .map((char) => ({
+        ...enrichGlyphAssetStages(createGlyphBaseCharacter(char)),
+        hasDetail: true,
+        source: 'core-glyph-base'
+      }));
+    const characterItems = applyCommonsMetadata([...richItems, ...baseCoreItems], commonsManifest);
     const workItems = works.map((item) => ({
       ...item,
       source: 'seed'

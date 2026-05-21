@@ -7,12 +7,22 @@
  * callers can choose to fall back to local placeholders.
  */
 
+const { ensureToken } = require('./auth');
+
 const DEFAULT_TIMEOUT = 8000;
 
-function request(path, method = 'GET', data = {}, options = {}) {
+async function request(path, method = 'GET', data = {}, options = {}) {
   const app = getApp();
-  const token = wx.getStorageSync('token') || '';
   const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
+  let token = wx.getStorageSync('token') || '';
+
+  if (!token && !options.skipAuth && path !== '/api/auth/wechat') {
+    try {
+      token = await ensureToken();
+    } catch (_err) {
+      token = wx.getStorageSync('token') || '';
+    }
+  }
 
   return new Promise((resolve, reject) => {
     wx.request({

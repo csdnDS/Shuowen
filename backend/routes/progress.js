@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getLeaderboard } from '../services/leaderboardService.js';
-import { getProgress, unlockRandomCharacter } from '../services/progressService.js';
+import { getProgress, unlockCharacter, unlockRandomCharacter } from '../services/progressService.js';
 import { asyncRoute, getOpenId } from '../utils/request.js';
 
 export function createProgressRouter() {
@@ -12,7 +12,10 @@ export function createProgressRouter() {
   }));
 
   router.post('/progress/unlock', asyncRoute(async (req, res) => {
-    const data = await unlockRandomCharacter(getOpenId(req));
+    const char = req.body?.char;
+    const data = char
+      ? await unlockCharacter(getOpenId(req), char)
+      : await unlockRandomCharacter(getOpenId(req));
     res.json(data);
   }));
 

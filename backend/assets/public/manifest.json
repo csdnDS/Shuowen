@@ -1,24 +1,14 @@
 {
-  "generatedAt": "2026-05-20T16:50:05.561Z",
+  "generatedAt": "2026-05-21T01:58:48.757Z",
   "assets": {
-    "人": {
+    "月": {
       "type": "oracle-svg",
-      "key": "oracle/人.svg",
+      "key": "oracle/月.svg",
       "contentType": "image/svg+xml"
     },
     "水": {
       "type": "oracle-svg",
       "key": "oracle/水.svg",
-      "contentType": "image/svg+xml"
-    },
-    "火": {
-      "type": "oracle-svg",
-      "key": "oracle/火.svg",
-      "contentType": "image/svg+xml"
-    },
-    "月": {
-      "type": "oracle-svg",
-      "key": "oracle/月.svg",
       "contentType": "image/svg+xml"
     },
     "木": {
@@ -31,6 +21,16 @@
       "key": "oracle/日.svg",
       "contentType": "image/svg+xml"
     },
+    "人": {
+      "type": "oracle-svg",
+      "key": "oracle/人.svg",
+      "contentType": "image/svg+xml"
+    },
+    "山": {
+      "type": "oracle-svg",
+      "key": "oracle/山.svg",
+      "contentType": "image/svg+xml"
+    },
     "文": {
       "type": "oracle-svg",
       "key": "oracle/文.svg",
@@ -41,24 +41,9 @@
       "key": "oracle/字.svg",
       "contentType": "image/svg+xml"
     },
-    "山": {
+    "火": {
       "type": "oracle-svg",
-      "key": "oracle/山.svg",
-      "contentType": "image/svg+xml"
-    },
-    "大": {
-      "type": "oracle-svg",
-      "key": "oracle/大.svg",
-      "contentType": "image/svg+xml"
-    },
-    "手": {
-      "type": "oracle-svg",
-      "key": "oracle/手.svg",
-      "contentType": "image/svg+xml"
-    },
-    "口": {
-      "type": "oracle-svg",
-      "key": "oracle/口.svg",
+      "key": "oracle/火.svg",
       "contentType": "image/svg+xml"
     },
     "女": {
@@ -66,19 +51,9 @@
       "key": "oracle/女.svg",
       "contentType": "image/svg+xml"
     },
-    "目": {
+    "大": {
       "type": "oracle-svg",
-      "key": "oracle/目.svg",
-      "contentType": "image/svg+xml"
-    },
-    "心": {
-      "type": "oracle-svg",
-      "key": "oracle/心.svg",
-      "contentType": "image/svg+xml"
-    },
-    "王": {
-      "type": "oracle-svg",
-      "key": "oracle/王.svg",
+      "key": "oracle/大.svg",
       "contentType": "image/svg+xml"
     },
     "说": {
@@ -86,34 +61,9 @@
       "key": "oracle/说.svg",
       "contentType": "image/svg+xml"
     },
-    "力": {
+    "心": {
       "type": "oracle-svg",
-      "key": "oracle/力.svg",
-      "contentType": "image/svg+xml"
-    },
-    "土": {
-      "type": "oracle-svg",
-      "key": "oracle/土.svg",
-      "contentType": "image/svg+xml"
-    },
-    "禾": {
-      "type": "oracle-svg",
-      "key": "oracle/禾.svg",
-      "contentType": "image/svg+xml"
-    },
-    "生": {
-      "type": "oracle-svg",
-      "key": "oracle/生.svg",
-      "contentType": "image/svg+xml"
-    },
-    "明": {
-      "type": "oracle-svg",
-      "key": "oracle/明.svg",
-      "contentType": "image/svg+xml"
-    },
-    "竹": {
-      "type": "oracle-svg",
-      "key": "oracle/竹.svg",
+      "key": "oracle/心.svg",
       "contentType": "image/svg+xml"
     },
     "子": {
@@ -121,24 +71,49 @@
       "key": "oracle/子.svg",
       "contentType": "image/svg+xml"
     },
-    "龙": {
+    "手": {
       "type": "oracle-svg",
-      "key": "oracle/龙.svg",
+      "key": "oracle/手.svg",
       "contentType": "image/svg+xml"
     },
-    "家": {
+    "力": {
       "type": "oracle-svg",
-      "key": "oracle/家.svg",
+      "key": "oracle/力.svg",
       "contentType": "image/svg+xml"
     },
-    "雨": {
+    "王": {
       "type": "oracle-svg",
-      "key": "oracle/雨.svg",
+      "key": "oracle/王.svg",
       "contentType": "image/svg+xml"
     },
-    "鸟": {
+    "口": {
       "type": "oracle-svg",
-      "key": "oracle/鸟.svg",
+      "key": "oracle/口.svg",
+      "contentType": "image/svg+xml"
+    },
+    "天": {
+      "type": "oracle-svg",
+      "key": "oracle/天.svg",
+      "contentType": "image/svg+xml"
+    },
+    "竹": {
+      "type": "oracle-svg",
+      "key": "oracle/竹.svg",
+      "contentType": "image/svg+xml"
+    },
+    "目": {
+      "type": "oracle-svg",
+      "key": "oracle/目.svg",
+      "contentType": "image/svg+xml"
+    },
+    "禾": {
+      "type": "oracle-svg",
+      "key": "oracle/禾.svg",
+      "contentType": "image/svg+xml"
+    },
+    "明": {
+      "type": "oracle-svg",
+      "key": "oracle/明.svg",
       "contentType": "image/svg+xml"
     },
     "老": {
@@ -146,14 +121,24 @@
       "key": "oracle/老.svg",
       "contentType": "image/svg+xml"
     },
-    "马": {
+    "家": {
       "type": "oracle-svg",
-      "key": "oracle/马.svg",
+      "key": "oracle/家.svg",
       "contentType": "image/svg+xml"
     },
-    "田": {
+    "生": {
       "type": "oracle-svg",
-      "key": "oracle/田.svg",
+      "key": "oracle/生.svg",
+      "contentType": "image/svg+xml"
+    },
+    "土": {
+      "type": "oracle-svg",
+      "key": "oracle/土.svg",
+      "contentType": "image/svg+xml"
+    },
+    "雨": {
+      "type": "oracle-svg",
+      "key": "oracle/雨.svg",
       "contentType": "image/svg+xml"
     },
     "鱼": {
@@ -161,14 +146,34 @@
       "key": "oracle/鱼.svg",
       "contentType": "image/svg+xml"
     },
-    "风": {
+    "龙": {
       "type": "oracle-svg",
-      "key": "oracle/风.svg",
+      "key": "oracle/龙.svg",
       "contentType": "image/svg+xml"
     },
-    "止": {
+    "牛": {
       "type": "oracle-svg",
-      "key": "oracle/止.svg",
+      "key": "oracle/牛.svg",
+      "contentType": "image/svg+xml"
+    },
+    "马": {
+      "type": "oracle-svg",
+      "key": "oracle/马.svg",
+      "contentType": "image/svg+xml"
+    },
+    "鸟": {
+      "type": "oracle-svg",
+      "key": "oracle/鸟.svg",
+      "contentType": "image/svg+xml"
+    },
+    "羊": {
+      "type": "oracle-svg",
+      "key": "oracle/羊.svg",
+      "contentType": "image/svg+xml"
+    },
+    "田": {
+      "type": "oracle-svg",
+      "key": "oracle/田.svg",
       "contentType": "image/svg+xml"
     },
     "虫": {
@@ -181,14 +186,14 @@
       "key": "oracle/光.svg",
       "contentType": "image/svg+xml"
     },
+    "止": {
+      "type": "oracle-svg",
+      "key": "oracle/止.svg",
+      "contentType": "image/svg+xml"
+    },
     "贝": {
       "type": "oracle-svg",
       "key": "oracle/贝.svg",
-      "contentType": "image/svg+xml"
-    },
-    "来": {
-      "type": "oracle-svg",
-      "key": "oracle/来.svg",
       "contentType": "image/svg+xml"
     },
     "走": {
@@ -196,9 +201,19 @@
       "key": "oracle/走.svg",
       "contentType": "image/svg+xml"
     },
+    "正": {
+      "type": "oracle-svg",
+      "key": "oracle/正.svg",
+      "contentType": "image/svg+xml"
+    },
     "东": {
       "type": "oracle-svg",
       "key": "oracle/东.svg",
+      "contentType": "image/svg+xml"
+    },
+    "耳": {
+      "type": "oracle-svg",
+      "key": "oracle/耳.svg",
       "contentType": "image/svg+xml"
     },
     "见": {
@@ -206,69 +221,9 @@
       "key": "oracle/见.svg",
       "contentType": "image/svg+xml"
     },
-    "正": {
-      "type": "oracle-svg",
-      "key": "oracle/正.svg",
-      "contentType": "image/svg+xml"
-    },
-    "自": {
-      "type": "oracle-svg",
-      "key": "oracle/自.svg",
-      "contentType": "image/svg+xml"
-    },
-    "天": {
-      "type": "oracle-svg",
-      "key": "oracle/天.svg",
-      "contentType": "image/svg+xml"
-    },
     "足": {
       "type": "oracle-svg",
       "key": "oracle/足.svg",
-      "contentType": "image/svg+xml"
-    },
-    "西": {
-      "type": "oracle-svg",
-      "key": "oracle/西.svg",
-      "contentType": "image/svg+xml"
-    },
-    "矢": {
-      "type": "oracle-svg",
-      "key": "oracle/矢.svg",
-      "contentType": "image/svg+xml"
-    },
-    "牛": {
-      "type": "oracle-svg",
-      "key": "oracle/牛.svg",
-      "contentType": "image/svg+xml"
-    },
-    "斤": {
-      "type": "oracle-svg",
-      "key": "oracle/斤.svg",
-      "contentType": "image/svg+xml"
-    },
-    "首": {
-      "type": "oracle-svg",
-      "key": "oracle/首.svg",
-      "contentType": "image/svg+xml"
-    },
-    "面": {
-      "type": "oracle-svg",
-      "key": "oracle/面.svg",
-      "contentType": "image/svg+xml"
-    },
-    "父": {
-      "type": "oracle-svg",
-      "key": "oracle/父.svg",
-      "contentType": "image/svg+xml"
-    },
-    "羊": {
-      "type": "oracle-svg",
-      "key": "oracle/羊.svg",
-      "contentType": "image/svg+xml"
-    },
-    "臣": {
-      "type": "oracle-svg",
-      "key": "oracle/臣.svg",
       "contentType": "image/svg+xml"
     },
     "弓": {
@@ -276,14 +231,39 @@
       "key": "oracle/弓.svg",
       "contentType": "image/svg+xml"
     },
-    "友": {
+    "风": {
       "type": "oracle-svg",
-      "key": "oracle/友.svg",
+      "key": "oracle/风.svg",
       "contentType": "image/svg+xml"
     },
-    "宝": {
+    "自": {
       "type": "oracle-svg",
-      "key": "oracle/宝.svg",
+      "key": "oracle/自.svg",
+      "contentType": "image/svg+xml"
+    },
+    "西": {
+      "type": "oracle-svg",
+      "key": "oracle/西.svg",
+      "contentType": "image/svg+xml"
+    },
+    "来": {
+      "type": "oracle-svg",
+      "key": "oracle/来.svg",
+      "contentType": "image/svg+xml"
+    },
+    "面": {
+      "type": "oracle-svg",
+      "key": "oracle/面.svg",
+      "contentType": "image/svg+xml"
+    },
+    "首": {
+      "type": "oracle-svg",
+      "key": "oracle/首.svg",
+      "contentType": "image/svg+xml"
+    },
+    "矢": {
+      "type": "oracle-svg",
+      "key": "oracle/矢.svg",
       "contentType": "image/svg+xml"
     },
     "母": {
@@ -291,9 +271,29 @@
       "key": "oracle/母.svg",
       "contentType": "image/svg+xml"
     },
+    "父": {
+      "type": "oracle-svg",
+      "key": "oracle/父.svg",
+      "contentType": "image/svg+xml"
+    },
     "名": {
       "type": "oracle-svg",
       "key": "oracle/名.svg",
+      "contentType": "image/svg+xml"
+    },
+    "臣": {
+      "type": "oracle-svg",
+      "key": "oracle/臣.svg",
+      "contentType": "image/svg+xml"
+    },
+    "斤": {
+      "type": "oracle-svg",
+      "key": "oracle/斤.svg",
+      "contentType": "image/svg+xml"
+    },
+    "男": {
+      "type": "oracle-svg",
+      "key": "oracle/男.svg",
       "contentType": "image/svg+xml"
     },
     "黑": {
@@ -301,14 +301,9 @@
       "key": "oracle/黑.svg",
       "contentType": "image/svg+xml"
     },
-    "青": {
+    "宝": {
       "type": "oracle-svg",
-      "key": "oracle/青.svg",
-      "contentType": "image/svg+xml"
-    },
-    "北": {
-      "type": "oracle-svg",
-      "key": "oracle/北.svg",
+      "key": "oracle/宝.svg",
       "contentType": "image/svg+xml"
     },
     "赤": {
@@ -316,9 +311,29 @@
       "key": "oracle/赤.svg",
       "contentType": "image/svg+xml"
     },
-    "门": {
+    "工": {
       "type": "oracle-svg",
-      "key": "oracle/门.svg",
+      "key": "oracle/工.svg",
+      "contentType": "image/svg+xml"
+    },
+    "友": {
+      "type": "oracle-svg",
+      "key": "oracle/友.svg",
+      "contentType": "image/svg+xml"
+    },
+    "北": {
+      "type": "oracle-svg",
+      "key": "oracle/北.svg",
+      "contentType": "image/svg+xml"
+    },
+    "书": {
+      "type": "oracle-svg",
+      "key": "oracle/书.svg",
+      "contentType": "image/svg+xml"
+    },
+    "青": {
+      "type": "oracle-svg",
+      "key": "oracle/青.svg",
       "contentType": "image/svg+xml"
     },
     "户": {
@@ -331,14 +346,9 @@
       "key": "oracle/学.svg",
       "contentType": "image/svg+xml"
     },
-    "工": {
+    "古": {
       "type": "oracle-svg",
-      "key": "oracle/工.svg",
-      "contentType": "image/svg+xml"
-    },
-    "书": {
-      "type": "oracle-svg",
-      "key": "oracle/书.svg",
+      "key": "oracle/古.svg",
       "contentType": "image/svg+xml"
     },
     "商": {
@@ -346,14 +356,9 @@
       "key": "oracle/商.svg",
       "contentType": "image/svg+xml"
     },
-    "古": {
+    "本": {
       "type": "oracle-svg",
-      "key": "oracle/古.svg",
-      "contentType": "image/svg+xml"
-    },
-    "农": {
-      "type": "oracle-svg",
-      "key": "oracle/农.svg",
+      "key": "oracle/本.svg",
       "contentType": "image/svg+xml"
     },
     "鬼": {
@@ -361,24 +366,14 @@
       "key": "oracle/鬼.svg",
       "contentType": "image/svg+xml"
     },
+    "门": {
+      "type": "oracle-svg",
+      "key": "oracle/门.svg",
+      "contentType": "image/svg+xml"
+    },
     "神": {
       "type": "oracle-svg",
       "key": "oracle/神.svg",
-      "contentType": "image/svg+xml"
-    },
-    "本": {
-      "type": "oracle-svg",
-      "key": "oracle/本.svg",
-      "contentType": "image/svg+xml"
-    },
-    "朱": {
-      "type": "oracle-svg",
-      "key": "oracle/朱.svg",
-      "contentType": "image/svg+xml"
-    },
-    "果": {
-      "type": "oracle-svg",
-      "key": "oracle/果.svg",
       "contentType": "image/svg+xml"
     },
     "末": {
@@ -386,24 +381,24 @@
       "key": "oracle/末.svg",
       "contentType": "image/svg+xml"
     },
-    "休": {
+    "农": {
       "type": "oracle-svg",
-      "key": "oracle/休.svg",
+      "key": "oracle/农.svg",
       "contentType": "image/svg+xml"
     },
-    "采": {
+    "果": {
       "type": "oracle-svg",
-      "key": "oracle/采.svg",
+      "key": "oracle/果.svg",
       "contentType": "image/svg+xml"
     },
-    "主": {
+    "利": {
       "type": "oracle-svg",
-      "key": "oracle/主.svg",
+      "key": "oracle/利.svg",
       "contentType": "image/svg+xml"
     },
-    "耳": {
+    "朱": {
       "type": "oracle-svg",
-      "key": "oracle/耳.svg",
+      "key": "oracle/朱.svg",
       "contentType": "image/svg+xml"
     },
     "初": {
@@ -411,19 +406,19 @@
       "key": "oracle/初.svg",
       "contentType": "image/svg+xml"
     },
+    "休": {
+      "type": "oracle-svg",
+      "key": "oracle/休.svg",
+      "contentType": "image/svg+xml"
+    },
     "信": {
       "type": "oracle-svg",
       "key": "oracle/信.svg",
       "contentType": "image/svg+xml"
     },
-    "和": {
+    "主": {
       "type": "oracle-svg",
-      "key": "oracle/和.svg",
-      "contentType": "image/svg+xml"
-    },
-    "安": {
-      "type": "oracle-svg",
-      "key": "oracle/安.svg",
+      "key": "oracle/主.svg",
       "contentType": "image/svg+xml"
     },
     "仁": {
@@ -441,9 +436,24 @@
       "key": "oracle/德.svg",
       "contentType": "image/svg+xml"
     },
+    "相": {
+      "type": "oracle-svg",
+      "key": "oracle/相.svg",
+      "contentType": "image/svg+xml"
+    },
     "美": {
       "type": "oracle-svg",
       "key": "oracle/美.svg",
+      "contentType": "image/svg+xml"
+    },
+    "采": {
+      "type": "oracle-svg",
+      "key": "oracle/采.svg",
+      "contentType": "image/svg+xml"
+    },
+    "安": {
+      "type": "oracle-svg",
+      "key": "oracle/安.svg",
       "contentType": "image/svg+xml"
     },
     "善": {
@@ -451,39 +461,9 @@
       "key": "oracle/善.svg",
       "contentType": "image/svg+xml"
     },
-    "利": {
+    "和": {
       "type": "oracle-svg",
-      "key": "oracle/利.svg",
-      "contentType": "image/svg+xml"
-    },
-    "色": {
-      "type": "oracle-svg",
-      "key": "oracle/色.svg",
-      "contentType": "image/svg+xml"
-    },
-    "男": {
-      "type": "oracle-svg",
-      "key": "oracle/男.svg",
-      "contentType": "image/svg+xml"
-    },
-    "长": {
-      "type": "oracle-svg",
-      "key": "oracle/长.svg",
-      "contentType": "image/svg+xml"
-    },
-    "多": {
-      "type": "oracle-svg",
-      "key": "oracle/多.svg",
-      "contentType": "image/svg+xml"
-    },
-    "高": {
-      "type": "oracle-svg",
-      "key": "oracle/高.svg",
-      "contentType": "image/svg+xml"
-    },
-    "少": {
-      "type": "oracle-svg",
-      "key": "oracle/少.svg",
+      "key": "oracle/和.svg",
       "contentType": "image/svg+xml"
     },
     "思": {
@@ -491,9 +471,29 @@
       "key": "oracle/思.svg",
       "contentType": "image/svg+xml"
     },
-    "乐": {
+    "色": {
       "type": "oracle-svg",
-      "key": "oracle/乐.svg",
+      "key": "oracle/色.svg",
+      "contentType": "image/svg+xml"
+    },
+    "多": {
+      "type": "oracle-svg",
+      "key": "oracle/多.svg",
+      "contentType": "image/svg+xml"
+    },
+    "长": {
+      "type": "oracle-svg",
+      "key": "oracle/长.svg",
+      "contentType": "image/svg+xml"
+    },
+    "少": {
+      "type": "oracle-svg",
+      "key": "oracle/少.svg",
+      "contentType": "image/svg+xml"
+    },
+    "高": {
+      "type": "oracle-svg",
+      "key": "oracle/高.svg",
       "contentType": "image/svg+xml"
     },
     "左": {
@@ -501,14 +501,19 @@
       "key": "oracle/左.svg",
       "contentType": "image/svg+xml"
     },
-    "后": {
-      "type": "oracle-svg",
-      "key": "oracle/后.svg",
-      "contentType": "image/svg+xml"
-    },
     "右": {
       "type": "oracle-svg",
       "key": "oracle/右.svg",
+      "contentType": "image/svg+xml"
+    },
+    "乐": {
+      "type": "oracle-svg",
+      "key": "oracle/乐.svg",
+      "contentType": "image/svg+xml"
+    },
+    "后": {
+      "type": "oracle-svg",
+      "key": "oracle/后.svg",
       "contentType": "image/svg+xml"
     },
     "里": {
@@ -516,9 +521,9 @@
       "key": "oracle/里.svg",
       "contentType": "image/svg+xml"
     },
-    "前": {
+    "入": {
       "type": "oracle-svg",
-      "key": "oracle/前.svg",
+      "key": "oracle/入.svg",
       "contentType": "image/svg+xml"
     },
     "开": {
@@ -526,19 +531,9 @@
       "key": "oracle/开.svg",
       "contentType": "image/svg+xml"
     },
-    "出": {
+    "关": {
       "type": "oracle-svg",
-      "key": "oracle/出.svg",
-      "contentType": "image/svg+xml"
-    },
-    "入": {
-      "type": "oracle-svg",
-      "key": "oracle/入.svg",
-      "contentType": "image/svg+xml"
-    },
-    "问": {
-      "type": "oracle-svg",
-      "key": "oracle/问.svg",
+      "key": "oracle/关.svg",
       "contentType": "image/svg+xml"
     },
     "间": {
@@ -551,24 +546,9 @@
       "key": "oracle/时.svg",
       "contentType": "image/svg+xml"
     },
-    "分": {
+    "前": {
       "type": "oracle-svg",
-      "key": "oracle/分.svg",
-      "contentType": "image/svg+xml"
-    },
-    "关": {
-      "type": "oracle-svg",
-      "key": "oracle/关.svg",
-      "contentType": "image/svg+xml"
-    },
-    "全": {
-      "type": "oracle-svg",
-      "key": "oracle/全.svg",
-      "contentType": "image/svg+xml"
-    },
-    "合": {
-      "type": "oracle-svg",
-      "key": "oracle/合.svg",
+      "key": "oracle/前.svg",
       "contentType": "image/svg+xml"
     },
     "海": {
@@ -576,9 +556,19 @@
       "key": "oracle/海.svg",
       "contentType": "image/svg+xml"
     },
-    "雪": {
+    "分": {
       "type": "oracle-svg",
-      "key": "oracle/雪.svg",
+      "key": "oracle/分.svg",
+      "contentType": "image/svg+xml"
+    },
+    "合": {
+      "type": "oracle-svg",
+      "key": "oracle/合.svg",
+      "contentType": "image/svg+xml"
+    },
+    "全": {
+      "type": "oracle-svg",
+      "key": "oracle/全.svg",
       "contentType": "image/svg+xml"
     },
     "树": {
@@ -586,19 +576,9 @@
       "key": "oracle/树.svg",
       "contentType": "image/svg+xml"
     },
-    "路": {
+    "雪": {
       "type": "oracle-svg",
-      "key": "oracle/路.svg",
-      "contentType": "image/svg+xml"
-    },
-    "草": {
-      "type": "oracle-svg",
-      "key": "oracle/草.svg",
-      "contentType": "image/svg+xml"
-    },
-    "花": {
-      "type": "oracle-svg",
-      "key": "oracle/花.svg",
+      "key": "oracle/雪.svg",
       "contentType": "image/svg+xml"
     },
     "车": {
@@ -606,14 +586,29 @@
       "key": "oracle/车.svg",
       "contentType": "image/svg+xml"
     },
+    "草": {
+      "type": "oracle-svg",
+      "key": "oracle/草.svg",
+      "contentType": "image/svg+xml"
+    },
     "江": {
       "type": "oracle-svg",
       "key": "oracle/江.svg",
       "contentType": "image/svg+xml"
     },
+    "桥": {
+      "type": "oracle-svg",
+      "key": "oracle/桥.svg",
+      "contentType": "image/svg+xml"
+    },
     "湖": {
       "type": "oracle-svg",
       "key": "oracle/湖.svg",
+      "contentType": "image/svg+xml"
+    },
+    "路": {
+      "type": "oracle-svg",
+      "key": "oracle/路.svg",
       "contentType": "image/svg+xml"
     },
     "河": {
@@ -626,19 +621,19 @@
       "key": "oracle/泉.svg",
       "contentType": "image/svg+xml"
     },
-    "森": {
-      "type": "oracle-svg",
-      "key": "oracle/森.svg",
-      "contentType": "image/svg+xml"
-    },
     "林": {
       "type": "oracle-svg",
       "key": "oracle/林.svg",
       "contentType": "image/svg+xml"
     },
-    "夏": {
+    "问": {
       "type": "oracle-svg",
-      "key": "oracle/夏.svg",
+      "key": "oracle/问.svg",
+      "contentType": "image/svg+xml"
+    },
+    "出": {
+      "type": "oracle-svg",
+      "key": "oracle/出.svg",
       "contentType": "image/svg+xml"
     },
     "秋": {
@@ -646,9 +641,9 @@
       "key": "oracle/秋.svg",
       "contentType": "image/svg+xml"
     },
-    "桥": {
+    "冬": {
       "type": "oracle-svg",
-      "key": "oracle/桥.svg",
+      "key": "oracle/冬.svg",
       "contentType": "image/svg+xml"
     },
     "国": {
@@ -656,34 +651,44 @@
       "key": "oracle/国.svg",
       "contentType": "image/svg+xml"
     },
+    "春": {
+      "type": "oracle-svg",
+      "key": "oracle/春.svg",
+      "contentType": "image/svg+xml"
+    },
+    "城": {
+      "type": "oracle-svg",
+      "key": "oracle/城.svg",
+      "contentType": "image/svg+xml"
+    },
+    "花": {
+      "type": "oracle-svg",
+      "key": "oracle/花.svg",
+      "contentType": "image/svg+xml"
+    },
+    "村": {
+      "type": "oracle-svg",
+      "key": "oracle/村.svg",
+      "contentType": "image/svg+xml"
+    },
     "市": {
       "type": "oracle-svg",
       "key": "oracle/市.svg",
       "contentType": "image/svg+xml"
     },
-    "冬": {
+    "森": {
       "type": "oracle-svg",
-      "key": "oracle/冬.svg",
+      "key": "oracle/森.svg",
       "contentType": "image/svg+xml"
     },
-    "相": {
+    "夏": {
       "type": "oracle-svg",
-      "key": "oracle/相.svg",
-      "contentType": "image/svg+xml"
-    },
-    "眼": {
-      "type": "oracle-svg",
-      "key": "oracle/眼.svg",
+      "key": "oracle/夏.svg",
       "contentType": "image/svg+xml"
     },
     "发": {
       "type": "oracle-svg",
       "key": "oracle/发.svg",
-      "contentType": "image/svg+xml"
-    },
-    "头": {
-      "type": "oracle-svg",
-      "key": "oracle/头.svg",
       "contentType": "image/svg+xml"
     },
     "鼻": {
@@ -696,24 +701,9 @@
       "key": "oracle/京.svg",
       "contentType": "image/svg+xml"
     },
-    "村": {
+    "齿": {
       "type": "oracle-svg",
-      "key": "oracle/村.svg",
-      "contentType": "image/svg+xml"
-    },
-    "骨": {
-      "type": "oracle-svg",
-      "key": "oracle/骨.svg",
-      "contentType": "image/svg+xml"
-    },
-    "春": {
-      "type": "oracle-svg",
-      "key": "oracle/春.svg",
-      "contentType": "image/svg+xml"
-    },
-    "皮": {
-      "type": "oracle-svg",
-      "key": "oracle/皮.svg",
+      "key": "oracle/齿.svg",
       "contentType": "image/svg+xml"
     },
     "血": {
@@ -721,19 +711,24 @@
       "key": "oracle/血.svg",
       "contentType": "image/svg+xml"
     },
-    "齿": {
+    "眼": {
       "type": "oracle-svg",
-      "key": "oracle/齿.svg",
+      "key": "oracle/眼.svg",
       "contentType": "image/svg+xml"
     },
-    "城": {
+    "皮": {
       "type": "oracle-svg",
-      "key": "oracle/城.svg",
+      "key": "oracle/皮.svg",
       "contentType": "image/svg+xml"
     },
-    "读": {
+    "骨": {
       "type": "oracle-svg",
-      "key": "oracle/读.svg",
+      "key": "oracle/骨.svg",
+      "contentType": "image/svg+xml"
+    },
+    "看": {
+      "type": "oracle-svg",
+      "key": "oracle/看.svg",
       "contentType": "image/svg+xml"
     },
     "写": {
@@ -741,9 +736,14 @@
       "key": "oracle/写.svg",
       "contentType": "image/svg+xml"
     },
-    "游": {
+    "跑": {
       "type": "oracle-svg",
-      "key": "oracle/游.svg",
+      "key": "oracle/跑.svg",
+      "contentType": "image/svg+xml"
+    },
+    "读": {
+      "type": "oracle-svg",
+      "key": "oracle/读.svg",
       "contentType": "image/svg+xml"
     },
     "飞": {
@@ -751,14 +751,14 @@
       "key": "oracle/飞.svg",
       "contentType": "image/svg+xml"
     },
-    "爱": {
+    "游": {
       "type": "oracle-svg",
-      "key": "oracle/爱.svg",
+      "key": "oracle/游.svg",
       "contentType": "image/svg+xml"
     },
-    "跑": {
+    "头": {
       "type": "oracle-svg",
-      "key": "oracle/跑.svg",
+      "key": "oracle/头.svg",
       "contentType": "image/svg+xml"
     },
     "听": {
@@ -766,19 +766,29 @@
       "key": "oracle/听.svg",
       "contentType": "image/svg+xml"
     },
+    "爱": {
+      "type": "oracle-svg",
+      "key": "oracle/爱.svg",
+      "contentType": "image/svg+xml"
+    },
     "新": {
       "type": "oracle-svg",
       "key": "oracle/新.svg",
       "contentType": "image/svg+xml"
     },
-    "慢": {
-      "type": "oracle-svg",
-      "key": "oracle/慢.svg",
-      "contentType": "image/svg+xml"
-    },
     "热": {
       "type": "oracle-svg",
       "key": "oracle/热.svg",
+      "contentType": "image/svg+xml"
+    },
+    "旧": {
+      "type": "oracle-svg",
+      "key": "oracle/旧.svg",
+      "contentType": "image/svg+xml"
+    },
+    "快": {
+      "type": "oracle-svg",
+      "key": "oracle/快.svg",
       "contentType": "image/svg+xml"
     },
     "重": {
@@ -791,29 +801,9 @@
       "key": "oracle/冷.svg",
       "contentType": "image/svg+xml"
     },
-    "旧": {
-      "type": "oracle-svg",
-      "key": "oracle/旧.svg",
-      "contentType": "image/svg+xml"
-    },
-    "轻": {
-      "type": "oracle-svg",
-      "key": "oracle/轻.svg",
-      "contentType": "image/svg+xml"
-    },
-    "看": {
-      "type": "oracle-svg",
-      "key": "oracle/看.svg",
-      "contentType": "image/svg+xml"
-    },
     "难": {
       "type": "oracle-svg",
       "key": "oracle/难.svg",
-      "contentType": "image/svg+xml"
-    },
-    "昨": {
-      "type": "oracle-svg",
-      "key": "oracle/昨.svg",
       "contentType": "image/svg+xml"
     },
     "易": {
@@ -821,19 +811,14 @@
       "key": "oracle/易.svg",
       "contentType": "image/svg+xml"
     },
-    "早": {
+    "轻": {
       "type": "oracle-svg",
-      "key": "oracle/早.svg",
+      "key": "oracle/轻.svg",
       "contentType": "image/svg+xml"
     },
-    "星": {
+    "慢": {
       "type": "oracle-svg",
-      "key": "oracle/星.svg",
-      "contentType": "image/svg+xml"
-    },
-    "晚": {
-      "type": "oracle-svg",
-      "key": "oracle/晚.svg",
+      "key": "oracle/慢.svg",
       "contentType": "image/svg+xml"
     },
     "今": {
@@ -841,19 +826,34 @@
       "key": "oracle/今.svg",
       "contentType": "image/svg+xml"
     },
+    "星": {
+      "type": "oracle-svg",
+      "key": "oracle/星.svg",
+      "contentType": "image/svg+xml"
+    },
+    "半": {
+      "type": "oracle-svg",
+      "key": "oracle/半.svg",
+      "contentType": "image/svg+xml"
+    },
+    "昨": {
+      "type": "oracle-svg",
+      "key": "oracle/昨.svg",
+      "contentType": "image/svg+xml"
+    },
+    "晚": {
+      "type": "oracle-svg",
+      "key": "oracle/晚.svg",
+      "contentType": "image/svg+xml"
+    },
+    "早": {
+      "type": "oracle-svg",
+      "key": "oracle/早.svg",
+      "contentType": "image/svg+xml"
+    },
     "假": {
       "type": "oracle-svg",
       "key": "oracle/假.svg",
-      "contentType": "image/svg+xml"
-    },
-    "快": {
-      "type": "oracle-svg",
-      "key": "oracle/快.svg",
-      "contentType": "image/svg+xml"
-    },
-    "期": {
-      "type": "oracle-svg",
-      "key": "oracle/期.svg",
       "contentType": "image/svg+xml"
     },
     "第": {
@@ -861,9 +861,9 @@
       "key": "oracle/第.svg",
       "contentType": "image/svg+xml"
     },
-    "饭": {
+    "食": {
       "type": "oracle-svg",
-      "key": "oracle/饭.svg",
+      "key": "oracle/食.svg",
       "contentType": "image/svg+xml"
     },
     "每": {
@@ -871,14 +871,14 @@
       "key": "oracle/每.svg",
       "contentType": "image/svg+xml"
     },
-    "食": {
+    "饭": {
       "type": "oracle-svg",
-      "key": "oracle/食.svg",
+      "key": "oracle/饭.svg",
       "contentType": "image/svg+xml"
     },
-    "布": {
+    "期": {
       "type": "oracle-svg",
-      "key": "oracle/布.svg",
+      "key": "oracle/期.svg",
       "contentType": "image/svg+xml"
     },
     "茶": {
@@ -886,9 +886,9 @@
       "key": "oracle/茶.svg",
       "contentType": "image/svg+xml"
     },
-    "衣": {
+    "布": {
       "type": "oracle-svg",
-      "key": "oracle/衣.svg",
+      "key": "oracle/布.svg",
       "contentType": "image/svg+xml"
     },
     "床": {
@@ -896,9 +896,9 @@
       "key": "oracle/床.svg",
       "contentType": "image/svg+xml"
     },
-    "房": {
+    "衣": {
       "type": "oracle-svg",
-      "key": "oracle/房.svg",
+      "key": "oracle/衣.svg",
       "contentType": "image/svg+xml"
     },
     "窗": {
@@ -911,19 +911,14 @@
       "key": "oracle/桌.svg",
       "contentType": "image/svg+xml"
     },
-    "椅": {
-      "type": "oracle-svg",
-      "key": "oracle/椅.svg",
-      "contentType": "image/svg+xml"
-    },
     "孙": {
       "type": "oracle-svg",
       "key": "oracle/孙.svg",
       "contentType": "image/svg+xml"
     },
-    "兄": {
+    "房": {
       "type": "oracle-svg",
-      "key": "oracle/兄.svg",
+      "key": "oracle/房.svg",
       "contentType": "image/svg+xml"
     },
     "弟": {
@@ -931,9 +926,9 @@
       "key": "oracle/弟.svg",
       "contentType": "image/svg+xml"
     },
-    "半": {
+    "兄": {
       "type": "oracle-svg",
-      "key": "oracle/半.svg",
+      "key": "oracle/兄.svg",
       "contentType": "image/svg+xml"
     },
     "孩": {
@@ -941,9 +936,24 @@
       "key": "oracle/孩.svg",
       "contentType": "image/svg+xml"
     },
+    "亲": {
+      "type": "oracle-svg",
+      "key": "oracle/亲.svg",
+      "contentType": "image/svg+xml"
+    },
     "朋": {
       "type": "oracle-svg",
       "key": "oracle/朋.svg",
+      "contentType": "image/svg+xml"
+    },
+    "椅": {
+      "type": "oracle-svg",
+      "key": "oracle/椅.svg",
+      "contentType": "image/svg+xml"
+    },
+    "共": {
+      "type": "oracle-svg",
+      "key": "oracle/共.svg",
       "contentType": "image/svg+xml"
     },
     "妻": {
@@ -956,29 +966,9 @@
       "key": "oracle/同.svg",
       "contentType": "image/svg+xml"
     },
-    "亲": {
-      "type": "oracle-svg",
-      "key": "oracle/亲.svg",
-      "contentType": "image/svg+xml"
-    },
-    "共": {
-      "type": "oracle-svg",
-      "key": "oracle/共.svg",
-      "contentType": "image/svg+xml"
-    },
     "各": {
       "type": "oracle-svg",
       "key": "oracle/各.svg",
-      "contentType": "image/svg+xml"
-    },
-    "数": {
-      "type": "oracle-svg",
-      "key": "oracle/数.svg",
-      "contentType": "image/svg+xml"
-    },
-    "科": {
-      "type": "oracle-svg",
-      "key": "oracle/科.svg",
       "contentType": "image/svg+xml"
     },
     "量": {
@@ -986,9 +976,9 @@
       "key": "oracle/量.svg",
       "contentType": "image/svg+xml"
     },
-    "音": {
+    "唱": {
       "type": "oracle-svg",
-      "key": "oracle/音.svg",
+      "key": "oracle/唱.svg",
       "contentType": "image/svg+xml"
     },
     "画": {
@@ -996,19 +986,24 @@
       "key": "oracle/画.svg",
       "contentType": "image/svg+xml"
     },
+    "数": {
+      "type": "oracle-svg",
+      "key": "oracle/数.svg",
+      "contentType": "image/svg+xml"
+    },
     "册": {
       "type": "oracle-svg",
       "key": "oracle/册.svg",
       "contentType": "image/svg+xml"
     },
-    "纸": {
+    "音": {
       "type": "oracle-svg",
-      "key": "oracle/纸.svg",
+      "key": "oracle/音.svg",
       "contentType": "image/svg+xml"
     },
-    "诗": {
+    "科": {
       "type": "oracle-svg",
-      "key": "oracle/诗.svg",
+      "key": "oracle/科.svg",
       "contentType": "image/svg+xml"
     },
     "笔": {
@@ -1016,19 +1011,14 @@
       "key": "oracle/笔.svg",
       "contentType": "image/svg+xml"
     },
-    "秀": {
-      "type": "oracle-svg",
-      "key": "oracle/秀.svg",
-      "contentType": "image/svg+xml"
-    },
     "梦": {
       "type": "oracle-svg",
       "key": "oracle/梦.svg",
       "contentType": "image/svg+xml"
     },
-    "灯": {
+    "纸": {
       "type": "oracle-svg",
-      "key": "oracle/灯.svg",
+      "key": "oracle/纸.svg",
       "contentType": "image/svg+xml"
     },
     "影": {
@@ -1036,29 +1026,14 @@
       "key": "oracle/影.svg",
       "contentType": "image/svg+xml"
     },
+    "诗": {
+      "type": "oracle-svg",
+      "key": "oracle/诗.svg",
+      "contentType": "image/svg+xml"
+    },
     "酒": {
       "type": "oracle-svg",
       "key": "oracle/酒.svg",
-      "contentType": "image/svg+xml"
-    },
-    "肉": {
-      "type": "oracle-svg",
-      "key": "oracle/肉.svg",
-      "contentType": "image/svg+xml"
-    },
-    "豆": {
-      "type": "oracle-svg",
-      "key": "oracle/豆.svg",
-      "contentType": "image/svg+xml"
-    },
-    "唱": {
-      "type": "oracle-svg",
-      "key": "oracle/唱.svg",
-      "contentType": "image/svg+xml"
-    },
-    "糖": {
-      "type": "oracle-svg",
-      "key": "oracle/糖.svg",
       "contentType": "image/svg+xml"
     },
     "米": {
@@ -1066,61 +1041,496 @@
       "key": "oracle/米.svg",
       "contentType": "image/svg+xml"
     },
+    "灯": {
+      "type": "oracle-svg",
+      "key": "oracle/灯.svg",
+      "contentType": "image/svg+xml"
+    },
+    "肉": {
+      "type": "oracle-svg",
+      "key": "oracle/肉.svg",
+      "contentType": "image/svg+xml"
+    },
     "盐": {
       "type": "oracle-svg",
       "key": "oracle/盐.svg",
       "contentType": "image/svg+xml"
     },
-    "说-oracle": {
-      "type": "stage-glyph-svg",
-      "char": "说",
-      "era": "oracle",
-      "key": "glyphs/说/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
-      "status": "draft",
+    "糖": {
+      "type": "oracle-svg",
+      "key": "oracle/糖.svg",
       "contentType": "image/svg+xml"
     },
-    "说-clerical": {
+    "秀": {
+      "type": "oracle-svg",
+      "key": "oracle/秀.svg",
+      "contentType": "image/svg+xml"
+    },
+    "豆": {
+      "type": "oracle-svg",
+      "key": "oracle/豆.svg",
+      "contentType": "image/svg+xml"
+    },
+    "人-bronze": {
       "type": "stage-glyph-svg",
-      "char": "说",
+      "char": "人",
+      "era": "bronze",
+      "key": "glyphs/人/bronze.svg",
+      "assetKey": "glyphs/人/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:人-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E4%BA%BA-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/%E4%BA%BA-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:36:21.738Z",
+      "preserved": true
+    },
+    "人-seal": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "seal",
+      "key": "glyphs/人/seal.svg",
+      "assetKey": "glyphs/人/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:人-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E4%BA%BA-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/%E4%BA%BA-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:37:34.057Z",
+      "preserved": true
+    },
+    "人-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "人",
       "era": "clerical",
-      "key": "glyphs/说/clerical.svg",
+      "key": "glyphs/人/clerical.svg",
+      "assetKey": "glyphs/人/clerical.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:人-clerical.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E4%BA%BA-clerical.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/%E4%BA%BA-clerical.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:38:48.447Z",
+      "preserved": true
+    },
+    "水-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "oracle",
+      "key": "glyphs/水/oracle.svg",
+      "assetKey": "glyphs/水/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:水-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B0%B4-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/%E6%B0%B4-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:40:02.806Z",
+      "preserved": true
+    },
+    "水-seal": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "seal",
+      "key": "glyphs/水/seal.svg",
+      "assetKey": "glyphs/水/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:水-bigseal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B0%B4-bigseal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/%E6%B0%B4-bigseal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:42:54.124Z",
+      "preserved": true
+    },
+    "水-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "bronze",
+      "key": "glyphs/水/bronze.svg",
+      "assetKey": "glyphs/水/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:水-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B0%B4-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/%E6%B0%B4-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:41:37.267Z",
+      "preserved": true
+    },
+    "山-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "oracle",
+      "key": "glyphs/山/oracle.svg",
+      "assetKey": "glyphs/山/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:山-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%B1%B1-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6b/%E5%B1%B1-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T18:03:18.618Z",
+      "preserved": true
+    },
+    "山-seal": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "seal",
+      "key": "glyphs/山/seal.svg",
+      "assetKey": "glyphs/山/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:山-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%B1%B1-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/%E5%B1%B1-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T18:05:53.452Z",
+      "preserved": true
+    },
+    "山-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "bronze",
+      "key": "glyphs/山/bronze.svg",
+      "assetKey": "glyphs/山/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:山-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%B1%B1-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/%E5%B1%B1-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T18:04:34.704Z",
+      "preserved": true
+    },
+    "日-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "oracle",
+      "key": "glyphs/日/oracle.svg",
+      "assetKey": "glyphs/日/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:日-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%97%A5-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/%E6%97%A5-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:48:29.508Z",
+      "preserved": true
+    },
+    "日-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "bronze",
+      "key": "glyphs/日/bronze.svg",
+      "assetKey": "glyphs/日/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:日-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%97%A5-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/%E6%97%A5-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:49:46.285Z",
+      "preserved": true
+    },
+    "日-seal": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "seal",
+      "key": "glyphs/日/seal.svg",
+      "assetKey": "glyphs/日/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:日-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%97%A5-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/%E6%97%A5-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:50:59.802Z",
+      "preserved": true
+    },
+    "月-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "bronze",
+      "key": "glyphs/月/bronze.svg",
+      "assetKey": "glyphs/月/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:月-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9C%88-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/%E6%9C%88-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:54:03.159Z",
+      "preserved": true
+    },
+    "月-seal": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "seal",
+      "key": "glyphs/月/seal.svg",
+      "assetKey": "glyphs/月/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:月-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9C%88-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/%E6%9C%88-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:55:15.468Z",
+      "preserved": true
+    },
+    "月-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "oracle",
+      "key": "glyphs/月/oracle.svg",
+      "assetKey": "glyphs/月/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:月-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9C%88-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/%E6%9C%88-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:52:49.808Z",
+      "preserved": true
+    },
+    "火-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "oracle",
+      "key": "glyphs/火/oracle.svg",
+      "assetKey": "glyphs/火/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:火-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%81%AB-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/%E7%81%AB-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:57:08.758Z",
+      "preserved": true
+    },
+    "火-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "bronze",
+      "key": "glyphs/火/bronze.svg",
+      "assetKey": "glyphs/火/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:火-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%81%AB-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/96/%E7%81%AB-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:58:25.883Z",
+      "preserved": true
+    },
+    "火-seal": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "seal",
+      "key": "glyphs/火/seal.svg",
+      "assetKey": "glyphs/火/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:火-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%81%AB-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/%E7%81%AB-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:59:42.431Z",
+      "preserved": true
+    },
+    "木-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "oracle",
+      "key": "glyphs/木/oracle.svg",
+      "assetKey": "glyphs/木/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:木-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9C%A8-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e9/%E6%9C%A8-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:13:07.470Z",
+      "preserved": true
+    },
+    "木-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "bronze",
+      "key": "glyphs/木/bronze.svg",
+      "assetKey": "glyphs/木/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:木-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9C%A8-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/%E6%9C%A8-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:14:25.407Z",
+      "preserved": true
+    },
+    "木-seal": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "seal",
+      "key": "glyphs/木/seal.svg",
+      "assetKey": "glyphs/木/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:木-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9C%A8-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/%E6%9C%A8-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:15:38.808Z",
+      "preserved": true
+    },
+    "人-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "人",
+      "era": "oracle",
+      "key": "glyphs/人/oracle.svg",
+      "assetKey": "glyphs/人/oracle.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:人-oracle.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E4%BA%BA-oracle.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%E4%BA%BA-oracle.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-20T17:35:09.047Z",
+      "preserved": true
+    },
+    "水-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "水",
+      "era": "clerical",
+      "key": "glyphs/水/clerical.svg",
       "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "说-bronze": {
+    "水-regular": {
       "type": "stage-glyph-svg",
-      "char": "说",
-      "era": "bronze",
-      "key": "glyphs/说/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "说-seal": {
-      "type": "stage-glyph-svg",
-      "char": "说",
-      "era": "seal",
-      "key": "glyphs/说/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "说-regular": {
-      "type": "stage-glyph-svg",
-      "char": "说",
+      "char": "水",
       "era": "regular",
-      "key": "glyphs/说/regular.svg",
+      "key": "glyphs/水/regular.svg",
       "source": "通行楷书参考字形",
       "status": "reference",
       "contentType": "image/svg+xml"
     },
-    "文-regular": {
+    "山-clerical": {
       "type": "stage-glyph-svg",
-      "char": "文",
+      "char": "山",
+      "era": "clerical",
+      "key": "glyphs/山/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "人-regular": {
+      "type": "stage-glyph-svg",
+      "char": "人",
       "era": "regular",
-      "key": "glyphs/文/regular.svg",
+      "key": "glyphs/人/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "月-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "clerical",
+      "key": "glyphs/月/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "月-regular": {
+      "type": "stage-glyph-svg",
+      "char": "月",
+      "era": "regular",
+      "key": "glyphs/月/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "日-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "clerical",
+      "key": "glyphs/日/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "日-regular": {
+      "type": "stage-glyph-svg",
+      "char": "日",
+      "era": "regular",
+      "key": "glyphs/日/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "山-regular": {
+      "type": "stage-glyph-svg",
+      "char": "山",
+      "era": "regular",
+      "key": "glyphs/山/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "火-regular": {
+      "type": "stage-glyph-svg",
+      "char": "火",
+      "era": "regular",
+      "key": "glyphs/火/regular.svg",
       "source": "通行楷书参考字形",
       "status": "reference",
       "contentType": "image/svg+xml"
@@ -1134,6 +1544,15 @@
       "status": "draft",
       "contentType": "image/svg+xml"
     },
+    "文-seal": {
+      "type": "stage-glyph-svg",
+      "char": "文",
+      "era": "seal",
+      "key": "glyphs/文/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
     "文-oracle": {
       "type": "stage-glyph-svg",
       "char": "文",
@@ -1143,22 +1562,22 @@
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "字-oracle": {
+    "木-regular": {
       "type": "stage-glyph-svg",
-      "char": "字",
-      "era": "oracle",
-      "key": "glyphs/字/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
-      "status": "draft",
+      "char": "木",
+      "era": "regular",
+      "key": "glyphs/木/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
       "contentType": "image/svg+xml"
     },
-    "字-seal": {
+    "文-regular": {
       "type": "stage-glyph-svg",
-      "char": "字",
-      "era": "seal",
-      "key": "glyphs/字/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
+      "char": "文",
+      "era": "regular",
+      "key": "glyphs/文/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
       "contentType": "image/svg+xml"
     },
     "文-clerical": {
@@ -1188,299 +1607,56 @@
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "字-regular": {
+    "说-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "说",
+      "era": "bronze",
+      "key": "glyphs/说/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "字-oracle": {
       "type": "stage-glyph-svg",
       "char": "字",
-      "era": "regular",
-      "key": "glyphs/字/regular.svg",
-      "source": "通行楷书参考字形",
-      "status": "reference",
-      "contentType": "image/svg+xml"
-    },
-    "人-oracle": {
-      "type": "stage-glyph-svg",
-      "char": "人",
       "era": "oracle",
-      "key": "glyphs/人/oracle.svg",
+      "key": "glyphs/字/oracle.svg",
       "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "人-bronze": {
+    "说-seal": {
       "type": "stage-glyph-svg",
-      "char": "人",
-      "era": "bronze",
-      "key": "glyphs/人/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "人-clerical": {
-      "type": "stage-glyph-svg",
-      "char": "人",
-      "era": "clerical",
-      "key": "glyphs/人/clerical.svg",
-      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "人-seal": {
-      "type": "stage-glyph-svg",
-      "char": "人",
+      "char": "说",
       "era": "seal",
-      "key": "glyphs/人/seal.svg",
+      "key": "glyphs/说/seal.svg",
       "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "人-regular": {
+    "说-regular": {
       "type": "stage-glyph-svg",
-      "char": "人",
+      "char": "说",
       "era": "regular",
-      "key": "glyphs/人/regular.svg",
+      "key": "glyphs/说/regular.svg",
       "source": "通行楷书参考字形",
       "status": "reference",
       "contentType": "image/svg+xml"
     },
-    "水-clerical": {
+    "说-oracle": {
       "type": "stage-glyph-svg",
-      "char": "水",
-      "era": "clerical",
-      "key": "glyphs/水/clerical.svg",
-      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "水-seal": {
-      "type": "stage-glyph-svg",
-      "char": "水",
-      "era": "seal",
-      "key": "glyphs/水/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "水-oracle": {
-      "type": "stage-glyph-svg",
-      "char": "水",
+      "char": "说",
       "era": "oracle",
-      "key": "glyphs/水/oracle.svg",
+      "key": "glyphs/说/oracle.svg",
       "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "山-oracle": {
+    "字-seal": {
       "type": "stage-glyph-svg",
-      "char": "山",
-      "era": "oracle",
-      "key": "glyphs/山/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "水-bronze": {
-      "type": "stage-glyph-svg",
-      "char": "水",
-      "era": "bronze",
-      "key": "glyphs/水/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "山-seal": {
-      "type": "stage-glyph-svg",
-      "char": "山",
+      "char": "字",
       "era": "seal",
-      "key": "glyphs/山/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "水-regular": {
-      "type": "stage-glyph-svg",
-      "char": "水",
-      "era": "regular",
-      "key": "glyphs/水/regular.svg",
-      "source": "通行楷书参考字形",
-      "status": "reference",
-      "contentType": "image/svg+xml"
-    },
-    "山-regular": {
-      "type": "stage-glyph-svg",
-      "char": "山",
-      "era": "regular",
-      "key": "glyphs/山/regular.svg",
-      "source": "通行楷书参考字形",
-      "status": "reference",
-      "contentType": "image/svg+xml"
-    },
-    "山-bronze": {
-      "type": "stage-glyph-svg",
-      "char": "山",
-      "era": "bronze",
-      "key": "glyphs/山/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "日-bronze": {
-      "type": "stage-glyph-svg",
-      "char": "日",
-      "era": "bronze",
-      "key": "glyphs/日/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "山-clerical": {
-      "type": "stage-glyph-svg",
-      "char": "山",
-      "era": "clerical",
-      "key": "glyphs/山/clerical.svg",
-      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "日-regular": {
-      "type": "stage-glyph-svg",
-      "char": "日",
-      "era": "regular",
-      "key": "glyphs/日/regular.svg",
-      "source": "通行楷书参考字形",
-      "status": "reference",
-      "contentType": "image/svg+xml"
-    },
-    "日-clerical": {
-      "type": "stage-glyph-svg",
-      "char": "日",
-      "era": "clerical",
-      "key": "glyphs/日/clerical.svg",
-      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "月-bronze": {
-      "type": "stage-glyph-svg",
-      "char": "月",
-      "era": "bronze",
-      "key": "glyphs/月/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "月-seal": {
-      "type": "stage-glyph-svg",
-      "char": "月",
-      "era": "seal",
-      "key": "glyphs/月/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "月-oracle": {
-      "type": "stage-glyph-svg",
-      "char": "月",
-      "era": "oracle",
-      "key": "glyphs/月/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "日-seal": {
-      "type": "stage-glyph-svg",
-      "char": "日",
-      "era": "seal",
-      "key": "glyphs/日/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "月-clerical": {
-      "type": "stage-glyph-svg",
-      "char": "月",
-      "era": "clerical",
-      "key": "glyphs/月/clerical.svg",
-      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "火-oracle": {
-      "type": "stage-glyph-svg",
-      "char": "火",
-      "era": "oracle",
-      "key": "glyphs/火/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "火-bronze": {
-      "type": "stage-glyph-svg",
-      "char": "火",
-      "era": "bronze",
-      "key": "glyphs/火/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "月-regular": {
-      "type": "stage-glyph-svg",
-      "char": "月",
-      "era": "regular",
-      "key": "glyphs/月/regular.svg",
-      "source": "通行楷书参考字形",
-      "status": "reference",
-      "contentType": "image/svg+xml"
-    },
-    "火-seal": {
-      "type": "stage-glyph-svg",
-      "char": "火",
-      "era": "seal",
-      "key": "glyphs/火/seal.svg",
-      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "木-oracle": {
-      "type": "stage-glyph-svg",
-      "char": "木",
-      "era": "oracle",
-      "key": "glyphs/木/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "火-regular": {
-      "type": "stage-glyph-svg",
-      "char": "火",
-      "era": "regular",
-      "key": "glyphs/火/regular.svg",
-      "source": "通行楷书参考字形",
-      "status": "reference",
-      "contentType": "image/svg+xml"
-    },
-    "木-bronze": {
-      "type": "stage-glyph-svg",
-      "char": "木",
-      "era": "bronze",
-      "key": "glyphs/木/bronze.svg",
-      "source": "项目内置金文字形资产位，待替换为铭文摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "木-clerical": {
-      "type": "stage-glyph-svg",
-      "char": "木",
-      "era": "clerical",
-      "key": "glyphs/木/clerical.svg",
-      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
-      "status": "draft",
-      "contentType": "image/svg+xml"
-    },
-    "文-seal": {
-      "type": "stage-glyph-svg",
-      "char": "文",
-      "era": "seal",
-      "key": "glyphs/文/seal.svg",
+      "key": "glyphs/字/seal.svg",
       "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
       "status": "draft",
       "contentType": "image/svg+xml"
@@ -1494,31 +1670,4081 @@
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "日-oracle": {
+    "说-clerical": {
       "type": "stage-glyph-svg",
-      "char": "日",
-      "era": "oracle",
-      "key": "glyphs/日/oracle.svg",
-      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "char": "说",
+      "era": "clerical",
+      "key": "glyphs/说/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "木-seal": {
+    "大-clerical": {
       "type": "stage-glyph-svg",
-      "char": "木",
+      "char": "大",
+      "era": "clerical",
+      "key": "glyphs/大/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "大-seal": {
+      "type": "stage-glyph-svg",
+      "char": "大",
       "era": "seal",
-      "key": "glyphs/木/seal.svg",
+      "key": "glyphs/大/seal.svg",
       "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
       "status": "draft",
       "contentType": "image/svg+xml"
     },
-    "木-regular": {
+    "女-oracle": {
       "type": "stage-glyph-svg",
-      "char": "木",
+      "char": "女",
+      "era": "oracle",
+      "key": "glyphs/女/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "大-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "大",
+      "era": "bronze",
+      "key": "glyphs/大/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "大-regular": {
+      "type": "stage-glyph-svg",
+      "char": "大",
       "era": "regular",
-      "key": "glyphs/木/regular.svg",
+      "key": "glyphs/大/regular.svg",
       "source": "通行楷书参考字形",
       "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "字-regular": {
+      "type": "stage-glyph-svg",
+      "char": "字",
+      "era": "regular",
+      "key": "glyphs/字/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "女-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "女",
+      "era": "bronze",
+      "key": "glyphs/女/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "女-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "女",
+      "era": "clerical",
+      "key": "glyphs/女/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "子-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "子",
+      "era": "oracle",
+      "key": "glyphs/子/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "子-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "子",
+      "era": "bronze",
+      "key": "glyphs/子/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "木-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "木",
+      "era": "clerical",
+      "key": "glyphs/木/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "子-regular": {
+      "type": "stage-glyph-svg",
+      "char": "子",
+      "era": "regular",
+      "key": "glyphs/子/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "女-regular": {
+      "type": "stage-glyph-svg",
+      "char": "女",
+      "era": "regular",
+      "key": "glyphs/女/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "口-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "口",
+      "era": "oracle",
+      "key": "glyphs/口/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "子-seal": {
+      "type": "stage-glyph-svg",
+      "char": "子",
+      "era": "seal",
+      "key": "glyphs/子/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "口-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "口",
+      "era": "clerical",
+      "key": "glyphs/口/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "口-regular": {
+      "type": "stage-glyph-svg",
+      "char": "口",
+      "era": "regular",
+      "key": "glyphs/口/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "口-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "口",
+      "era": "bronze",
+      "key": "glyphs/口/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "手-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "手",
+      "era": "bronze",
+      "key": "glyphs/手/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "手-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "手",
+      "era": "clerical",
+      "key": "glyphs/手/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "大-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "大",
+      "era": "oracle",
+      "key": "glyphs/大/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "手-seal": {
+      "type": "stage-glyph-svg",
+      "char": "手",
+      "era": "seal",
+      "key": "glyphs/手/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "手-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "手",
+      "era": "oracle",
+      "key": "glyphs/手/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "手-regular": {
+      "type": "stage-glyph-svg",
+      "char": "手",
+      "era": "regular",
+      "key": "glyphs/手/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "心-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "心",
+      "era": "oracle",
+      "key": "glyphs/心/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "心-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "心",
+      "era": "bronze",
+      "key": "glyphs/心/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "心-seal": {
+      "type": "stage-glyph-svg",
+      "char": "心",
+      "era": "seal",
+      "key": "glyphs/心/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "目-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "目",
+      "era": "oracle",
+      "key": "glyphs/目/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "心-regular": {
+      "type": "stage-glyph-svg",
+      "char": "心",
+      "era": "regular",
+      "key": "glyphs/心/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "目-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "目",
+      "era": "bronze",
+      "key": "glyphs/目/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "目-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "目",
+      "era": "clerical",
+      "key": "glyphs/目/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "子-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "子",
+      "era": "clerical",
+      "key": "glyphs/子/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "目-regular": {
+      "type": "stage-glyph-svg",
+      "char": "目",
+      "era": "regular",
+      "key": "glyphs/目/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "王-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "王",
+      "era": "oracle",
+      "key": "glyphs/王/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "目-seal": {
+      "type": "stage-glyph-svg",
+      "char": "目",
+      "era": "seal",
+      "key": "glyphs/目/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "王-regular": {
+      "type": "stage-glyph-svg",
+      "char": "王",
+      "era": "regular",
+      "key": "glyphs/王/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "王-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "王",
+      "era": "bronze",
+      "key": "glyphs/王/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "王-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "王",
+      "era": "clerical",
+      "key": "glyphs/王/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "王-seal": {
+      "type": "stage-glyph-svg",
+      "char": "王",
+      "era": "seal",
+      "key": "glyphs/王/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "土-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "土",
+      "era": "oracle",
+      "key": "glyphs/土/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "土-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "土",
+      "era": "bronze",
+      "key": "glyphs/土/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "土-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "土",
+      "era": "clerical",
+      "key": "glyphs/土/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "土-regular": {
+      "type": "stage-glyph-svg",
+      "char": "土",
+      "era": "regular",
+      "key": "glyphs/土/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "天-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "天",
+      "era": "bronze",
+      "key": "glyphs/天/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "天-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "天",
+      "era": "clerical",
+      "key": "glyphs/天/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "天-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "天",
+      "era": "oracle",
+      "key": "glyphs/天/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "天-seal": {
+      "type": "stage-glyph-svg",
+      "char": "天",
+      "era": "seal",
+      "key": "glyphs/天/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "土-seal": {
+      "type": "stage-glyph-svg",
+      "char": "土",
+      "era": "seal",
+      "key": "glyphs/土/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "心-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "心",
+      "era": "clerical",
+      "key": "glyphs/心/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "力-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "力",
+      "era": "oracle",
+      "key": "glyphs/力/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "力-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "力",
+      "era": "bronze",
+      "key": "glyphs/力/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "禾-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "禾",
+      "era": "oracle",
+      "key": "glyphs/禾/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "天-regular": {
+      "type": "stage-glyph-svg",
+      "char": "天",
+      "era": "regular",
+      "key": "glyphs/天/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "禾-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "禾",
+      "era": "bronze",
+      "key": "glyphs/禾/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "力-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "力",
+      "era": "clerical",
+      "key": "glyphs/力/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "力-seal": {
+      "type": "stage-glyph-svg",
+      "char": "力",
+      "era": "seal",
+      "key": "glyphs/力/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "力-regular": {
+      "type": "stage-glyph-svg",
+      "char": "力",
+      "era": "regular",
+      "key": "glyphs/力/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "禾-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "禾",
+      "era": "clerical",
+      "key": "glyphs/禾/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "禾-seal": {
+      "type": "stage-glyph-svg",
+      "char": "禾",
+      "era": "seal",
+      "key": "glyphs/禾/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "竹-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "竹",
+      "era": "bronze",
+      "key": "glyphs/竹/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "竹-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "竹",
+      "era": "oracle",
+      "key": "glyphs/竹/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "竹-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "竹",
+      "era": "clerical",
+      "key": "glyphs/竹/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "禾-regular": {
+      "type": "stage-glyph-svg",
+      "char": "禾",
+      "era": "regular",
+      "key": "glyphs/禾/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "竹-seal": {
+      "type": "stage-glyph-svg",
+      "char": "竹",
+      "era": "seal",
+      "key": "glyphs/竹/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "生-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "生",
+      "era": "bronze",
+      "key": "glyphs/生/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "生-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "生",
+      "era": "oracle",
+      "key": "glyphs/生/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "竹-regular": {
+      "type": "stage-glyph-svg",
+      "char": "竹",
+      "era": "regular",
+      "key": "glyphs/竹/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "生-seal": {
+      "type": "stage-glyph-svg",
+      "char": "生",
+      "era": "seal",
+      "key": "glyphs/生/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "生-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "生",
+      "era": "clerical",
+      "key": "glyphs/生/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "明-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "明",
+      "era": "bronze",
+      "key": "glyphs/明/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "明-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "明",
+      "era": "oracle",
+      "key": "glyphs/明/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "明-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "明",
+      "era": "clerical",
+      "key": "glyphs/明/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "明-seal": {
+      "type": "stage-glyph-svg",
+      "char": "明",
+      "era": "seal",
+      "key": "glyphs/明/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "明-regular": {
+      "type": "stage-glyph-svg",
+      "char": "明",
+      "era": "regular",
+      "key": "glyphs/明/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "龙-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "龙",
+      "era": "bronze",
+      "key": "glyphs/龙/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "龙-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "龙",
+      "era": "clerical",
+      "key": "glyphs/龙/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "生-regular": {
+      "type": "stage-glyph-svg",
+      "char": "生",
+      "era": "regular",
+      "key": "glyphs/生/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "家-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "家",
+      "era": "oracle",
+      "key": "glyphs/家/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "家-seal": {
+      "type": "stage-glyph-svg",
+      "char": "家",
+      "era": "seal",
+      "key": "glyphs/家/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "家-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "家",
+      "era": "bronze",
+      "key": "glyphs/家/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "家-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "家",
+      "era": "clerical",
+      "key": "glyphs/家/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "龙-seal": {
+      "type": "stage-glyph-svg",
+      "char": "龙",
+      "era": "seal",
+      "key": "glyphs/龙/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "家-regular": {
+      "type": "stage-glyph-svg",
+      "char": "家",
+      "era": "regular",
+      "key": "glyphs/家/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "老-seal": {
+      "type": "stage-glyph-svg",
+      "char": "老",
+      "era": "seal",
+      "key": "glyphs/老/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "老-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "老",
+      "era": "oracle",
+      "key": "glyphs/老/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "老-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "老",
+      "era": "bronze",
+      "key": "glyphs/老/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "老-regular": {
+      "type": "stage-glyph-svg",
+      "char": "老",
+      "era": "regular",
+      "key": "glyphs/老/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "雨-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "雨",
+      "era": "oracle",
+      "key": "glyphs/雨/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "雨-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "雨",
+      "era": "bronze",
+      "key": "glyphs/雨/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "雨-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "雨",
+      "era": "clerical",
+      "key": "glyphs/雨/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "雨-seal": {
+      "type": "stage-glyph-svg",
+      "char": "雨",
+      "era": "seal",
+      "key": "glyphs/雨/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "女-seal": {
+      "type": "stage-glyph-svg",
+      "char": "女",
+      "era": "seal",
+      "key": "glyphs/女/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "雨-regular": {
+      "type": "stage-glyph-svg",
+      "char": "雨",
+      "era": "regular",
+      "key": "glyphs/雨/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "老-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "老",
+      "era": "clerical",
+      "key": "glyphs/老/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鸟-seal": {
+      "type": "stage-glyph-svg",
+      "char": "鸟",
+      "era": "seal",
+      "key": "glyphs/鸟/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鸟-regular": {
+      "type": "stage-glyph-svg",
+      "char": "鸟",
+      "era": "regular",
+      "key": "glyphs/鸟/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "马-seal": {
+      "type": "stage-glyph-svg",
+      "char": "马",
+      "era": "seal",
+      "key": "glyphs/马/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鸟-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "鸟",
+      "era": "clerical",
+      "key": "glyphs/鸟/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "马-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "马",
+      "era": "clerical",
+      "key": "glyphs/马/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鱼-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "鱼",
+      "era": "oracle",
+      "key": "glyphs/鱼/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "马-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "马",
+      "era": "bronze",
+      "key": "glyphs/马/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "马-regular": {
+      "type": "stage-glyph-svg",
+      "char": "马",
+      "era": "regular",
+      "key": "glyphs/马/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "鸟-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "鸟",
+      "era": "bronze",
+      "key": "glyphs/鸟/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "龙-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "龙",
+      "era": "oracle",
+      "key": "glyphs/龙/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "龙-regular": {
+      "type": "stage-glyph-svg",
+      "char": "龙",
+      "era": "regular",
+      "key": "glyphs/龙/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "马-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "马",
+      "era": "oracle",
+      "key": "glyphs/马/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鱼-regular": {
+      "type": "stage-glyph-svg",
+      "char": "鱼",
+      "era": "regular",
+      "key": "glyphs/鱼/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "羊-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "羊",
+      "era": "bronze",
+      "key": "glyphs/羊/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鱼-seal": {
+      "type": "stage-glyph-svg",
+      "char": "鱼",
+      "era": "seal",
+      "key": "glyphs/鱼/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "羊-seal": {
+      "type": "stage-glyph-svg",
+      "char": "羊",
+      "era": "seal",
+      "key": "glyphs/羊/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鸟-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "鸟",
+      "era": "oracle",
+      "key": "glyphs/鸟/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "羊-regular": {
+      "type": "stage-glyph-svg",
+      "char": "羊",
+      "era": "regular",
+      "key": "glyphs/羊/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "羊-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "羊",
+      "era": "clerical",
+      "key": "glyphs/羊/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "牛-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "牛",
+      "era": "clerical",
+      "key": "glyphs/牛/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "牛-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "牛",
+      "era": "bronze",
+      "key": "glyphs/牛/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "牛-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "牛",
+      "era": "oracle",
+      "key": "glyphs/牛/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "田-seal": {
+      "type": "stage-glyph-svg",
+      "char": "田",
+      "era": "seal",
+      "key": "glyphs/田/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "田-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "田",
+      "era": "oracle",
+      "key": "glyphs/田/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鱼-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "鱼",
+      "era": "bronze",
+      "key": "glyphs/鱼/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "田-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "田",
+      "era": "clerical",
+      "key": "glyphs/田/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "羊-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "羊",
+      "era": "oracle",
+      "key": "glyphs/羊/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "田-regular": {
+      "type": "stage-glyph-svg",
+      "char": "田",
+      "era": "regular",
+      "key": "glyphs/田/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "风-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "风",
+      "era": "oracle",
+      "key": "glyphs/风/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "风-seal": {
+      "type": "stage-glyph-svg",
+      "char": "风",
+      "era": "seal",
+      "key": "glyphs/风/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "风-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "风",
+      "era": "clerical",
+      "key": "glyphs/风/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "风-regular": {
+      "type": "stage-glyph-svg",
+      "char": "风",
+      "era": "regular",
+      "key": "glyphs/风/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "止-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "止",
+      "era": "oracle",
+      "key": "glyphs/止/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "止-seal": {
+      "type": "stage-glyph-svg",
+      "char": "止",
+      "era": "seal",
+      "key": "glyphs/止/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "风-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "风",
+      "era": "bronze",
+      "key": "glyphs/风/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "止-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "止",
+      "era": "bronze",
+      "key": "glyphs/止/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "止-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "止",
+      "era": "clerical",
+      "key": "glyphs/止/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "田-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "田",
+      "era": "bronze",
+      "key": "glyphs/田/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "光-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "光",
+      "era": "clerical",
+      "key": "glyphs/光/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "光-seal": {
+      "type": "stage-glyph-svg",
+      "char": "光",
+      "era": "seal",
+      "key": "glyphs/光/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "牛-regular": {
+      "type": "stage-glyph-svg",
+      "char": "牛",
+      "era": "regular",
+      "key": "glyphs/牛/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "虫-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "虫",
+      "era": "bronze",
+      "key": "glyphs/虫/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "口-seal": {
+      "type": "stage-glyph-svg",
+      "char": "口",
+      "era": "seal",
+      "key": "glyphs/口/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "止-regular": {
+      "type": "stage-glyph-svg",
+      "char": "止",
+      "era": "regular",
+      "key": "glyphs/止/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "光-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "光",
+      "era": "bronze",
+      "key": "glyphs/光/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "虫-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "虫",
+      "era": "oracle",
+      "key": "glyphs/虫/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "虫-regular": {
+      "type": "stage-glyph-svg",
+      "char": "虫",
+      "era": "regular",
+      "key": "glyphs/虫/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "虫-seal": {
+      "type": "stage-glyph-svg",
+      "char": "虫",
+      "era": "seal",
+      "key": "glyphs/虫/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "虫-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "虫",
+      "era": "clerical",
+      "key": "glyphs/虫/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "贝-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "贝",
+      "era": "clerical",
+      "key": "glyphs/贝/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "贝-regular": {
+      "type": "stage-glyph-svg",
+      "char": "贝",
+      "era": "regular",
+      "key": "glyphs/贝/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "贝-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "贝",
+      "era": "oracle",
+      "key": "glyphs/贝/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "光-regular": {
+      "type": "stage-glyph-svg",
+      "char": "光",
+      "era": "regular",
+      "key": "glyphs/光/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "鱼-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "鱼",
+      "era": "clerical",
+      "key": "glyphs/鱼/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "走-seal": {
+      "type": "stage-glyph-svg",
+      "char": "走",
+      "era": "seal",
+      "key": "glyphs/走/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "走-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "走",
+      "era": "bronze",
+      "key": "glyphs/走/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "光-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "光",
+      "era": "oracle",
+      "key": "glyphs/光/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "来-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "来",
+      "era": "oracle",
+      "key": "glyphs/来/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "走-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "走",
+      "era": "clerical",
+      "key": "glyphs/走/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "走-regular": {
+      "type": "stage-glyph-svg",
+      "char": "走",
+      "era": "regular",
+      "key": "glyphs/走/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "来-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "来",
+      "era": "bronze",
+      "key": "glyphs/来/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "来-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "来",
+      "era": "clerical",
+      "key": "glyphs/来/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "东-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "东",
+      "era": "clerical",
+      "key": "glyphs/东/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "东-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "东",
+      "era": "bronze",
+      "key": "glyphs/东/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "来-seal": {
+      "type": "stage-glyph-svg",
+      "char": "来",
+      "era": "seal",
+      "key": "glyphs/来/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "东-regular": {
+      "type": "stage-glyph-svg",
+      "char": "东",
+      "era": "regular",
+      "key": "glyphs/东/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "东-seal": {
+      "type": "stage-glyph-svg",
+      "char": "东",
+      "era": "seal",
+      "key": "glyphs/东/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "西-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "西",
+      "era": "oracle",
+      "key": "glyphs/西/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "西-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "西",
+      "era": "bronze",
+      "key": "glyphs/西/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "来-regular": {
+      "type": "stage-glyph-svg",
+      "char": "来",
+      "era": "regular",
+      "key": "glyphs/来/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "贝-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "贝",
+      "era": "bronze",
+      "key": "glyphs/贝/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "西-regular": {
+      "type": "stage-glyph-svg",
+      "char": "西",
+      "era": "regular",
+      "key": "glyphs/西/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "正-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "正",
+      "era": "oracle",
+      "key": "glyphs/正/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "西-seal": {
+      "type": "stage-glyph-svg",
+      "char": "西",
+      "era": "seal",
+      "key": "glyphs/西/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "西-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "西",
+      "era": "clerical",
+      "key": "glyphs/西/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "见-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "见",
+      "era": "oracle",
+      "key": "glyphs/见/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "正-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "正",
+      "era": "bronze",
+      "key": "glyphs/正/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "见-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "见",
+      "era": "bronze",
+      "key": "glyphs/见/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "正-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "正",
+      "era": "clerical",
+      "key": "glyphs/正/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "东-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "东",
+      "era": "oracle",
+      "key": "glyphs/东/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "见-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "见",
+      "era": "clerical",
+      "key": "glyphs/见/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "正-seal": {
+      "type": "stage-glyph-svg",
+      "char": "正",
+      "era": "seal",
+      "key": "glyphs/正/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "贝-seal": {
+      "type": "stage-glyph-svg",
+      "char": "贝",
+      "era": "seal",
+      "key": "glyphs/贝/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "见-regular": {
+      "type": "stage-glyph-svg",
+      "char": "见",
+      "era": "regular",
+      "key": "glyphs/见/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "见-seal": {
+      "type": "stage-glyph-svg",
+      "char": "见",
+      "era": "seal",
+      "key": "glyphs/见/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "自-seal": {
+      "type": "stage-glyph-svg",
+      "char": "自",
+      "era": "seal",
+      "key": "glyphs/自/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "自-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "自",
+      "era": "clerical",
+      "key": "glyphs/自/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "走-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "走",
+      "era": "oracle",
+      "key": "glyphs/走/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "自-regular": {
+      "type": "stage-glyph-svg",
+      "char": "自",
+      "era": "regular",
+      "key": "glyphs/自/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "耳-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "耳",
+      "era": "oracle",
+      "key": "glyphs/耳/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "耳-seal": {
+      "type": "stage-glyph-svg",
+      "char": "耳",
+      "era": "seal",
+      "key": "glyphs/耳/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "耳-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "耳",
+      "era": "bronze",
+      "key": "glyphs/耳/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "耳-regular": {
+      "type": "stage-glyph-svg",
+      "char": "耳",
+      "era": "regular",
+      "key": "glyphs/耳/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "足-seal": {
+      "type": "stage-glyph-svg",
+      "char": "足",
+      "era": "seal",
+      "key": "glyphs/足/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "自-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "自",
+      "era": "oracle",
+      "key": "glyphs/自/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "足-regular": {
+      "type": "stage-glyph-svg",
+      "char": "足",
+      "era": "regular",
+      "key": "glyphs/足/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "足-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "足",
+      "era": "clerical",
+      "key": "glyphs/足/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "弓-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "弓",
+      "era": "bronze",
+      "key": "glyphs/弓/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "弓-seal": {
+      "type": "stage-glyph-svg",
+      "char": "弓",
+      "era": "seal",
+      "key": "glyphs/弓/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "弓-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "弓",
+      "era": "clerical",
+      "key": "glyphs/弓/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "矢-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "矢",
+      "era": "oracle",
+      "key": "glyphs/矢/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "弓-regular": {
+      "type": "stage-glyph-svg",
+      "char": "弓",
+      "era": "regular",
+      "key": "glyphs/弓/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "弓-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "弓",
+      "era": "oracle",
+      "key": "glyphs/弓/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "足-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "足",
+      "era": "oracle",
+      "key": "glyphs/足/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "矢-seal": {
+      "type": "stage-glyph-svg",
+      "char": "矢",
+      "era": "seal",
+      "key": "glyphs/矢/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "矢-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "矢",
+      "era": "bronze",
+      "key": "glyphs/矢/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "耳-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "耳",
+      "era": "clerical",
+      "key": "glyphs/耳/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "矢-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "矢",
+      "era": "clerical",
+      "key": "glyphs/矢/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "矢-regular": {
+      "type": "stage-glyph-svg",
+      "char": "矢",
+      "era": "regular",
+      "key": "glyphs/矢/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "首-seal": {
+      "type": "stage-glyph-svg",
+      "char": "首",
+      "era": "seal",
+      "key": "glyphs/首/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "首-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "首",
+      "era": "clerical",
+      "key": "glyphs/首/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "首-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "首",
+      "era": "bronze",
+      "key": "glyphs/首/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "首-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "首",
+      "era": "oracle",
+      "key": "glyphs/首/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "面-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "面",
+      "era": "oracle",
+      "key": "glyphs/面/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "面-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "面",
+      "era": "clerical",
+      "key": "glyphs/面/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "足-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "足",
+      "era": "bronze",
+      "key": "glyphs/足/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "面-regular": {
+      "type": "stage-glyph-svg",
+      "char": "面",
+      "era": "regular",
+      "key": "glyphs/面/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "斤-seal": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "seal",
+      "key": "glyphs/斤/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "首-regular": {
+      "type": "stage-glyph-svg",
+      "char": "首",
+      "era": "regular",
+      "key": "glyphs/首/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "斤-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "oracle",
+      "key": "glyphs/斤/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "斤-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "bronze",
+      "key": "glyphs/斤/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "臣-seal": {
+      "type": "stage-glyph-svg",
+      "char": "臣",
+      "era": "seal",
+      "key": "glyphs/臣/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "斤-regular": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "regular",
+      "key": "glyphs/斤/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "臣-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "臣",
+      "era": "bronze",
+      "key": "glyphs/臣/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "臣-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "臣",
+      "era": "clerical",
+      "key": "glyphs/臣/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "臣-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "臣",
+      "era": "oracle",
+      "key": "glyphs/臣/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "父-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "父",
+      "era": "oracle",
+      "key": "glyphs/父/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "臣-regular": {
+      "type": "stage-glyph-svg",
+      "char": "臣",
+      "era": "regular",
+      "key": "glyphs/臣/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "面-seal": {
+      "type": "stage-glyph-svg",
+      "char": "面",
+      "era": "seal",
+      "key": "glyphs/面/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "面-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "面",
+      "era": "bronze",
+      "key": "glyphs/面/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "父-seal": {
+      "type": "stage-glyph-svg",
+      "char": "父",
+      "era": "seal",
+      "key": "glyphs/父/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "父-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "父",
+      "era": "bronze",
+      "key": "glyphs/父/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "父-regular": {
+      "type": "stage-glyph-svg",
+      "char": "父",
+      "era": "regular",
+      "key": "glyphs/父/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "父-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "父",
+      "era": "clerical",
+      "key": "glyphs/父/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "母-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "母",
+      "era": "bronze",
+      "key": "glyphs/母/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "母-seal": {
+      "type": "stage-glyph-svg",
+      "char": "母",
+      "era": "seal",
+      "key": "glyphs/母/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "母-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "母",
+      "era": "oracle",
+      "key": "glyphs/母/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "母-regular": {
+      "type": "stage-glyph-svg",
+      "char": "母",
+      "era": "regular",
+      "key": "glyphs/母/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "男-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "男",
+      "era": "bronze",
+      "key": "glyphs/男/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "牛-seal": {
+      "type": "stage-glyph-svg",
+      "char": "牛",
+      "era": "seal",
+      "key": "glyphs/牛/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "男-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "男",
+      "era": "oracle",
+      "key": "glyphs/男/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "男-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "男",
+      "era": "clerical",
+      "key": "glyphs/男/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "友-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "友",
+      "era": "bronze",
+      "key": "glyphs/友/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "男-seal": {
+      "type": "stage-glyph-svg",
+      "char": "男",
+      "era": "seal",
+      "key": "glyphs/男/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "友-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "友",
+      "era": "clerical",
+      "key": "glyphs/友/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "友-regular": {
+      "type": "stage-glyph-svg",
+      "char": "友",
+      "era": "regular",
+      "key": "glyphs/友/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "母-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "母",
+      "era": "clerical",
+      "key": "glyphs/母/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "友-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "友",
+      "era": "oracle",
+      "key": "glyphs/友/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "男-regular": {
+      "type": "stage-glyph-svg",
+      "char": "男",
+      "era": "regular",
+      "key": "glyphs/男/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "名-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "名",
+      "era": "oracle",
+      "key": "glyphs/名/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "名-seal": {
+      "type": "stage-glyph-svg",
+      "char": "名",
+      "era": "seal",
+      "key": "glyphs/名/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "名-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "名",
+      "era": "clerical",
+      "key": "glyphs/名/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "名-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "名",
+      "era": "bronze",
+      "key": "glyphs/名/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "名-regular": {
+      "type": "stage-glyph-svg",
+      "char": "名",
+      "era": "regular",
+      "key": "glyphs/名/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "友-seal": {
+      "type": "stage-glyph-svg",
+      "char": "友",
+      "era": "seal",
+      "key": "glyphs/友/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "宝-seal": {
+      "type": "stage-glyph-svg",
+      "char": "宝",
+      "era": "seal",
+      "key": "glyphs/宝/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "宝-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "宝",
+      "era": "clerical",
+      "key": "glyphs/宝/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "宝-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "宝",
+      "era": "bronze",
+      "key": "glyphs/宝/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "宝-regular": {
+      "type": "stage-glyph-svg",
+      "char": "宝",
+      "era": "regular",
+      "key": "glyphs/宝/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "黑-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "黑",
+      "era": "bronze",
+      "key": "glyphs/黑/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "黑-regular": {
+      "type": "stage-glyph-svg",
+      "char": "黑",
+      "era": "regular",
+      "key": "glyphs/黑/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "正-regular": {
+      "type": "stage-glyph-svg",
+      "char": "正",
+      "era": "regular",
+      "key": "glyphs/正/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "黑-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "黑",
+      "era": "clerical",
+      "key": "glyphs/黑/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "黑-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "黑",
+      "era": "oracle",
+      "key": "glyphs/黑/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "赤-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "赤",
+      "era": "oracle",
+      "key": "glyphs/赤/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "赤-regular": {
+      "type": "stage-glyph-svg",
+      "char": "赤",
+      "era": "regular",
+      "key": "glyphs/赤/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "赤-seal": {
+      "type": "stage-glyph-svg",
+      "char": "赤",
+      "era": "seal",
+      "key": "glyphs/赤/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "赤-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "赤",
+      "era": "bronze",
+      "key": "glyphs/赤/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "青-seal": {
+      "type": "stage-glyph-svg",
+      "char": "青",
+      "era": "seal",
+      "key": "glyphs/青/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "赤-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "赤",
+      "era": "clerical",
+      "key": "glyphs/赤/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "宝-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "宝",
+      "era": "oracle",
+      "key": "glyphs/宝/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "青-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "青",
+      "era": "bronze",
+      "key": "glyphs/青/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "青-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "青",
+      "era": "oracle",
+      "key": "glyphs/青/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "北-seal": {
+      "type": "stage-glyph-svg",
+      "char": "北",
+      "era": "seal",
+      "key": "glyphs/北/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "北-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "北",
+      "era": "clerical",
+      "key": "glyphs/北/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "斤-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "clerical",
+      "key": "glyphs/斤/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "自-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "自",
+      "era": "bronze",
+      "key": "glyphs/自/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "门-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "门",
+      "era": "oracle",
+      "key": "glyphs/门/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "北-regular": {
+      "type": "stage-glyph-svg",
+      "char": "北",
+      "era": "regular",
+      "key": "glyphs/北/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "青-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "青",
+      "era": "clerical",
+      "key": "glyphs/青/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "门-seal": {
+      "type": "stage-glyph-svg",
+      "char": "门",
+      "era": "seal",
+      "key": "glyphs/门/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "门-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "门",
+      "era": "bronze",
+      "key": "glyphs/门/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "户-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "户",
+      "era": "bronze",
+      "key": "glyphs/户/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "户-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "户",
+      "era": "oracle",
+      "key": "glyphs/户/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "北-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "北",
+      "era": "oracle",
+      "key": "glyphs/北/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "户-seal": {
+      "type": "stage-glyph-svg",
+      "char": "户",
+      "era": "seal",
+      "key": "glyphs/户/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "户-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "户",
+      "era": "clerical",
+      "key": "glyphs/户/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "门-regular": {
+      "type": "stage-glyph-svg",
+      "char": "门",
+      "era": "regular",
+      "key": "glyphs/门/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "工-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "工",
+      "era": "oracle",
+      "key": "glyphs/工/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "工-seal": {
+      "type": "stage-glyph-svg",
+      "char": "工",
+      "era": "seal",
+      "key": "glyphs/工/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "工-regular": {
+      "type": "stage-glyph-svg",
+      "char": "工",
+      "era": "regular",
+      "key": "glyphs/工/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "书-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "书",
+      "era": "oracle",
+      "key": "glyphs/书/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "门-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "门",
+      "era": "clerical",
+      "key": "glyphs/门/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "书-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "书",
+      "era": "clerical",
+      "key": "glyphs/书/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "书-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "书",
+      "era": "bronze",
+      "key": "glyphs/书/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "书-regular": {
+      "type": "stage-glyph-svg",
+      "char": "书",
+      "era": "regular",
+      "key": "glyphs/书/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "书-seal": {
+      "type": "stage-glyph-svg",
+      "char": "书",
+      "era": "seal",
+      "key": "glyphs/书/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "学-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "学",
+      "era": "bronze",
+      "key": "glyphs/学/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "工-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "工",
+      "era": "bronze",
+      "key": "glyphs/工/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "学-seal": {
+      "type": "stage-glyph-svg",
+      "char": "学",
+      "era": "seal",
+      "key": "glyphs/学/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "学-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "学",
+      "era": "clerical",
+      "key": "glyphs/学/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "农-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "农",
+      "era": "bronze",
+      "key": "glyphs/农/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "学-regular": {
+      "type": "stage-glyph-svg",
+      "char": "学",
+      "era": "regular",
+      "key": "glyphs/学/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "农-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "农",
+      "era": "oracle",
+      "key": "glyphs/农/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "青-regular": {
+      "type": "stage-glyph-svg",
+      "char": "青",
+      "era": "regular",
+      "key": "glyphs/青/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "农-seal": {
+      "type": "stage-glyph-svg",
+      "char": "农",
+      "era": "seal",
+      "key": "glyphs/农/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "工-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "工",
+      "era": "clerical",
+      "key": "glyphs/工/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "农-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "农",
+      "era": "clerical",
+      "key": "glyphs/农/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "农-regular": {
+      "type": "stage-glyph-svg",
+      "char": "农",
+      "era": "regular",
+      "key": "glyphs/农/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "学-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "学",
+      "era": "oracle",
+      "key": "glyphs/学/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "商-seal": {
+      "type": "stage-glyph-svg",
+      "char": "商",
+      "era": "seal",
+      "key": "glyphs/商/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "商-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "商",
+      "era": "bronze",
+      "key": "glyphs/商/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "商-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "商",
+      "era": "oracle",
+      "key": "glyphs/商/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "商-regular": {
+      "type": "stage-glyph-svg",
+      "char": "商",
+      "era": "regular",
+      "key": "glyphs/商/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "古-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "古",
+      "era": "bronze",
+      "key": "glyphs/古/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "古-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "古",
+      "era": "oracle",
+      "key": "glyphs/古/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "古-regular": {
+      "type": "stage-glyph-svg",
+      "char": "古",
+      "era": "regular",
+      "key": "glyphs/古/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "鬼-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "鬼",
+      "era": "oracle",
+      "key": "glyphs/鬼/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鬼-seal": {
+      "type": "stage-glyph-svg",
+      "char": "鬼",
+      "era": "seal",
+      "key": "glyphs/鬼/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鬼-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "鬼",
+      "era": "clerical",
+      "key": "glyphs/鬼/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鬼-regular": {
+      "type": "stage-glyph-svg",
+      "char": "鬼",
+      "era": "regular",
+      "key": "glyphs/鬼/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "古-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "古",
+      "era": "clerical",
+      "key": "glyphs/古/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "鬼-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "鬼",
+      "era": "bronze",
+      "key": "glyphs/鬼/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "神-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "神",
+      "era": "bronze",
+      "key": "glyphs/神/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "神-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "神",
+      "era": "oracle",
+      "key": "glyphs/神/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "神-seal": {
+      "type": "stage-glyph-svg",
+      "char": "神",
+      "era": "seal",
+      "key": "glyphs/神/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "神-regular": {
+      "type": "stage-glyph-svg",
+      "char": "神",
+      "era": "regular",
+      "key": "glyphs/神/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "本-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "本",
+      "era": "oracle",
+      "key": "glyphs/本/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "本-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "本",
+      "era": "bronze",
+      "key": "glyphs/本/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "神-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "神",
+      "era": "clerical",
+      "key": "glyphs/神/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "本-regular": {
+      "type": "stage-glyph-svg",
+      "char": "本",
+      "era": "regular",
+      "key": "glyphs/本/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "本-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "本",
+      "era": "clerical",
+      "key": "glyphs/本/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "古-seal": {
+      "type": "stage-glyph-svg",
+      "char": "古",
+      "era": "seal",
+      "key": "glyphs/古/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "末-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "末",
+      "era": "oracle",
+      "key": "glyphs/末/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "末-seal": {
+      "type": "stage-glyph-svg",
+      "char": "末",
+      "era": "seal",
+      "key": "glyphs/末/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "末-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "末",
+      "era": "clerical",
+      "key": "glyphs/末/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "本-seal": {
+      "type": "stage-glyph-svg",
+      "char": "本",
+      "era": "seal",
+      "key": "glyphs/本/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "末-regular": {
+      "type": "stage-glyph-svg",
+      "char": "末",
+      "era": "regular",
+      "key": "glyphs/末/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "末-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "末",
+      "era": "bronze",
+      "key": "glyphs/末/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "朱-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "朱",
+      "era": "oracle",
+      "key": "glyphs/朱/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "朱-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "朱",
+      "era": "bronze",
+      "key": "glyphs/朱/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "朱-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "朱",
+      "era": "clerical",
+      "key": "glyphs/朱/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "商-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "商",
+      "era": "clerical",
+      "key": "glyphs/商/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "朱-seal": {
+      "type": "stage-glyph-svg",
+      "char": "朱",
+      "era": "seal",
+      "key": "glyphs/朱/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "朱-regular": {
+      "type": "stage-glyph-svg",
+      "char": "朱",
+      "era": "regular",
+      "key": "glyphs/朱/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "果-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "果",
+      "era": "oracle",
+      "key": "glyphs/果/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "果-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "果",
+      "era": "bronze",
+      "key": "glyphs/果/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "休-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "休",
+      "era": "bronze",
+      "key": "glyphs/休/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "北-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "北",
+      "era": "bronze",
+      "key": "glyphs/北/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "果-seal": {
+      "type": "stage-glyph-svg",
+      "char": "果",
+      "era": "seal",
+      "key": "glyphs/果/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "果-regular": {
+      "type": "stage-glyph-svg",
+      "char": "果",
+      "era": "regular",
+      "key": "glyphs/果/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "休-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "休",
+      "era": "clerical",
+      "key": "glyphs/休/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "休-regular": {
+      "type": "stage-glyph-svg",
+      "char": "休",
+      "era": "regular",
+      "key": "glyphs/休/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "果-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "果",
+      "era": "clerical",
+      "key": "glyphs/果/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "休-seal": {
+      "type": "stage-glyph-svg",
+      "char": "休",
+      "era": "seal",
+      "key": "glyphs/休/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "采-seal": {
+      "type": "stage-glyph-svg",
+      "char": "采",
+      "era": "seal",
+      "key": "glyphs/采/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "黑-seal": {
+      "type": "stage-glyph-svg",
+      "char": "黑",
+      "era": "seal",
+      "key": "glyphs/黑/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "利-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "利",
+      "era": "oracle",
+      "key": "glyphs/利/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "休-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "休",
+      "era": "oracle",
+      "key": "glyphs/休/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "采-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "采",
+      "era": "clerical",
+      "key": "glyphs/采/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "利-seal": {
+      "type": "stage-glyph-svg",
+      "char": "利",
+      "era": "seal",
+      "key": "glyphs/利/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "采-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "采",
+      "era": "bronze",
+      "key": "glyphs/采/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "利-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "利",
+      "era": "clerical",
+      "key": "glyphs/利/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "初-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "初",
+      "era": "oracle",
+      "key": "glyphs/初/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "利-regular": {
+      "type": "stage-glyph-svg",
+      "char": "利",
+      "era": "regular",
+      "key": "glyphs/利/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "初-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "初",
+      "era": "bronze",
+      "key": "glyphs/初/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "初-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "初",
+      "era": "clerical",
+      "key": "glyphs/初/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "利-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "利",
+      "era": "bronze",
+      "key": "glyphs/利/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "相-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "相",
+      "era": "oracle",
+      "key": "glyphs/相/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "初-regular": {
+      "type": "stage-glyph-svg",
+      "char": "初",
+      "era": "regular",
+      "key": "glyphs/初/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "相-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "相",
+      "era": "bronze",
+      "key": "glyphs/相/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "采-regular": {
+      "type": "stage-glyph-svg",
+      "char": "采",
+      "era": "regular",
+      "key": "glyphs/采/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "相-regular": {
+      "type": "stage-glyph-svg",
+      "char": "相",
+      "era": "regular",
+      "key": "glyphs/相/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "相-seal": {
+      "type": "stage-glyph-svg",
+      "char": "相",
+      "era": "seal",
+      "key": "glyphs/相/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "相-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "相",
+      "era": "clerical",
+      "key": "glyphs/相/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "主-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "主",
+      "era": "bronze",
+      "key": "glyphs/主/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "采-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "采",
+      "era": "oracle",
+      "key": "glyphs/采/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "信-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "信",
+      "era": "bronze",
+      "key": "glyphs/信/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "主-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "主",
+      "era": "oracle",
+      "key": "glyphs/主/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "主-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "主",
+      "era": "clerical",
+      "key": "glyphs/主/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "信-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "信",
+      "era": "oracle",
+      "key": "glyphs/信/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "户-regular": {
+      "type": "stage-glyph-svg",
+      "char": "户",
+      "era": "regular",
+      "key": "glyphs/户/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "信-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "信",
+      "era": "clerical",
+      "key": "glyphs/信/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "信-seal": {
+      "type": "stage-glyph-svg",
+      "char": "信",
+      "era": "seal",
+      "key": "glyphs/信/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "仁-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "仁",
+      "era": "oracle",
+      "key": "glyphs/仁/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "仁-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "仁",
+      "era": "bronze",
+      "key": "glyphs/仁/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "安-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "安",
+      "era": "bronze",
+      "key": "glyphs/安/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "仁-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "仁",
+      "era": "clerical",
+      "key": "glyphs/仁/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "安-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "安",
+      "era": "oracle",
+      "key": "glyphs/安/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "安-seal": {
+      "type": "stage-glyph-svg",
+      "char": "安",
+      "era": "seal",
+      "key": "glyphs/安/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "安-regular": {
+      "type": "stage-glyph-svg",
+      "char": "安",
+      "era": "regular",
+      "key": "glyphs/安/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "安-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "安",
+      "era": "clerical",
+      "key": "glyphs/安/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "和-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "和",
+      "era": "bronze",
+      "key": "glyphs/和/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "初-seal": {
+      "type": "stage-glyph-svg",
+      "char": "初",
+      "era": "seal",
+      "key": "glyphs/初/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "和-seal": {
+      "type": "stage-glyph-svg",
+      "char": "和",
+      "era": "seal",
+      "key": "glyphs/和/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "仁-regular": {
+      "type": "stage-glyph-svg",
+      "char": "仁",
+      "era": "regular",
+      "key": "glyphs/仁/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "和-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "和",
+      "era": "oracle",
+      "key": "glyphs/和/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "和-regular": {
+      "type": "stage-glyph-svg",
+      "char": "和",
+      "era": "regular",
+      "key": "glyphs/和/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "和-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "和",
+      "era": "clerical",
+      "key": "glyphs/和/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "道-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "道",
+      "era": "oracle",
+      "key": "glyphs/道/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "道-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "道",
+      "era": "bronze",
+      "key": "glyphs/道/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "道-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "道",
+      "era": "clerical",
+      "key": "glyphs/道/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "主-seal": {
+      "type": "stage-glyph-svg",
+      "char": "主",
+      "era": "seal",
+      "key": "glyphs/主/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "道-regular": {
+      "type": "stage-glyph-svg",
+      "char": "道",
+      "era": "regular",
+      "key": "glyphs/道/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "道-seal": {
+      "type": "stage-glyph-svg",
+      "char": "道",
+      "era": "seal",
+      "key": "glyphs/道/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "德-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "德",
+      "era": "bronze",
+      "key": "glyphs/德/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "信-regular": {
+      "type": "stage-glyph-svg",
+      "char": "信",
+      "era": "regular",
+      "key": "glyphs/信/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "德-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "德",
+      "era": "clerical",
+      "key": "glyphs/德/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "德-seal": {
+      "type": "stage-glyph-svg",
+      "char": "德",
+      "era": "seal",
+      "key": "glyphs/德/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "德-regular": {
+      "type": "stage-glyph-svg",
+      "char": "德",
+      "era": "regular",
+      "key": "glyphs/德/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "善-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "善",
+      "era": "clerical",
+      "key": "glyphs/善/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "善-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "善",
+      "era": "oracle",
+      "key": "glyphs/善/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "善-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "善",
+      "era": "bronze",
+      "key": "glyphs/善/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "德-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "德",
+      "era": "oracle",
+      "key": "glyphs/德/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "仁-seal": {
+      "type": "stage-glyph-svg",
+      "char": "仁",
+      "era": "seal",
+      "key": "glyphs/仁/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "美-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "美",
+      "era": "oracle",
+      "key": "glyphs/美/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "美-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "美",
+      "era": "bronze",
+      "key": "glyphs/美/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "善-regular": {
+      "type": "stage-glyph-svg",
+      "char": "善",
+      "era": "regular",
+      "key": "glyphs/善/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "善-seal": {
+      "type": "stage-glyph-svg",
+      "char": "善",
+      "era": "seal",
+      "key": "glyphs/善/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "思-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "思",
+      "era": "bronze",
+      "key": "glyphs/思/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "美-regular": {
+      "type": "stage-glyph-svg",
+      "char": "美",
+      "era": "regular",
+      "key": "glyphs/美/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "美-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "美",
+      "era": "clerical",
+      "key": "glyphs/美/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "美-seal": {
+      "type": "stage-glyph-svg",
+      "char": "美",
+      "era": "seal",
+      "key": "glyphs/美/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "思-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "思",
+      "era": "oracle",
+      "key": "glyphs/思/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "思-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "思",
+      "era": "clerical",
+      "key": "glyphs/思/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "思-seal": {
+      "type": "stage-glyph-svg",
+      "char": "思",
+      "era": "seal",
+      "key": "glyphs/思/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "乐-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "乐",
+      "era": "bronze",
+      "key": "glyphs/乐/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "思-regular": {
+      "type": "stage-glyph-svg",
+      "char": "思",
+      "era": "regular",
+      "key": "glyphs/思/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "主-regular": {
+      "type": "stage-glyph-svg",
+      "char": "主",
+      "era": "regular",
+      "key": "glyphs/主/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "乐-seal": {
+      "type": "stage-glyph-svg",
+      "char": "乐",
+      "era": "seal",
+      "key": "glyphs/乐/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "乐-regular": {
+      "type": "stage-glyph-svg",
+      "char": "乐",
+      "era": "regular",
+      "key": "glyphs/乐/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "色-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "色",
+      "era": "bronze",
+      "key": "glyphs/色/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "色-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "色",
+      "era": "oracle",
+      "key": "glyphs/色/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "色-seal": {
+      "type": "stage-glyph-svg",
+      "char": "色",
+      "era": "seal",
+      "key": "glyphs/色/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "长-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "长",
+      "era": "oracle",
+      "key": "glyphs/长/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "色-regular": {
+      "type": "stage-glyph-svg",
+      "char": "色",
+      "era": "regular",
+      "key": "glyphs/色/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "乐-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "乐",
+      "era": "oracle",
+      "key": "glyphs/乐/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "色-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "色",
+      "era": "clerical",
+      "key": "glyphs/色/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "高-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "高",
+      "era": "oracle",
+      "key": "glyphs/高/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "长-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "长",
+      "era": "clerical",
+      "key": "glyphs/长/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "高-seal": {
+      "type": "stage-glyph-svg",
+      "char": "高",
+      "era": "seal",
+      "key": "glyphs/高/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "长-regular": {
+      "type": "stage-glyph-svg",
+      "char": "长",
+      "era": "regular",
+      "key": "glyphs/长/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "长-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "长",
+      "era": "bronze",
+      "key": "glyphs/长/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "高-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "高",
+      "era": "bronze",
+      "key": "glyphs/高/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "高-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "高",
+      "era": "clerical",
+      "key": "glyphs/高/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "多-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "多",
+      "era": "oracle",
+      "key": "glyphs/多/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "多-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "多",
+      "era": "bronze",
+      "key": "glyphs/多/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "高-regular": {
+      "type": "stage-glyph-svg",
+      "char": "高",
+      "era": "regular",
+      "key": "glyphs/高/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "多-seal": {
+      "type": "stage-glyph-svg",
+      "char": "多",
+      "era": "seal",
+      "key": "glyphs/多/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "少-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "少",
+      "era": "bronze",
+      "key": "glyphs/少/bronze.svg",
+      "source": "项目内置金文字形资产位，待替换为铭文摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "多-regular": {
+      "type": "stage-glyph-svg",
+      "char": "多",
+      "era": "regular",
+      "key": "glyphs/多/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "少-oracle": {
+      "type": "stage-glyph-svg",
+      "char": "少",
+      "era": "oracle",
+      "key": "glyphs/少/oracle.svg",
+      "source": "项目内置甲骨文字形摹写草图，待替换为权威摹本或拓片",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "多-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "多",
+      "era": "clerical",
+      "key": "glyphs/多/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "长-seal": {
+      "type": "stage-glyph-svg",
+      "char": "长",
+      "era": "seal",
+      "key": "glyphs/长/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "少-regular": {
+      "type": "stage-glyph-svg",
+      "char": "少",
+      "era": "regular",
+      "key": "glyphs/少/regular.svg",
+      "source": "通行楷书参考字形",
+      "status": "reference",
+      "contentType": "image/svg+xml"
+    },
+    "少-seal": {
+      "type": "stage-glyph-svg",
+      "char": "少",
+      "era": "seal",
+      "key": "glyphs/少/seal.svg",
+      "source": "项目内置篆书字形资产位，待替换为《说文》小篆摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "乐-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "乐",
+      "era": "clerical",
+      "key": "glyphs/乐/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
+      "contentType": "image/svg+xml"
+    },
+    "少-clerical": {
+      "type": "stage-glyph-svg",
+      "char": "少",
+      "era": "clerical",
+      "key": "glyphs/少/clerical.svg",
+      "source": "项目内置隶书字形资产位，待替换为汉隶碑刻摹本",
+      "status": "draft",
       "contentType": "image/svg+xml"
     }
   }

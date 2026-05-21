@@ -1,4 +1,5 @@
 const { request } = require('../../utils/request');
+const { loginWithProfile } = require('../../utils/auth');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
 
@@ -118,12 +119,7 @@ Page({
     if (this.data.loading) return;
     this.setData({ loading: true });
     try {
-      // 1. Get login code
-      const loginRes = await new Promise((resolve, reject) => {
-        wx.login({ success: resolve, fail: reject });
-      });
-
-      // 2. Get user profile (avatar + nickname). Requires user gesture.
+      // 1. Get user profile (avatar + nickname). Requires user gesture.
       let profile;
       try {
         profile = await new Promise((resolve, reject) => {
@@ -143,13 +139,9 @@ Page({
         avatarUrl: profile.userInfo.avatarUrl
       };
 
-      // 3. Try exchanging code with backend; otherwise fall back to local-only
+      // 2. Try exchanging code with backend; otherwise fall back to local-only
       try {
-        const data = await request('/api/auth/wechat', 'POST', {
-          code: loginRes.code,
-          nickname: userInfo.nickname,
-          avatarUrl: userInfo.avatarUrl
-        });
+        const data = await loginWithProfile(userInfo);
         if (data.token) wx.setStorageSync('token', data.token);
       } catch (err) {
         // Backend unreachable — keep local login state only

@@ -16,6 +16,15 @@ const generatedRoot = path.resolve(__dirname, '../assets/public');
 const oracleDir = path.join(generatedRoot, 'oracle');
 const glyphDir = path.join(generatedRoot, 'glyphs');
 const manifestPath = path.join(generatedRoot, 'manifest.json');
+const commonsManifestPath = path.join(generatedRoot, 'commons-glyph-manifest.json');
+
+async function loadCommonsManifest() {
+  try {
+    return JSON.parse(await fs.readFile(commonsManifestPath, 'utf8'));
+  } catch (_error) {
+    return { assets: {} };
+  }
+}
 
 function textSvg(char, stage) {
   const fontMap = {
@@ -41,6 +50,12 @@ function textSvg(char, stage) {
 async function writeOracleAssets() {
   const svgMap = getOracleSvgMap();
   const entries = Object.entries(svgMap);
+  const commonsManifest = await loadCommonsManifest();
+  const verifiedKeys = new Set(
+    Object.values(commonsManifest.assets || {})
+      .filter((asset) => asset.status === 'verified')
+      .map((asset) => asset.key)
+  );
 
   await fs.mkdir(oracleDir, { recursive: true });
   await fs.mkdir(glyphDir, { recursive: true });
@@ -65,6 +80,14 @@ async function writeOracleAssets() {
     const key = getGlyphAssetKey(char, stage.era);
     const filePath = path.join(generatedRoot, key);
     await fs.mkdir(path.dirname(filePath), { recursive: true });
+    if (verifiedKeys.has(key)) {
+      const asset = commonsManifest.assets[`${char}-${stage.era}`];
+      manifest.assets[`${char}-${stage.era}`] = {
+        ...asset,
+        preserved: true
+      };
+      return;
+    }
     const svg = stage.era === 'oracle' && svgMap[char]
       ? svgMap[char]
       : textSvg(char, stage);

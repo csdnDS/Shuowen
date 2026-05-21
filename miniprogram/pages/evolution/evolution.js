@@ -199,6 +199,7 @@ Page({
       const remote = await request(`/api/characters/${encodeURIComponent(char)}`);
       const merged = this._mergeRemote(bundled, remote);
       this._applyCharacter(merged);
+      this._unlockViewedCharacter(merged.char);
       this.setData({ offline: false });
     } catch (err) {
       if (!bundled) {
@@ -321,6 +322,14 @@ Page({
     const searchHistory = [char, ...current.filter((item) => item !== char)].slice(0, 8);
     wx.setStorageSync('searchHistory', searchHistory);
     return searchHistory;
+  },
+
+  async _unlockViewedCharacter(char) {
+    try {
+      await request('/api/progress/unlock', 'POST', { char }, { timeout: 5000 });
+    } catch (_err) {
+      // Progress is non-blocking; the evolution page should still render.
+    }
   },
 
   _refreshBookmarkState(char) {

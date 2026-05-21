@@ -1,6 +1,6 @@
 import { getMongoDb } from '../db/mongo.js';
 import { characterData, presetCharacters, TOTAL_SHUOWEN_COUNT, works } from '../data/seedData.js';
-import { enrichGlyphAssetStages } from '../data/glyphAssets.js';
+import { coreGlyphChars, createGlyphBaseCharacter, enrichGlyphAssetStages } from '../data/glyphAssets.js';
 
 function createBaseCharacter(char) {
   return {
@@ -34,6 +34,7 @@ export async function findCharacter(char) {
   }
 
   if (characterData[char]) return enrichGlyphAssetStages(characterData[char]);
+  if (coreGlyphChars.includes(char)) return enrichGlyphAssetStages(createGlyphBaseCharacter(char));
   if (presetCharacters.includes(char)) return enrichGlyphAssetStages(createBaseCharacter(char));
   return null;
 }
@@ -65,10 +66,14 @@ export async function listCharacters(query = '', limit = 80) {
     hasDetail: true
   }));
   const richSet = new Set(richChars.map((c) => c.char));
-  const baseChars = presetCharacters
+  const coreChars = coreGlyphChars
     .filter((c) => !richSet.has(c))
+    .map((c) => ({ char: c, pinyin: '', radical: '', strokes: 0, hasDetail: true }));
+  const coreSet = new Set([...richSet, ...coreChars.map((c) => c.char)]);
+  const baseChars = presetCharacters
+    .filter((c) => !coreSet.has(c))
     .map((c) => ({ char: c, pinyin: '', radical: '', strokes: 0, hasDetail: false }));
-  const all = [...richChars, ...baseChars];
+  const all = [...richChars, ...coreChars, ...baseChars];
 
   return all
     .filter((item) => !normalized ||

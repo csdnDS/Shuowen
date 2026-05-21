@@ -86,13 +86,24 @@ export async function listActivities(openid) {
 }
 
 export async function getUserUnlocked(openid) {
+  const entries = await getUserProgressEntries(openid);
+  return entries.map((entry) => entry.char);
+}
+
+export async function getUserProgressEntries(openid) {
   const mysqlPool = await getMysqlPool();
   if (mysqlPool) {
     const [rows] = await mysqlPool.execute(
-      'SELECT char_value AS charValue FROM user_progress WHERE openid = ? ORDER BY unlocked_at ASC',
+      'SELECT id, char_value AS charValue, unlocked_at AS unlockedAt FROM user_progress WHERE openid = ? ORDER BY unlocked_at ASC, id ASC',
       [openid]
     );
-    if (rows.length) return rows.map((row) => row.charValue);
+    if (rows.length) {
+      return rows.map((row) => ({
+        id: row.id,
+        char: row.charValue,
+        unlockedAt: row.unlockedAt instanceof Date ? row.unlockedAt.getTime() : new Date(row.unlockedAt).getTime()
+      }));
+    }
 
     await Promise.all(
       ['说', '文', '人'].map((char) =>
@@ -102,11 +113,16 @@ export async function getUserUnlocked(openid) {
         )
       )
     );
-    return ['说', '文', '人'];
+    return getUserProgressEntries(openid);
   }
 
   if (!userProgress.has(openid)) {
-    userProgress.set(openid, ['说', '文', '人']);
+    const now = Date.now();
+    userProgress.set(openid, ['说', '文', '人'].map((char, index) => ({
+      id: index + 1,
+      char,
+      unlockedAt: now + index
+    })));
   }
   return userProgress.get(openid);
 }
@@ -114,18 +130,32 @@ export async function getUserUnlocked(openid) {
 export async function addUserUnlocked(openid, char) {
   const mysqlPool = await getMysqlPool();
   if (mysqlPool) {
-    await mysqlPool.execute(
+    const [result] = await mysqlPool.execute(
       'INSERT IGNORE INTO user_progress (openid, char_value, unlocked_at) VALUES (?, ?, NOW())',
       [openid, char]
     );
-    return getUserUnlocked(openid);
+    const entries = await getUserProgressEntries(openid);
+    return {
+      entries,
+      unlocked: entries.map((entry) => entry.char),
+      isNew: result.affectedRows > 0,
+      unlockedAt: (entries.find((entry) => entry.char === char) || {}).unlockedAt || Date.now()
+    };
   }
 
-  const unlocked = await getUserUnlocked(openid);
-  if (!unlocked.includes(char)) {
-    userProgress.set(openid, [...unlocked, char]);
+  const entries = await getUserProgressEntries(openid);
+  const isNew = !entries.some((entry) => entry.char === char);
+  let nextEntries = entries;
+  if (isNew) {
+    nextEntries = [...entries, { id: entries.length + 1, char, unlockedAt: Date.now() }];
+    userProgress.set(openid, nextEntries);
   }
-  return getUserUnlocked(openid);
+  return {
+    entries: nextEntries,
+    unlocked: nextEntries.map((entry) => entry.char),
+    isNew,
+    unlockedAt: (nextEntries.find((entry) => entry.char === char) || {}).unlockedAt || Date.now()
+  };
 }
 
 export function getMemoryStats() {
