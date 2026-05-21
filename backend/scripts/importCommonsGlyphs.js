@@ -22,9 +22,9 @@ const proxyArg = process.argv.find((item) => item.startsWith('--proxy='));
 const explicitProxy = proxyArg ? proxyArg.slice('--proxy='.length) : '';
 
 const stageCandidates = {
-  oracle: ['oracle'],
-  bronze: ['bronze', 'bronze-shang', 'bronze-western', 'bronze-spring', 'bronze-zhou'],
-  seal: ['seal', 'bigseal'],
+  oracle: ['oracle', 'oracle-1', 'oracle-2', 'oracle-3', 'oracle-4', 'oracle-5', 'oracle-6', 'oracle-shang'],
+  bronze: ['bronze', 'bronze-1', 'bronze-2', 'bronze-3', 'bronze-4', 'bronze-5', 'bronze-shang', 'bronze-western', 'bronze-spring', 'bronze-zhou'],
+  seal: ['seal', 'bigseal', 'smallseal', 'seal-qin'],
   clerical: ['clerical-han', 'clerical', 'cler'],
   regular: []
 };
