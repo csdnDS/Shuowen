@@ -161,23 +161,28 @@ async function findUsableFile(titles) {
 
 async function findUsableFilesByTitle(titles) {
   const files = new Map();
+  const queryBatchSize = parseNumberArg('query-batch-size', 16);
 
-  for (const titleChunk of chunk(titles, 40)) {
-    const data = await commonsQuery({
-      action: 'query',
-      titles: titleChunk.join('|'),
-      prop: 'imageinfo',
-      iiprop: 'url|extmetadata',
-      redirects: '1'
-    });
+  for (const titleChunk of chunk(titles, queryBatchSize)) {
+    try {
+      const data = await commonsQuery({
+        action: 'query',
+        titles: titleChunk.join('|'),
+        prop: 'imageinfo',
+        iiprop: 'url|extmetadata',
+        redirects: '1'
+      });
 
-    const pages = Object.values(data.query?.pages || {})
-      .filter((page) => !page.missing && page.imageinfo?.[0]?.url);
+      const pages = Object.values(data.query?.pages || {})
+        .filter((page) => !page.missing && page.imageinfo?.[0]?.url);
 
-    for (const page of pages) {
-      if (isAllowedLicense(page.imageinfo[0].extmetadata)) {
-        files.set(page.title.toLowerCase(), extractMetadata(page));
+      for (const page of pages) {
+        if (isAllowedLicense(page.imageinfo[0].extmetadata)) {
+          files.set(page.title.toLowerCase(), extractMetadata(page));
+        }
       }
+    } catch (error) {
+      console.warn(`skipped query chunk (${titleChunk.length} titles): ${error.message}`);
     }
   }
 
