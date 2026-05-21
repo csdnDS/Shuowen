@@ -10,7 +10,8 @@
     "mysql:init": "node scripts/initMysql.js",
     "mysql:smoke": "node scripts/smokeMysqlRedis.js",
     "oss:upload": "node scripts/uploadOssAssets.js",
-    "commons:import": "node scripts/importCommonsGlyphs.js"
+    "commons:import": "node scripts/importCommonsGlyphs.js",
+    "glyph:coverage": "node scripts/reportGlyphCoverage.js"
   },
   "dependencies": {
     "ali-oss": "^6.22.0",

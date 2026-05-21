@@ -5,6 +5,7 @@ import { localAssetRoot } from './services/assetService.js';
 import { createAssetRouter } from './routes/assets.js';
 import { createAuthRouter } from './routes/auth.js';
 import { createCharacterRouter } from './routes/characters.js';
+import { createGlyphCoverageRouter } from './routes/glyphCoverage.js';
 import { createHeatmapRouter } from './routes/heatmap.js';
 import { createProgressRouter } from './routes/progress.js';
 import { createRadicalRouter } from './routes/radicals.js';
@@ -20,6 +21,7 @@ app.use('/assets', express.static(localAssetRoot, {
 }));
 
 app.use('/api', createCharacterRouter());
+app.use('/api', createGlyphCoverageRouter());
 app.use('/api', createRadicalRouter());
 app.use('/api', createHeatmapRouter());
 app.use('/api', createProgressRouter());
