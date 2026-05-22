@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">耳</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="耳 regular script glyph">
+  <title>耳 regular script glyph</title>
+  <path d="M324 755H55L64 725H258V136L51 121L62 91L669 136V-76H680C715 -76 736 -59 736 -54V141L927 155C941 156 951 163 952 174C922 202 871 244 871 244L824 178L736 172V725H919C933 725 943 730 946 741C909 774 850 816 850 816L799 755ZM669 167 324 141V326H669ZM669 725V555H324V725ZM669 355H324V525H669Z" transform="translate(76.981 832.098) scale(0.843507 -0.843507)" fill="#1f1a17"/>
 </svg>

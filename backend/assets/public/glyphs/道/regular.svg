@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">道</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="道 regular script glyph">
+  <title>道 regular script glyph</title>
+  <path d="M433 838 422 831C453 797 483 740 486 694C550 642 615 776 433 838ZM100 822 88 814C135 759 198 669 217 604C289 554 338 702 100 822ZM870 734 823 675H694C731 712 769 757 792 792C814 791 826 799 830 810L724 840C710 791 686 725 663 675H311L319 645H565L552 548H472L403 580V56H414C442 56 467 72 467 79V120H785V63H795C817 63 848 79 849 86V507C869 511 885 518 891 526L812 588L775 548H595C611 578 629 614 643 645H931C945 645 954 650 957 661C924 693 870 734 870 734ZM467 150V255H785V150ZM467 285V388H785V285ZM467 417V518H785V417ZM186 126C144 96 79 38 35 7L94 -68C101 -61 103 -53 100 -45C132 3 188 73 211 104C221 117 230 120 243 104C329 -18 423 -48 622 -48C730 -48 821 -48 914 -48C918 -19 934 1 964 7V20C848 15 755 16 642 16C448 15 343 30 258 131C253 136 250 139 246 140V459C274 464 288 471 294 478L209 549L172 498H45L51 469H186Z" transform="translate(91.367 835.780) scale(0.818084 -0.818084)" fill="#1f1a17"/>
 </svg>

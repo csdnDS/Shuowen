@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">臣</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="臣 regular script glyph">
+  <title>臣 regular script glyph</title>
+  <path d="M526 761H221L139 807V25C128 19 117 11 111 4L187 -47L212 -9H931C945 -9 955 -4 958 7C922 40 862 85 862 85L809 20H526V256H746V188H756C778 188 811 204 812 210V492C836 497 857 506 864 515L773 583L734 539H526V731H902C916 731 926 736 929 747C892 780 834 824 834 824L782 761ZM204 701V731H460V539H204ZM204 285V509H746V285ZM204 256H460V20H204Z" transform="translate(33.617 858.990) scale(0.872560 -0.872560)" fill="#1f1a17"/>
 </svg>

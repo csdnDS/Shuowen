@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">风</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="风 regular script glyph">
+  <title>风 regular script glyph</title>
+  <path d="M678 633 582 667C557 586 527 509 491 436C443 490 382 549 307 612L290 604C342 542 406 462 462 379C392 247 307 135 221 54L235 42C331 113 421 209 496 327C545 251 585 176 603 113C669 62 699 179 533 387C573 457 608 533 638 615C661 613 674 622 678 633ZM168 788V422C168 234 153 61 37 -71L52 -82C219 48 233 242 233 423V749H721C718 424 723 72 863 -38C898 -70 937 -89 961 -66C972 -55 967 -33 946 2L960 162L947 164C938 123 928 86 916 50C911 36 907 33 895 43C787 126 779 486 791 733C814 737 828 744 835 751L752 823L711 778H245L168 812Z" transform="translate(89.753 822.881) scale(0.817493 -0.817493)" fill="#1f1a17"/>
 </svg>

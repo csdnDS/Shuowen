@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">美</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="美 regular script glyph">
+  <title>美 regular script glyph</title>
+  <path d="M652 840C633 792 603 726 574 678H377C425 680 441 785 279 833L268 827C302 793 341 735 349 688C358 681 367 678 375 678H112L121 648H463V535H163L171 506H463V387H67L76 358H914C928 358 937 363 940 373C907 404 853 445 853 445L807 387H529V506H832C846 506 856 511 859 522C827 551 775 591 775 591L730 535H529V648H882C896 648 905 653 908 664C874 695 821 736 821 736L773 678H605C645 714 687 756 713 790C735 788 747 795 752 807ZM448 344C446 301 443 263 435 227H44L53 198H427C393 86 300 8 36 -59L44 -79C374 -16 468 72 501 198H518C585 37 708 -34 910 -74C917 -41 936 -19 964 -13L965 -3C764 18 617 71 542 198H932C946 198 955 203 958 214C924 244 869 287 869 287L820 227H508C513 252 516 279 519 307C541 309 552 320 554 333Z" transform="translate(90.549 831.281) scale(0.818084 -0.818084)" fill="#1f1a17"/>
 </svg>

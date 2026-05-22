@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">心</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心 regular script glyph">
+  <title>心 regular script glyph</title>
+  <path d="M435 831 422 823C484 754 561 644 582 561C662 501 712 679 435 831ZM397 648 298 659V50C298 -16 326 -34 423 -34H568C774 -34 815 -22 815 13C815 27 808 35 783 42L780 220H767C752 138 738 70 729 50C724 40 719 35 703 34C682 31 635 30 570 30H429C373 30 363 40 363 65V622C386 625 395 635 397 648ZM766 518 755 509C843 412 881 263 898 175C965 102 1031 322 766 518ZM175 533H157C159 394 111 261 59 207C43 186 36 160 53 145C73 126 113 145 137 181C174 235 217 358 175 533Z" transform="translate(84.138 851.134) scale(0.830950 -0.830950)" fill="#1f1a17"/>
 </svg>

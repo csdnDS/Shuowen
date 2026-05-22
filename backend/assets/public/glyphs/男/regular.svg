@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">男</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="男 regular script glyph">
+  <title>男 regular script glyph</title>
+  <path d="M448 408C447 360 444 315 434 272H68L77 243H427C389 107 287 1 44 -64L51 -78C344 -21 457 92 500 243H804C790 130 764 34 736 13C725 4 714 2 694 2C670 2 575 11 523 15L522 -2C569 -8 622 -19 639 -30C656 -41 660 -59 660 -78C707 -78 748 -67 775 -46C822 -12 855 102 871 234C892 236 903 242 910 249L835 311L797 272H507C514 303 518 335 521 368C541 370 555 378 557 395ZM464 581V441H231V581ZM464 610H231V742H464ZM528 581H767V441H528ZM528 610V742H767V610ZM166 771V354H177C204 354 231 369 231 376V412H767V364H777C798 364 832 378 833 384V730C852 734 868 742 875 750L794 812L757 771H238L166 804Z" transform="translate(92.674 833.393) scale(0.853933 -0.853933)" fill="#1f1a17"/>
 </svg>

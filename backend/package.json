@@ -11,6 +11,8 @@
     "mysql:smoke": "node scripts/smokeMysqlRedis.js",
     "oss:upload": "node scripts/uploadOssAssets.js",
     "commons:import": "node scripts/importCommonsGlyphs.js",
+    "commons:loop": "node scripts/importCommonsUntilComplete.js",
+    "glyph:regular": "python3 scripts/generateRegularGlyphsFromFont.py",
     "glyph:coverage": "node scripts/reportGlyphCoverage.js"
   },
   "dependencies": {

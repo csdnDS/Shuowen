@@ -51,6 +51,13 @@ function parseNumberArg(name, fallback) {
   return Number.isFinite(value) && value > 0 ? Math.floor(value) : fallback;
 }
 
+function parseNonNegativeNumberArg(name, fallback) {
+  const arg = process.argv.find((item) => item.startsWith(`--${name}=`));
+  if (!arg) return fallback;
+  const value = Number(arg.slice(name.length + 3));
+  return Number.isFinite(value) && value >= 0 ? Math.floor(value) : fallback;
+}
+
 function hasArg(name) {
   return process.argv.includes(`--${name}`);
 }
@@ -162,27 +169,49 @@ async function findUsableFile(titles) {
 async function findUsableFilesByTitle(titles) {
   const files = new Map();
   const queryBatchSize = parseNumberArg('query-batch-size', 16);
+  const queryDelayMs = parseNumberArg('query-delay-ms', 0);
+  const queryRetries = parseNonNegativeNumberArg('query-retries', 1);
+  const rateLimitDelayMs = parseNumberArg('rate-limit-delay-ms', 60000);
+  let chunkIndex = 0;
 
   for (const titleChunk of chunk(titles, queryBatchSize)) {
-    try {
-      const data = await commonsQuery({
-        action: 'query',
-        titles: titleChunk.join('|'),
-        prop: 'imageinfo',
-        iiprop: 'url|extmetadata',
-        redirects: '1'
-      });
+    if (queryDelayMs > 0 && chunkIndex > 0) {
+      await sleep(queryDelayMs);
+    }
 
-      const pages = Object.values(data.query?.pages || {})
-        .filter((page) => !page.missing && page.imageinfo?.[0]?.url);
+    chunkIndex += 1;
 
-      for (const page of pages) {
-        if (isAllowedLicense(page.imageinfo[0].extmetadata)) {
-          files.set(page.title.toLowerCase(), extractMetadata(page));
+    for (let attempt = 0; attempt <= queryRetries; attempt += 1) {
+      try {
+        const data = await commonsQuery({
+          action: 'query',
+          titles: titleChunk.join('|'),
+          prop: 'imageinfo',
+          iiprop: 'url|extmetadata',
+          redirects: '1'
+        });
+
+        const pages = Object.values(data.query?.pages || {})
+          .filter((page) => !page.missing && page.imageinfo?.[0]?.url);
+
+        for (const page of pages) {
+          if (isAllowedLicense(page.imageinfo[0].extmetadata)) {
+            files.set(page.title.toLowerCase(), extractMetadata(page));
+          }
         }
+
+        break;
+      } catch (error) {
+        const isRateLimit = /429|Too Many Requests/i.test(error.message || '');
+        if (isRateLimit && attempt < queryRetries) {
+          console.warn(`rate limited querying titles; retrying in ${rateLimitDelayMs}ms`);
+          await sleep(rateLimitDelayMs);
+          continue;
+        }
+
+        console.warn(`skipped query chunk (${titleChunk.length} titles): ${error.message}`);
+        break;
       }
-    } catch (error) {
-      console.warn(`skipped query chunk (${titleChunk.length} titles): ${error.message}`);
     }
   }
 
@@ -223,7 +252,29 @@ async function findUsableFileForStage(char, era) {
 }
 
 async function downloadSvg(url, filePath) {
-  const svg = await fetchText(url);
+  const downloadRetries = parseNonNegativeNumberArg('download-retries', 2);
+  const downloadRateLimitDelayMs = parseNumberArg(
+    'download-rate-limit-delay-ms',
+    parseNumberArg('rate-limit-delay-ms', 60000)
+  );
+  let svg = '';
+
+  for (let attempt = 0; attempt <= downloadRetries; attempt += 1) {
+    try {
+      svg = await fetchText(url);
+      break;
+    } catch (error) {
+      const isRateLimit = /429|Too Many Requests/i.test(error.message || '');
+      if (isRateLimit && attempt < downloadRetries) {
+        console.warn(`rate limited downloading SVG; retrying in ${downloadRateLimitDelayMs}ms`);
+        await sleep(downloadRateLimitDelayMs);
+        continue;
+      }
+
+      throw error;
+    }
+  }
+
   if (!svg.includes('<svg')) {
     throw new Error(`Downloaded file is not SVG: ${url}`);
   }

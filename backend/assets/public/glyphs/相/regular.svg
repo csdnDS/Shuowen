@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">相</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="相 regular script glyph">
+  <title>相 regular script glyph</title>
+  <path d="M538 499H840V291H538ZM538 528V732H840V528ZM538 261H840V47H538ZM473 760V-72H485C515 -72 538 -55 538 -45V18H840V-69H850C874 -69 904 -50 905 -43V718C926 722 942 730 949 739L868 803L830 760H543L473 794ZM216 836V604H47L55 574H198C165 425 108 271 30 156L44 143C116 220 173 311 216 412V-77H229C253 -77 280 -62 280 -53V464C320 421 367 357 382 307C448 260 499 396 280 484V574H419C433 574 442 579 444 590C415 621 365 662 365 662L321 604H280V797C306 801 313 811 316 826Z" transform="translate(95.190 833.841) scale(0.826986 -0.826986)" fill="#1f1a17"/>
 </svg>

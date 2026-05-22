@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">乐</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="乐 regular script glyph">
+  <title>乐 regular script glyph</title>
+  <path d="M386 274 293 322C228 184 127 58 37 -14L49 -27C157 33 266 134 346 262C367 257 381 264 386 274ZM669 315 657 306C739 225 854 94 890 1C976 -56 1012 131 669 315ZM562 19V394H910C924 394 934 399 936 410C904 441 851 481 851 481L805 424H562V627C586 631 594 640 596 654L496 664V424H229C246 513 267 647 277 727C463 729 667 744 807 763C831 752 849 751 858 759L789 831C679 801 485 770 311 753L215 779C209 695 182 524 162 431C150 425 138 419 130 413L201 364L229 394H496V24C496 8 491 3 471 3C448 3 334 11 334 11V-4C384 -11 411 -19 427 -30C442 -41 448 -57 451 -77C550 -68 562 -34 562 19Z" transform="translate(89.144 834.398) scale(0.833948 -0.833948)" fill="#1f1a17"/>
 </svg>

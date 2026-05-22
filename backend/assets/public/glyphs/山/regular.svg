@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">山</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="山 regular script glyph">
+  <title>山 regular script glyph</title>
+  <path d="M566 803 462 815V49H181V572C206 576 217 585 219 600L114 612V56C100 50 86 41 78 33L161 -17L189 20H816V-78H829C855 -78 883 -62 883 -54V575C909 579 917 589 920 603L816 614V49H530V776C554 780 563 789 566 803Z" transform="translate(75.319 833.617) scale(0.851064 -0.851064)" fill="#1f1a17"/>
 </svg>

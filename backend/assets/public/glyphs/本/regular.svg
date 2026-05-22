@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">本</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="本 regular script glyph">
+  <title>本 regular script glyph</title>
+  <path d="M838 683 787 617H531V799C558 803 566 813 569 828L465 840V617H70L79 588H414C341 397 206 203 34 75L46 62C235 174 378 336 465 520V172H247L255 142H465V-77H478C504 -77 531 -62 531 -53V142H732C746 142 754 147 757 158C724 191 671 235 671 235L623 172H531V586C608 371 741 195 889 97C901 129 926 150 956 152L958 162C804 239 642 404 552 588H906C920 588 929 593 932 604C897 637 838 683 838 683Z" transform="translate(92.035 833.788) scale(0.822511 -0.822511)" fill="#1f1a17"/>
 </svg>

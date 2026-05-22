@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">贝</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="贝 regular script glyph">
+  <title>贝 regular script glyph</title>
+  <path d="M580 621 469 649C464 254 454 76 39 -61L48 -80C522 37 526 232 540 600C565 600 576 609 580 621ZM536 214 527 202C647 139 820 18 889 -72C988 -108 990 90 536 214ZM186 803V190H197C231 190 252 205 252 211V744H743V204H753C785 204 810 221 810 225V735C833 738 844 744 851 752L773 813L738 770H264Z" transform="translate(87.193 828.297) scale(0.841194 -0.841194)" fill="#1f1a17"/>
 </svg>

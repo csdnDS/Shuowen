@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">矢</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="矢 regular script glyph">
+  <title>矢 regular script glyph</title>
+  <path d="M264 838C234 680 168 538 91 447L104 436C169 485 226 554 271 639H455C454 552 452 471 441 395H46L55 366H435C402 195 309 53 42 -60L54 -79C362 31 466 179 504 366H515C549 215 634 35 898 -78C906 -41 928 -29 964 -25L966 -13C688 83 578 228 536 366H931C946 366 956 370 958 381C923 414 864 458 864 458L814 395H509C522 470 525 552 527 639H846C860 639 870 644 873 655C837 687 780 731 780 731L729 669H286C304 706 320 745 333 787C355 787 367 796 371 808Z" transform="translate(85.455 832.143) scale(0.822511 -0.822511)" fill="#1f1a17"/>
 </svg>

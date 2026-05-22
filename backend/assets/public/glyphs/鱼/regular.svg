@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">鱼</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="鱼 regular script glyph">
+  <title>鱼 regular script glyph</title>
+  <path d="M861 56 806 -11H49L57 -40H931C945 -40 955 -35 957 -24C920 9 861 56 861 56ZM505 548H263L238 559C276 603 310 649 339 694H617C588 650 545 590 505 548ZM251 85V133H764V82H773C795 82 828 98 829 105V507C849 511 865 518 872 526L791 589L754 548H535C597 588 662 647 704 687C725 688 737 689 745 697L668 766L624 724H358C372 747 384 769 394 790C417 783 427 786 433 795L333 841C278 690 163 509 46 407L59 395C103 424 146 461 186 502V62H197C229 62 251 79 251 85ZM474 163H251V327H474ZM538 163V327H764V163ZM474 357H251V518H474ZM538 357V518H764V357Z" transform="translate(81.625 854.116) scale(0.834248 -0.834248)" fill="#1f1a17"/>
 </svg>

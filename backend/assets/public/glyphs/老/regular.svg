@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">老</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="老 regular script glyph">
+  <title>老 regular script glyph</title>
+  <path d="M827 805C796 758 759 711 717 663C685 694 634 733 634 733L586 674H457V804C479 808 488 816 490 830L392 839V674H129L137 644H392V477H45L54 447H496C463 419 429 392 394 366L314 375V309C223 247 126 191 27 145L36 129C133 166 226 211 314 262V20C314 -42 340 -56 446 -56H623C863 -56 902 -46 902 -12C902 2 894 9 868 16L866 148H853C839 85 827 39 818 21C812 11 807 7 788 6C765 4 705 3 626 3H450C386 3 379 9 379 31V150C531 186 690 248 788 299C814 292 832 294 839 302L753 366C676 305 519 222 379 172V301C453 347 522 396 585 447H928C942 447 952 452 955 463C920 495 865 537 865 537L817 477H621C723 563 809 653 874 738C899 729 909 731 918 742ZM457 644H694L702 645C651 588 594 532 531 477H457Z" transform="translate(97.888 840.625) scale(0.818966 -0.818966)" fill="#1f1a17"/>
 </svg>

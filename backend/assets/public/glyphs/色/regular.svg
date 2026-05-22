@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">色</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="色 regular script glyph">
+  <title>色 regular script glyph</title>
+  <path d="M568 697C546 651 513 587 482 546H247L214 560C254 604 291 650 323 697ZM321 844C265 697 149 523 29 426L41 413C86 441 129 476 170 515V58C170 -28 228 -52 342 -52H743C913 -52 954 -31 954 2C954 17 943 20 908 29L907 184H894C884 134 863 62 849 39C833 12 806 8 737 8H337C272 8 235 16 235 56V273H762V206H772C795 206 827 221 828 228V503C848 507 865 516 872 524L790 587L752 546H505C557 585 613 648 649 689C669 690 681 692 689 698L612 769L569 726H342C359 752 374 778 387 803C412 802 421 806 425 817ZM463 517V302H235V517ZM527 517H762V302H527Z" transform="translate(96.173 845.362) scale(0.821622 -0.821622)" fill="#1f1a17"/>
 </svg>

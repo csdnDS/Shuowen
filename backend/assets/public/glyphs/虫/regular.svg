@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">虫</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="虫 regular script glyph">
+  <title>虫 regular script glyph</title>
+  <path d="M778 609V357H529V609ZM705 208 694 199C729 165 770 119 804 71L529 54V328H778V266H788C810 266 843 282 844 289V596C864 600 880 608 887 616L805 678L768 638H529V794C554 798 562 808 565 822L463 833V638H227L155 670V250H166C192 250 220 265 220 272V328H463V50C292 41 152 34 73 33L105 -55C113 -53 125 -45 131 -34C427 -3 648 25 819 49C844 10 864 -29 872 -65C950 -124 998 61 705 208ZM220 357V609H463V357Z" transform="translate(80.246 836.259) scale(0.835845 -0.835845)" fill="#1f1a17"/>
 </svg>

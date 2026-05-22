@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">黑</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="黑 regular script glyph">
+  <title>黑 regular script glyph</title>
+  <path d="M292 698 279 693C306 652 337 588 340 537C393 488 454 606 292 698ZM648 702C636 659 606 576 581 523L593 517C635 560 681 615 704 648C725 645 736 655 739 663ZM193 138C184 68 127 14 80 -6C58 -17 43 -37 51 -59C63 -83 100 -83 128 -67C173 -42 229 26 209 137ZM732 137 721 128C785 81 865 -4 888 -71C967 -117 1005 55 732 137ZM345 131 332 126C352 78 374 5 374 -52C431 -111 502 14 345 131ZM536 131 524 125C560 79 605 5 615 -53C683 -107 742 38 536 131ZM41 204 50 174H933C947 174 957 179 960 190C925 222 870 265 870 265L821 204H529V313H855C869 313 878 318 881 329C847 360 793 403 793 403L745 343H529V450H762V415H772C794 415 827 429 828 434V740C845 743 860 751 866 758L788 818L753 779H243L172 812V399H183C210 399 237 414 237 420V450H465V343H130L139 313H465V204ZM762 480H529V750H762ZM237 480V750H465V480Z" transform="translate(86.094 825.700) scale(0.826986 -0.826986)" fill="#1f1a17"/>
 </svg>

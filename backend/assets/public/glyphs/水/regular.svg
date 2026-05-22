@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">水</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="水 regular script glyph">
+  <title>水 regular script glyph</title>
+  <path d="M839 654C797 587 714 488 639 415C592 500 555 601 532 723V798C557 802 565 811 568 825L466 836V27C466 10 460 4 440 4C417 4 299 13 299 13V-3C351 -9 378 -18 395 -29C410 -40 417 -58 421 -80C521 -70 532 -34 532 21V645C598 319 733 146 906 19C917 51 940 72 969 75L972 85C854 151 737 248 650 396C742 454 837 534 893 590C915 584 924 588 931 598ZM49 555 58 525H314C275 338 185 148 30 26L41 12C242 132 337 326 384 517C407 518 416 521 424 530L352 596L310 555Z" transform="translate(95.796 824.968) scale(0.806794 -0.806794)" fill="#1f1a17"/>
 </svg>

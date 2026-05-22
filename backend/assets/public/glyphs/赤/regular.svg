@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">赤</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="赤 regular script glyph">
+  <title>赤 regular script glyph</title>
+  <path d="M716 383 704 375C771 308 857 198 877 113C956 54 1005 238 716 383ZM209 386C168 272 101 166 36 102L49 91C130 142 208 228 262 331C284 329 296 337 301 347ZM466 837V680H132L140 650H466V500H42L51 471H376C373 258 360 78 125 -58L139 -74C414 54 435 240 442 471H578V24C578 10 573 5 555 5C532 5 425 13 424 13V-3C472 -9 498 -17 514 -28C528 -39 534 -57 536 -77C630 -67 643 -29 643 23V471H932C947 471 957 476 960 487C924 518 866 563 866 563L816 500H532V650H854C869 650 878 655 881 666C846 698 790 740 790 740L742 680H532V799C557 803 567 813 569 827Z" transform="translate(90.390 832.554) scale(0.822511 -0.822511)" fill="#1f1a17"/>
 </svg>

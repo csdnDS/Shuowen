@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">力</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="力 regular script glyph">
+  <title>力 regular script glyph</title>
+  <path d="M428 836C428 748 428 664 424 583H97L105 554H422C405 311 336 102 47 -60L59 -78C400 80 474 301 494 554H791C782 283 763 65 725 30C713 20 705 17 684 17C658 17 569 25 515 30L514 12C561 5 614 -8 632 -19C649 -31 654 -50 654 -71C706 -71 748 -57 777 -25C827 30 849 251 858 544C881 548 893 553 901 561L822 628L781 583H496C500 652 501 724 502 797C526 800 534 811 537 825Z" transform="translate(105.864 835.142) scale(0.831510 -0.831510)" fill="#1f1a17"/>
 </svg>

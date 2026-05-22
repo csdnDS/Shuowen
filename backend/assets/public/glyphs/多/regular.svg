@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">多</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="多 regular script glyph">
+  <title>多 regular script glyph</title>
+  <path d="M625 411C654 410 667 416 670 427L560 454C474 347 301 215 113 139L122 123C216 151 305 191 385 236C435 203 487 152 503 105C570 68 601 202 412 252C447 273 481 296 512 318H822C662 100 416 4 66 -59L71 -79C476 -32 729 74 904 307C930 308 946 310 954 318L879 387L835 348H551C578 369 603 390 625 411ZM525 789C553 788 566 794 569 805L463 833C394 738 248 612 96 539L106 525C176 549 244 582 305 619C352 588 403 540 422 499C486 467 514 586 329 633C354 649 379 666 402 683H730C581 500 360 390 64 313L72 295C417 360 649 478 812 673C836 674 852 676 861 683L786 750L746 712H440C472 738 500 764 525 789Z" transform="translate(75.833 834.167) scale(0.833333 -0.833333)" fill="#1f1a17"/>
 </svg>

@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">雨</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雨 regular script glyph">
+  <title>雨 regular script glyph</title>
+  <path d="M237 475 228 465C276 434 336 377 353 330C419 290 456 425 237 475ZM231 268 221 259C270 224 330 162 347 110C414 67 456 208 231 268ZM580 475 571 466C622 433 687 375 709 327C776 290 810 425 580 475ZM581 271 571 262C622 227 684 162 700 110C768 66 811 206 581 271ZM110 577V-77H121C150 -77 175 -60 175 -52V548H464V-65H474C507 -65 529 -48 529 -43V548H820V25C820 9 815 3 798 3C775 3 673 11 673 11V-5C718 -10 744 -19 759 -30C773 -40 778 -57 781 -77C875 -68 886 -35 886 17V535C906 539 923 548 930 555L845 619L811 577H529V720H932C946 720 956 725 958 736C923 769 865 811 865 811L815 750H42L51 720H464V577H182L110 611Z" transform="translate(85.153 824.498) scale(0.829694 -0.829694)" fill="#1f1a17"/>
 </svg>

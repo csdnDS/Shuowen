@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">采</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="采 regular script glyph">
+  <title>采 regular script glyph</title>
+  <path d="M803 836C640 787 332 732 83 711L86 692C343 697 631 732 824 767C848 756 867 757 876 765ZM165 660 154 653C192 606 236 530 242 470C308 415 371 564 165 660ZM405 691 393 685C428 640 465 569 467 511C530 456 597 598 405 691ZM786 698C740 606 678 510 628 454L641 442C708 488 783 559 842 635C863 631 876 638 881 648ZM464 469V366H48L57 337H401C322 202 192 70 38 -19L49 -33C225 45 370 163 464 304V-78H477C501 -78 530 -63 530 -55V337H536C616 172 753 43 901 -26C911 5 935 25 962 29L963 40C813 89 650 203 560 337H926C940 337 950 342 953 353C916 385 858 430 858 430L808 366H530V433C553 437 561 446 563 459Z" transform="translate(88.778 831.395) scale(0.821622 -0.821622)" fill="#1f1a17"/>
 </svg>

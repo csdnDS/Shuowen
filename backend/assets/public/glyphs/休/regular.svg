@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">休</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="休 regular script glyph">
+  <title>休 regular script glyph</title>
+  <path d="M580 824V585H305L313 556H538C489 378 397 202 267 77L281 64C417 167 517 303 580 460V-74H593C618 -74 645 -58 645 -48V542C693 355 792 181 919 79C925 108 945 130 973 140L976 151C844 234 718 385 665 556H928C942 556 951 561 954 571C920 603 866 645 866 645L818 585H645V785C671 789 679 799 681 813ZM262 838C211 644 119 451 30 329L44 319C94 367 142 426 185 494V-76H197C223 -76 249 -60 251 -55V523C268 526 278 532 282 541L226 562C265 631 299 706 328 785C350 784 363 793 367 805Z" transform="translate(95.899 826.089) scale(0.803383 -0.803383)" fill="#1f1a17"/>
 </svg>

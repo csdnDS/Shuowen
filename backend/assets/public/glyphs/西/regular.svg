@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">西</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="西 regular script glyph">
+  <title>西 regular script glyph</title>
+  <path d="M577 527V282C577 237 589 219 652 219H719C765 219 798 220 819 224V39H185V527H362C360 392 334 260 189 154L200 140C393 239 423 388 425 527ZM577 556H425V728H577ZM819 283H816C810 281 803 280 797 280C793 279 787 278 781 278C771 278 749 278 725 278H668C643 278 639 282 639 299V527H819ZM869 820 819 758H44L53 728H362V556H197L122 589V-66H132C165 -66 185 -50 185 -45V10H819V-62H829C859 -62 885 -45 885 -41V521C906 524 918 530 925 538L849 598L815 556H639V728H936C951 728 960 733 963 744C928 777 869 820 869 820Z" transform="translate(83.613 831.774) scale(0.826986 -0.826986)" fill="#1f1a17"/>
 </svg>

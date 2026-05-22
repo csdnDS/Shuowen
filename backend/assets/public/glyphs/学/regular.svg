@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">学</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="学 regular script glyph">
+  <title>学 regular script glyph</title>
+  <path d="M206 823 194 815C233 774 279 705 288 651C355 600 411 744 206 823ZM429 839 417 832C453 789 490 717 492 660C557 602 626 749 429 839ZM471 360V253H46L55 225H471V25C471 9 465 3 444 3C420 3 286 13 286 13V-3C342 -10 373 -18 392 -30C408 -41 415 -58 420 -79C526 -69 538 -34 538 21V225H931C945 225 954 230 957 240C922 272 865 316 865 316L815 253H538V323C561 327 571 334 573 349L565 350C626 379 694 416 733 446C755 447 767 449 775 456L701 527L657 486H214L223 457H643C610 424 564 384 526 354ZM743 836C714 773 666 688 622 626H175C172 646 168 668 160 691L143 690C150 612 114 542 72 515C51 503 38 482 49 460C61 438 96 441 121 461C150 482 178 527 177 596H837C820 557 796 509 777 479L789 471C833 499 893 548 925 583C945 584 957 586 964 594L884 671L838 626H655C712 674 770 735 806 783C828 781 840 788 845 800Z" transform="translate(82.786 834.255) scale(0.826986 -0.826986)" fill="#1f1a17"/>
 </svg>

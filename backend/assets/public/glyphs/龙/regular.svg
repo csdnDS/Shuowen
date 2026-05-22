@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">龙</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="龙 regular script glyph">
+  <title>龙 regular script glyph</title>
+  <path d="M573 817 563 808C615 769 685 700 709 648C781 609 818 752 573 817ZM479 825 373 837C373 754 373 672 369 593H49L58 563H367C352 326 288 110 34 -61L48 -77C348 89 416 318 435 563H549V165C478 95 399 36 313 -16L323 -32C405 7 481 52 549 105V19C549 -38 570 -55 653 -55H765C931 -55 964 -44 964 -14C964 0 958 8 935 16L932 176H920C907 106 893 40 886 22C881 12 876 8 864 7C849 6 814 5 766 5H663C620 5 614 12 614 34V160C701 241 774 337 835 452C859 448 869 451 876 462L782 507C735 402 679 313 614 235V563H917C932 563 942 568 945 579C909 612 850 657 850 657L799 593H437C441 661 442 729 443 798C468 802 476 811 479 825Z" transform="translate(92.215 830.538) scale(0.817204 -0.817204)" fill="#1f1a17"/>
 </svg>

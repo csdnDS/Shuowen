@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">木</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="木 regular script glyph">
+  <title>木 regular script glyph</title>
+  <path d="M858 669 805 604H531V800C557 804 565 813 567 827L465 839V604H52L60 575H416C344 377 207 170 37 33L50 20C235 139 377 309 465 498V-78H478C503 -78 531 -61 531 -51V569C608 337 743 151 895 45C907 77 933 98 962 100L965 110C806 193 640 374 550 575H926C940 575 950 580 953 591C917 624 858 669 858 669Z" transform="translate(89.698 831.616) scale(0.818966 -0.818966)" fill="#1f1a17"/>
 </svg>

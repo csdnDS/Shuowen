@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">来</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="来 regular script glyph">
+  <title>来 regular script glyph</title>
+  <path d="M219 631 207 625C245 573 289 493 293 429C360 369 425 521 219 631ZM716 630C685 551 641 468 607 417L621 407C672 446 730 509 775 571C795 567 809 575 814 586ZM464 838V679H95L103 649H464V387H46L55 358H416C334 219 194 79 35 -14L45 -30C218 49 365 165 464 303V-78H477C502 -78 530 -61 530 -51V345C612 182 753 53 903 -17C911 14 935 35 963 39L964 49C809 101 639 220 547 358H926C941 358 950 363 953 373C916 407 858 450 858 450L807 387H530V649H883C897 649 906 654 909 665C874 698 818 740 818 740L767 679H530V799C556 803 564 813 567 827Z" transform="translate(91.367 830.872) scale(0.818084 -0.818084)" fill="#1f1a17"/>
 </svg>

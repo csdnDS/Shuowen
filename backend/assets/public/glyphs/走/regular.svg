@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">走</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="走 regular script glyph">
+  <title>走 regular script glyph</title>
+  <path d="M957 482C922 514 867 555 867 556L818 496H531V661H847C861 661 870 666 873 677C839 708 784 750 784 750L736 690H531V799C555 803 565 812 567 826L465 837V690H150L158 661H465V496H52L61 466H930C944 466 954 471 957 482ZM782 354 734 294H533V419C556 421 564 430 566 444L467 454V40C384 68 325 122 282 220C298 258 311 296 321 333C343 333 356 341 359 355L257 379C229 226 160 43 30 -67L40 -78C151 -9 224 93 272 197C353 -8 479 -53 714 -53C766 -53 881 -53 929 -53C931 -26 944 -5 969 -1V13C906 12 776 11 718 11C647 11 586 14 533 23V265H846C860 265 870 270 873 281C838 312 782 354 782 354Z" transform="translate(95.719 827.157) scale(0.809372 -0.809372)" fill="#1f1a17"/>
 </svg>

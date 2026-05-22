@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">果</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="果 regular script glyph">
+  <title>果 regular script glyph</title>
+  <path d="M177 782V374H188C215 374 242 389 242 396V426H464V305H46L55 276H401C317 158 183 43 33 -33L42 -49C215 19 364 120 464 244V-78H474C507 -78 529 -62 529 -56V276H538C620 132 762 18 906 -44C914 -13 938 7 964 10L966 22C822 64 656 160 563 276H929C943 276 954 281 957 292C920 324 863 368 863 368L812 305H529V426H756V383H766C789 383 821 400 822 406V744C839 747 854 755 860 761L782 821L747 782H248L177 815ZM464 753V621H242V753ZM529 753H756V621H529ZM464 591V455H242V591ZM529 591H756V455H529Z" transform="translate(93.119 822.615) scale(0.814577 -0.814577)" fill="#1f1a17"/>
 </svg>

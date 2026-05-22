@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">神</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="神 regular script glyph">
+  <title>神 regular script glyph</title>
+  <path d="M165 835 154 828C190 793 232 733 242 686C306 638 363 768 165 835ZM745 827 646 839V640H509L441 672V156H452C479 156 504 171 504 179V234H646V-79H659C683 -79 709 -63 709 -53V234H852V166H861C883 166 913 183 914 190V599C935 603 951 610 958 618L878 680L842 640H709V800C735 804 743 813 745 827ZM852 610V457H709V610ZM852 264H709V427H852ZM646 610V457H504V610ZM504 264V427H646V264ZM275 -48V373C311 337 351 287 364 246C423 208 467 325 275 395V421C317 476 353 533 377 587C400 589 413 590 422 598L349 669L305 628H45L54 598H306C256 469 146 310 36 213L48 201C105 240 161 290 211 345V-72H222C253 -72 275 -54 275 -48Z" transform="translate(90.325 833.232) scale(0.824295 -0.824295)" fill="#1f1a17"/>
 </svg>

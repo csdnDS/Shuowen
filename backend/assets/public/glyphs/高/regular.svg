@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">高</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="高 regular script glyph">
+  <title>高 regular script glyph</title>
+  <path d="M856 782 805 719H544C575 744 557 829 400 849L390 840C433 814 485 762 499 719H55L64 689H924C939 689 948 694 951 705C914 738 856 782 856 782ZM617 100H386V218H617ZM386 30V70H617V23H626C648 23 678 38 679 45V209C697 212 712 220 718 227L642 284L608 247H390L324 278V11H333C358 11 386 24 386 30ZM675 466H334V583H675ZM334 412V437H675V398H685C706 398 739 412 740 418V571C759 575 776 583 783 590L701 652L665 612H339L270 644V391H280C306 391 334 407 334 412ZM189 -56V326H829V18C829 4 824 -2 806 -2C784 -2 688 4 688 4V-10C732 -15 756 -24 771 -34C784 -44 789 -61 792 -80C882 -71 894 -40 894 11V314C914 317 931 325 937 332L852 396L819 355H197L125 388V-78H136C163 -78 189 -63 189 -56Z" transform="translate(88.504 834.553) scale(0.818084 -0.818084)" fill="#1f1a17"/>
 </svg>

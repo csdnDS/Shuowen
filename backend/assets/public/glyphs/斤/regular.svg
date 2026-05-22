@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">斤</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="斤 regular script glyph">
+  <title>斤 regular script glyph</title>
+  <path d="M786 839C676 793 472 739 289 709L203 738V419C203 242 183 72 51 -60L65 -73C250 53 268 248 268 418V445H587V-78H598C632 -78 653 -66 653 -62V445H929C944 445 953 450 956 461C921 493 866 535 866 535L816 475H268V684C463 698 671 737 808 774C832 765 850 764 859 773Z" transform="translate(82.704 835.354) scale(0.828790 -0.828790)" fill="#1f1a17"/>
 </svg>

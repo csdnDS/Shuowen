@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">竹</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="竹 regular script glyph">
+  <title>竹 regular script glyph</title>
+  <path d="M218 838C182 658 112 489 33 378L47 367C105 422 156 494 199 578H257V-77H268C302 -77 323 -61 323 -56V578H489C503 578 512 583 515 594C485 625 433 665 433 665L389 608H213C240 664 263 726 282 790C304 790 315 799 319 812ZM607 839C569 657 493 489 408 381L422 370C484 424 540 494 586 578H720V26C720 11 715 6 696 6C675 6 569 13 569 13V-2C617 -8 643 -15 659 -28C672 -39 678 -57 679 -77C773 -68 786 -29 786 23V578H944C958 578 967 583 970 594C937 626 884 668 884 668L836 608H602C631 663 656 724 676 788C699 787 711 797 713 808Z" transform="translate(93.234 829.029) scale(0.811099 -0.811099)" fill="#1f1a17"/>
 </svg>

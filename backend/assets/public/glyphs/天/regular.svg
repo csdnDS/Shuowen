@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">天</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="天 regular script glyph">
+  <title>天 regular script glyph</title>
+  <path d="M802 807 750 743H122L129 714H452C451 622 451 537 442 457H61L68 427H438C411 226 323 64 35 -63L48 -81C380 40 478 208 509 427C540 251 623 49 899 -78C907 -42 931 -29 966 -25L968 -14C676 98 567 265 529 427H930C943 427 953 432 956 442C920 478 861 521 861 521L809 457H513C522 536 524 622 526 714H870C883 714 893 719 896 729C860 764 802 807 802 807Z" transform="translate(91.490 815.691) scale(0.814577 -0.814577)" fill="#1f1a17"/>
 </svg>

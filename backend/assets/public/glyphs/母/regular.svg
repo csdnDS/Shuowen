@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">母</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="母 regular script glyph">
+  <title>母 regular script glyph</title>
+  <path d="M384 385 372 376C428 330 492 250 505 183C578 130 630 296 384 385ZM409 695 398 688C448 641 506 558 516 494C587 440 642 604 409 695ZM886 509 839 447H791C795 530 799 623 801 724C824 726 837 732 846 740L766 809L725 763H312L230 801C224 709 209 576 192 447H30L39 418H188C174 313 158 213 145 143C131 138 115 130 106 124L180 70L213 105H688C679 63 668 35 656 23C642 10 635 7 612 7C587 7 508 14 458 19L456 2C502 -5 548 -17 566 -30C581 -41 584 -59 584 -78C639 -78 681 -64 712 -25C730 -3 745 41 757 105H910C924 105 933 110 936 121C905 151 854 193 854 193L809 134H762C774 208 783 303 789 418H945C959 418 969 423 972 434C939 465 886 509 886 509ZM208 134C222 214 237 316 252 418H722C715 300 706 203 694 134ZM256 447C270 551 283 654 291 733H735C732 629 729 533 724 447Z" transform="translate(95.796 814.883) scale(0.806794 -0.806794)" fill="#1f1a17"/>
 </svg>

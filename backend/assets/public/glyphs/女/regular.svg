@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">女</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="女 regular script glyph">
+  <title>女 regular script glyph</title>
+  <path d="M864 641 810 575H406C443 658 475 737 497 793C525 792 533 800 538 813L436 841C416 778 377 678 333 575H37L44 545H320C273 438 222 333 184 267C274 238 382 196 487 147C385 50 242 -17 37 -63L42 -80C279 -43 435 20 544 120C663 61 771 -6 833 -70C915 -97 942 23 588 165C672 261 723 386 763 545H934C947 545 958 550 960 560C923 597 864 641 864 641ZM686 545C652 396 603 280 525 188C451 215 363 242 258 269C300 347 349 448 392 545Z" transform="translate(89.534 833.304) scale(0.823402 -0.823402)" fill="#1f1a17"/>
 </svg>

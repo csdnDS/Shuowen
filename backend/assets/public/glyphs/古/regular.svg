@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">古</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="古 regular script glyph">
+  <title>古 regular script glyph</title>
+  <path d="M189 350V-77H200C228 -77 255 -62 255 -54V6H745V-75H754C777 -75 811 -59 812 -53V303C835 307 854 317 861 326L772 394L733 350H531V583H928C943 583 952 588 955 599C918 633 858 680 858 680L806 613H531V797C556 801 565 811 568 826L464 836V613H50L59 583H464V350H261L189 382ZM745 320V36H255V320Z" transform="translate(81.709 835.904) scale(0.832421 -0.832421)" fill="#1f1a17"/>
 </svg>

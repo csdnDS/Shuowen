@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">朱</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="朱 regular script glyph">
+  <title>朱 regular script glyph</title>
+  <path d="M247 801C217 663 160 529 99 442L113 433C165 478 212 541 252 613H464V402H49L58 373H407C327 226 191 80 33 -18L43 -32C221 53 369 181 464 328V-78H477C502 -78 530 -61 530 -51V373H533C614 195 754 54 903 -23C913 9 937 29 964 33L966 44C813 99 648 225 557 373H925C939 373 949 378 951 389C915 422 857 466 857 466L806 402H530V613H836C851 613 861 618 864 629C827 661 772 703 772 703L722 641H530V799C556 803 564 813 567 827L464 838V641H267C284 676 300 712 314 750C335 750 346 758 351 770Z" transform="translate(93.119 829.539) scale(0.814577 -0.814577)" fill="#1f1a17"/>
 </svg>

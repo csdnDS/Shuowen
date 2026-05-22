@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">明</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="明 regular script glyph">
+  <title>明 regular script glyph</title>
+  <path d="M837 745V545H580V745ZM516 774V454C516 245 482 70 301 -68L315 -80C480 13 544 143 567 281H837V28C837 10 831 4 810 4C785 4 661 13 661 13V-3C714 -10 744 -18 761 -29C777 -40 784 -57 788 -78C890 -67 901 -32 901 20V732C921 736 938 744 945 753L860 816L827 774H591L516 807ZM837 516V310H572C578 358 580 407 580 455V516ZM143 728H331V504H143ZM80 758V93H90C122 93 143 111 143 116V213H331V133H340C363 133 393 150 394 157V715C414 720 431 728 437 736L357 798L321 758H155L80 789ZM143 475H331V243H143Z" transform="translate(65.290 832.143) scale(0.848214 -0.848214)" fill="#1f1a17"/>
 </svg>

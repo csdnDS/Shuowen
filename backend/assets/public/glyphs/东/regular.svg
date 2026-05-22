@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">东</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="东 regular script glyph">
+  <title>东 regular script glyph</title>
+  <path d="M665 278 654 269C736 200 848 85 881 -3C965 -56 1000 130 665 278ZM382 235 288 290C222 160 121 42 35 -25L47 -39C151 15 260 108 341 224C362 218 376 226 382 235ZM486 802 392 838C375 793 347 729 316 662H54L62 632H302C261 547 215 458 179 396C162 391 143 383 131 376L201 316L235 346H492V19C492 4 487 -1 468 -1C447 -1 344 6 344 6V-9C390 -14 415 -22 430 -33C444 -43 449 -59 452 -78C546 -69 558 -37 558 15V346H867C881 346 890 351 893 362C858 395 799 439 799 439L749 375H558V523C581 525 590 533 593 547L492 558V375H241C279 446 329 543 373 632H926C941 632 950 637 953 648C915 682 856 727 856 727L803 662H387C410 710 431 754 445 788C469 782 481 791 486 802Z" transform="translate(91.024 834.597) scale(0.827887 -0.827887)" fill="#1f1a17"/>
 </svg>

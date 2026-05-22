@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">商</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="商 regular script glyph">
+  <title>商 regular script glyph</title>
+  <path d="M435 846 425 839C454 813 489 766 500 729C563 686 619 809 435 846ZM472 438 388 489C340 408 277 327 229 280L241 267C302 305 373 365 432 428C451 422 466 429 472 438ZM579 477 568 468C620 425 691 352 716 299C785 260 820 395 579 477ZM869 781 818 718H42L51 689H937C951 689 961 694 964 705C928 738 869 781 869 781ZM282 683 272 675C304 645 343 591 354 549C362 544 369 541 376 540H204L133 573V-76H144C172 -76 197 -61 197 -53V510H807V22C807 6 802 0 783 0C762 0 660 8 660 8V-8C706 -13 731 -21 746 -32C760 -42 764 -60 767 -80C860 -70 871 -37 871 15V498C892 502 909 510 915 517L831 581L797 540H629C662 571 697 608 721 637C742 636 754 645 759 656L657 683C642 641 618 583 595 540H387C430 547 438 640 282 683ZM608 107H395V272H608ZM395 31V77H608V29H617C637 29 669 42 670 47V267C685 268 698 275 703 282L633 336L600 302H400L334 332V10H344C369 10 395 25 395 31Z" transform="translate(87.171 834.341) scale(0.820734 -0.820734)" fill="#1f1a17"/>
 </svg>

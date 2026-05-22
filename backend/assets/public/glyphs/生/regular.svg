@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">生</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="生 regular script glyph">
+  <title>生 regular script glyph</title>
+  <path d="M258 803C210 624 123 452 35 345L49 335C119 394 183 473 238 567H463V313H155L163 284H463V-7H42L50 -35H935C949 -35 958 -30 961 -20C924 13 865 58 865 58L813 -7H531V284H839C853 284 863 289 866 300C830 332 772 377 772 377L721 313H531V567H875C889 567 899 571 902 582C865 617 809 658 809 658L757 596H531V797C556 801 564 811 567 825L463 836V596H254C281 644 304 696 325 750C347 749 359 758 363 769Z" transform="translate(91.274 848.704) scale(0.820734 -0.820734)" fill="#1f1a17"/>
 </svg>

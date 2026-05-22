@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">禾</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="禾 regular script glyph">
+  <title>禾 regular script glyph</title>
+  <path d="M51 488 60 459H408C331 295 194 124 34 12L45 -3C224 97 371 243 464 408V-76H475C508 -76 530 -60 530 -55V459H532C613 259 751 99 903 10C914 43 939 63 967 67L970 77C815 143 646 290 555 459H924C938 459 948 464 951 475C915 506 857 551 857 551L807 488H530V713C633 728 729 745 806 763C831 752 850 753 859 761L782 833C632 778 346 717 107 694L110 675C227 679 349 689 464 704V488Z" transform="translate(92.393 827.329) scale(0.811966 -0.811966)" fill="#1f1a17"/>
 </svg>

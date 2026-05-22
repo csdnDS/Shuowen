@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">月</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="月 regular script glyph">
+  <title>月 regular script glyph</title>
+  <path d="M708 731V536H316V731ZM251 761V447C251 245 220 70 47 -66L61 -78C220 14 282 142 304 277H708V30C708 13 702 6 681 6C657 6 535 15 535 15V-1C587 -8 617 -16 634 -28C649 -39 656 -56 660 -78C763 -68 774 -32 774 22V718C795 721 811 730 818 738L733 803L698 761H329L251 794ZM708 507V306H308C314 353 316 401 316 448V507Z" transform="translate(126.901 832.713) scale(0.862656 -0.862656)" fill="#1f1a17"/>
 </svg>

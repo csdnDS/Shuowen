@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">光</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="光 regular script glyph">
+  <title>光 regular script glyph</title>
+  <path d="M147 778 134 770C187 706 252 603 265 523C340 462 397 635 147 778ZM791 784C746 685 684 577 636 513L650 502C716 557 792 639 852 722C873 718 887 725 892 736ZM464 838V453H41L49 424H348C336 187 271 43 33 -63L38 -78C319 11 402 161 424 424H562V20C562 -33 581 -50 662 -50H772C935 -50 966 -38 966 -7C966 6 962 15 940 23L936 197H923C910 122 898 50 889 30C886 19 882 15 869 14C855 12 820 11 773 11H673C634 11 629 17 629 36V424H931C945 424 955 429 957 440C922 473 865 516 865 516L814 453H530V799C555 803 565 813 567 827Z" transform="translate(93.119 829.539) scale(0.814577 -0.814577)" fill="#1f1a17"/>
 </svg>

@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">宝</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宝 regular script glyph">
+  <title>宝 regular script glyph</title>
+  <path d="M437 839 427 832C463 801 498 746 504 701C573 650 636 794 437 839ZM626 202 616 193C662 161 715 101 728 51C801 4 850 154 626 202ZM169 733 152 732C157 668 118 611 78 590C56 577 42 556 50 533C62 507 100 506 126 524C156 544 183 586 183 651H837C826 617 810 574 798 547L810 540C846 565 895 607 920 639C940 641 951 642 959 648L879 725L835 681H180C178 697 175 715 169 733ZM871 55 822 -5H533V241H802C816 241 824 246 827 257C795 288 742 328 742 328L696 271H533V463H838C852 463 861 468 864 479C833 508 781 546 781 546L737 492H150L158 463H467V271H178L186 241H467V-5H51L60 -35H934C948 -35 957 -30 960 -19C926 13 871 55 871 55Z" transform="translate(80.240 854.899) scale(0.833083 -0.833083)" fill="#1f1a17"/>
 </svg>

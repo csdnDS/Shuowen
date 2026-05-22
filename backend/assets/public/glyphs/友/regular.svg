@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">友</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="友 regular script glyph">
+  <title>友 regular script glyph</title>
+  <path d="M363 837C362 776 358 713 352 651H52L61 622H349C320 362 240 107 38 -60L52 -71C233 50 327 227 379 415C410 305 458 216 523 143C440 58 334 -11 202 -60L212 -76C357 -34 470 28 558 106C648 20 764 -39 906 -78C917 -46 941 -25 972 -22L974 -11C827 19 700 69 599 146C678 228 734 324 773 431C796 433 807 436 815 445L742 513L697 472H393C405 522 413 572 420 622H926C940 622 950 627 953 637C917 670 859 714 859 714L809 651H424C431 702 435 753 439 803C471 807 479 816 481 831ZM557 182C483 250 426 336 392 442H699C668 346 621 258 557 182Z" transform="translate(89.145 828.141) scale(0.811966 -0.811966)" fill="#1f1a17"/>
 </svg>

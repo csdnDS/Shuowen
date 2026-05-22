@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">安</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="安 regular script glyph">
+  <title>安 regular script glyph</title>
+  <path d="M429 843 419 836C457 803 496 743 502 694C573 642 635 791 429 843ZM864 498 815 436H428C455 490 478 541 495 579C523 577 532 586 537 597L433 628C417 583 387 511 353 436H48L57 407H340C301 323 258 240 227 189C315 164 398 137 473 110C373 29 235 -23 44 -60L49 -77C275 -49 428 2 535 85C657 36 756 -15 825 -65C903 -110 987 5 583 128C654 199 701 291 738 407H928C942 407 951 412 954 423C920 455 864 498 864 498ZM170 735 153 734C158 669 120 611 80 589C58 576 44 555 52 532C64 507 103 506 128 525C158 544 184 587 184 651H836C821 613 800 565 783 533L796 526C837 555 891 603 920 639C940 640 952 642 959 648L879 725L835 681H182C180 698 176 716 170 735ZM301 197C336 257 377 334 414 407H658C627 300 582 215 515 148C453 164 382 181 301 197Z" transform="translate(85.717 836.391) scale(0.826087 -0.826087)" fill="#1f1a17"/>
 </svg>

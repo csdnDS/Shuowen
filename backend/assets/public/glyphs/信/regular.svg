@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">信</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="信 regular script glyph">
+  <title>信 regular script glyph</title>
+  <path d="M552 849 542 842C583 803 630 736 638 682C705 632 760 779 552 849ZM826 440 784 384H381L389 354H881C894 354 903 359 906 370C876 400 826 440 826 440ZM827 576 784 521H380L388 491H881C894 491 904 496 907 507C876 537 827 576 827 576ZM884 720 837 660H312L320 630H944C957 630 967 635 970 646C938 677 884 720 884 720ZM268 559 229 574C265 641 296 713 323 787C345 786 357 795 361 805L256 838C205 645 117 449 32 325L46 315C91 360 134 415 173 477V-78H185C210 -78 237 -62 238 -56V541C255 544 265 550 268 559ZM462 -57V-2H806V-66H816C838 -66 870 -51 871 -45V212C890 215 906 223 912 230L832 292L796 252H468L398 283V-79H408C435 -79 462 -64 462 -57ZM806 222V28H462V222Z" transform="translate(94.072 831.940) scale(0.810235 -0.810235)" fill="#1f1a17"/>
 </svg>

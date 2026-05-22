@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">青</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="青 regular script glyph">
+  <title>青 regular script glyph</title>
+  <path d="M307 251H704V149H307ZM307 280V380H704V280ZM242 409V-77H253C280 -77 307 -61 307 -54V120H704V21C704 5 699 -1 681 -1C657 -1 550 7 550 7V-8C598 -14 623 -22 640 -32C654 -42 660 -59 663 -78C758 -69 769 -36 769 14V367C790 370 806 379 812 386L728 449L694 409H313L242 441ZM159 636 166 607H466V518H57L66 489H926C941 489 951 494 953 504C920 535 867 576 867 576L820 518H531V607H827C840 607 850 612 853 623C821 652 770 692 770 692L725 636H531V721H879C893 721 902 726 904 737C872 766 819 808 819 808L772 750H531V801C556 804 566 814 568 828L466 838V750H112L121 721H466V636Z" transform="translate(81.004 835.284) scale(0.829694 -0.829694)" fill="#1f1a17"/>
 </svg>

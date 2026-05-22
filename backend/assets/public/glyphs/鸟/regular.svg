@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">鸟</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="鸟 regular script glyph">
+  <title>鸟 regular script glyph</title>
+  <path d="M657 210 611 152H52L60 122H715C729 122 739 127 741 138C709 169 657 210 657 210ZM361 645 352 635C401 603 466 543 490 497C564 460 599 601 361 645ZM501 826 388 848C384 813 375 761 368 726H275L196 764V336C185 330 174 322 168 315L244 264L269 303H837C828 146 814 28 790 6C781 -3 772 -5 753 -5C730 -5 645 3 597 7L596 -11C638 -17 688 -26 705 -37C721 -48 726 -65 726 -84C772 -84 810 -73 835 -50C876 -14 895 114 902 295C923 297 935 302 942 309L865 373L827 332H261V696H705C698 568 686 477 666 458C657 451 648 449 629 449C609 449 531 455 488 459V443C528 437 572 428 587 418C602 407 606 392 606 374C647 374 685 383 709 403C747 435 763 537 770 689C790 691 802 695 809 703L733 765L695 726H406C425 751 447 781 463 804C484 804 497 811 501 826Z" transform="translate(94.721 831.502) scale(0.815451 -0.815451)" fill="#1f1a17"/>
 </svg>

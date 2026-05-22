@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">日</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="日 regular script glyph">
+  <title>日 regular script glyph</title>
+  <path d="M735 370V48H268V370ZM735 400H268V710H735ZM202 739V-70H214C244 -70 268 -53 268 -43V19H735V-65H745C769 -65 802 -47 803 -40V697C823 701 839 709 846 717L763 783L725 739H275L202 773Z" transform="translate(33.130 837.632) scale(0.890973 -0.890973)" fill="#1f1a17"/>
 </svg>

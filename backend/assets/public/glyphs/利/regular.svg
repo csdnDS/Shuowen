@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">利</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="利 regular script glyph">
+  <title>利 regular script glyph</title>
+  <path d="M630 753V124H642C666 124 693 139 693 147V715C717 718 726 728 729 742ZM845 820V28C845 12 840 5 820 5C799 5 689 14 689 14V-2C737 -8 763 -16 780 -27C793 -39 799 -56 803 -76C898 -66 909 -32 909 22V781C933 784 943 794 946 809ZM487 837C395 787 212 724 58 694L62 677C142 684 224 696 301 711V529H58L66 499H276C224 354 137 207 27 100L40 87C148 167 237 270 301 387V-77H312C343 -77 366 -62 366 -56V407C419 355 481 279 498 219C568 168 615 320 366 427V499H571C585 499 595 504 598 515C566 547 513 589 513 589L467 529H366V724C423 737 475 750 517 764C542 755 561 755 570 764Z" transform="translate(97.671 834.255) scale(0.826986 -0.826986)" fill="#1f1a17"/>
 </svg>

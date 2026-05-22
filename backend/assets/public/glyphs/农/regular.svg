@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">农</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="农 regular script glyph">
+  <title>农 regular script glyph</title>
+  <path d="M190 686 174 687C165 613 130 562 90 539C33 464 199 427 197 614H413C327 383 194 203 40 83L53 71C146 126 229 197 301 286V30C301 14 296 6 266 -13L319 -88C325 -84 333 -76 338 -65C441 -7 534 52 584 83L578 97L366 18V324C389 327 400 337 402 350L353 356C405 431 450 517 487 614H502C539 269 653 54 888 -68C903 -36 930 -17 962 -17L965 -7C814 53 701 151 625 289C713 321 807 369 854 398C868 392 879 393 885 400L813 464C773 426 687 354 616 306C570 393 539 496 522 614H829L760 492L773 485C811 515 876 572 908 605C929 606 941 606 949 614L875 685L833 644H498C515 690 530 738 543 788C567 788 579 797 583 810L476 837C462 769 444 705 423 644H196Z" transform="translate(87.135 827.697) scale(0.821622 -0.821622)" fill="#1f1a17"/>
 </svg>

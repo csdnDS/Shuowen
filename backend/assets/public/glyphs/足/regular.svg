@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">足</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="足 regular script glyph">
+  <title>足 regular script glyph</title>
+  <path d="M735 742V513H265V742ZM239 371C222 218 169 40 42 -67L53 -78C162 -11 227 88 267 191C350 -8 479 -52 716 -52C769 -52 882 -52 928 -52C929 -25 943 -5 968 0V14C905 12 778 12 721 12C649 12 587 15 533 24V256H858C872 256 883 261 885 272C851 303 795 345 795 345L747 285H533V484H735V428H745C766 428 800 443 801 450V729C821 733 836 742 843 750L761 812L725 771H271L200 804V421H211C238 421 265 435 265 442V484H467V40C382 67 321 120 277 217C289 254 299 291 306 327C327 328 340 336 344 350Z" transform="translate(85.529 821.210) scale(0.820734 -0.820734)" fill="#1f1a17"/>
 </svg>

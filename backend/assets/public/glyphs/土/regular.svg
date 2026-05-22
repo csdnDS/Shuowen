@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">土</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="土 regular script glyph">
+  <title>土 regular script glyph</title>
+  <path d="M101 490 109 460H465V1H41L50 -28H932C947 -28 957 -23 960 -12C923 21 864 66 864 66L812 1H532V460H875C890 460 899 465 902 476C867 508 808 553 808 553L757 490H532V797C557 801 566 811 569 825L465 836V490Z" transform="translate(86.094 854.102) scale(0.826986 -0.826986)" fill="#1f1a17"/>
 </svg>

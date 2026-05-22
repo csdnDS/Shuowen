@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">自</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="自 regular script glyph">
+  <title>自 regular script glyph</title>
+  <path d="M743 641V459H267V641ZM459 838C451 788 436 722 420 671H274L202 704V-76H214C242 -76 267 -59 267 -51V-7H743V-75H752C776 -75 808 -57 810 -49V627C830 632 846 640 853 648L770 714L732 671H451C485 711 517 758 537 795C559 796 571 806 574 818ZM267 430H743V242H267ZM267 214H743V22H267Z" transform="translate(61.379 836.805) scale(0.831510 -0.831510)" fill="#1f1a17"/>
 </svg>

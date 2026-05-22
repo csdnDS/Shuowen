@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">北</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="北 regular script glyph">
+  <title>北 regular script glyph</title>
+  <path d="M37 118 80 29C90 32 98 42 100 54C203 111 284 160 345 196V-75H358C382 -75 410 -61 410 -51V766C435 770 443 781 445 795L345 806V530H68L77 502H345V218C215 173 91 130 37 118ZM868 640C811 571 721 476 634 408V766C657 770 667 781 669 794L568 806V40C568 -20 591 -39 672 -39H773C928 -39 965 -31 965 1C965 13 960 21 936 29L932 176H919C907 114 893 49 887 34C881 25 876 22 866 21C852 20 820 19 775 19H682C641 19 634 28 634 53V385C742 440 852 517 914 572C931 566 946 569 954 578Z" transform="translate(89.698 819.332) scale(0.818966 -0.818966)" fill="#1f1a17"/>
 </svg>

@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">思</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="思 regular script glyph">
+  <title>思 regular script glyph</title>
+  <path d="M416 314 406 305C465 267 536 197 554 136C630 94 663 259 416 314ZM296 261V6C296 -46 313 -60 402 -60H537C723 -60 758 -50 758 -18C758 -5 751 2 728 10L725 135H712C700 79 690 31 682 14C677 4 673 1 659 0C642 -2 597 -2 539 -2H411C365 -2 360 2 360 18V227C379 230 388 238 390 250ZM187 244C180 158 123 87 72 60C52 48 38 27 48 7C60 -16 97 -11 125 8C170 37 227 116 204 244ZM742 257 730 248C799 190 879 91 895 10C974 -49 1026 140 742 257ZM241 555H464V388H241ZM241 584V749H464V584ZM175 778V300H186C213 300 241 316 241 323V359H761V317H771C793 317 826 333 827 339V736C847 740 862 748 869 756L788 819L751 778H246L175 810ZM528 749H761V584H528ZM528 555H761V388H528Z" transform="translate(82.787 836.013) scale(0.832708 -0.832708)" fill="#1f1a17"/>
 </svg>

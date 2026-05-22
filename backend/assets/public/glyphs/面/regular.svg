@@ -1,5 +1,4 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="7" y="7" width="86" height="86" rx="10" fill="#faf7f0" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>
-  <text x="50" y="57" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a" font-size="54" font-family="PingFang SC, Helvetica Neue, sans-serif">面</text>
-  <text x="50" y="86" text-anchor="middle" fill="#9a7a2f" font-size="8" font-family="PingFang SC, sans-serif">楷书参考</text>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="面 regular script glyph">
+  <title>面 regular script glyph</title>
+  <path d="M115 583V-76H125C159 -76 180 -60 180 -55V3H817V-69H827C858 -69 884 -53 884 -47V548C906 551 917 558 925 565L847 627L813 583H447C473 623 505 681 531 731H933C947 731 957 736 960 747C924 779 866 824 866 824L815 760H46L55 731H444C436 683 425 624 416 583H191L115 616ZM180 33V555H341V33ZM817 33H653V555H817ZM404 555H590V403H404ZM404 374H590V220H404ZM404 190H590V33H404Z" transform="translate(81.751 830.985) scale(0.831510 -0.831510)" fill="#1f1a17"/>
 </svg>
