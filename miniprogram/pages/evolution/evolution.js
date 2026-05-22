@@ -33,9 +33,12 @@ function shuffle(items) {
 Page({
   data: {
     query: '说',
+    fontClass: '',
     character: null,
     searchHistory: [],
     hasSearchHistory: false,
+    searchPanelVisible: false,
+    searchFocus: false,
     catalog: [],
     catalogFiltered: [],
     catalogTotal: 9353,
@@ -47,8 +50,15 @@ Page({
     loading: false,
     aiStory: null,
     aiStoryLoading: false,
-    aiVoicePlaying: false,
+    askInput: '',
+    askAnswer: null,
+    askMessages: [],
+    askLoading: false,
+    askFocus: false,
+    askPanelVisible: false,
     aiPanelExpanded: true,
+    suggestions: [],
+    showSuggestions: false,
     dailyRecommendation: null,
     dailyLoading: false,
     quiz: null,
@@ -74,8 +84,12 @@ Page({
   },
 
   _debounce: null,
+  _charCache: null,
+  _unlocked: null,
 
   onLoad(options = {}) {
+    this._charCache = {};
+    this._unlocked = new Set();
     const searchHistory = wx.getStorageSync('searchHistory') || [];
     const pendingChar = wx.getStorageSync('pendingEvolutionChar');
     const initialChar = options.char || pendingChar || '人';
@@ -100,6 +114,8 @@ Page({
   },
 
   onShow() {
+    const settings = wx.getStorageSync('userSettings') || {};
+    this.setData({ fontClass: { small: 'fs-small', large: 'fs-large' }[settings.fontSize] || '' });
     const pendingChar = wx.getStorageSync('pendingEvolutionChar');
     if (pendingChar) {
       wx.removeStorageSync('pendingEvolutionChar');
@@ -112,8 +128,27 @@ Page({
 
   onUnload() {
     if (this._debounce) clearTimeout(this._debounce);
-    this._stopAiVoice();
   },
+
+  openSearchPanel() {
+    this.setData({
+      searchPanelVisible: true,
+      searchFocus: true,
+      suggestions: [],
+      showSuggestions: false
+    });
+  },
+
+  closeSearchPanel() {
+    this.setData({
+      searchPanelVisible: false,
+      searchFocus: false,
+      suggestions: [],
+      showSuggestions: false
+    });
+  },
+
+  noop() {},
 
   onInput(event) {
     const val = event.detail.value;
@@ -121,22 +156,55 @@ Page({
     if (this._debounce) clearTimeout(this._debounce);
     this._debounce = setTimeout(() => {
       const trimmed = (val || '').trim();
-      if (!trimmed) return;
-      const firstChar = Array.from(trimmed)[0];
-      // Chinese character — load directly
-      if (/[一-鿿㐀-䶿]/.test(firstChar)) {
-        this._loadCharacter(firstChar);
+      if (!trimmed) {
+        this.setData({ suggestions: [], showSuggestions: false });
         return;
       }
-      // ASCII — treat as pinyin prefix search
+      const firstChar = Array.from(trimmed)[0];
+      if (/[一-鿿㐀-䶿]/.test(firstChar)) {
+        const suggestions = this.data.catalog
+          .filter((item) => item.char && item.char.indexOf(firstChar) !== -1)
+          .slice(0, 8);
+        this.setData({ suggestions, showSuggestions: suggestions.length > 0 });
+        return;
+      }
+      // ASCII — show a pinyin-prefix suggestion dropdown
       const norm = normPinyin(trimmed);
-      const match = this.data.catalog.find(
-        (item) => normPinyin(item.pinyin) === norm
-      ) || this.data.catalog.find(
-        (item) => normPinyin(item.pinyin).startsWith(norm)
-      );
-      if (match) this._loadCharacter(match.char);
-    }, 400);
+      const suggestions = this.data.catalog
+        .filter((item) => item.pinyin && normPinyin(item.pinyin).startsWith(norm))
+        .slice(0, 12);
+      this.setData({ suggestions, showSuggestions: suggestions.length > 0 });
+    }, 250);
+  },
+
+  submitSearch() {
+    const trimmed = (this.data.query || '').trim();
+    if (!trimmed) return;
+    const firstChar = Array.from(trimmed)[0];
+    if (/[一-鿿㐀-䶿]/.test(firstChar)) {
+      this.closeSearchPanel();
+      this._loadCharacter(firstChar);
+      return;
+    }
+    const norm = normPinyin(trimmed);
+    const match = this.data.catalog.find(
+      (item) => normPinyin(item.pinyin) === norm
+    ) || this.data.catalog.find(
+      (item) => item.pinyin && normPinyin(item.pinyin).startsWith(norm)
+    );
+    if (match) {
+      this.closeSearchPanel();
+      this._loadCharacter(match.char);
+      return;
+    }
+    wx.showToast({ title: '未找到匹配汉字', icon: 'none' });
+  },
+
+  useSuggestion(event) {
+    const char = event.currentTarget.dataset.char;
+    if (!char) return;
+    this.closeSearchPanel();
+    this._loadCharacter(char);
   },
 
   setStrokeFilter(event) {
@@ -157,18 +225,22 @@ Page({
     this.setData({ aiPanelExpanded: !this.data.aiPanelExpanded });
   },
 
-  openAssistantActions() {
-    wx.showActionSheet({
-      itemList: ['每日一字', '猜字游戏', '汉字故事官'],
-      success: (res) => {
-        if (res.tapIndex === 0 || res.tapIndex === 1) {
-          this.setData({ aiPanelExpanded: true });
-          this._scrollToSelector('#ai-feature-panel');
-        } else if (res.tapIndex === 2) {
-          this._scrollToSelector('#ai-story-panel');
-        }
-      }
+  quickAsk() {
+    this.setData({
+      searchPanelVisible: false,
+      askPanelVisible: true,
+      askFocus: true
     });
+  },
+
+  closeAskPanel() {
+    this.setData({ askPanelVisible: false, askFocus: false });
+  },
+
+  useAskPreset(event) {
+    const question = event.currentTarget.dataset.question;
+    if (!question) return;
+    this.setData({ askInput: question, askFocus: true });
   },
 
   openRadicalIndex() {
@@ -220,6 +292,7 @@ Page({
     const pool = this.data.catalogFiltered.filter((item) => item.hasDetail);
     if (!pool.length) return;
     const item = pool[Math.floor(Math.random() * pool.length)];
+    this.closeSearchPanel();
     this.setData({ query: item.char });
     this._loadCharacter(item.char);
   },
@@ -241,7 +314,10 @@ Page({
 
   useHistory(event) {
     const char = event.currentTarget.dataset.char;
-    if (char) this._loadCharacter(char);
+    if (char) {
+      this.closeSearchPanel();
+      this._loadCharacter(char);
+    }
   },
 
   useCatalog(event) {
@@ -296,10 +372,15 @@ Page({
       quizExplaining: false
     });
     try {
-      const pool = shuffle(QUIZ_POOL);
+      const pool = shuffle(QUIZ_POOL).slice(0, 12);
+      // Fetch candidates in parallel, then pick the first usable one in order.
+      const results = await Promise.all(pool.map((char) =>
+        request(`/api/characters/${encodeURIComponent(char)}`, 'GET', {}, { timeout: 8000 })
+          .catch(() => null)
+      ));
       let quiz = null;
-      for (const char of pool.slice(0, 12)) {
-        const data = await request(`/api/characters/${encodeURIComponent(char)}`, 'GET', {}, { timeout: 8000 });
+      for (const data of results) {
+        if (!data) continue;
         const stages = data.stages || [];
         const stage = stages.find((item) => item.era === 'oracle' && item.assetUrl)
           || stages.find((item) => item.era === 'bronze' && item.assetUrl)
@@ -414,6 +495,12 @@ Page({
    * Backend metadata (pinyin / meaning) merges in when present.
    */
   async _loadCharacter(char) {
+    const cached = this._charCache && this._charCache[char];
+    if (cached) {
+      this._applyCharacter(cached);
+      this.setData({ offline: false });
+      return;
+    }
     const bundled = glyphs.byChar[char];
     if (bundled) {
       this._applyCharacter(bundled);
@@ -422,6 +509,7 @@ Page({
     try {
       const remote = await request(`/api/characters/${encodeURIComponent(char)}`);
       const merged = this._mergeRemote(bundled, remote);
+      if (this._charCache) this._charCache[merged.char] = merged;
       this._applyCharacter(merged);
       this._unlockViewedCharacter(merged.char);
       this.setData({ offline: false });
@@ -443,13 +531,13 @@ Page({
 
   async _fetchCatalog() {
     try {
-      const data = await request('/api/characters?limit=100');
+      const data = await request('/api/characters?limit=300');
       // Backend may return characters not in our bundled set; merge while
       // preserving bundled-first ordering.
       const remote = data.items || [];
       const seen = new Set(glyphs.catalog.map((c) => c.char));
       const extras = remote.filter((c) => !seen.has(c.char));
-      const merged = glyphs.catalog.concat(extras).slice(0, 100);
+      const merged = glyphs.catalog.concat(extras).slice(0, 300);
       this.setData({
         catalog: merged,
         catalogTotal: data.total || glyphs.total,
@@ -511,6 +599,7 @@ Page({
       return enriched;
     });
     const searchHistory = this._saveSearchHistory(character.char);
+    this._saveRecentView(character.char);
     // Find related chars from radical group (fallback.radicals has rich examples)
     const radicalEntry = character.radical
       ? fallback.radicals.find((r) => r.radical === character.radical)
@@ -528,8 +617,12 @@ Page({
       character: { ...character, stages },
       aiStory: null,
       aiStoryLoading: false,
-      aiVoicePlaying: false,
+      askInput: '',
+      askAnswer: null,
+      askMessages: [],
       compareExpanded: false,
+      suggestions: [],
+      showSuggestions: false,
       related,
       searchHistory,
       hasSearchHistory: searchHistory.length > 0,
@@ -547,11 +640,24 @@ Page({
     return searchHistory;
   },
 
+  _saveRecentView(char) {
+    const current = wx.getStorageSync('recentViews') || [];
+    const next = [
+      { char, time: Date.now() },
+      ...current.filter((item) => item.char !== char)
+    ].slice(0, 20);
+    wx.setStorageSync('recentViews', next);
+  },
+
   async _unlockViewedCharacter(char) {
+    if (this._unlocked && this._unlocked.has(char)) return;
+    if (this._unlocked) this._unlocked.add(char);
     try {
       await request('/api/progress/unlock', 'POST', { char }, { timeout: 5000 });
     } catch (_err) {
       // Progress is non-blocking; the evolution page should still render.
+      // Drop from the dedup set so a later view can retry the unlock.
+      if (this._unlocked) this._unlocked.delete(char);
     }
   },
 
@@ -601,57 +707,51 @@ Page({
     }
   },
 
-  _stopAiVoice() {
-    if (this._aiAudio) {
-      this._aiAudio.stop();
-      this._aiAudio.destroy();
-      this._aiAudio = null;
+  onAskInput(event) {
+    this.setData({ askInput: event.detail.value });
+  },
+
+  async submitAsk() {
+    const character = this.data.character;
+    if (!character || this.data.askLoading) return;
+    const question = (this.data.askInput || '').trim();
+    if (!question) {
+      wx.showToast({ title: '请输入想问的问题', icon: 'none' });
+      return;
     }
-    this.setData({ aiVoicePlaying: false });
-  },
-
-  speakAiStory() {
-    const story = this.data.aiStory;
-    if (!story || this.data.aiVoicePlaying) return;
-
-    wx.showModal({
-      title: '语音播报未启用',
-      content: '请先在微信小程序后台添加“同声传译”插件，再把 app.json 中的 WechatSI 插件声明打开。',
-      showCancel: false
+    const messages = [
+      ...(this.data.askMessages || []),
+      { role: 'user', text: question }
+    ];
+    this.setData({
+      askLoading: true,
+      askInput: '',
+      askMessages: messages
     });
-    return;
-
-    /*
-    const plugin = requirePlugin('WechatSI');
-
-    const content = story.voiceText || story.story;
-    if (!content) return;
-    this.setData({ aiVoicePlaying: true });
-
-    plugin.textToSpeech({
-      lang: 'zh_CN',
-      tts: true,
-      content,
-      success: (res) => {
-        const audio = wx.createInnerAudioContext();
-        this._aiAudio = audio;
-        audio.src = res.filename;
-        audio.onEnded(() => this._stopAiVoice());
-        audio.onError(() => {
-          this._stopAiVoice();
-          wx.showToast({ title: '语音播报失败', icon: 'none' });
-        });
-        audio.play();
-      },
-      fail: () => {
-        this._stopAiVoice();
-        wx.showToast({ title: '语音合成失败', icon: 'none' });
-      }
-    });
-    */
-  },
-
-  stopAiStoryVoice() {
-    this._stopAiVoice();
+    try {
+      const data = await request('/api/ai/ask', 'POST', {
+        char: character.char,
+        question
+      }, { timeout: 15000 });
+      this.setData({
+        askAnswer: data,
+        askMessages: [
+          ...messages,
+          { role: 'assistant', text: data.answer || '小字灵还在想这个问题。' }
+        ]
+      });
+    } catch (_err) {
+      const fallbackAnswer = `小字灵暂时无法连线。关于“${character.char}”，可以先看看上面的字形演变与释义。`;
+      this.setData({
+        askAnswer: { char: character.char, question, answer: fallbackAnswer, generated: false },
+        askMessages: [
+          ...messages,
+          { role: 'assistant', text: fallbackAnswer }
+        ]
+      });
+    } finally {
+      this.setData({ askLoading: false });
+    }
   }
+
 });

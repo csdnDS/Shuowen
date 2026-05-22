@@ -1,7 +1,7 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
-const { getOracleSrc } = require('../../utils/oracleSVGs');
+const { hasOracleSvg } = require('../../utils/oracleSVGs');
 
 function pad(value) {
   return `${value}`.padStart(2, '0');
@@ -38,6 +38,14 @@ function formatRelativeTime(timestamp) {
 
 function sameDay(a, b) {
   return new Date(a).toDateString() === new Date(b).toDateString();
+}
+
+function getOracleAssetSrc(char) {
+  if (!hasOracleSvg(char)) return '';
+  const app = getApp();
+  const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
+  if (!baseUrl) return '';
+  return `${baseUrl}/assets/glyphs/${encodeURIComponent(char)}/oracle.svg`;
 }
 
 function calculateStreak(history) {
@@ -290,7 +298,7 @@ Page({
     const entry = pool[seed % pool.length];
     const data = glyphs.byChar[entry.char];
     if (!data) return;
-    const oracleSrc = getOracleSrc(data.char);
+    const oracleSrc = getOracleAssetSrc(data.char);
     const todayStr = `${today.getMonth() + 1}月${today.getDate()}日`;
     this.setData({
       charOfDay: {
@@ -312,7 +320,7 @@ Page({
     try {
       const data = await request('/api/ai/daily', 'GET', {}, { timeout: 15000 });
       const local = glyphs.byChar[data.char] || {};
-      const oracleSrc = getOracleSrc(data.char);
+      const oracleSrc = getOracleAssetSrc(data.char);
       this.setData({
         charOfDay: {
           char: data.char,
@@ -348,6 +356,13 @@ Page({
     if (!cod) return;
     wx.setStorageSync('pendingEvolutionChar', cod.char);
     wx.switchTab({ url: '/pages/evolution/evolution' });
+  },
+
+  onCharOfDayOracleError() {
+    this.setData({
+      'charOfDay.hasOracle': false,
+      'charOfDay.oracleSrc': ''
+    });
   },
 
   // ── Quiz ───────────────────────────────────────────────────

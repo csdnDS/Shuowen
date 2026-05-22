@@ -1,4 +1,4 @@
-<view class="page">
+<view class="page {{fontClass}}">
 
   <!-- Page header -->
   <view class="page-header">
@@ -12,19 +12,12 @@
     <text>当前未连接到本地服务，显示离线示例数据。</text>
   </view>
 
-  <!-- Search card -->
-  <view class="card">
-    <view class="search-row">
-      <input class="search-input" maxlength="10" value="{{query}}" bindinput="onInput" placeholder="汉字 或 拼音（如 shui）" placeholder-class="search-placeholder" />
-      <view class="search-icon" bindtap="randomChar">🎲</view>
-    </view>
-    <view class="search-hint">支持拼音检索，点击 🎲 随机一字</view>
-
-    <view wx:if="{{hasSearchHistory}}" class="history-row">
-      <view class="history-label">最近搜索</view>
-      <view class="history-chips">
-        <view wx:for="{{searchHistory}}" wx:key="*this" class="chip" data-char="{{item}}" bindtap="useHistory">{{item}}</view>
-        <view class="chip chip-outline" bindtap="clearHistory">清空</view>
+  <view class="search-launcher" bindtap="openSearchPanel">
+    <view class="search-launcher-main">
+      <view class="search-launcher-icon">⌕</view>
+      <view>
+        <view class="search-launcher-title">搜索汉字</view>
+        <view class="search-launcher-sub">支持汉字和拼音</view>
       </view>
     </view>
   </view>
@@ -86,13 +79,24 @@
           </view>
           <view wx:if="{{quizAnswered}}" class="quiz-result">
             <view class="quiz-result-head">
-              <view class="quiz-result-title">{{quizCorrect ? '猜对了' : '再看一次'}}</view>
-              <button class="quiz-detail-btn" size="mini" bindtap="openQuizCharacter">查看字形</button>
+              <view>
+                <view class="quiz-result-title">{{quizCorrect ? '猜对了' : '答案揭晓'}}</view>
+                <view class="quiz-result-sub">{{quizCorrect ? '你抓住了古文字线索' : '再看一次字形线索就会更像了'}}</view>
+              </view>
+              <view class="quiz-answer-char">{{quiz.char}}</view>
+            </view>
+            <view class="quiz-answer-meta">
+              <text wx:if="{{quiz.pinyin}}">{{quiz.pinyin}}</text>
+              <text wx:if="{{quiz.meaning}}"> · {{quiz.meaning}}</text>
             </view>
             <view wx:if="{{quizExplaining}}" class="quiz-explaining">小字灵正在讲解...</view>
             <view wx:elif="{{quizExplanation}}" class="quiz-explain-row">
               <image class="quiz-mascot" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
               <view class="quiz-explain-text">{{quizExplanation.story}}</view>
+            </view>
+            <view class="quiz-result-actions">
+              <button class="quiz-action-primary" size="mini" bindtap="nextQuiz">再来一题</button>
+              <button class="quiz-action-secondary" size="mini" bindtap="openQuizCharacter">查看演变</button>
             </view>
           </view>
         </view>
@@ -192,10 +196,6 @@
           <view class="ai-story-topic">{{aiStory.title}}</view>
           <view class="ai-story-text">{{aiStory.story}}</view>
         </view>
-        <view class="ai-story-actions">
-          <view wx:if="{{!aiVoicePlaying}}" class="ai-voice-btn" bindtap="speakAiStory">语音播报</view>
-          <view wx:else class="ai-voice-btn ai-voice-stop" bindtap="stopAiStoryVoice">停止播报</view>
-        </view>
       </view>
     </view>
   </view>
@@ -219,7 +219,7 @@
       <view class="catalog-toggle">{{catalogExpanded ? '收起' : '展开'}} {{catalogExpanded ? '⌃' : '⌄'}}</view>
     </view>
     <view wx:if="{{!catalogExpanded}}" class="catalog-preview">
-      <view class="catalog-preview-text">点开浏览字库、按笔画筛选，或直接用上方搜索。</view>
+      <view class="catalog-preview-text">点开浏览字库、按笔画筛选，或使用上方搜索入口。</view>
       <view class="catalog-preview-chars">
         <text wx:for="{{suggestChars}}" wx:key="*this" class="catalog-preview-char">{{item}}</text>
       </view>
@@ -240,8 +240,82 @@
     </view>
   </view>
 
-  <view class="assistant-fab" bindtap="openAssistantActions">
+  <view class="assistant-fab" bindtap="quickAsk">
     <image class="assistant-fab-img" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
+    <view class="assistant-fab-label">问小字灵</view>
+  </view>
+
+  <view wx:if="{{searchPanelVisible}}" class="search-overlay" catchtap="closeSearchPanel">
+    <view class="search-sheet" catchtap="noop">
+      <view class="search-sheet-head">
+        <view>
+          <view class="search-sheet-title">查找汉字</view>
+          <view class="search-sheet-sub">输入汉字、拼音，或随机看看</view>
+        </view>
+        <view class="search-sheet-close" bindtap="closeSearchPanel">×</view>
+      </view>
+      <view class="search-row">
+        <input class="search-input" maxlength="10" value="{{query}}" focus="{{searchFocus}}"
+               bindinput="onInput" confirm-type="search" bindconfirm="submitSearch"
+               placeholder="汉字 或 拼音（如 shui）" placeholder-class="search-placeholder" />
+        <view class="search-icon" bindtap="randomChar">🎲</view>
+      </view>
+      <view class="search-hint">按回车搜索，点击 🎲 随机一字</view>
+
+      <view wx:if="{{showSuggestions}}" class="suggest-dropdown">
+        <view wx:for="{{suggestions}}" wx:key="char" class="suggest-item"
+              data-char="{{item.char}}" bindtap="useSuggestion">
+          <text class="suggest-item-char">{{item.char}}</text>
+          <text wx:if="{{item.pinyin}}" class="suggest-item-pinyin">{{item.pinyin}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{hasSearchHistory}}" class="history-row">
+        <view class="history-label">最近搜索</view>
+        <view class="history-chips">
+          <view wx:for="{{searchHistory}}" wx:key="*this" class="chip" data-char="{{item}}" bindtap="useHistory">{{item}}</view>
+          <view class="chip chip-outline" bindtap="clearHistory">清空</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{askPanelVisible}}" class="search-overlay" catchtap="closeAskPanel">
+    <view class="ask-sheet" catchtap="noop">
+      <view class="ask-sheet-head">
+        <image class="ask-sheet-mascot" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
+        <view class="ask-sheet-title-wrap">
+          <view class="ask-sheet-title">小字灵</view>
+          <view class="ask-sheet-sub">汉字字源 · 字形演变 · 部首读音</view>
+        </view>
+        <view class="search-sheet-close" bindtap="closeAskPanel">×</view>
+      </view>
+
+      <view class="ask-message-list">
+        <view wx:if="{{askMessages.length === 0}}" class="ask-empty">
+          <view>我可以帮你讲字源、比较字形，也可以把复杂解释变成适合展示的短讲稿。</view>
+        </view>
+        <view wx:for="{{askMessages}}" wx:key="index" class="ask-message {{item.role === 'user' ? 'ask-message-user' : 'ask-message-assistant'}}">
+          <view class="ask-bubble">{{item.text}}</view>
+        </view>
+        <view wx:if="{{askLoading}}" class="ask-message ask-message-assistant">
+          <view class="ask-bubble ask-thinking">小字灵正在想...</view>
+        </view>
+      </view>
+
+      <view class="ask-presets">
+        <view class="ask-preset" data-question="这个字的字源是什么？" bindtap="useAskPreset">字源</view>
+        <view class="ask-preset" data-question="这个字的甲骨文像什么？" bindtap="useAskPreset">甲骨文</view>
+        <view class="ask-preset" data-question="用一句话讲它的演变" bindtap="useAskPreset">一句话</view>
+      </view>
+
+      <view class="ai-ask-row">
+        <input class="ai-ask-input" maxlength="60" value="{{askInput}}" focus="{{askFocus}}"
+               bindinput="onAskInput" confirm-type="send" bindconfirm="submitAsk"
+               placeholder="问任意汉字，如「火的字源」" placeholder-class="search-placeholder" />
+        <button class="ai-ask-btn" size="mini" loading="{{askLoading}}" bindtap="submitAsk">提问</button>
+      </view>
+    </view>
   </view>
 
 </view>

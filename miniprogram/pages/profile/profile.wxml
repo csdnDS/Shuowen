@@ -76,14 +76,38 @@
     <view class="section-row">
       <view>
         <view class="section-title">我的收藏</view>
-        <view class="section-sub">{{bookmarks.length}} 字 · 长按删除</view>
+        <view class="section-sub">{{bookmarks.length}} 字 · 按部首整理</view>
       </view>
       <view class="btn btn-ghost btn-sm" bindtap="goEvolution">去添加</view>
     </view>
+
+    <view wx:if="{{hasRecentViews}}" class="bookmark-block">
+      <view class="bookmark-block-title">最近查看</view>
+      <scroll-view scroll-x class="recent-scroll" enhanced show-scrollbar="{{false}}">
+        <view class="recent-track">
+          <view wx:for="{{recentViews}}" wx:key="char" class="recent-chip" data-char="{{item.char}}" bindtap="openBookmark">
+            <text class="recent-chip-char">{{item.char}}</text>
+            <text wx:if="{{item.pinyin}}" class="recent-chip-pinyin">{{item.pinyin}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
     <view wx:if="{{hasBookmarks}}" class="bookmark-grid">
       <view wx:for="{{bookmarks}}" wx:key="char" class="bookmark-cell" data-char="{{item.char}}" bindtap="openBookmark" bindlongpress="removeBookmark">
         <text class="bm-char">{{item.char}}</text>
         <text wx:if="{{item.pinyin}}" class="bm-pinyin">{{item.pinyin}}</text>
+      </view>
+    </view>
+    <view wx:if="{{hasBookmarks}}" class="bookmark-groups">
+      <view wx:for="{{bookmarkGroups}}" wx:key="radical" wx:for-item="group" class="bookmark-group">
+        <view class="bookmark-group-head">
+          <view class="bookmark-group-title">{{group.radical}}部</view>
+          <view class="bookmark-group-count">{{group.count}} 字</view>
+        </view>
+        <view class="bookmark-group-list">
+          <view wx:for="{{group.items}}" wx:key="char" wx:for-item="bm" class="bookmark-mini" data-char="{{bm.char}}" bindtap="openBookmark">{{bm.char}}</view>
+        </view>
       </view>
     </view>
     <view wx:else class="empty">

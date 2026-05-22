@@ -1,23 +1,31 @@
 import { Router } from 'express';
 import { TOTAL_SHUOWEN_COUNT } from '../data/seedData.js';
 import { findUser, getUserUnlocked, listActivities, recordActivity, saveUser } from '../repositories/userRepository.js';
+import { resolveWechatLogin } from '../services/wechatAuthService.js';
 import { asyncRoute, getOpenId } from '../utils/request.js';
 
 export function createAuthRouter() {
   const router = Router();
 
   router.post('/auth/wechat', asyncRoute(async (req, res) => {
-    const openid = req.body.openid || `dev-${req.body.code || 'openid'}`;
+    const login = await resolveWechatLogin(req.body?.code);
+    const openid = login.openid;
     const profile = await saveUser({
       openid,
       nickname: req.body.nickname || '说文访客',
       avatarUrl: req.body.avatarUrl || ''
     });
-    await recordActivity(openid, 'login', { source: 'miniprogram' });
+    await recordActivity(openid, 'login', {
+      source: 'miniprogram',
+      authMode: login.authMode,
+      configured: login.configured
+    });
 
     res.json({
       token: openid,
-      user: profile
+      user: profile,
+      authMode: login.authMode,
+      configured: login.configured
     });
   }));
 

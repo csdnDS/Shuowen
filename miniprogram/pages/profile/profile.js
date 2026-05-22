@@ -17,6 +17,31 @@ function levelFor(count) {
   return { name: '初识', hint: `再解 ${30 - count} 字达「初学」` };
 }
 
+function enrichChar(char) {
+  const entry = glyphs.byChar[char] || {};
+  return {
+    char,
+    pinyin: entry.pinyin || '',
+    radical: entry.radical || '其他',
+    meaning: entry.meaning || ''
+  };
+}
+
+function groupByRadical(items) {
+  const groups = [];
+  const index = {};
+  items.forEach((item) => {
+    const key = item.radical || '其他';
+    if (!index[key]) {
+      index[key] = { radical: key, count: 0, items: [] };
+      groups.push(index[key]);
+    }
+    index[key].items.push(item);
+    index[key].count += 1;
+  });
+  return groups.slice(0, 8);
+}
+
 Page({
   data: {
     isLoggedIn: false,
@@ -36,6 +61,9 @@ Page({
     levelName: '初识',
     levelHint: '',
     bookmarks: [],
+    bookmarkGroups: [],
+    recentViews: [],
+    hasRecentViews: false,
     hasBookmarks: false,
     settings: {
       fontSize: 'medium'
@@ -57,10 +85,11 @@ Page({
 
   _loadLocalState() {
     const rawBookmarks = wx.getStorageSync('bookmarks') || [];
-    const bookmarks = rawBookmarks.map((char) => {
-      const entry = glyphs.byChar[char];
-      return { char, pinyin: entry ? entry.pinyin : '' };
-    });
+    const bookmarks = rawBookmarks.map(enrichChar);
+    const rawRecent = wx.getStorageSync('recentViews') || [];
+    const recentViews = rawRecent
+      .map((item) => enrichChar(item.char || item))
+      .slice(0, 10);
     const streakState = wx.getStorageSync('streakState') || { lastDay: '', days: 0, todayCount: 0 };
     const today = new Date().toDateString();
     const streakDays = streakState.lastDay === today ? streakState.days : 0;
@@ -71,6 +100,9 @@ Page({
 
     this.setData({
       bookmarks,
+      bookmarkGroups: groupByRadical(bookmarks),
+      recentViews,
+      hasRecentViews: recentViews.length > 0,
       hasBookmarks: bookmarks.length > 0,
       'stats.bookmarkCount': bookmarks.length,
       'stats.streakDays': streakDays,
@@ -198,11 +230,13 @@ Page({
     const char = event.currentTarget.dataset.char;
     const rawNext = (wx.getStorageSync('bookmarks') || []).filter((c) => c !== char);
     wx.setStorageSync('bookmarks', rawNext);
-    const next = rawNext.map((c) => {
-      const entry = glyphs.byChar[c];
-      return { char: c, pinyin: entry ? entry.pinyin : '' };
+    const next = rawNext.map(enrichChar);
+    this.setData({
+      bookmarks: next,
+      bookmarkGroups: groupByRadical(next),
+      hasBookmarks: next.length > 0,
+      'stats.bookmarkCount': next.length
     });
-    this.setData({ bookmarks: next, hasBookmarks: next.length > 0 });
   },
 
   // ── Settings ─────────────────────────────────────────────────
@@ -226,7 +260,7 @@ Page({
       confirmColor: '#DC2626',
       success: (res) => {
         if (res.confirm) {
-          ['searchHistory', 'unlockHistory', 'unlockTimes', 'bookmarks',
+          ['searchHistory', 'recentViews', 'unlockHistory', 'unlockTimes', 'bookmarks',
            'radicalExpanded', 'streakState', 'quizLastScore', 'token', 'userInfo', 'userSettings']
             .forEach((k) => wx.removeStorageSync(k));
           this.setData({
@@ -234,6 +268,9 @@ Page({
             user: { nickname: '说文访客', avatarUrl: '' },
             userInitial: '说',
             bookmarks: [],
+            bookmarkGroups: [],
+            recentViews: [],
+            hasRecentViews: false,
             hasBookmarks: false,
             'stats.streakDays': 0,
             'stats.todayCount': 0,

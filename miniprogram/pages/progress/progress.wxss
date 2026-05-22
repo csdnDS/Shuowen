@@ -516,12 +516,9 @@
 .cod-oracle {
   width: 120rpx;
   height: 120rpx;
-  background: rgba(255,255,255,0.12);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 92rpx 92rpx;
+  background: #FFF9EC;
   border-radius: 14rpx;
-  padding: 8rpx;
+  padding: 10rpx;
   box-sizing: border-box;
 }
 

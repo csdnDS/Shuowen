@@ -1,4 +1,8 @@
 import { execFile } from 'node:child_process';
+import { randomBytes } from 'node:crypto';
+import { unlink, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { promisify } from 'node:util';
 import { env } from '../config/env.js';
 import { cacheGet, cacheSet } from '../db/redis.js';
@@ -76,7 +80,11 @@ async function callLlm(instructions, input) {
     return (data?.choices?.[0]?.message?.content || '').trim();
   } catch (error) {
     console.warn(`AI fetch unavailable, retrying with curl: ${error.message}`);
+    // Pass the API key via a 0600 temp config file so it never appears in
+    // the process argument list (which is visible to `ps`).
+    const configPath = join(tmpdir(), `sw-ai-${randomBytes(8).toString('hex')}.conf`);
     try {
+      await writeFile(configPath, `header = "Authorization: Bearer ${env.deepseekApiKey}"\n`, { mode: 0o600 });
       const { stdout } = await execFileAsync('curl', [
         '-sS',
         '--max-time',
@@ -86,8 +94,8 @@ async function callLlm(instructions, input) {
         url,
         '-H',
         'Content-Type: application/json',
-        '-H',
-        `Authorization: Bearer ${env.deepseekApiKey}`,
+        '--config',
+        configPath,
         '-d',
         body
       ], { maxBuffer: 1024 * 1024 });
@@ -100,6 +108,8 @@ async function callLlm(instructions, input) {
     } catch (curlError) {
       console.warn(`AI response unavailable: ${curlError.message}`);
       return '';
+    } finally {
+      await unlink(configPath).catch(() => {});
     }
   } finally {
     clearTimeout(timer);
@@ -109,6 +119,19 @@ async function callLlm(instructions, input) {
 function trimText(text, max = 260) {
   const clean = String(text || '').replace(/\s+/g, ' ').trim();
   return clean.length > max ? `${clean.slice(0, max - 1)}…` : clean;
+}
+
+function chinaDateParts(date = new Date()) {
+  const chinaTime = new Date(date.getTime() + 8 * 60 * 60 * 1000);
+  const year = chinaTime.getUTCFullYear();
+  const month = chinaTime.getUTCMonth() + 1;
+  const day = chinaTime.getUTCDate();
+  return {
+    year,
+    month,
+    day,
+    dateKey: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+  };
 }
 
 function fallbackStory(character) {
@@ -129,7 +152,7 @@ function storyTitle(character) {
 }
 
 function fallbackDaily(character, date = new Date()) {
-  const month = date.getMonth() + 1;
+  const { month } = chinaDateParts(date);
   const seasonal = month >= 5 && month <= 7
     ? '今天适合从万物生长和光热流动里理解它。'
     : month >= 8 && month <= 10
@@ -141,7 +164,7 @@ function fallbackDaily(character, date = new Date()) {
 }
 
 function seasonContext(date = new Date()) {
-  const month = date.getMonth() + 1;
+  const { month } = chinaDateParts(date);
   if (month >= 3 && month <= 4) return '春日，适合讲萌发、生长与新的开始';
   if (month >= 5 && month <= 7) return '初夏到盛夏，适合讲光、热、生长与活力';
   if (month >= 8 && month <= 10) return '秋日，适合讲收获、秩序与时间变化';
@@ -196,16 +219,60 @@ export async function explainQuizAnswer(char, chosen, isCorrect) {
   };
 }
 
+export async function answerCharacterQuestion(char, question) {
+  const cleanQuestion = String(question || '').replace(/\s+/g, ' ').trim().slice(0, 200);
+  if (!cleanQuestion) {
+    const error = new Error('缺少问题');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  // Build context from the current character plus any Chinese characters
+  // mentioned in the question, so a question can be about any character.
+  const currentChar = Array.from(String(char || '').trim())[0];
+  const mentioned = cleanQuestion.match(/[一-鿿]/g) || [];
+  const candidateChars = [...new Set([currentChar, ...mentioned].filter(Boolean))].slice(0, 6);
+
+  const contextChars = [];
+  for (const c of candidateChars) {
+    const character = await findCharacter(c);
+    if (character) contextChars.push(compactCharacter(character));
+  }
+
+  const instructions = [
+    '你是“小字灵”，《说文解字》与汉字字形演变方面的讲解员，语气温和活泼。',
+    '回答用户关于汉字的问题：字形演变、字源、六书、部首、读音、含义等。',
+    '如提供了相关汉字资料，优先依据资料；资料未覆盖时可用汉字常识合理讲解，但不要编造具体的考古发现或出土文献名称。',
+    '若问题与汉字无关，礼貌说明你只讲汉字。',
+    '输出中文，不要 Markdown，不要列表，控制在140字以内。'
+  ].join('\n');
+  const input = [
+    contextChars.length
+      ? `相关汉字资料：\n${JSON.stringify(contextChars, null, 2)}`
+      : '（暂无结构化汉字资料，可用汉字常识作答）',
+    `\n用户问题：${cleanQuestion}`
+  ].join('\n');
+  const generated = await callLlm(instructions, input);
+
+  return {
+    char: currentChar || (contextChars[0] && contextChars[0].char) || '',
+    question: cleanQuestion,
+    answer: trimText(generated || '小字灵暂时无法连线，请稍后再试。', 240),
+    generated: Boolean(generated)
+  };
+}
+
 export async function generateDailyRecommendation(openid) {
   const today = new Date();
-  const dateKey = today.toISOString().slice(0, 10);
+  const todayParts = chinaDateParts(today);
+  const dateKey = todayParts.dateKey;
   const cacheKey = `ai:daily:${openid || 'anon'}:${dateKey}`;
   const cached = await cacheGet(cacheKey);
   if (cached) return cached;
 
   const progress = await getProgress(openid);
   const unlocked = new Set(progress.unlocked || []);
-  const candidates = SEASONAL_CHARS[today.getMonth() + 1] || ['说', '文', '人'];
+  const candidates = SEASONAL_CHARS[todayParts.month] || ['说', '文', '人'];
   const ordered = [
     ...candidates.filter((char) => !unlocked.has(char)),
     ...candidates.filter((char) => unlocked.has(char)),
@@ -231,7 +298,7 @@ export async function generateDailyRecommendation(openid) {
     '输出中文，80到120字，不要列表。'
   ].join('\n');
   const input = JSON.stringify({
-    date: today.toISOString().slice(0, 10),
+    date: dateKey,
     seasonContext: seasonContext(today),
     unlockedCount: progress.unlockedCount,
     recent: (progress.history || []).slice(0, 8),

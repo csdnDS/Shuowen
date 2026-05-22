@@ -3,13 +3,15 @@ const { loadHistoricalFonts } = require('./utils/historicalFonts');
 // Detect environment to choose API base URL.
 // In WeChat DevTools: __wxConfig.envVersion === 'develop'
 // Production mini-program should point to the real HTTPS backend domain.
+const DEV_API_BASE_URL = 'http://172.29.35.167:3001';
+
 function resolveApiBase() {
   try {
     const env = __wxConfig && __wxConfig.envVersion;
     if (env === 'release') return 'https://api.shuowen.example.com';
-    if (env === 'trial')   return 'https://api.shuowen.example.com';
+    if (env === 'trial')   return DEV_API_BASE_URL;
   } catch (e) { /* __wxConfig not available outside DevTools */ }
-  return 'http://127.0.0.1:3001';
+  return DEV_API_BASE_URL;
 }
 
 App({

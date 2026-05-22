@@ -18,7 +18,7 @@
     </view>
     <view class="cod-body">
       <view wx:if="{{charOfDay.hasOracle}}" class="cod-oracle-wrap">
-        <view class="cod-oracle" style="background-image: url({{charOfDay.oracleSrc}});"></view>
+        <image class="cod-oracle" src="{{charOfDay.oracleSrc}}" mode="aspectFit" binderror="onCharOfDayOracleError"></image>
         <view class="cod-oracle-label">甲骨文</view>
       </view>
       <view wx:else class="cod-char-big">{{charOfDay.char}}</view>
