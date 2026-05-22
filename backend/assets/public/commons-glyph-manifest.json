@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-22T06:22:45.675Z",
+  "generatedAt": "2026-05-22T12:04:08.513Z",
   "assets": {
     "木-oracle": {
       "type": "stage-glyph-svg",
@@ -5872,6 +5872,70 @@
       "status": "verified",
       "contentType": "image/svg+xml",
       "verifiedAt": "2026-05-22T09:18:11.339Z"
+    },
+    "斤-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "bronze",
+      "key": "glyphs/斤/bronze.svg",
+      "assetKey": "glyphs/斤/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:斤-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%96%A4-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/%E6%96%A4-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-22T09:21:52.658Z"
+    },
+    "斤-seal": {
+      "type": "stage-glyph-svg",
+      "char": "斤",
+      "era": "seal",
+      "key": "glyphs/斤/seal.svg",
+      "assetKey": "glyphs/斤/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:斤-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%96%A4-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/%E6%96%A4-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-22T09:22:53.361Z"
+    },
+    "男-seal": {
+      "type": "stage-glyph-svg",
+      "char": "男",
+      "era": "seal",
+      "key": "glyphs/男/seal.svg",
+      "assetKey": "glyphs/男/seal.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:男-seal.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%94%B7-seal.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/%E7%94%B7-seal.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-22T09:23:53.993Z"
+    },
+    "主-bronze": {
+      "type": "stage-glyph-svg",
+      "char": "主",
+      "era": "bronze",
+      "key": "glyphs/主/bronze.svg",
+      "assetKey": "glyphs/主/bronze.svg",
+      "sourceName": "Wikimedia Commons Ancient Chinese characters project",
+      "sourceTitle": "File:主-bronze.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E4%B8%BB-bronze.svg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/%E4%B8%BB-bronze.svg",
+      "license": "Public domain",
+      "attribution": "Digital file creation, see the contributor names shown in the “User” column of the “File history” section below.",
+      "status": "verified",
+      "contentType": "image/svg+xml",
+      "verifiedAt": "2026-05-22T09:24:54.588Z"
     }
   },
   "source": "Wikimedia Commons Ancient Chinese characters project",

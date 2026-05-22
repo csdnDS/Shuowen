@@ -9,7 +9,7 @@ function resolveApiBase() {
     if (env === 'release') return 'https://api.shuowen.example.com';
     if (env === 'trial')   return 'https://api.shuowen.example.com';
   } catch (e) { /* __wxConfig not available outside DevTools */ }
-  return 'http://localhost:3001';
+  return 'http://127.0.0.1:3001';
 }
 
 App({

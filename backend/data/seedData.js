@@ -835,12 +835,3 @@ export const radicals = [
   { radical: '走', pinyin: 'zǒu', strokes: 7, meaning: '行走奔跑相关', examples: ['走', '赶', '起', '超', '越', '趁', '趋', '赴'] },
   { radical: '光', pinyin: 'guāng',strokes: 6, meaning: '光明照耀相关', examples: ['光', '辉', '晖', '曜', '耀', '灿', '烁', '炯'] }
 ];
-
-export const heatmap = [
-  { id: 'zisheng', name: '字圣殿', heat: 92 },
-  { id: 'dadao', name: '汉字大道', heat: 76 },
-  { id: 'shuzhong', name: '叔重堂', heat: 64 },
-  { id: 'liushu', name: '六书广场', heat: 83 },
-  { id: 'xushenmu', name: '许慎墓', heat: 48 }
-];
-

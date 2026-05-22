@@ -38,6 +38,91 @@
   color: #16A34A;
 }
 
+/* Achievements */
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12rpx;
+}
+
+.achievement-cell {
+  padding: 18rpx;
+  border-radius: 12rpx;
+  background: #FAFAF8;
+  border: 1rpx solid #ECECEA;
+}
+
+.achievement-cell.done {
+  background: #ECFDF5;
+  border-color: #86EFAC;
+}
+
+.achievement-icon {
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: #F5F5F3;
+  color: #A0A0A0;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.achievement-cell.done .achievement-icon {
+  background: #16A34A;
+  color: #FFFFFF;
+}
+
+.achievement-title {
+  color: #1A1A1A;
+  font-size: 25rpx;
+  font-weight: 600;
+  margin-top: 12rpx;
+}
+
+.achievement-desc {
+  color: #6B6B6B;
+  font-size: 21rpx;
+  margin-top: 4rpx;
+}
+
+/* Bookmark preview */
+
+.bookmark-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10rpx;
+}
+
+.bookmark-preview-cell {
+  min-height: 86rpx;
+  border-radius: 10rpx;
+  background: #FAFAF8;
+  border: 1rpx solid #ECECEA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookmark-preview-char {
+  color: #1A1A1A;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.bookmark-preview-pinyin {
+  color: #A0A0A0;
+  font-size: 16rpx;
+  margin-top: 2rpx;
+}
+
+.compact-empty {
+  padding: 18rpx 0 4rpx;
+}
+
 /* Progress card */
 
 .level-badge {
@@ -284,6 +369,26 @@
   line-height: 1.65;
 }
 
+.quiz-ai-card {
+  background: #F8FAFC;
+  border: 1rpx solid #E2E8F0;
+  border-radius: 12rpx;
+  padding: 18rpx;
+}
+
+.quiz-ai-title {
+  color: #1D4ED8;
+  font-size: 22rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.quiz-ai-text {
+  color: #334155;
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
 .quiz-actions {
   display: flex;
   gap: 12rpx;
@@ -412,6 +517,9 @@
   width: 120rpx;
   height: 120rpx;
   background: rgba(255,255,255,0.12);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 92rpx 92rpx;
   border-radius: 14rpx;
   padding: 8rpx;
   box-sizing: border-box;
@@ -466,6 +574,15 @@
   color: rgba(255,255,255,0.9);
   margin-top: 8rpx;
   line-height: 1.5;
+}
+
+.cod-ai {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.86);
+  margin-top: 10rpx;
+  line-height: 1.5;
+  padding-top: 10rpx;
+  border-top: 1rpx solid rgba(255,255,255,0.18);
 }
 
 /* Progressive quiz hint */

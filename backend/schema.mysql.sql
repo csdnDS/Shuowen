@@ -24,15 +24,3 @@ CREATE TABLE IF NOT EXISTS user_progress (
   UNIQUE KEY uniq_user_char (openid, char_value),
   INDEX idx_user_progress_openid_time (openid, unlocked_at)
 );
-
-CREATE TABLE IF NOT EXISTS checkins (
-  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  openid VARCHAR(128) NOT NULL,
-  area_id VARCHAR(64) NOT NULL,
-  area_name VARCHAR(128) NOT NULL DEFAULT '',
-  lat DECIMAL(10, 7) NULL,
-  lng DECIMAL(10, 7) NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  INDEX idx_checkins_area_time (area_id, created_at),
-  INDEX idx_checkins_openid_time (openid, created_at)
-);

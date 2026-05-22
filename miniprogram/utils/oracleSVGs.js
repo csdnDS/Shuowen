@@ -233,10 +233,12 @@ function _toDataUri(svg) {
   return 'data:image/svg+xml,' + svg
     .replace(/\n/g, ' ')
     .replace(/\s{2,}/g, ' ')
+    .trim()
     .replace(/"/g, "'")
     .replace(/#/g, '%23')
     .replace(/</g, '%3C')
-    .replace(/>/g, '%3E');
+    .replace(/>/g, '%3E')
+    .replace(/\s/g, '%20');
 }
 
 function getOracleSrc(char) {

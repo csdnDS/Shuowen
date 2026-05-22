@@ -29,39 +29,89 @@
     </view>
   </view>
 
-  <!-- Catalog card -->
-  <view class="card">
-    <view class="section-row">
+  <!-- AI feature group -->
+  <view id="ai-feature-panel" class="ai-feature-card">
+    <view class="ai-feature-head" bindtap="toggleAiPanel">
       <view>
-        <view class="section-title">字库索引</view>
-        <view class="section-sub">共 {{catalogTotal}} 字 · 展示 {{catalogReturned}}</view>
+        <view class="ai-feature-title">小字灵助手</view>
+        <view class="ai-feature-sub">每日推荐 · 猜字游戏 · 字源讲解</view>
       </view>
+      <view class="ai-feature-toggle">{{aiPanelExpanded ? '收起' : '展开'}} {{aiPanelExpanded ? '⌃' : '⌄'}}</view>
     </view>
-    <!-- Stroke filter chips -->
-    <view class="stroke-filter-row">
-      <view wx:for="{{strokeOptions}}" wx:key="value"
-            class="stroke-chip {{strokeFilter === item.value ? 'stroke-chip-active' : ''}}"
-            data-value="{{item.value}}" bindtap="setStrokeFilter">{{item.label}}</view>
-    </view>
-    <view class="catalog-grid">
-      <view wx:for="{{catalogFiltered}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
-        <text class="catalog-char">{{item.char}}</text>
-        <text wx:if="{{item.pinyin}}" class="catalog-pinyin">{{item.pinyin}}</text>
+
+    <view wx:if="{{aiPanelExpanded}}">
+      <!-- Daily AI recommendation -->
+      <view class="daily-card">
+        <view class="daily-head">
+          <view>
+            <view class="daily-kicker">AI 每日一字</view>
+            <view class="daily-title">{{dailyRecommendation ? dailyRecommendation.title : '今日汉字推荐'}}</view>
+          </view>
+        </view>
+        <view wx:if="{{dailyLoading}}" class="loading-shimmer daily-loading"></view>
+        <view wx:elif="{{dailyRecommendation}}" class="daily-body">
+          <view class="daily-glyph">{{dailyRecommendation.char}}</view>
+          <view class="daily-main">
+            <view class="daily-meta">
+              <text wx:if="{{dailyRecommendation.pinyin}}">{{dailyRecommendation.pinyin}}</text>
+              <text wx:if="{{dailyRecommendation.radical}}"> · {{dailyRecommendation.radical}}部</text>
+            </view>
+            <view class="daily-insight">{{dailyRecommendation.insight}}</view>
+            <view class="daily-actions">
+              <button class="daily-btn" size="mini" bindtap="useDailyRecommendation">查看字形</button>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- AI quiz game -->
+      <view class="quiz-card">
+        <view class="quiz-head">
+          <view>
+            <view class="quiz-kicker">AI 猜字游戏</view>
+            <view class="quiz-title">这是什么现代汉字？</view>
+          </view>
+          <button class="quiz-next" size="mini" loading="{{quizLoading}}" bindtap="nextQuiz">换一题</button>
+        </view>
+        <view wx:if="{{quiz}}" class="quiz-body">
+          <view class="quiz-stage">{{quiz.stageLabel}}</view>
+          <view class="quiz-glyph-panel">
+            <image wx:if="{{quiz.assetUrl}}" class="quiz-glyph-img" src="{{quiz.assetUrl}}" mode="aspectFit"></image>
+            <view wx:else class="quiz-glyph-text">{{quiz.char}}</view>
+          </view>
+          <view class="quiz-options">
+            <view wx:for="{{quiz.options}}" wx:key="char"
+                  class="quiz-option {{quizAnswered && item.correct ? 'correct' : ''}} {{quizAnswered && item.selected && !item.correct ? 'wrong' : ''}}"
+                  data-char="{{item.char}}" bindtap="chooseQuizOption">{{item.char}}</view>
+          </view>
+          <view wx:if="{{quizAnswered}}" class="quiz-result">
+            <view class="quiz-result-head">
+              <view class="quiz-result-title">{{quizCorrect ? '猜对了' : '再看一次'}}</view>
+              <button class="quiz-detail-btn" size="mini" bindtap="openQuizCharacter">查看字形</button>
+            </view>
+            <view wx:if="{{quizExplaining}}" class="quiz-explaining">小字灵正在讲解...</view>
+            <view wx:elif="{{quizExplanation}}" class="quiz-explain-row">
+              <image class="quiz-mascot" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
+              <view class="quiz-explain-text">{{quizExplanation.story}}</view>
+            </view>
+          </view>
+        </view>
+        <view wx:else class="loading-shimmer quiz-loading"></view>
       </view>
     </view>
   </view>
 
   <!-- Current character card -->
-  <view wx:if="{{loading}}" class="card current-card">
+  <view wx:if="{{loading}}" id="current-character-card" class="card current-card">
     <view class="loading-shimmer" style="height:200rpx; border-radius:12rpx"></view>
   </view>
 
-  <view wx:elif="{{character}}" class="card current-card">
+  <view wx:elif="{{character}}" id="current-character-card" class="card current-card">
     <view class="current-row">
       <view class="current-glyph">{{character.char}}</view>
       <view class="current-meta">
         <view wx:if="{{character.pinyin}}" class="current-pinyin">{{character.pinyin}}</view>
-        <view wx:if="{{character.radical}}" class="current-radical">部首 · {{character.radical}}<text wx:if="{{character.strokes}}" class="current-strokes">  {{character.strokes}} 画</text></view>
+        <view wx:if="{{character.radical}}" class="current-radical" bindtap="openRadicalIndex">部首 · {{character.radical}}<text wx:if="{{character.strokes}}" class="current-strokes">  {{character.strokes}} 画</text></view>
         <view class="current-meaning">{{character.meaning}}</view>
       </view>
       <view class="bookmark-btn {{bookmarked ? 'on' : ''}}" bindtap="toggleBookmark">
@@ -72,6 +122,81 @@
       <view class="char-nav-btn {{hasPrev ? '' : 'disabled'}}" bindtap="prevChar">‹ 上一字</view>
       <view class="char-nav-pos">{{catalogIndex >= 0 ? catalogIndex + 1 : '-'}} / {{catalogReturned}}</view>
       <view class="char-nav-btn {{hasNext ? '' : 'disabled'}}" bindtap="nextChar">下一字 ›</view>
+    </view>
+    <view wx:if="{{character.stages.length > 0}}" class="compare-strip mt-sm">
+      <view class="compare-head" bindtap="toggleCompare">
+        <view>
+          <view class="compare-title">字形对比</view>
+          <view class="compare-sub">{{compareExpanded ? '纵向查看每个阶段的来源、年代与说明' : '甲骨 → 金文 → 篆书 → 隶书 → 楷书'}}</view>
+        </view>
+        <view class="compare-toggle">{{compareExpanded ? '收起' : '展开'}} {{compareExpanded ? '⌃' : '⌄'}}</view>
+      </view>
+      <scroll-view wx:if="{{!compareExpanded}}" scroll-x class="compare-scroll" enhanced show-scrollbar="{{false}}">
+        <view class="compare-track">
+          <view wx:for="{{character.stages}}" wx:key="era" class="compare-stage-wrap">
+            <view class="compare-stage">
+              <view class="compare-glyph-wrap">
+                <image wx:if="{{item.assetUrl}}" class="compare-img" src="{{item.assetUrl}}" mode="aspectFit"></image>
+                <image wx:elif="{{item.oracleSrc}}" class="compare-img" src="{{item.oracleSrc}}" mode="aspectFit"></image>
+                <view wx:else class="compare-char era-{{item.era}}">{{item.glyph}}</view>
+              </view>
+              <view class="compare-label">{{item.label}}</view>
+            </view>
+            <view wx:if="{{index < character.stages.length - 1}}" class="compare-arrow">›</view>
+          </view>
+        </view>
+      </scroll-view>
+      <view wx:else class="compare-detail-list">
+        <view wx:for="{{character.stages}}" wx:key="era" class="stage-card compare-detail-card">
+          <view class="stage-rail"></view>
+          <view class="stage-dot"></view>
+
+          <view class="stage-body">
+            <view class="stage-head">
+              <view class="stage-index">{{item.indexLabel}}</view>
+              <view class="stage-title">
+                <view class="stage-name">{{item.label}}</view>
+                <view wx:if="{{item.period}}" class="stage-period">{{item.period}}</view>
+              </view>
+            </view>
+            <view wx:if="{{item.assetUrl}}" class="stage-glyph stage-asset-wrap">
+              <image class="stage-asset" src="{{item.assetUrl}}" mode="aspectFit"></image>
+            </view>
+            <view wx:elif="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
+              <image class="oracle-svg" src="{{item.oracleSrc}}" mode="aspectFit"></image>
+              <view class="oracle-char-sub">{{item.glyph}}</view>
+            </view>
+            <view wx:else class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
+            <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view id="ai-story-panel" class="ai-story-panel mt-sm">
+      <view class="ai-story-head">
+        <view class="ai-guide">
+          <view class="ai-mascot">
+            <image class="ai-mascot-img" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="ai-story-title">汉字故事官 · 小字灵</view>
+            <view class="ai-story-sub">结合字形数据生成起源小故事</view>
+          </view>
+        </view>
+        <button class="ai-story-btn" size="mini" loading="{{aiStoryLoading}}" bindtap="loadAiStory">
+          {{aiStory ? '重新生成' : 'AI讲故事'}}
+        </button>
+      </view>
+      <view wx:if="{{aiStory}}" class="ai-story-content">
+        <view class="ai-story-bubble">
+          <view class="ai-story-topic">{{aiStory.title}}</view>
+          <view class="ai-story-text">{{aiStory.story}}</view>
+        </view>
+        <view class="ai-story-actions">
+          <view wx:if="{{!aiVoicePlaying}}" class="ai-voice-btn" bindtap="speakAiStory">语音播报</view>
+          <view wx:else class="ai-voice-btn ai-voice-stop" bindtap="stopAiStoryVoice">停止播报</view>
+        </view>
+      </view>
     </view>
   </view>
 
@@ -84,50 +209,39 @@
     </view>
   </view>
 
-  <!-- Related characters -->
-  <view wx:if="{{related.length > 0}}" class="card">
-    <view class="section-row">
+  <!-- Catalog card -->
+  <view class="card">
+    <view class="section-row catalog-toggle-row" bindtap="toggleCatalog">
       <view>
-        <view class="section-title">同部首汉字</view>
-        <view class="section-sub">{{character.radical}}部</view>
+        <view class="section-title">字库索引</view>
+        <view class="section-sub">共 {{catalogTotal}} 字 · 展示 {{catalogReturned}}</view>
+      </view>
+      <view class="catalog-toggle">{{catalogExpanded ? '收起' : '展开'}} {{catalogExpanded ? '⌃' : '⌄'}}</view>
+    </view>
+    <view wx:if="{{!catalogExpanded}}" class="catalog-preview">
+      <view class="catalog-preview-text">点开浏览字库、按笔画筛选，或直接用上方搜索。</view>
+      <view class="catalog-preview-chars">
+        <text wx:for="{{suggestChars}}" wx:key="*this" class="catalog-preview-char">{{item}}</text>
       </view>
     </view>
-    <view class="catalog-grid">
-      <view wx:for="{{related}}" wx:key="char" class="catalog-cell has-detail" data-char="{{item.char}}" bindtap="useCatalog">
-        <text class="catalog-char">{{item.char}}</text>
+    <view wx:else>
+      <!-- Stroke filter chips -->
+      <view class="stroke-filter-row">
+        <view wx:for="{{strokeOptions}}" wx:key="value"
+              class="stroke-chip {{strokeFilter === item.value ? 'stroke-chip-active' : ''}}"
+              data-value="{{item.value}}" catchtap="setStrokeFilter">{{item.label}}</view>
+      </view>
+      <view class="catalog-grid">
+        <view wx:for="{{catalogFiltered}}" wx:key="char" class="catalog-cell {{item.hasDetail ? 'has-detail' : ''}}" data-char="{{item.char}}" bindtap="useCatalog">
+          <text class="catalog-char">{{item.char}}</text>
+          <text wx:if="{{item.pinyin}}" class="catalog-pinyin">{{item.pinyin}}</text>
+        </view>
       </view>
     </view>
   </view>
 
-  <!-- Stages timeline -->
-  <view wx:if="{{character && character.stages.length > 0}}" class="stages">
-    <view class="section-title mb-md" style="padding-left:8rpx">五段形体</view>
-    <view wx:for="{{character.stages}}" wx:key="name" class="stage-card">
-      <view class="stage-rail"></view>
-      <view class="stage-dot"></view>
-
-      <view class="stage-body">
-        <view class="stage-head">
-          <view class="stage-index">{{item.indexLabel}}</view>
-          <view class="stage-title">
-            <view class="stage-name">{{item.label}}</view>
-            <view wx:if="{{item.period}}" class="stage-period">{{item.period}}</view>
-          </view>
-          <view class="stage-copy" data-glyph="{{item.glyph}}" catchtap="copyGlyph">复制</view>
-        </view>
-        <view wx:if="{{item.assetUrl}}" class="stage-glyph stage-asset-wrap">
-          <image class="stage-asset" src="{{item.assetUrl}}" mode="aspectFit"></image>
-          <view wx:if="{{item.assetStatusText}}" class="asset-status {{item.assetStatus}}">{{item.assetStatusText}}</view>
-        </view>
-        <view wx:elif="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
-          <image class="oracle-svg" src="{{item.oracleSrc}}" mode="aspectFit"></image>
-          <view class="oracle-char-sub">{{item.glyph}}</view>
-        </view>
-        <view wx:else class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
-        <view wx:if="{{item.assetSource}}" class="asset-source">{{item.assetSource}}</view>
-        <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
-      </view>
-    </view>
+  <view class="assistant-fab" bindtap="openAssistantActions">
+    <image class="assistant-fab-img" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
   </view>
 
 </view>

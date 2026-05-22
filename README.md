@@ -1,6 +1,6 @@
 # Shuowen
 
-Shuowen 现在重构为微信小程序实现，后端使用 Node.js + Express 提供 REST API。项目采用四类数据基础设施：MongoDB 存储汉字、著作与字形资料，MySQL 存储用户、进度、活动和打卡数据，Redis 存储排行榜与热力图缓存，OSS 存储甲骨文字形、拓片、字体、音频等资产；未配置数据库时会自动回退到内存数据，方便本地开发。
+Shuowen 现在重构为微信小程序实现，后端使用 Node.js + Express 提供 REST API。项目采用四类数据基础设施：MongoDB 存储汉字、著作与字形资料，MySQL 存储用户、进度和活动数据，Redis 存储排行榜缓存，OSS 存储甲骨文字形、拓片、字体、音频等资产；未配置数据库时会自动回退到内存数据，方便本地开发。
 
 ## 项目结构
 
@@ -21,7 +21,7 @@ backend/
 ├── db/           # MongoDB / MySQL / Redis / OSS 连接
 ├── data/         # 未配置数据库时使用的种子数据
 ├── repositories/ # 数据读写封装
-├── services/     # 业务逻辑：进度、排行榜、热力聚合
+├── services/     # 业务逻辑：进度、排行榜、资产签名
 ├── routes/       # REST API 路由
 ├── schema.mysql.sql
 ├── schema.mongo.js
@@ -34,11 +34,12 @@ backend/
 - `GET /api/characters/:char`
 - `GET /api/radicals`
 - `GET /api/works`
-- `GET /api/heatmap`
+- `GET /api/ai/story/:char`
+- `GET /api/ai/daily`
+- `POST /api/ai/quiz/explain`
 - `GET /api/progress`
 - `POST /api/progress/unlock`
 - `GET /api/leaderboard`
-- `POST /api/checkins`
 - `POST /api/auth/wechat`
 - `GET /api/me`
 - `GET /api/oss/signature`
@@ -111,8 +112,6 @@ npm --prefix backend run mysql:smoke
 - 写入/读取 `users`
 - 初始化并更新 `user_progress`
 - 写入/读取 `activities`
-- 写入 `checkins`
-- 基于打卡记录聚合 `/api/heatmap`
 - 同步并读取 Redis 解字排行榜
 
 MongoDB 索引：
@@ -143,15 +142,37 @@ npm --prefix backend run mongo:import
 配置项：
 
 - `MONGO_URI` / `MONGO_DB_NAME`：汉字、著作、字形资料
-- `MYSQL_URI`：用户、活动、解锁进度、园区打卡原始记录
-- `REDIS_URL`：解字排行榜、热力图聚合缓存
+- `MYSQL_URI`：用户、活动、解锁进度
+- `REDIS_URL`：解字排行榜缓存
 - `OSS_REGION` / `OSS_BUCKET` / `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET`：字形图、拓片、音频资产签名 URL
+- `DEEPSEEK_API_KEY` / `DEEPSEEK_MODEL` / `DEEPSEEK_BASE_URL`：AI 故事官、AI 每日一字、猜字讲解；未配置 key 时会返回本地兜底文案，便于比赛现场稳定演示
 
 如果这些变量为空，后端仍可启动，自动使用内存 fallback。
 
+### AI 功能
+
+比赛版保留三类轻量 AI 能力：
+
+- 汉字故事官：在字形详情页点击“AI讲故事”，结合该字的释义和五段字形数据生成约 150 字起源故事。
+- AI 猜字讲解：学习页的字形测验答题后，AI 根据正确答案补一段解释和故事。
+- AI 每日一字：学习页顶部根据日期、季节和用户学习历史推荐一个今日汉字。
+
+AI 接口优先使用 DeepSeek Chat Completions API；没有配置 `DEEPSEEK_API_KEY` 时自动使用本地模板兜底，不影响主流程演示。
+
+启用真实 AI：
+
+```bash
+# backend/.env
+DEEPSEEK_API_KEY=你的 DeepSeek Key
+DEEPSEEK_MODEL=deepseek-v4-flash
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+```
+
+汉字故事官的语音播报建议使用微信“同声传译”插件。发布或真机测试前，需要先在微信公众平台的小程序后台添加该插件，再在 `miniprogram/app.json` 中加入 provider `wx069ba97219f66d99`；未添加插件时先不要声明，否则开发者工具可能编译失败。
+
 ### OSS 资产
 
-OSS 用来放不适合直接塞进数据库的大文件，例如甲骨文 SVG、高清拓片、字体、音频和园区地图素材。数据库中建议只保存 `assetKey`，接口按需返回短期签名 URL。
+OSS 用来放不适合直接塞进数据库的大文件，例如甲骨文 SVG、高清拓片、字体和音频资产。数据库中建议只保存 `assetKey`，接口按需返回短期签名 URL。
 
 单个资产签名：
 

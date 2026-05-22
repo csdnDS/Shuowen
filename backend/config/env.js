@@ -11,5 +11,8 @@ export const env = {
   ossAccessKeyId: process.env.OSS_ACCESS_KEY_ID || '',
   ossAccessKeySecret: process.env.OSS_ACCESS_KEY_SECRET || '',
   wxAppId: process.env.WX_APPID || '',
-  wxSecret: process.env.WX_SECRET || ''
+  wxSecret: process.env.WX_SECRET || '',
+  deepseekApiKey: process.env.DEEPSEEK_API_KEY || process.env.OPENAI_API_KEY || '',
+  deepseekModel: process.env.DEEPSEEK_MODEL || process.env.OPENAI_MODEL || 'deepseek-v4-flash',
+  deepseekBaseUrl: process.env.DEEPSEEK_BASE_URL || process.env.OPENAI_BASE_URL || 'https://api.deepseek.com'
 };

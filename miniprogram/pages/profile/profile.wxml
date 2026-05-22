@@ -39,7 +39,7 @@
     </view>
     <view class="stat-cell">
       <view class="stat-value">{{stats.streakDays}}</view>
-      <view class="stat-label">连续打卡</view>
+      <view class="stat-label">连续学习</view>
     </view>
     <view class="stat-cell">
       <view class="stat-value">{{stats.bookmarkCount}}</view>
@@ -63,7 +63,7 @@
 
     <!-- Streak bar: last 7 days -->
     <view class="streak-bar mt-md">
-      <view class="streak-label">连续打卡 {{stats.streakDays}} 天</view>
+      <view class="streak-label">连续学习 {{stats.streakDays}} 天</view>
       <view class="streak-dots">
         <view wx:for="{{7}}" wx:key="*this"
               class="streak-dot {{index < stats.streakDays ? 'dot-on' : ''}}"></view>
@@ -90,23 +90,6 @@
       <view class="empty-icon">★</view>
       <view class="empty-title">尚无收藏</view>
       <view class="empty-body">在「字形」页面查看字形时点击右侧星标即可收藏。</view>
-    </view>
-  </view>
-
-  <!-- Quick actions -->
-  <view class="card">
-    <view class="section-title mb-sm">快捷入口</view>
-    <view class="row row-chev" bindtap="goLearning">
-      <view class="row-label">继续解字 / 字形测验</view>
-      <view class="row-value">今日 {{stats.todayCount}} 次</view>
-    </view>
-    <view class="row row-chev" bindtap="goEvolution">
-      <view class="row-label">查看字形演变</view>
-      <view class="row-value">字源流变</view>
-    </view>
-    <view class="row row-chev" bindtap="goRadicals">
-      <view class="row-label">部首索引</view>
-      <view class="row-value">汉字字族</view>
     </view>
   </view>
 

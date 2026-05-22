@@ -18,7 +18,7 @@
     </view>
     <view class="cod-body">
       <view wx:if="{{charOfDay.hasOracle}}" class="cod-oracle-wrap">
-        <image class="cod-oracle" src="{{charOfDay.oracleSrc}}" mode="aspectFit"></image>
+        <view class="cod-oracle" style="background-image: url({{charOfDay.oracleSrc}});"></view>
         <view class="cod-oracle-label">甲骨文</view>
       </view>
       <view wx:else class="cod-char-big">{{charOfDay.char}}</view>
@@ -26,6 +26,7 @@
         <view class="cod-char">{{charOfDay.char}}<text class="cod-pinyin"> {{charOfDay.pinyin}}</text></view>
         <view class="cod-radical">部首：{{charOfDay.radical}}</view>
         <view class="cod-meaning">{{charOfDay.meaning}}</view>
+        <view wx:if="{{charOfDay.aiInsight}}" class="cod-ai">{{charOfDay.aiInsight}}</view>
       </view>
     </view>
   </view>
@@ -38,11 +39,28 @@
     </view>
     <view class="stat-cell">
       <view class="stat-value">{{streakDays}}</view>
-      <view class="stat-label">连续打卡</view>
+      <view class="stat-label">连续学习</view>
     </view>
     <view class="stat-cell stat-cell-today {{todayCount >= dailyGoal ? 'goal-done' : ''}}">
       <view class="stat-value">{{todayCount}}<text class="stat-goal">/{{dailyGoal}}</text></view>
       <view class="stat-label">今日目标</view>
+    </view>
+  </view>
+
+  <!-- Achievements -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">学习成就</view>
+        <view class="section-sub">完成学习、连续打卡和收藏目标</view>
+      </view>
+    </view>
+    <view class="achievement-grid">
+      <view wx:for="{{achievements}}" wx:key="title" class="achievement-cell {{item.done ? 'done' : ''}}">
+        <view class="achievement-icon">{{item.done ? '✓' : '·'}}</view>
+        <view class="achievement-title">{{item.title}}</view>
+        <view class="achievement-desc">{{item.desc}}</view>
+      </view>
     </view>
   </view>
 
@@ -87,6 +105,26 @@
     </view>
   </view>
 
+  <!-- Bookmark preview -->
+  <view class="card">
+    <view class="section-row">
+      <view>
+        <view class="section-title">收藏字</view>
+        <view class="section-sub">点选进入字形演变</view>
+      </view>
+    </view>
+    <view wx:if="{{hasBookmarks}}" class="bookmark-preview-grid">
+      <view wx:for="{{bookmarksPreview}}" wx:key="char" class="bookmark-preview-cell" data-char="{{item.char}}" bindtap="goToEvolution">
+        <view class="bookmark-preview-char">{{item.char}}</view>
+        <view wx:if="{{item.pinyin}}" class="bookmark-preview-pinyin">{{item.pinyin}}</view>
+      </view>
+    </view>
+    <view wx:else class="empty compact-empty">
+      <view class="empty-title">还没有收藏</view>
+      <view class="empty-body">在字形页点击星标，即可把喜欢的字收进这里。</view>
+    </view>
+  </view>
+
   <!-- Quiz card -->
   <view class="card">
     <view class="section-row">
@@ -119,10 +157,15 @@
               class="quiz-opt {{quizResult ? (item === quiz.correct ? 'opt-correct' : (item === quizResult.chosen && !quizResult.isCorrect ? 'opt-wrong' : 'opt-dim')) : ''}}"
               data-char="{{item}}" bindtap="quizAnswer">{{item}}</view>
       </view>
-      <view wx:if="{{quizResult}}" class="quiz-result">
+        <view wx:if="{{quizResult}}" class="quiz-result">
         <view wx:if="{{quizResult.isCorrect}}" class="quiz-msg quiz-msg-ok">✓ 回答正确！</view>
         <view wx:else class="quiz-msg quiz-msg-err">✗ 正确答案是「{{quiz.correct}}」（{{quiz.pinyin}}）</view>
         <view class="quiz-explain">{{quiz.meaning}}</view>
+        <view class="quiz-ai-card">
+          <view class="quiz-ai-title">AI解字</view>
+          <view wx:if="{{quizAiLoading}}" class="quiz-ai-text">正在生成讲解...</view>
+          <view wx:else class="quiz-ai-text">{{quizAiStory}}</view>
+        </view>
         <view class="quiz-actions mt-sm">
           <view class="btn btn-primary" style="flex:1" bindtap="startQuiz">再来一题</view>
           <view class="btn btn-ghost" style="flex:1" bindtap="goToQuizChar">查看演变</view>

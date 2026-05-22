@@ -7,6 +7,10 @@ export function asyncRoute(handler) {
     try {
       await handler(req, res, next);
     } catch (error) {
+      if (error.statusCode) {
+        res.status(error.statusCode).json({ message: error.message });
+        return;
+      }
       next(error);
     }
   };

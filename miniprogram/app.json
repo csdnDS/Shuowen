@@ -2,10 +2,11 @@
   "pages": [
     "pages/evolution/evolution",
     "pages/radicals/radicals",
-    "pages/heatmap/heatmap",
     "pages/progress/progress",
     "pages/profile/profile"
   ],
+  "entryPagePath": "pages/evolution/evolution",
+  "subPackages": [],
   "window": {
     "navigationBarTitleText": "说文",
     "navigationBarBackgroundColor": "#FFFFFF",
@@ -26,10 +27,6 @@
       {
         "pagePath": "pages/radicals/radicals",
         "text": "部首"
-      },
-      {
-        "pagePath": "pages/heatmap/heatmap",
-        "text": "园区"
       },
       {
         "pagePath": "pages/progress/progress",

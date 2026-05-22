@@ -318,16 +318,6 @@ const radicals = [
   { radical: '黑', pinyin: 'hēi',  strokes: 12, meaning: '黑色暗色相关', examples: ['黑', '墨', '默', '黛', '黔', '黯', '黝', '黢'] }
 ];
 
-const heatmap = {
-  areas: [
-    { id: 'zisheng',  name: '字圣广场', heat: 92 },
-    { id: 'dadao',    name: '六书大道', heat: 78 },
-    { id: 'shuzhong', name: '书冢',     heat: 64 },
-    { id: 'liushu',   name: '六书亭',   heat: 55 },
-    { id: 'xushenmu', name: '许慎墓',   heat: 48 }
-  ]
-};
-
 const progress = {
   total: 9353,
   unlockedCount: 0,
@@ -352,7 +342,6 @@ module.exports = {
   characters,
   catalog,
   radicals,
-  heatmap,
   progress,
   me
 };
