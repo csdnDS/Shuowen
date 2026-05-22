@@ -19,22 +19,33 @@ Page({
     this.fetchRadicals();
   },
 
+  onShow() {
+    const pending = wx.getStorageSync('pendingRadicalKeyword');
+    if (!pending) return;
+    wx.removeStorageSync('pendingRadicalKeyword');
+    this.setData({ keyword: pending });
+    this._expandRadical(pending);
+    this._filterAndSet(pending);
+  },
+
   async fetchRadicals() {
     this.setData({ loading: true });
-    const storedMap = wx.getStorageSync('radicalExpanded') || {};
     try {
       const data = await request('/api/radicals');
-      this._applyRadicals(data, storedMap);
+      this._applyRadicals(data);
       this.setData({ offline: false });
     } catch (err) {
-      this._applyRadicals(fallback.radicals, storedMap);
+      this._applyRadicals(fallback.radicals);
       this.setData({ offline: true });
     } finally {
       this.setData({ loading: false });
     }
   },
 
-  _applyRadicals(data, storedMap) {
+  _applyRadicals(data) {
+    // Read fresh: onShow may have written radicalExpanded after fetchRadicals
+    // started, so a snapshot taken before the await would be stale.
+    const storedMap = wx.getStorageSync('radicalExpanded') || {};
     this._allRadicals = (data || []).map((item) => {
       const expanded = Boolean(storedMap[item.radical]);
       const annotatedExamples = (item.examples || []).map((char) => ({
@@ -103,6 +114,24 @@ Page({
     });
     wx.setStorageSync('radicalExpanded', expandedMap);
     this.setData({ expandedMap, radicals });
+  },
+
+  _expandRadical(radical) {
+    if (!radical) return;
+    const expandedMap = {
+      ...this.data.expandedMap,
+      [radical]: true
+    };
+    this._allRadicals = this._allRadicals.map((item) => {
+      if (item.radical !== radical) return item;
+      return {
+        ...item,
+        expanded: true,
+        expandText: '收起'
+      };
+    });
+    wx.setStorageSync('radicalExpanded', expandedMap);
+    this.setData({ expandedMap });
   },
 
   goToEvolution(event) {

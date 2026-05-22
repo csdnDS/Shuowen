@@ -16,6 +16,10 @@ function createBaseCharacter(char) {
   };
 }
 
+function escapeRegex(s) {
+  return String(s || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function normPinyin(s) {
   return (s || '').toLowerCase()
     .replace(/[āáǎà]/g, 'a').replace(/[ēéěè]/g, 'e')
@@ -42,10 +46,11 @@ export async function findCharacter(char) {
 export async function listCharacters(query = '', limit = 80) {
   const mongoDb = await getMongoDb();
   if (mongoDb) {
+    const safeQuery = escapeRegex(query);
     const filter = query ? {
       $or: [
-        { char: { $regex: query } },
-        { pinyin: { $regex: query, $options: 'i' } }
+        { char: { $regex: safeQuery } },
+        { pinyin: { $regex: safeQuery, $options: 'i' } }
       ]
     } : {};
     const docs = await mongoDb

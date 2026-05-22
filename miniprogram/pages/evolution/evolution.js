@@ -4,6 +4,7 @@ const glyphs = require('../../data/glyphs');
 const { getOracleSrc } = require('../../utils/oracleSVGs');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
+const QUIZ_POOL = ['人', '水', '山', '日', '月', '火', '木', '大', '女', '子', '口', '手', '心', '目', '王', '土', '天', '禾', '竹', '生', '明', '龙', '家', '老', '雨', '鸟', '马', '鱼', '羊', '牛', '田', '风'];
 
 const TONE_MAP = {
   'ā':'a','á':'a','ǎ':'a','à':'a',
@@ -18,6 +19,17 @@ function normPinyin(s) {
   return (s || '').toLowerCase().replace(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/g, c => TONE_MAP[c] || c);
 }
 
+function shuffle(items) {
+  const copy = items.slice();
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = copy[i];
+    copy[i] = copy[j];
+    copy[j] = tmp;
+  }
+  return copy;
+}
+
 Page({
   data: {
     query: '说',
@@ -28,9 +40,24 @@ Page({
     catalogFiltered: [],
     catalogTotal: 9353,
     catalogReturned: 0,
+    catalogExpanded: false,
+    compareExpanded: false,
     bookmarked: false,
     offline: false,
     loading: false,
+    aiStory: null,
+    aiStoryLoading: false,
+    aiVoicePlaying: false,
+    aiPanelExpanded: true,
+    dailyRecommendation: null,
+    dailyLoading: false,
+    quiz: null,
+    quizLoading: false,
+    quizExplaining: false,
+    quizAnswered: false,
+    quizSelected: '',
+    quizCorrect: false,
+    quizExplanation: null,
     related: [],
     catalogIndex: -1,
     hasPrev: false,
@@ -63,9 +90,12 @@ Page({
       catalog: glyphs.catalog,
       catalogFiltered: glyphs.catalog,
       catalogTotal: glyphs.total,
-      catalogReturned: glyphs.catalog.length
+      catalogReturned: glyphs.catalog.length,
+      quiz: this._buildFallbackQuiz()
     });
     this._fetchCatalog();
+    this._loadDailyRecommendation();
+    this._loadQuiz();
     this._loadCharacter(initialChar);
   },
 
@@ -82,6 +112,7 @@ Page({
 
   onUnload() {
     if (this._debounce) clearTimeout(this._debounce);
+    this._stopAiVoice();
   },
 
   onInput(event) {
@@ -114,6 +145,39 @@ Page({
     this._applyStrokeFilter(this.data.catalog, value);
   },
 
+  toggleCatalog() {
+    this.setData({ catalogExpanded: !this.data.catalogExpanded });
+  },
+
+  toggleCompare() {
+    this.setData({ compareExpanded: !this.data.compareExpanded });
+  },
+
+  toggleAiPanel() {
+    this.setData({ aiPanelExpanded: !this.data.aiPanelExpanded });
+  },
+
+  openAssistantActions() {
+    wx.showActionSheet({
+      itemList: ['每日一字', '猜字游戏', '汉字故事官'],
+      success: (res) => {
+        if (res.tapIndex === 0 || res.tapIndex === 1) {
+          this.setData({ aiPanelExpanded: true });
+          this._scrollToSelector('#ai-feature-panel');
+        } else if (res.tapIndex === 2) {
+          this._scrollToSelector('#ai-story-panel');
+        }
+      }
+    });
+  },
+
+  openRadicalIndex() {
+    const character = this.data.character;
+    if (!character || !character.radical) return;
+    wx.setStorageSync('pendingRadicalKeyword', character.radical);
+    wx.switchTab({ url: '/pages/radicals/radicals' });
+  },
+
   _applyStrokeFilter(catalog, strokeFilter) {
     let filtered;
     if (!strokeFilter) {
@@ -139,7 +203,17 @@ Page({
         return entry && entry.strokes >= 11;
       });
     }
-    this.setData({ catalogFiltered: filtered, catalogReturned: filtered.length });
+    const currentChar = this.data.character && this.data.character.char;
+    const catalogIndex = currentChar
+      ? filtered.findIndex((c) => c.char === currentChar)
+      : -1;
+    this.setData({
+      catalogFiltered: filtered,
+      catalogReturned: filtered.length,
+      catalogIndex,
+      hasPrev: catalogIndex > 0,
+      hasNext: catalogIndex >= 0 && catalogIndex < filtered.length - 1
+    });
   },
 
   randomChar() {
@@ -153,15 +227,15 @@ Page({
   prevChar() {
     const idx = this.data.catalogIndex;
     if (idx <= 0) return;
-    const item = this.data.catalog[idx - 1];
+    const item = this.data.catalogFiltered[idx - 1];
     if (item) this._loadCharacter(item.char);
   },
 
   nextChar() {
     const idx = this.data.catalogIndex;
-    const catalog = this.data.catalog;
-    if (idx < 0 || idx >= catalog.length - 1) return;
-    const item = catalog[idx + 1];
+    const list = this.data.catalogFiltered;
+    if (idx < 0 || idx >= list.length - 1) return;
+    const item = list[idx + 1];
     if (item) this._loadCharacter(item.char);
   },
 
@@ -178,6 +252,156 @@ Page({
   clearHistory() {
     wx.removeStorageSync('searchHistory');
     this.setData({ searchHistory: [], hasSearchHistory: false });
+  },
+
+  async _loadDailyRecommendation() {
+    if (this.data.dailyLoading) return;
+    this.setData({ dailyLoading: true });
+    try {
+      const data = await request('/api/ai/daily', 'GET', {}, { timeout: 18000 });
+      this.setData({ dailyRecommendation: data, dailyLoading: false });
+    } catch (_err) {
+      const fallbackChar = glyphs.byChar['火'] || glyphs.byChar['日'] || glyphs.byChar['人'];
+      this.setData({
+        dailyRecommendation: fallbackChar ? {
+          char: fallbackChar.char,
+          title: `今日汉字：${fallbackChar.char}`,
+          pinyin: fallbackChar.pinyin || '',
+          radical: fallbackChar.radical || '',
+          meaning: fallbackChar.meaning || '',
+          insight: `今天推荐“${fallbackChar.char}”。从字形里看见古人观察自然的方式，也把今天的学习从一个具体的字开始。`,
+          generated: false
+        } : null,
+        dailyLoading: false
+      });
+    }
+  },
+
+  async useDailyRecommendation() {
+    const daily = this.data.dailyRecommendation;
+    if (!daily || !daily.char) return;
+    this.setData({ query: daily.char });
+    await this._loadCharacter(daily.char);
+    this._scrollToCurrentCharacter();
+  },
+
+  async _loadQuiz() {
+    if (this.data.quizLoading) return;
+    this.setData({
+      quizLoading: true,
+      quizAnswered: false,
+      quizSelected: '',
+      quizCorrect: false,
+      quizExplanation: null,
+      quizExplaining: false
+    });
+    try {
+      const pool = shuffle(QUIZ_POOL);
+      let quiz = null;
+      for (const char of pool.slice(0, 12)) {
+        const data = await request(`/api/characters/${encodeURIComponent(char)}`, 'GET', {}, { timeout: 8000 });
+        const stages = data.stages || [];
+        const stage = stages.find((item) => item.era === 'oracle' && item.assetUrl)
+          || stages.find((item) => item.era === 'bronze' && item.assetUrl)
+          || stages.find((item) => item.assetUrl);
+        if (stage) {
+          const distractors = shuffle(QUIZ_POOL.filter((item) => item !== data.char)).slice(0, 3);
+          quiz = {
+            char: data.char,
+            pinyin: data.pinyin || '',
+            meaning: data.meaning || '',
+            stageLabel: stage.label || stage.name || '古文字',
+            assetUrl: stage.assetUrl,
+            options: shuffle([data.char, ...distractors]).map((option) => ({ char: option }))
+          };
+          break;
+        }
+      }
+      if (!quiz) throw new Error('no quiz asset');
+      this.setData({ quiz, quizLoading: false });
+    } catch (_err) {
+      const fallbackQuiz = this._buildFallbackQuiz();
+      this.setData({ quiz: fallbackQuiz, quizLoading: false });
+    }
+  },
+
+  _buildFallbackQuiz() {
+    const char = '人';
+    const src = getOracleSrc(char);
+    return {
+      char,
+      pinyin: 'rén',
+      meaning: '象人侧立之形。',
+      stageLabel: '甲骨文',
+      assetUrl: src || '',
+      options: shuffle(['人', '大', '火', '木']).map((option) => ({ char: option }))
+    };
+  },
+
+  async chooseQuizOption(event) {
+    if (this.data.quizAnswered || this.data.quizExplaining) return;
+    const chosen = event.currentTarget.dataset.char;
+    const quiz = this.data.quiz;
+    if (!quiz || !chosen) return;
+    const isCorrect = chosen === quiz.char;
+    const options = (quiz.options || []).map((option) => ({
+      ...option,
+      selected: option.char === chosen,
+      correct: option.char === quiz.char
+    }));
+    this.setData({
+      quiz: { ...quiz, options },
+      quizAnswered: true,
+      quizSelected: chosen,
+      quizCorrect: isCorrect,
+      quizExplaining: true
+    });
+    try {
+      const data = await request('/api/ai/quiz/explain', 'POST', {
+        char: quiz.char,
+        chosen,
+        isCorrect
+      }, { timeout: 15000 });
+      this.setData({ quizExplanation: data, quizExplaining: false });
+    } catch (_err) {
+      this.setData({
+        quizExplanation: {
+          char: quiz.char,
+          title: isCorrect ? `猜对了，是“${quiz.char}”` : `答案是“${quiz.char}”`,
+          story: isCorrect
+            ? `你猜对了！这张${quiz.stageLabel}字形保留了“${quiz.char}”最早的造字线索。`
+            : `正确答案是“${quiz.char}”。这张${quiz.stageLabel}字形记录了它早期的形体特征。`,
+          generated: false
+        },
+        quizExplaining: false
+      });
+    }
+  },
+
+  nextQuiz() {
+    this._loadQuiz();
+  },
+
+  async openQuizCharacter() {
+    const quiz = this.data.quiz;
+    if (!quiz || !quiz.char) return;
+    this.setData({ query: quiz.char });
+    await this._loadCharacter(quiz.char);
+    this._scrollToCurrentCharacter();
+  },
+
+  _scrollToCurrentCharacter() {
+    this._scrollToSelector('#current-character-card');
+  },
+
+  _scrollToSelector(selector) {
+    setTimeout(() => {
+      wx.pageScrollTo({
+        selector,
+        duration: 300,
+        offsetTop: 16
+      });
+    }, 80);
   },
 
   /**
@@ -284,11 +508,6 @@ Page({
         const src = getOracleSrc(character.char);
         if (src) enriched.oracleSrc = src;
       }
-      enriched.assetStatusText = stage.assetStatus === 'draft'
-        ? '待精校'
-        : stage.assetStatus === 'reference'
-          ? '参考'
-          : '';
       return enriched;
     });
     const searchHistory = this._saveSearchHistory(character.char);
@@ -302,11 +521,15 @@ Page({
           .slice(0, 8)
           .map((c) => ({ char: c, hasDetail: Boolean(glyphs.byChar[c]) }))
       : [];
-    const catalog = this.data.catalog;
+    const catalog = this.data.catalogFiltered;
     const catalogIndex = catalog.findIndex((c) => c.char === character.char);
     this.setData({
       query: character.char,
       character: { ...character, stages },
+      aiStory: null,
+      aiStoryLoading: false,
+      aiVoicePlaying: false,
+      compareExpanded: false,
       related,
       searchHistory,
       hasSearchHistory: searchHistory.length > 0,
@@ -354,11 +577,81 @@ Page({
     this.setData({ bookmarked: idx === -1 });
   },
 
-  copyGlyph(event) {
-    const glyph = event.currentTarget.dataset.glyph;
-    wx.setClipboardData({
-      data: glyph,
-      success() { wx.showToast({ title: '已复制', icon: 'success' }); }
+  async loadAiStory() {
+    const character = this.data.character;
+    if (!character || this.data.aiStoryLoading) return;
+    this.setData({ aiStoryLoading: true });
+    try {
+      const data = await request(`/api/ai/story/${encodeURIComponent(character.char)}`, 'GET', {}, { timeout: 15000 });
+      this.setData({ aiStory: data });
+    } catch (_err) {
+      const first = (character.stages || []).find((stage) => stage.desc || stage.description);
+      this.setData({
+        aiStory: {
+          char: character.char,
+          title: `“${character.char}”从哪里来`,
+          storyteller: '小字灵',
+          story: `“${character.char}”的故事藏在字形变化里。${first ? (first.desc || first.description) : character.meaning} 从古文字到楷书，它把古人观察世界的方式留到了今天。`,
+          voiceText: `“${character.char}”的故事藏在字形变化里。${first ? (first.desc || first.description) : character.meaning}`,
+          generated: false
+        }
+      });
+    } finally {
+      this.setData({ aiStoryLoading: false });
+    }
+  },
+
+  _stopAiVoice() {
+    if (this._aiAudio) {
+      this._aiAudio.stop();
+      this._aiAudio.destroy();
+      this._aiAudio = null;
+    }
+    this.setData({ aiVoicePlaying: false });
+  },
+
+  speakAiStory() {
+    const story = this.data.aiStory;
+    if (!story || this.data.aiVoicePlaying) return;
+
+    wx.showModal({
+      title: '语音播报未启用',
+      content: '请先在微信小程序后台添加“同声传译”插件，再把 app.json 中的 WechatSI 插件声明打开。',
+      showCancel: false
     });
+    return;
+
+    /*
+    const plugin = requirePlugin('WechatSI');
+
+    const content = story.voiceText || story.story;
+    if (!content) return;
+    this.setData({ aiVoicePlaying: true });
+
+    plugin.textToSpeech({
+      lang: 'zh_CN',
+      tts: true,
+      content,
+      success: (res) => {
+        const audio = wx.createInnerAudioContext();
+        this._aiAudio = audio;
+        audio.src = res.filename;
+        audio.onEnded(() => this._stopAiVoice());
+        audio.onError(() => {
+          this._stopAiVoice();
+          wx.showToast({ title: '语音播报失败', icon: 'none' });
+        });
+        audio.play();
+      },
+      fail: () => {
+        this._stopAiVoice();
+        wx.showToast({ title: '语音合成失败', icon: 'none' });
+      }
+    });
+    */
+  },
+
+  stopAiStoryVoice() {
+    this._stopAiVoice();
   }
 });

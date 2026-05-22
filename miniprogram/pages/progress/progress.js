@@ -73,10 +73,15 @@ Page({
     quizActive: false,
     quiz: null,
     quizResult: null,
+    quizAiLoading: false,
+    quizAiStory: '',
     quizScore: { total: 0, correct: 0 },
     quizAccuracy: '0',
     weekCalendar: [],
-    charOfDay: null
+    charOfDay: null,
+    achievements: [],
+    bookmarksPreview: [],
+    hasBookmarks: false
   },
 
   onLoad() {
@@ -86,10 +91,28 @@ Page({
     }
     this.fetchProgress();
     this._loadCharOfDay();
+    this._loadBookmarksPreview();
   },
 
   onShow() {
     this.fetchProgress();
+    this._loadBookmarksPreview();
+  },
+
+  _loadBookmarksPreview() {
+    const raw = wx.getStorageSync('bookmarks') || [];
+    const bookmarks = raw.slice(0, 12).map((char) => {
+      const entry = glyphs.byChar[char] || {};
+      return {
+        char,
+        pinyin: entry.pinyin || '',
+        radical: entry.radical || ''
+      };
+    });
+    this.setData({
+      bookmarksPreview: bookmarks,
+      hasBookmarks: bookmarks.length > 0
+    });
   },
 
   async fetchProgress() {
@@ -172,8 +195,16 @@ Page({
         isToday: i === 0
       });
     }
+    const streakDays = calculateStreak(rawHistory);
+    // Persist for the profile page, which reads streakState from storage
+    // (otherwise its 连续学习天数 / 今日学习 would always show 0).
+    wx.setStorageSync('streakState', {
+      lastDay: new Date().toDateString(),
+      days: streakDays,
+      todayCount
+    });
     this.setData({
-      streakDays: calculateStreak(rawHistory),
+      streakDays,
       todayCount,
       recentUnlocks: recent,
       hasRecentUnlocks: recent.length > 0,
@@ -214,6 +245,7 @@ Page({
       levelHint: remaining > 0 ? `再解 ${remaining} 字，晋级下一阶` : '已达最高「通识」阶段'
     });
     this._applyLearningStats(progress.history || []);
+    this._applyAchievements(count, progress.history || []);
     // Milestone celebration
     const milestones = [30, 100, 300];
     for (const m of milestones) {
@@ -227,6 +259,20 @@ Page({
         break;
       }
     }
+  },
+
+  _applyAchievements(count, history) {
+    const bookmarks = wx.getStorageSync('bookmarks') || [];
+    const today = history.filter((item) => sameDay(item.time, Date.now())).length;
+    const streak = calculateStreak(history);
+    this.setData({
+      achievements: [
+        { title: '初识文字', desc: '解锁 1 个汉字', done: count >= 1 },
+        { title: '今日开卷', desc: '今日学习 3 个字', done: today >= this.data.dailyGoal },
+        { title: '连续学习', desc: '连续学习 3 天', done: streak >= 3 },
+        { title: '收藏家', desc: '收藏 5 个喜欢的字', done: bookmarks.length >= 5 }
+      ]
+    });
   },
 
   _playRipple() {
@@ -252,11 +298,42 @@ Page({
         pinyin: data.pinyin,
         radical: data.radical,
         meaning: data.meaning,
+        aiInsight: '',
+        aiGenerated: false,
         oracleSrc: oracleSrc || '',
         hasOracle: Boolean(oracleSrc),
         dateStr: todayStr
       }
     });
+    this._loadAiDaily();
+  },
+
+  async _loadAiDaily() {
+    try {
+      const data = await request('/api/ai/daily', 'GET', {}, { timeout: 15000 });
+      const local = glyphs.byChar[data.char] || {};
+      const oracleSrc = getOracleSrc(data.char);
+      this.setData({
+        charOfDay: {
+          char: data.char,
+          pinyin: data.pinyin || local.pinyin || '',
+          radical: data.radical || local.radical || '',
+          meaning: local.meaning || data.meaning || '',
+          aiInsight: data.insight || '',
+          aiGenerated: Boolean(data.generated),
+          oracleSrc: oracleSrc || '',
+          hasOracle: Boolean(oracleSrc),
+          dateStr: this.data.charOfDay ? this.data.charOfDay.dateStr : ''
+        }
+      });
+    } catch (_err) {
+      const cod = this.data.charOfDay;
+      if (!cod) return;
+      this.setData({
+        'charOfDay.aiInsight': `今日推荐“${cod.char}”：从它的字形演变里，读一读古人如何把生活经验写成文字。`,
+        'charOfDay.aiGenerated': false
+      });
+    }
   },
 
   goToEvolution(event) {
@@ -298,9 +375,13 @@ Page({
     }
 
     // Build all available hints from different eras (for progressive reveal)
-    const hints = correctData.stages
+    let hints = (correctData.stages || [])
       .filter((s) => s.desc)
       .map((s) => ({ era: s.label, desc: s.desc }));
+    // Guard: a char without any stage descriptions would otherwise crash below
+    if (!hints.length) {
+      hints = [{ era: '字义', desc: correctData.meaning || '暂无释义提示' }];
+    }
     // Start with a random era hint
     const startIdx = Math.floor(Math.random() * Math.min(hints.length, 3));
     const orderedHints = [hints[startIdx], ...hints.filter((_, i) => i !== startIdx)];
@@ -317,7 +398,9 @@ Page({
         meaning: correctData.meaning,
         pinyin: correctData.pinyin
       },
-      quizResult: null
+      quizResult: null,
+      quizAiLoading: false,
+      quizAiStory: ''
     });
   },
 
@@ -345,16 +428,37 @@ Page({
     const next = { total: prev.total + 1, correct: prev.correct + (isCorrect ? 1 : 0) };
     this.setData({
       quizResult: { chosen, correct, isCorrect },
+      quizAiLoading: true,
+      quizAiStory: '',
       quizScore: next,
       quizAccuracy: _accuracy(next)
     });
+    this._loadQuizAiStory(correct, chosen, isCorrect);
+  },
+
+  async _loadQuizAiStory(char, chosen, isCorrect) {
+    try {
+      const data = await request('/api/ai/quiz/explain', 'POST', {
+        char,
+        chosen,
+        isCorrect
+      }, { timeout: 15000 });
+      this.setData({ quizAiStory: data.story || '' });
+    } catch (_err) {
+      const detail = glyphs.byChar[char] || {};
+      this.setData({
+        quizAiStory: `${isCorrect ? '猜对了！' : `正确答案是“${char}”。`}${detail.meaning || '这个字的答案可以从甲骨、金文到楷书的形体变化里找到线索。'}`
+      });
+    } finally {
+      this.setData({ quizAiLoading: false });
+    }
   },
 
   closeQuiz() {
     if (this.data.quizScore.total > 0) {
       wx.setStorageSync('quizLastScore', this.data.quizScore);
     }
-    this.setData({ quizActive: false, quiz: null, quizResult: null });
+    this.setData({ quizActive: false, quiz: null, quizResult: null, quizAiStory: '', quizAiLoading: false });
   },
 
   goToQuizChar() {
