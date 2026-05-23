@@ -6,6 +6,7 @@ import { join } from 'node:path';
 import { promisify } from 'node:util';
 import { env } from '../config/env.js';
 import { cacheGet, cacheSet } from '../db/redis.js';
+import { coreGlyphChars } from '../data/glyphAssets.js';
 import { findCharacter } from '../repositories/characterRepository.js';
 import { getProgress } from './progressService.js';
 
@@ -151,6 +152,54 @@ function storyTitle(character) {
   return `“${character.char}”从哪里来`;
 }
 
+function distinctChars(items) {
+  return [...new Set(items.filter(Boolean).map((char) => Array.from(String(char).trim())[0]).filter(Boolean))];
+}
+
+function localPathReason(character, unlocked) {
+  if (!character) return '补齐核心字库里的基础字，形成稳定的字形演变认知。';
+  const sameRadical = unlocked.filter((item) => item.radical && item.radical === character.radical).length;
+  if (sameRadical > 0) {
+    return `你已经学过${character.radical || '相关'}部字，继续学习“${character.char}”可以把同一部首的字形线索串起来。`;
+  }
+  if (character.strokes && character.strokes <= 4) {
+    return `“${character.char}”笔画较少，适合作为象形和基础构形的下一步练习。`;
+  }
+  return `“${character.char}”能补充新的部首和字义场景，让学习路径不只停留在已熟悉的字形。`;
+}
+
+function summarizeFocus(unlockedCharacters, recommendedCharacters) {
+  const recentRadicals = unlockedCharacters
+    .map((item) => item.radical)
+    .filter(Boolean)
+    .slice(0, 8);
+  const topRadical = recentRadicals.find((radical, idx) => recentRadicals.indexOf(radical) !== idx) || recentRadicals[0];
+  const nextRadicals = [...new Set(recommendedCharacters.map((item) => item.radical).filter(Boolean))].slice(0, 2);
+  if (topRadical && nextRadicals.length) {
+    return `从已学的${topRadical}部线索出发，补充${nextRadicals.join('、')}部字，形成部首和字形双线复习。`;
+  }
+  if (nextRadicals.length) {
+    return `先从${nextRadicals.join('、')}部字开始，建立基础部首和五阶段字形的观察方法。`;
+  }
+  return '先学习核心高频字，再逐步扩展到部首关联和相似字辨析。';
+}
+
+function fallbackQuizInsight(correct, chosen, isCorrect) {
+  if (isCorrect) {
+    return `你抓住了“${correct.char}”的关键字形线索，可以继续观察它从甲骨文到楷书哪些笔画保留下来。`;
+  }
+  if (!chosen) {
+    return `这题的关键在“${correct.char}”的早期形体。下次先看整体轮廓，再看部首和笔画方向。`;
+  }
+  if (correct.radical && chosen.radical && correct.radical === chosen.radical) {
+    return `你可能被相同的${correct.radical}部线索带偏了。“${correct.char}”和“${chosen.char}”同部，但本义和整体轮廓不同。`;
+  }
+  if (correct.strokes && chosen.strokes && Math.abs(correct.strokes - chosen.strokes) <= 2) {
+    return `你可能把笔画复杂度相近的字混在一起了。“${correct.char}”要优先看古文字整体轮廓，而不是只看现代笔画多少。`;
+  }
+  return `你可能把“${chosen.char}”的现代字形代入了古文字判断。辨认“${correct.char}”时，先抓它的本义图像，再看演变后的笔画。`;
+}
+
 function fallbackDaily(character, date = new Date()) {
   const { month } = chinaDateParts(date);
   const seasonal = month >= 5 && month <= 7
@@ -209,13 +258,43 @@ export async function generateCharacterStory(char) {
 }
 
 export async function explainQuizAnswer(char, chosen, isCorrect) {
-  const story = await generateCharacterStory(char);
+  const normalized = Array.from(String(char || '').trim())[0];
+  const chosenChar = Array.from(String(chosen || '').trim())[0];
+  const [correctCharacter, chosenCharacter] = await Promise.all([
+    findCharacter(normalized),
+    chosenChar ? findCharacter(chosenChar) : Promise.resolve(null)
+  ]);
+  const story = await generateCharacterStory(normalized);
+  let insight = '';
+
+  if (correctCharacter) {
+    const instructions = [
+      '你是“AI错题诊断官”，负责给汉字字形测验生成错因分析。',
+      '根据正确字和用户选择，指出可能混淆点，并给出下一次观察建议。',
+      '不要编造考古来源，不要 Markdown，不要列表。',
+      '中文输出，控制在90字以内。'
+    ].join('\n');
+    const input = JSON.stringify({
+      correct: compactCharacter(correctCharacter),
+      chosen: chosenCharacter ? compactCharacter(chosenCharacter) : { char: chosenChar || '' },
+      isCorrect
+    }, null, 2);
+    insight = await callLlm(instructions, input);
+  }
+
   const prefix = isCorrect
     ? `你猜对了，是“${story.char}”。`
     : `正确答案是“${story.char}”，你选的是“${chosen || '未知'}”。`;
+  const diagnosis = trimText(insight || fallbackQuizInsight(
+    correctCharacter || { char: story.char },
+    chosenCharacter || (chosenChar ? { char: chosenChar } : null),
+    isCorrect
+  ), 120);
   return {
     ...story,
-    story: trimText(`${prefix}${story.story}`, 240)
+    diagnosis,
+    narrative: story.story,
+    story: trimText(`${prefix}${diagnosis}${story.story}`, 260)
   };
 }
 
@@ -319,4 +398,65 @@ export async function generateDailyRecommendation(openid) {
   // 每用户每日推荐缓存 1 天；兜底文案仅缓存 10 分钟。
   await cacheSet(cacheKey, result, result.generated ? 86400 : 600);
   return result;
+}
+
+export async function generateLearningPath(openid) {
+  const progress = await getProgress(openid);
+  const unlockedChars = distinctChars(progress.unlocked || []);
+  const recentChars = distinctChars((progress.history || []).slice(0, 8).map((item) => item.char));
+  const unlockedCharacters = [];
+  for (const char of recentChars.length ? recentChars : unlockedChars.slice(-8)) {
+    const character = await findCharacter(char);
+    if (character) unlockedCharacters.push(compactCharacter(character));
+  }
+
+  const unlockedSet = new Set(unlockedChars);
+  const recommendedCharacters = [];
+  const radicalHints = unlockedCharacters.map((item) => item.radical).filter(Boolean);
+  const candidatePool = [
+    ...coreGlyphChars.filter((char) => !unlockedSet.has(char)),
+    ...coreGlyphChars
+  ];
+  for (const char of candidatePool) {
+    if (recommendedCharacters.length >= 3) break;
+    const character = await findCharacter(char);
+    if (!character) continue;
+    if (
+      recommendedCharacters.length === 0
+      || radicalHints.includes(character.radical)
+      || !recommendedCharacters.some((item) => item.radical === character.radical)
+    ) {
+      recommendedCharacters.push(compactCharacter(character));
+    }
+  }
+
+  const focus = summarizeFocus(unlockedCharacters, recommendedCharacters);
+  const instructions = [
+    '你是“汉字学习路径智能体”，根据用户学习历史生成下一步学习建议。',
+    '建议必须围绕部首、字形演变、相似字辨析和复习节奏。',
+    '不要 Markdown，不要列表，中文输出，控制在120字以内。'
+  ].join('\n');
+  const input = JSON.stringify({
+    unlockedCount: progress.unlockedCount,
+    recent: unlockedCharacters,
+    recommended: recommendedCharacters,
+    focus
+  }, null, 2);
+  const generated = await callLlm(instructions, input);
+
+  return {
+    title: 'AI 个性化学习路径',
+    unlockedCount: progress.unlockedCount,
+    coreTotal: coreGlyphChars.length,
+    focus,
+    summary: trimText(generated || focus, 160),
+    recommendations: recommendedCharacters.map((character) => ({
+      char: character.char,
+      pinyin: character.pinyin,
+      radical: character.radical,
+      strokes: character.strokes,
+      reason: localPathReason(character, unlockedCharacters)
+    })),
+    generated: Boolean(generated)
+  };
 }

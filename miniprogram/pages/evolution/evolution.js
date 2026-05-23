@@ -5,6 +5,7 @@ const { getOracleSrc } = require('../../utils/oracleSVGs');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
 const QUIZ_POOL = ['人', '水', '山', '日', '月', '火', '木', '大', '女', '子', '口', '手', '心', '目', '王', '土', '天', '禾', '竹', '生', '明', '龙', '家', '老', '雨', '鸟', '马', '鱼', '羊', '牛', '田', '风'];
+const METRIC_KEY = 'aiLearningMetrics';
 
 const TONE_MAP = {
   'ā':'a','á':'a','ǎ':'a','à':'a',
@@ -28,6 +29,21 @@ function shuffle(items) {
     copy[j] = tmp;
   }
   return copy;
+}
+
+function readLearningMetrics() {
+  return wx.getStorageSync(METRIC_KEY) || {
+    aiStoryCount: 0,
+    aiAskCount: 0,
+    quizExplainCount: 0,
+    quizTotal: 0,
+    quizCorrect: 0
+  };
+}
+
+function quizAccuracy(metrics) {
+  if (!metrics.quizTotal) return '0';
+  return String(Math.round(metrics.quizCorrect * 100 / metrics.quizTotal));
 }
 
 Page({
@@ -61,6 +77,16 @@ Page({
     showSuggestions: false,
     dailyRecommendation: null,
     dailyLoading: false,
+    learningPath: null,
+    learningPathLoading: false,
+    learningDashboard: {
+      coreTotal: 100,
+      unlockedCount: 0,
+      corePercentText: '0',
+      aiInteractions: 0,
+      quizTotal: 0,
+      quizAccuracy: '0'
+    },
     quiz: null,
     quizLoading: false,
     quizExplaining: false,
@@ -109,6 +135,8 @@ Page({
     });
     this._fetchCatalog();
     this._loadDailyRecommendation();
+    this._loadLearningPath();
+    this._applyLearningDashboard();
     this._loadQuiz();
     this._loadCharacter(initialChar);
   },
@@ -124,6 +152,7 @@ Page({
     if (this.data.character) {
       this._refreshBookmarkState(this.data.character.char);
     }
+    this._applyLearningDashboard();
   },
 
   onUnload() {
@@ -353,6 +382,86 @@ Page({
     }
   },
 
+  async _loadLearningPath() {
+    if (this.data.learningPathLoading) return;
+    this.setData({ learningPathLoading: true });
+    try {
+      const data = await request('/api/ai/learning-path', 'GET', {}, { timeout: 18000 });
+      this.setData({
+        learningPath: data,
+        learningPathLoading: false
+      });
+      this._applyLearningDashboard(data);
+    } catch (_err) {
+      const recent = (wx.getStorageSync('recentViews') || []).map((item) => item.char);
+      const seen = new Set(recent);
+      const recommendations = glyphs.catalog
+        .filter((item) => item.hasDetail && !seen.has(item.char))
+        .slice(0, 3)
+        .map((item) => {
+          const detail = glyphs.byChar[item.char] || {};
+          return {
+            char: item.char,
+            pinyin: detail.pinyin || item.pinyin || '',
+            radical: detail.radical || '',
+            strokes: detail.strokes || 0,
+            reason: '先从核心字库中补齐未学习字，形成稳定的五阶段字形认知。'
+          };
+        });
+      const fallbackPath = {
+        title: 'AI 个性化学习路径',
+        unlockedCount: recent.length,
+        coreTotal: 100,
+        focus: '当前离线，先根据最近浏览记录推荐未学习的核心字。',
+        summary: '先补齐未浏览的核心字，再围绕部首和相似字进行复习。',
+        recommendations,
+        generated: false
+      };
+      this.setData({
+        learningPath: fallbackPath,
+        learningPathLoading: false
+      });
+      this._applyLearningDashboard(fallbackPath);
+    }
+  },
+
+  refreshLearningPath() {
+    this._loadLearningPath();
+  },
+
+  async usePathRecommendation(event) {
+    const char = event.currentTarget.dataset.char;
+    if (!char) return;
+    this.setData({ query: char });
+    await this._loadCharacter(char);
+    this._scrollToCurrentCharacter();
+  },
+
+  _recordLearningMetric(key, amount = 1) {
+    const metrics = readLearningMetrics();
+    metrics[key] = (metrics[key] || 0) + amount;
+    wx.setStorageSync(METRIC_KEY, metrics);
+    this._applyLearningDashboard();
+  },
+
+  _applyLearningDashboard(pathData) {
+    const metrics = readLearningMetrics();
+    const path = pathData || this.data.learningPath || {};
+    const coreTotal = path.coreTotal || 100;
+    const unlockedCount = Math.min(coreTotal, path.unlockedCount || 0);
+    const corePercentText = coreTotal ? String(Math.round(unlockedCount * 100 / coreTotal)) : '0';
+    this.setData({
+      learningDashboard: {
+        coreTotal,
+        unlockedCount,
+        corePercentText,
+        aiInteractions: (metrics.aiStoryCount || 0) + (metrics.aiAskCount || 0) + (metrics.quizExplainCount || 0),
+        quizTotal: metrics.quizTotal || 0,
+        quizAccuracy: quizAccuracy(metrics)
+      }
+    });
+  },
+
   async useDailyRecommendation() {
     const daily = this.data.dailyRecommendation;
     if (!daily || !daily.char) return;
@@ -425,6 +534,8 @@ Page({
     const quiz = this.data.quiz;
     if (!quiz || !chosen) return;
     const isCorrect = chosen === quiz.char;
+    this._recordLearningMetric('quizTotal');
+    if (isCorrect) this._recordLearningMetric('quizCorrect');
     const options = (quiz.options || []).map((option) => ({
       ...option,
       selected: option.char === chosen,
@@ -443,6 +554,7 @@ Page({
         chosen,
         isCorrect
       }, { timeout: 15000 });
+      this._recordLearningMetric('quizExplainCount');
       this.setData({ quizExplanation: data, quizExplaining: false });
     } catch (_err) {
       this.setData({
@@ -583,6 +695,10 @@ Page({
       assetSource: stage.assetSource || '',
       assetStatus: stage.assetStatus || '',
       assetProvider: stage.assetProvider || '',
+      sourceUrl: stage.sourceUrl || '',
+      license: stage.license || '',
+      attribution: stage.attribution || '',
+      fontGlyph: stage.fontGlyph || '',
       assetEnabled: Boolean(stage.assetEnabled)
     }));
     return { ...remote, stages };
@@ -590,7 +706,12 @@ Page({
 
   _applyCharacter(character) {
     const stages = (character.stages || []).map((stage, idx) => {
-      const enriched = { ...stage, indexLabel: INDEX_LABELS[idx] || '' };
+      const enriched = {
+        ...stage,
+        indexLabel: INDEX_LABELS[idx] || '',
+        displayGlyph: stage.fontGlyph || stage.glyph,
+        showAsset: Boolean(stage.assetUrl && (stage.assetType === 'svg' || !stage.assetType))
+      };
       // Inject SVG oracle bone image for 甲骨文 stage when available
       if (!stage.assetUrl && stage.era === 'oracle') {
         const src = getOracleSrc(character.char);
@@ -689,6 +810,7 @@ Page({
     this.setData({ aiStoryLoading: true });
     try {
       const data = await request(`/api/ai/story/${encodeURIComponent(character.char)}`, 'GET', {}, { timeout: 15000 });
+      this._recordLearningMetric('aiStoryCount');
       this.setData({ aiStory: data });
     } catch (_err) {
       const first = (character.stages || []).find((stage) => stage.desc || stage.description);
@@ -702,6 +824,7 @@ Page({
           generated: false
         }
       });
+      this._recordLearningMetric('aiStoryCount');
     } finally {
       this.setData({ aiStoryLoading: false });
     }
@@ -733,6 +856,7 @@ Page({
         char: character.char,
         question
       }, { timeout: 15000 });
+      this._recordLearningMetric('aiAskCount');
       this.setData({
         askAnswer: data,
         askMessages: [
@@ -749,6 +873,7 @@ Page({
           { role: 'assistant', text: fallbackAnswer }
         ]
       });
+      this._recordLearningMetric('aiAskCount');
     } finally {
       this.setData({ askLoading: false });
     }

@@ -36,7 +36,9 @@ backend/
 - `GET /api/works`
 - `GET /api/ai/story/:char`
 - `GET /api/ai/daily`
+- `GET /api/ai/learning-path`
 - `POST /api/ai/quiz/explain`
+- `POST /api/ai/ask`
 - `GET /api/progress`
 - `POST /api/progress/unlock`
 - `GET /api/leaderboard`
@@ -151,11 +153,14 @@ npm --prefix backend run mongo:import
 
 ### AI 功能
 
-比赛版保留三类轻量 AI 能力：
+比赛版保留五类轻量 AI 能力，形成“推荐 - 学习 - 测验 - 诊断 - 问答”的闭环：
 
 - 汉字故事官：在字形详情页点击“AI讲故事”，结合该字的释义和五段字形数据生成约 150 字起源故事。
-- AI 猜字讲解：学习页的字形测验答题后，AI 根据正确答案补一段解释和故事。
+- AI 个性化学习路径：根据用户已解锁字、最近学习记录和核心字库覆盖情况，推荐下一组适合学习的汉字。
+- AI 猜字讲解与错因分析：学习页的字形测验答题后，AI 根据正确答案、用户选择和字形资料分析可能混淆点。
 - AI 每日一字：学习页顶部根据日期、季节和用户学习历史推荐一个今日汉字。
+- 小字灵问答：围绕当前字和用户提到的其他汉字，回答字源、字形演变、部首、读音和含义问题。
+- AI 学习看板：前端记录 AI 讲解、问答、测验讲解次数和猜字正确率，便于演示学习成效数据。
 
 AI 接口优先使用 DeepSeek Chat Completions API；没有配置 `DEEPSEEK_API_KEY` 时自动使用本地模板兜底，不影响主流程演示。
 

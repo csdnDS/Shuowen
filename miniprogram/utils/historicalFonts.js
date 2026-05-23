@@ -30,17 +30,24 @@ const FONT_SOURCES = {
   // shuowen-oracle:   'https://your.cdn/NotoSansOracleBone-Regular.woff2',
   // shuowen-bronze:   'https://your.cdn/JinwenBody.woff2',
   // shuowen-seal:     'https://your.cdn/IMingSeal.woff2',
-  // shuowen-clerical: 'https://your.cdn/HanyiClerical.woff2'
+  'shuowen-clerical': 'assets/fonts/moe-li.ttf'
 };
 
 let loaded = false;
 
-function loadHistoricalFonts() {
+function resolveFontSource(source, apiBaseUrl) {
+  if (/^https?:\/\//i.test(source)) return source;
+  const base = String(apiBaseUrl || '').replace(/\/$/, '');
+  if (!base) return '';
+  return `${base}/assets/${source.replace(/^assets\//, '')}`;
+}
+
+function loadHistoricalFonts(apiBaseUrl) {
   if (loaded) return;
   loaded = true;
 
   Object.keys(FONT_SOURCES).forEach((family) => {
-    const url = FONT_SOURCES[family];
+    const url = resolveFontSource(FONT_SOURCES[family], apiBaseUrl);
     if (!url) return;
     wx.loadFontFace({
       global: true,

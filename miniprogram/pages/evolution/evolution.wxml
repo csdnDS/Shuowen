@@ -57,6 +57,49 @@
         </view>
       </view>
 
+      <!-- AI learning dashboard -->
+      <view class="learning-card">
+        <view class="learning-head">
+          <view>
+            <view class="learning-kicker">AI 学习看板</view>
+            <view class="learning-title">{{learningPath ? learningPath.title : '个性化学习路径'}}</view>
+          </view>
+          <button class="learning-refresh" size="mini" loading="{{learningPathLoading}}" bindtap="refreshLearningPath">刷新</button>
+        </view>
+
+        <view class="learning-stats">
+          <view class="learning-stat">
+            <view class="learning-stat-value">{{learningDashboard.unlockedCount}}/{{learningDashboard.coreTotal}}</view>
+            <view class="learning-stat-label">核心字进度</view>
+          </view>
+          <view class="learning-stat">
+            <view class="learning-stat-value">{{learningDashboard.quizAccuracy}}%</view>
+            <view class="learning-stat-label">猜字正确率</view>
+          </view>
+          <view class="learning-stat">
+            <view class="learning-stat-value">{{learningDashboard.aiInteractions}}</view>
+            <view class="learning-stat-label">AI互动</view>
+          </view>
+        </view>
+
+        <view wx:if="{{learningPathLoading && !learningPath}}" class="loading-shimmer learning-loading"></view>
+        <view wx:elif="{{learningPath}}" class="learning-body">
+          <view class="learning-summary">{{learningPath.summary}}</view>
+          <view class="learning-next-row">
+            <view wx:for="{{learningPath.recommendations}}" wx:key="char" class="learning-next" data-char="{{item.char}}" bindtap="usePathRecommendation">
+              <view class="learning-next-char">{{item.char}}</view>
+              <view class="learning-next-meta">
+                <view>{{item.pinyin || '待补音'}}</view>
+                <view>{{item.radical ? item.radical + '部' : '部首待补'}}</view>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{learningPath.recommendations.length > 0}}" class="learning-reason">
+            {{learningPath.recommendations[0].reason}}
+          </view>
+        </view>
+      </view>
+
       <!-- AI quiz game -->
       <view class="quiz-card">
         <view class="quiz-head">
@@ -92,7 +135,13 @@
             <view wx:if="{{quizExplaining}}" class="quiz-explaining">小字灵正在讲解...</view>
             <view wx:elif="{{quizExplanation}}" class="quiz-explain-row">
               <image class="quiz-mascot" src="/assets/mascot/xiao-ziling.png" mode="aspectFit"></image>
-              <view class="quiz-explain-text">{{quizExplanation.story}}</view>
+              <view class="quiz-explain-main">
+                <view wx:if="{{quizExplanation.diagnosis}}" class="quiz-diagnosis">
+                  <view class="quiz-diagnosis-label">AI错因分析</view>
+                  <view class="quiz-diagnosis-text">{{quizExplanation.diagnosis}}</view>
+                </view>
+                <view class="quiz-explain-text">{{quizExplanation.narrative || quizExplanation.story}}</view>
+              </view>
             </view>
             <view class="quiz-result-actions">
               <button class="quiz-action-primary" size="mini" bindtap="nextQuiz">再来一题</button>
@@ -140,9 +189,9 @@
           <view wx:for="{{character.stages}}" wx:key="era" class="compare-stage-wrap">
             <view class="compare-stage">
               <view class="compare-glyph-wrap">
-                <image wx:if="{{item.assetUrl}}" class="compare-img" src="{{item.assetUrl}}" mode="aspectFit"></image>
+                <image wx:if="{{item.showAsset}}" class="compare-img" src="{{item.assetUrl}}" mode="aspectFit"></image>
                 <image wx:elif="{{item.oracleSrc}}" class="compare-img" src="{{item.oracleSrc}}" mode="aspectFit"></image>
-                <view wx:else class="compare-char era-{{item.era}}">{{item.glyph}}</view>
+                <view wx:else class="compare-char era-{{item.era}}">{{item.displayGlyph || item.glyph}}</view>
               </view>
               <view class="compare-label">{{item.label}}</view>
             </view>
@@ -163,14 +212,14 @@
                 <view wx:if="{{item.period}}" class="stage-period">{{item.period}}</view>
               </view>
             </view>
-            <view wx:if="{{item.assetUrl}}" class="stage-glyph stage-asset-wrap">
+            <view wx:if="{{item.showAsset}}" class="stage-glyph stage-asset-wrap">
               <image class="stage-asset" src="{{item.assetUrl}}" mode="aspectFit"></image>
             </view>
             <view wx:elif="{{item.oracleSrc}}" class="stage-glyph era-oracle oracle-svg-wrap">
               <image class="oracle-svg" src="{{item.oracleSrc}}" mode="aspectFit"></image>
               <view class="oracle-char-sub">{{item.glyph}}</view>
             </view>
-            <view wx:else class="stage-glyph era-{{item.era}}">{{item.glyph}}</view>
+            <view wx:else class="stage-glyph era-{{item.era}}">{{item.displayGlyph || item.glyph}}</view>
             <view wx:if="{{item.desc || item.description}}" class="stage-desc">{{item.desc || item.description}}</view>
           </view>
         </view>

@@ -101,7 +101,7 @@ export function enrichGlyphAssetStages(character) {
       era: stage.era || meta.era,
       label: stage.label || meta.label,
       period: stage.period || meta.period,
-      assetKey: stage.assetKey || getGlyphAssetKey(character.char, meta.era),
+      assetKey: Object.prototype.hasOwnProperty.call(stage, 'assetKey') ? stage.assetKey : getGlyphAssetKey(character.char, meta.era),
       assetType: stage.assetType || 'svg',
       assetSource: stage.assetSource || meta.assetSource,
       assetStatus: stage.assetStatus || (meta.era === 'regular' ? 'reference' : 'draft'),

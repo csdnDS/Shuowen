@@ -439,6 +439,146 @@
   flex-shrink: 0;
 }
 
+/* AI learning dashboard */
+
+.learning-card {
+  background: #FFFFFF;
+  border: 1rpx solid #D8E6E0;
+  border-radius: 14rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.daily-card + .learning-card,
+.learning-card + .quiz-card {
+  margin-top: 20rpx;
+}
+
+.learning-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.learning-kicker {
+  color: #047857;
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
+.learning-title {
+  color: #1A1A1A;
+  font-size: 31rpx;
+  font-weight: 700;
+  margin-top: 4rpx;
+}
+
+.learning-refresh {
+  margin: 0;
+  padding: 0 18rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-radius: 8rpx;
+  background: #ECFDF5;
+  color: #047857;
+  font-size: 22rpx;
+  flex-shrink: 0;
+}
+
+.learning-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.learning-stat {
+  min-height: 112rpx;
+  border-radius: 12rpx;
+  background: #F8FAFC;
+  border: 1rpx solid #E2E8F0;
+  padding: 14rpx 10rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.learning-stat-value {
+  color: #0F172A;
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.learning-stat-label {
+  color: #64748B;
+  font-size: 20rpx;
+  margin-top: 8rpx;
+}
+
+.learning-loading {
+  height: 180rpx;
+  border-radius: 12rpx;
+  margin-top: 18rpx;
+}
+
+.learning-body {
+  margin-top: 18rpx;
+}
+
+.learning-summary {
+  color: #334155;
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
+.learning-next-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
+  margin-top: 16rpx;
+}
+
+.learning-next {
+  min-height: 112rpx;
+  border-radius: 12rpx;
+  background: #F0FDF4;
+  border: 1rpx solid #BBF7D0;
+  padding: 12rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.learning-next:active {
+  background: #DCFCE7;
+}
+
+.learning-next-char {
+  color: #064E3B;
+  font-size: 42rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.learning-next-meta {
+  color: #047857;
+  font-size: 19rpx;
+  line-height: 1.45;
+  min-width: 0;
+}
+
+.learning-reason {
+  margin-top: 14rpx;
+  padding: 14rpx 16rpx;
+  border-radius: 10rpx;
+  background: #F8FAFC;
+  color: #475569;
+  font-size: 22rpx;
+  line-height: 1.55;
+}
+
 /* AI quiz */
 
 .quiz-card {
@@ -632,6 +772,32 @@
   font-size: 24rpx;
   line-height: 1.65;
   flex: 1;
+}
+
+.quiz-explain-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.quiz-diagnosis {
+  padding: 14rpx 16rpx;
+  border-radius: 10rpx;
+  background: #ECFDF5;
+  border: 1rpx solid #BBF7D0;
+  margin-bottom: 12rpx;
+}
+
+.quiz-diagnosis-label {
+  color: #047857;
+  font-size: 20rpx;
+  font-weight: 700;
+  margin-bottom: 6rpx;
+}
+
+.quiz-diagnosis-text {
+  color: #334155;
+  font-size: 23rpx;
+  line-height: 1.55;
 }
 
 .quiz-result-actions {
@@ -960,8 +1126,8 @@
 }
 
 .compare-glyph-wrap {
-  width: 96rpx;
-  height: 96rpx;
+  width: 108rpx;
+  height: 108rpx;
   border-radius: 10rpx;
   background: #FFFDF7;
   border: 1rpx solid #F4E4BF;
@@ -972,14 +1138,46 @@
 }
 
 .compare-img {
-  width: 88rpx;
-  height: 88rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 
 .compare-char {
-  font-size: 56rpx;
+  width: 100%;
+  height: 100%;
+  font-size: 64rpx;
   color: #1A1A1A;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+.compare-char.era-oracle {
+  font-family: 'shuowen-oracle', "STKaiti", "Kaiti SC", serif;
+  font-size: 62rpx;
+}
+
+.compare-char.era-bronze {
+  font-family: 'shuowen-bronze', "STKaiti", serif;
+  font-size: 62rpx;
+}
+
+.compare-char.era-seal {
+  font-family: 'shuowen-seal', "STSong", "Songti SC", serif;
+  font-size: 58rpx;
+}
+
+.compare-char.era-clerical {
+  font-family: 'shuowen-clerical', "STLiti", "Lishu", serif;
+  font-size: 58rpx;
+  font-weight: 500;
+}
+
+.compare-char.era-regular {
+  font-size: 60rpx;
+  font-weight: 500;
 }
 
 .compare-label {

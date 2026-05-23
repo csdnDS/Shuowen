@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { env } from '../config/env.js';
-import { answerCharacterQuestion, explainQuizAnswer, generateCharacterStory, generateDailyRecommendation } from '../services/aiService.js';
+import { answerCharacterQuestion, explainQuizAnswer, generateCharacterStory, generateDailyRecommendation, generateLearningPath } from '../services/aiService.js';
 import { asyncRoute, getOpenId } from '../utils/request.js';
 
 export function createAiRouter() {
@@ -13,6 +13,11 @@ export function createAiRouter() {
 
   router.get('/ai/daily', asyncRoute(async (req, res) => {
     const data = await generateDailyRecommendation(getOpenId(req));
+    res.json(data);
+  }));
+
+  router.get('/ai/learning-path', asyncRoute(async (req, res) => {
+    const data = await generateLearningPath(getOpenId(req));
     res.json(data);
   }));
 
