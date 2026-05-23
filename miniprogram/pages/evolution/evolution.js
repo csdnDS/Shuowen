@@ -2,6 +2,7 @@ const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
 const { getOracleSrc } = require('../../utils/oracleSVGs');
+const { getUserSettings, getPageClass, applyThemeChrome, recordQuizMistake } = require('../../utils/settings');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
 const QUIZ_POOL = ['人', '水', '山', '日', '月', '火', '木', '大', '女', '子', '口', '手', '心', '目', '王', '土', '天', '禾', '竹', '生', '明', '龙', '家', '老', '雨', '鸟', '马', '鱼', '羊', '牛', '田', '风'];
@@ -49,7 +50,7 @@ function quizAccuracy(metrics) {
 Page({
   data: {
     query: '说',
-    fontClass: '',
+    pageClass: '',
     character: null,
     searchHistory: [],
     hasSearchHistory: false,
@@ -116,6 +117,8 @@ Page({
   onLoad(options = {}) {
     this._charCache = {};
     this._unlocked = new Set();
+    const settings = getUserSettings();
+    applyThemeChrome(settings);
     const searchHistory = wx.getStorageSync('searchHistory') || [];
     const pendingChar = wx.getStorageSync('pendingEvolutionChar');
     const initialChar = options.char || pendingChar || '人';
@@ -125,6 +128,7 @@ Page({
     // potentially adding more.
     this.setData({
       searchHistory,
+      pageClass: getPageClass(settings),
       hasSearchHistory: searchHistory.length > 0,
       query: initialChar,
       catalog: glyphs.catalog,
@@ -142,8 +146,9 @@ Page({
   },
 
   onShow() {
-    const settings = wx.getStorageSync('userSettings') || {};
-    this.setData({ fontClass: { small: 'fs-small', large: 'fs-large' }[settings.fontSize] || '' });
+    const settings = getUserSettings();
+    applyThemeChrome(settings);
+    this.setData({ pageClass: getPageClass(settings) });
     const pendingChar = wx.getStorageSync('pendingEvolutionChar');
     if (pendingChar) {
       wx.removeStorageSync('pendingEvolutionChar');
@@ -536,6 +541,17 @@ Page({
     const isCorrect = chosen === quiz.char;
     this._recordLearningMetric('quizTotal');
     if (isCorrect) this._recordLearningMetric('quizCorrect');
+    if (!isCorrect) {
+      recordQuizMistake({
+        char: quiz.char,
+        chosen,
+        pinyin: quiz.pinyin,
+        meaning: quiz.meaning,
+        stageLabel: quiz.stageLabel,
+        assetUrl: quiz.assetUrl,
+        source: 'evolution-quiz'
+      });
+    }
     const options = (quiz.options || []).map((option) => ({
       ...option,
       selected: option.char === chosen,

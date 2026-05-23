@@ -445,3 +445,346 @@ button::after {
   border-color: #FECACA;
   color: #B91C1C;
 }
+
+/* ── Accessibility: font scale ─────────────────────────────── */
+
+.fs-small {
+  font-size: 26rpx;
+}
+
+.fs-small .page-title { font-size: 44rpx; }
+.fs-small .page-subtitle,
+.fs-small .section-sub,
+.fs-small .empty-body,
+.fs-small .row-value { font-size: 22rpx; }
+.fs-small .section-title,
+.fs-small .row-label { font-size: 27rpx; }
+
+.fs-large {
+  font-size: 32rpx;
+  line-height: 1.7;
+}
+
+.fs-large .page-title { font-size: 54rpx; }
+.fs-large .page-subtitle,
+.fs-large .section-sub,
+.fs-large .empty-body,
+.fs-large .row-value { font-size: 29rpx; }
+.fs-large .section-title,
+.fs-large .row-label { font-size: 34rpx; }
+.fs-large .btn,
+.fs-large button { font-size: 30rpx; }
+.fs-large .chip { font-size: 28rpx; }
+
+/* ── Accessibility: dark theme ─────────────────────────────── */
+
+.page.theme-dark {
+  background: #18181B;
+  color: #E5E7EB;
+}
+
+.theme-dark .page-title,
+.theme-dark .section-title,
+.theme-dark .row-label,
+.theme-dark .empty-title,
+.theme-dark .stat-value,
+.theme-dark .user-name,
+.theme-dark .current-meaning,
+.theme-dark .stage-name,
+.theme-dark .catalog-char,
+.theme-dark .radical-name,
+.theme-dark .bookmark-group-title,
+.theme-dark .recent-label,
+.theme-dark .mistake-title,
+.theme-dark .profile-mistake-title {
+  color: #FAFAFA;
+}
+
+.theme-dark .page-subtitle,
+.theme-dark .section-sub,
+.theme-dark .row-value,
+.theme-dark .empty-body,
+.theme-dark .stat-label,
+.theme-dark .user-sub,
+.theme-dark .text-muted,
+.theme-dark .current-radical,
+.theme-dark .stage-desc,
+.theme-dark .radical-meaning,
+.theme-dark .recent-time,
+.theme-dark .mistake-meaning {
+  color: #D4D4D8;
+}
+
+.theme-dark .current-glyph {
+  background: #FAFAFA;
+  border: 1rpx solid #3F3F46;
+  color: #18181B;
+}
+
+.theme-dark .card,
+.theme-dark .card-flat,
+.theme-dark .user-card,
+.theme-dark .radical-card,
+.theme-dark .ai-feature-card,
+.theme-dark .daily-card,
+.theme-dark .learning-card,
+.theme-dark .quiz-card,
+.theme-dark .search-sheet,
+.theme-dark .ask-sheet {
+  background: #27272A;
+  border-color: #3F3F46;
+}
+
+.theme-dark .card-tint,
+.theme-dark .filter-input,
+.theme-dark .input,
+.theme-dark .search-input,
+.theme-dark .catalog-preview,
+.theme-dark .achievement-cell,
+.theme-dark .bookmark-cell,
+.theme-dark .bookmark-group,
+.theme-dark .bookmark-mini,
+.theme-dark .bookmark-preview-cell,
+.theme-dark .recent-char,
+.theme-dark .recent-chip,
+.theme-dark .mistake-row:active,
+.theme-dark .radical-head:active {
+  background: #27272A;
+  border-color: #3F3F46;
+  color: #FAFAFA;
+}
+
+.theme-dark .btn,
+.theme-dark .chip,
+.theme-dark .filter-clear,
+.theme-dark .search-sheet-close,
+.theme-dark .empty-icon,
+.theme-dark .radical-seal,
+.theme-dark .radical-count,
+.theme-dark .switch {
+  background: #27272A;
+  border-color: #3F3F46;
+  color: #E5E7EB;
+}
+
+.theme-dark .btn-primary {
+  background: #3B82F6;
+  border-color: #3B82F6;
+  color: #FFFFFF;
+}
+
+.theme-dark .progress,
+.theme-dark .streak-dot,
+.theme-dark .loading-shimmer {
+  background: #3F3F46;
+}
+
+.theme-dark .progress-fill,
+.theme-dark .dot-on {
+  background: #60A5FA;
+}
+
+.theme-dark .banner-info {
+  background: #172554;
+  border-color: #1D4ED8;
+  color: #BFDBFE;
+}
+
+.theme-dark .quiz-result,
+.theme-dark .learning-reason,
+.theme-dark .quiz-ai-card,
+.theme-dark .quiz-diagnosis,
+.theme-dark .profile-mistake-pair {
+  background: #27272A;
+  border-color: #3F3F46;
+}
+
+/* Dark theme refinements for page-specific components */
+
+.theme-dark .search-launcher,
+.theme-dark .suggest-dropdown,
+.theme-dark .suggest-item,
+.theme-dark .stat-cell,
+.theme-dark .daily-glyph,
+.theme-dark .learning-stat,
+.theme-dark .learning-next,
+.theme-dark .quiz-glyph-panel,
+.theme-dark .quiz-option,
+.theme-dark .quiz-hint,
+.theme-dark .quiz-opt,
+.theme-dark .quiz-answer-char,
+.theme-dark .quiz-action-secondary,
+.theme-dark .catalog-preview-char,
+.theme-dark .stroke-chip,
+.theme-dark .catalog-cell,
+.theme-dark .catalog-cell.has-detail,
+.theme-dark .cal-day,
+.theme-dark .last-unlock,
+.theme-dark .last-unlock-char,
+.theme-dark .bookmark-btn,
+.theme-dark .compare-strip,
+.theme-dark .compare-stage,
+.theme-dark .compare-glyph-wrap,
+.theme-dark .ai-story-panel,
+.theme-dark .ai-story-bubble,
+.theme-dark .ai-ask-input,
+.theme-dark .ai-ask-answer,
+.theme-dark .stage-card,
+.theme-dark .stage-glyph,
+.theme-dark .char-nav-btn.disabled,
+.theme-dark .profile-mistake-pair,
+.theme-dark .mistake-pair,
+.theme-dark .char-cell,
+.theme-dark .char-cell-detail {
+  background: #27272A;
+  border-color: #3F3F46;
+  color: #FAFAFA;
+}
+
+.theme-dark .current-glyph,
+.theme-dark .stage-glyph.era-oracle,
+.theme-dark .stage-glyph.era-bronze,
+.theme-dark .stage-glyph.era-seal,
+.theme-dark .stage-glyph.era-clerical,
+.theme-dark .stage-glyph.era-regular {
+  background: #3F3F46;
+  border-color: #52525B;
+  color: #FAFAFA;
+}
+
+.theme-dark .search-launcher-title,
+.theme-dark .search-sheet-title,
+.theme-dark .ask-sheet-title,
+.theme-dark .ai-feature-title,
+.theme-dark .daily-title,
+.theme-dark .learning-title,
+.theme-dark .quiz-title,
+.theme-dark .quiz-glyph-text,
+.theme-dark .quiz-hint,
+.theme-dark .quiz-opt,
+.theme-dark .quiz-answer-char,
+.theme-dark .catalog-preview-char,
+.theme-dark .catalog-cell,
+.theme-dark .last-unlock-char,
+.theme-dark .compare-title,
+.theme-dark .compare-label,
+.theme-dark .compare-char,
+.theme-dark .ai-story-title,
+.theme-dark .ai-ask-input,
+.theme-dark .stage-glyph,
+.theme-dark .char-nav-btn.disabled,
+.theme-dark .profile-mistake-ok,
+.theme-dark .profile-mistake-wrong,
+.theme-dark .achievement-title,
+.theme-dark .bookmark-preview-char,
+.theme-dark .bm-char,
+.theme-dark .char-cell {
+  color: #FAFAFA;
+}
+
+.theme-dark .search-launcher-sub,
+.theme-dark .search-sheet-sub,
+.theme-dark .ask-sheet-sub,
+.theme-dark .ask-empty,
+.theme-dark .ask-bubble,
+.theme-dark .daily-insight,
+.theme-dark .learning-summary,
+.theme-dark .learning-next-meta,
+.theme-dark .quiz-answer-meta,
+.theme-dark .quiz-explaining,
+.theme-dark .quiz-explain-text,
+.theme-dark .quiz-diagnosis-text,
+.theme-dark .quiz-question,
+.theme-dark .quiz-explain,
+.theme-dark .quiz-prev-score,
+.theme-dark .catalog-preview-text,
+.theme-dark .catalog-pinyin,
+.theme-dark .cal-label,
+.theme-dark .cal-num,
+.theme-dark .achievement-desc,
+.theme-dark .bookmark-preview-pinyin,
+.theme-dark .bm-pinyin,
+.theme-dark .compare-sub,
+.theme-dark .compare-arrow,
+.theme-dark .ai-story-sub,
+.theme-dark .ai-story-text,
+.theme-dark .ai-ask-title,
+.theme-dark .ai-ask-q,
+.theme-dark .ai-ask-a,
+.theme-dark .stage-period,
+.theme-dark .char-nav-pos,
+.theme-dark .profile-mistake-sub,
+.theme-dark .radical-pinyin {
+  color: #D4D4D8;
+}
+
+.theme-dark .ask-bubble,
+.theme-dark .quiz-ai-card,
+.theme-dark .quiz-diagnosis,
+.theme-dark .mistake-row:active,
+.theme-dark .recent-row:active,
+.theme-dark .catalog-cell:active,
+.theme-dark .char-cell:active,
+.theme-dark .quiz-opt:active,
+.theme-dark .cal-day.cal-active {
+  background: #3F3F46;
+  border-color: #52525B;
+}
+
+.theme-dark .opt-correct,
+.theme-dark .quiz-option.correct,
+.theme-dark .quiz-msg-ok,
+.theme-dark .mistake-correct,
+.theme-dark .stat-cell-today.goal-done,
+.theme-dark .achievement-cell.done {
+  background: #052E2B;
+  border-color: #047857;
+}
+
+.theme-dark .opt-wrong,
+.theme-dark .quiz-option.wrong,
+.theme-dark .quiz-msg-err,
+.theme-dark .mistake-chosen {
+  background: #3F1D1D;
+  border-color: #7F1D1D;
+}
+
+.theme-dark .stage-dot {
+  background: #27272A;
+  border-color: #60A5FA;
+}
+
+.theme-dark .ask-message-user .ask-bubble,
+.theme-dark .btn-primary,
+.theme-dark .daily-btn,
+.theme-dark .quiz-action-primary,
+.theme-dark .ai-story-btn,
+.theme-dark .unlock-btn {
+  background: #2563EB;
+  border-color: #2563EB;
+  color: #FFFFFF;
+}
+
+.theme-dark .assistant-fab {
+  background: #27272A;
+  border-color: #3F3F46;
+  box-shadow: 0 10rpx 28rpx rgba(0, 0, 0, 0.32);
+}
+
+.theme-dark .assistant-fab-label,
+.theme-dark .ai-story-topic,
+.theme-dark .daily-kicker,
+.theme-dark .quiz-kicker,
+.theme-dark .learning-kicker {
+  color: #A1A1AA;
+}
+
+.theme-dark .stage-rail,
+.theme-dark .row + .row,
+.theme-dark .recent-row + .recent-row,
+.theme-dark .mistake-row + .mistake-row,
+.theme-dark .profile-mistake-row + .profile-mistake-row,
+.theme-dark .char-nav,
+.theme-dark .ai-ask {
+  border-color: #3F3F46;
+}

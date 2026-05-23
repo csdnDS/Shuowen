@@ -418,6 +418,90 @@
   margin-bottom: 14rpx;
 }
 
+/* Mistake book */
+
+.mistake-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mistake-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 18rpx 4rpx;
+}
+
+.mistake-row + .mistake-row {
+  border-top: 1rpx solid #F0F0EE;
+}
+
+.mistake-row:active {
+  background: #FAFAF8;
+}
+
+.mistake-pair {
+  width: 120rpx;
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 28rpx 1fr;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.mistake-correct,
+.mistake-chosen {
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.mistake-correct {
+  background: #ECFDF5;
+  color: #047857;
+  border: 1rpx solid #BBF7D0;
+}
+
+.mistake-chosen {
+  background: #FEF2F2;
+  color: #B91C1C;
+  border: 1rpx solid #FECACA;
+}
+
+.mistake-arrow {
+  color: #A0A0A0;
+  font-size: 20rpx;
+  text-align: center;
+}
+
+.mistake-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.mistake-title {
+  color: #1A1A1A;
+  font-size: 25rpx;
+  font-weight: 600;
+}
+
+.mistake-meta {
+  color: #94A3B8;
+  font-size: 21rpx;
+  margin-top: 4rpx;
+}
+
+.mistake-meaning {
+  color: #64748B;
+  font-size: 22rpx;
+  margin-top: 4rpx;
+  line-height: 1.45;
+}
+
 /* Recent list */
 
 .recent-list {

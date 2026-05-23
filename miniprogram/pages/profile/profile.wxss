@@ -231,3 +231,97 @@
   font-size: 28rpx;
   font-weight: 600;
 }
+
+/* Mistake preview */
+
+.profile-mistake-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-mistake-row {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  padding: 16rpx 0;
+}
+
+.profile-mistake-row + .profile-mistake-row {
+  border-top: 1rpx solid #F0F0EE;
+}
+
+.profile-mistake-pair {
+  width: 104rpx;
+  height: 58rpx;
+  border-radius: 10rpx;
+  background: #FAFAF8;
+  border: 1rpx solid #ECECEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+  flex-shrink: 0;
+}
+
+.profile-mistake-ok {
+  color: #047857;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.profile-mistake-wrong {
+  color: #B91C1C;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.profile-mistake-vs {
+  color: #C0C0BE;
+  font-size: 22rpx;
+}
+
+.profile-mistake-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-mistake-title {
+  color: #1A1A1A;
+  font-size: 25rpx;
+  font-weight: 600;
+}
+
+.profile-mistake-sub {
+  color: #94A3B8;
+  font-size: 21rpx;
+  margin-top: 3rpx;
+}
+
+/* Settings */
+
+.switch {
+  width: 86rpx;
+  height: 48rpx;
+  border-radius: 999rpx;
+  background: #E5E7EB;
+  padding: 4rpx;
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
+.switch-dot {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 8rpx rgba(15, 23, 42, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.switch-on {
+  background: #2563EB;
+}
+
+.switch-on .switch-dot {
+  transform: translateX(38rpx);
+}

@@ -2,6 +2,7 @@ const { request } = require('../../utils/request');
 const { loginWithProfile } = require('../../utils/auth');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
+const { getUserSettings, saveUserSettings, getPageClass, applyThemeChrome, getQuizMistakes, clearQuizMistakes } = require('../../utils/settings');
 
 function pad(v) { return `${v}`.padStart(2, '0'); }
 
@@ -50,6 +51,7 @@ Page({
       avatarUrl: ''
     },
     userInitial: '说',
+    pageClass: '',
     stats: {
       total: 9353,
       unlockedCount: 0,
@@ -65,8 +67,11 @@ Page({
     recentViews: [],
     hasRecentViews: false,
     hasBookmarks: false,
+    mistakesPreview: [],
+    hasMistakes: false,
     settings: {
-      fontSize: 'medium'
+      fontSize: 'medium',
+      theme: 'light'
     },
     loading: false,
     offline: false
@@ -94,7 +99,9 @@ Page({
     const today = new Date().toDateString();
     const streakDays = streakState.lastDay === today ? streakState.days : 0;
     const todayCount = streakState.lastDay === today ? streakState.todayCount : 0;
-    const settings = wx.getStorageSync('userSettings') || { fontSize: 'medium' };
+    const settings = getUserSettings();
+    applyThemeChrome(settings);
+    const mistakes = getQuizMistakes().slice(0, 5);
     const userInfo = wx.getStorageSync('userInfo');
     const token = wx.getStorageSync('token');
 
@@ -104,10 +111,13 @@ Page({
       recentViews,
       hasRecentViews: recentViews.length > 0,
       hasBookmarks: bookmarks.length > 0,
+      mistakesPreview: mistakes,
+      hasMistakes: mistakes.length > 0,
       'stats.bookmarkCount': bookmarks.length,
       'stats.streakDays': streakDays,
       'stats.todayCount': todayCount,
       settings,
+      pageClass: getPageClass(settings),
       isLoggedIn: Boolean(token && userInfo),
       user: userInfo || this.data.user,
       userInitial: (userInfo && userInfo.nickname) ? Array.from(userInfo.nickname)[0] : '说'
@@ -244,12 +254,40 @@ Page({
   toggleFontSize() {
     const cycle = { small: 'medium', medium: 'large', large: 'small' };
     const next = cycle[this.data.settings.fontSize] || 'medium';
-    const settings = { ...this.data.settings, fontSize: next };
-    wx.setStorageSync('userSettings', settings);
-    this.setData({ settings });
+    const settings = saveUserSettings({ ...this.data.settings, fontSize: next });
+    this.setData({ settings, pageClass: getPageClass(settings) });
     wx.showToast({
       title: { small: '小', medium: '中', large: '大' }[next],
       icon: 'none'
+    });
+  },
+
+  toggleTheme() {
+    const next = this.data.settings.theme === 'dark' ? 'light' : 'dark';
+    const settings = saveUserSettings({ ...this.data.settings, theme: next });
+    this.setData({ settings, pageClass: getPageClass(settings) });
+    applyThemeChrome(settings);
+    wx.showToast({ title: next === 'dark' ? '深色模式' : '浅色模式', icon: 'none' });
+  },
+
+  reviewMistake(event) {
+    const char = event.currentTarget.dataset.char;
+    if (!char) return;
+    wx.setStorageSync('pendingEvolutionChar', char);
+    wx.switchTab({ url: '/pages/evolution/evolution' });
+  },
+
+  clearMistakes() {
+    wx.showModal({
+      title: '清空错题本',
+      content: '确定清空所有猜字错题记录？',
+      confirmColor: '#DC2626',
+      success: (res) => {
+        if (!res.confirm) return;
+        clearQuizMistakes();
+        this.setData({ mistakesPreview: [], hasMistakes: false });
+        wx.showToast({ title: '已清空', icon: 'success' });
+      }
     });
   },
 
@@ -261,7 +299,7 @@ Page({
       success: (res) => {
         if (res.confirm) {
           ['searchHistory', 'recentViews', 'unlockHistory', 'unlockTimes', 'bookmarks',
-           'radicalExpanded', 'streakState', 'quizLastScore', 'token', 'userInfo', 'userSettings']
+           'radicalExpanded', 'streakState', 'quizLastScore', 'token', 'userInfo', 'userSettings', 'quizMistakes', 'aiLearningMetrics']
             .forEach((k) => wx.removeStorageSync(k));
           this.setData({
             isLoggedIn: false,
@@ -272,10 +310,14 @@ Page({
             recentViews: [],
             hasRecentViews: false,
             hasBookmarks: false,
+            mistakesPreview: [],
+            hasMistakes: false,
             'stats.streakDays': 0,
             'stats.todayCount': 0,
-            settings: { fontSize: 'medium' }
+            settings: { fontSize: 'medium', theme: 'light' },
+            pageClass: ''
           });
+          applyThemeChrome({ fontSize: 'medium', theme: 'light' });
           wx.showToast({ title: '已清除', icon: 'success' });
         }
       }

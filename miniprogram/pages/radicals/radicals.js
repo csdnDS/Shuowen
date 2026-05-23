@@ -1,9 +1,11 @@
 const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
+const { getUserSettings, getPageClass, applyThemeChrome } = require('../../utils/settings');
 
 Page({
   data: {
+    pageClass: '',
     radicals: [],
     expandedMap: {},
     hasRadicals: false,
@@ -16,16 +18,24 @@ Page({
   _allRadicals: [],
 
   onLoad() {
+    this._applyPageSettings();
     this.fetchRadicals();
   },
 
   onShow() {
+    this._applyPageSettings();
     const pending = wx.getStorageSync('pendingRadicalKeyword');
     if (!pending) return;
     wx.removeStorageSync('pendingRadicalKeyword');
     this.setData({ keyword: pending });
     this._expandRadical(pending);
     this._filterAndSet(pending);
+  },
+
+  _applyPageSettings() {
+    const settings = getUserSettings();
+    applyThemeChrome(settings);
+    this.setData({ pageClass: getPageClass(settings) });
   },
 
   async fetchRadicals() {

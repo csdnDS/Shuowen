@@ -2,6 +2,7 @@ const { request } = require('../../utils/request');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
 const { hasOracleSvg } = require('../../utils/oracleSVGs');
+const { getUserSettings, getPageClass, applyThemeChrome, getQuizMistakes, recordQuizMistake, clearQuizMistakes } = require('../../utils/settings');
 
 function pad(value) {
   return `${value}`.padStart(2, '0');
@@ -65,6 +66,7 @@ function calculateStreak(history) {
 Page({
   data: {
     progress: { total: 9353, unlocked: [], unlockedCount: 0 },
+    pageClass: '',
     percent: 0,
     percentText: '0.000',
     recentUnlocks: [],
@@ -89,10 +91,13 @@ Page({
     charOfDay: null,
     achievements: [],
     bookmarksPreview: [],
-    hasBookmarks: false
+    hasBookmarks: false,
+    mistakeBook: [],
+    hasMistakes: false
   },
 
   onLoad() {
+    this._applyPageSettings();
     const saved = wx.getStorageSync('quizLastScore');
     if (saved && saved.total > 0) {
       this.setData({ quizScore: saved, quizAccuracy: _accuracy(saved) });
@@ -100,11 +105,20 @@ Page({
     this.fetchProgress();
     this._loadCharOfDay();
     this._loadBookmarksPreview();
+    this._loadMistakeBook();
   },
 
   onShow() {
+    this._applyPageSettings();
     this.fetchProgress();
     this._loadBookmarksPreview();
+    this._loadMistakeBook();
+  },
+
+  _applyPageSettings() {
+    const settings = getUserSettings();
+    applyThemeChrome(settings);
+    this.setData({ pageClass: getPageClass(settings) });
   },
 
   _loadBookmarksPreview() {
@@ -120,6 +134,17 @@ Page({
     this.setData({
       bookmarksPreview: bookmarks,
       hasBookmarks: bookmarks.length > 0
+    });
+  },
+
+  _loadMistakeBook() {
+    const mistakes = getQuizMistakes().slice(0, 8).map((item) => ({
+      ...item,
+      timeLabel: formatRelativeTime(item.time)
+    }));
+    this.setData({
+      mistakeBook: mistakes,
+      hasMistakes: mistakes.length > 0
     });
   },
 
@@ -439,6 +464,18 @@ Page({
     const correct = this.data.quiz.correct;
     const isCorrect = chosen === correct;
     if (isCorrect) wx.vibrateShort({ type: 'light' });
+    if (!isCorrect) {
+      const detail = glyphs.byChar[correct] || {};
+      recordQuizMistake({
+        char: correct,
+        chosen,
+        pinyin: detail.pinyin || this.data.quiz.pinyin || '',
+        meaning: detail.meaning || this.data.quiz.meaning || '',
+        stageLabel: this.data.quiz.hintEra || '描述题',
+        source: 'progress-quiz'
+      });
+      this._loadMistakeBook();
+    }
     const prev = this.data.quizScore;
     const next = { total: prev.total + 1, correct: prev.correct + (isCorrect ? 1 : 0) };
     this.setData({
@@ -481,5 +518,26 @@ Page({
     const char = this.data.quiz.correct;
     wx.setStorageSync('pendingEvolutionChar', char);
     wx.switchTab({ url: '/pages/evolution/evolution' });
+  },
+
+  reviewMistake(event) {
+    const char = event.currentTarget.dataset.char;
+    if (!char) return;
+    wx.setStorageSync('pendingEvolutionChar', char);
+    wx.switchTab({ url: '/pages/evolution/evolution' });
+  },
+
+  clearMistakeBook() {
+    wx.showModal({
+      title: '清空错题本',
+      content: '确定清空所有猜字错题记录？',
+      confirmColor: '#DC2626',
+      success: (res) => {
+        if (!res.confirm) return;
+        clearQuizMistakes();
+        this._loadMistakeBook();
+        wx.showToast({ title: '已清空', icon: 'success' });
+      }
+    });
   }
 });
