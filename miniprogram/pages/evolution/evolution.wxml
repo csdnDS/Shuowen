@@ -345,7 +345,15 @@
           <view>我可以帮你讲字源、比较字形，也可以把复杂解释变成适合展示的短讲稿。</view>
         </view>
         <view wx:for="{{askMessages}}" wx:key="index" class="ask-message {{item.role === 'user' ? 'ask-message-user' : 'ask-message-assistant'}}">
-          <view class="ask-bubble">{{item.text}}</view>
+          <view wx:if="{{item.role === 'assistant'}}" class="ask-assistant-content">
+            <view class="ask-bubble">{{item.text}}</view>
+            <view class="ask-speak-btn {{ttsPlayingIndex === index ? 'ask-speak-playing' : ''}} {{ttsLoadingIndex === index ? 'ask-speak-loading' : ''}}"
+                  data-index="{{index}}" aria-label="{{ttsPlayingIndex === index ? '停止朗读' : '朗读回答'}}"
+                  bindtap="toggleSpeakMessage">
+              <view class="ask-speak-icon"></view>
+            </view>
+          </view>
+          <view wx:else class="ask-bubble">{{item.text}}</view>
         </view>
         <view wx:if="{{askLoading}}" class="ask-message ask-message-assistant">
           <view class="ask-bubble ask-thinking">小字灵正在想...</view>
@@ -356,6 +364,15 @@
         <view class="ask-preset" data-question="这个字的字源是什么？" bindtap="useAskPreset">字源</view>
         <view class="ask-preset" data-question="这个字的甲骨文像什么？" bindtap="useAskPreset">甲骨文</view>
         <view class="ask-preset" data-question="用一句话讲它的演变" bindtap="useAskPreset">一句话</view>
+      </view>
+
+      <view class="voice-ask-panel">
+        <button class="voice-ask-btn {{voiceListening ? 'voice-ask-recording' : ''}} {{voiceAvailable ? '' : 'voice-ask-disabled'}}"
+                bindtouchstart="startVoiceAsk" bindtouchend="finishVoiceAsk" bindtouchcancel="cancelVoiceAsk">
+          <text class="voice-ask-icon">{{voiceListening ? '●' : '🎙'}}</text>
+          <text>{{voiceTip}}</text>
+        </button>
+        <view wx:if="{{voiceRecognizedText}}" class="voice-ask-text">识别：{{voiceRecognizedText}}</view>
       </view>
 
       <view class="ai-ask-row">

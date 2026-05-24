@@ -1,9 +1,10 @@
 import { execFile } from 'node:child_process';
-import { randomBytes } from 'node:crypto';
+import { createHmac, randomBytes } from 'node:crypto';
 import { unlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
+import WebSocket from 'ws';
 import { env } from '../config/env.js';
 import { cacheGet, cacheSet } from '../db/redis.js';
 import { coreGlyphChars } from '../data/glyphAssets.js';
@@ -47,7 +48,7 @@ async function callLlm(instructions, input) {
   if (!env.deepseekApiKey) return '';
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12000);
+  const timer = setTimeout(() => controller.abort(), 6000);
   const url = `${env.deepseekBaseUrl.replace(/\/$/, '')}/chat/completions`;
   const body = JSON.stringify({
     model: env.deepseekModel,
@@ -89,7 +90,7 @@ async function callLlm(instructions, input) {
       const { stdout } = await execFileAsync('curl', [
         '-sS',
         '--max-time',
-        '20',
+        '8',
         '-X',
         'POST',
         url,
@@ -120,6 +121,286 @@ async function callLlm(instructions, input) {
 function trimText(text, max = 260) {
   const clean = String(text || '').replace(/\s+/g, ' ').trim();
   return clean.length > max ? `${clean.slice(0, max - 1)}…` : clean;
+}
+
+function ttsConfigured() {
+  return Boolean(env.xfyunTtsAppId && env.xfyunTtsApiKey && env.xfyunTtsApiSecret);
+}
+
+function asrConfigured() {
+  return Boolean(env.xfyunAsrAppId && env.xfyunAsrApiKey && env.xfyunAsrApiSecret);
+}
+
+function buildXfyunWsUrl({ host, path, apiKey, apiSecret }) {
+  const date = new Date().toUTCString();
+  const signatureOrigin = `host: ${host}\ndate: ${date}\nGET ${path} HTTP/1.1`;
+  const signature = createHmac('sha256', apiSecret)
+    .update(signatureOrigin)
+    .digest('base64');
+  const authorizationOrigin = [
+    `api_key="${apiKey}"`,
+    'algorithm="hmac-sha256"',
+    'headers="host date request-line"',
+    `signature="${signature}"`
+  ].join(', ');
+  const authorization = Buffer.from(authorizationOrigin).toString('base64');
+  const query = new URLSearchParams({ authorization, date, host });
+  return `wss://${host}${path}?${query.toString()}`;
+}
+
+function buildXfyunTtsUrl() {
+  return buildXfyunWsUrl({
+    host: 'tts-api.xfyun.cn',
+    path: '/v2/tts',
+    apiKey: env.xfyunTtsApiKey,
+    apiSecret: env.xfyunTtsApiSecret
+  });
+}
+
+function buildXfyunAsrUrl() {
+  return buildXfyunWsUrl({
+    host: 'iat-api.xfyun.cn',
+    path: '/v2/iat',
+    apiKey: env.xfyunAsrApiKey,
+    apiSecret: env.xfyunAsrApiSecret
+  });
+}
+
+export async function synthesizeSpeech(text) {
+  const cleanText = trimText(text, 500);
+  if (!cleanText) {
+    const error = new Error('缺少要朗读的文本');
+    error.statusCode = 400;
+    throw error;
+  }
+  if (!ttsConfigured()) {
+    const error = new Error('讯飞语音合成未配置');
+    error.statusCode = 503;
+    throw error;
+  }
+
+  return new Promise((resolve, reject) => {
+    const audioChunks = [];
+    let settled = false;
+    const ws = new WebSocket(buildXfyunTtsUrl());
+    const timer = setTimeout(() => {
+      finish(new Error('语音合成超时'));
+    }, 18000);
+
+    function finish(error, result) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      try {
+        ws.close();
+      } catch (_err) {
+        // The socket may already be closed by the remote endpoint.
+      }
+      if (error) reject(error);
+      else resolve(result);
+    }
+
+    ws.on('open', () => {
+      ws.send(JSON.stringify({
+        common: { app_id: env.xfyunTtsAppId },
+        business: {
+          aue: 'lame',
+          sfl: 1,
+          auf: 'audio/L16;rate=16000',
+          vcn: env.xfyunTtsVoice,
+          speed: 50,
+          volume: 60,
+          pitch: 50,
+          bgs: 0,
+          tte: 'UTF8'
+        },
+        data: {
+          status: 2,
+          text: Buffer.from(cleanText, 'utf8').toString('base64')
+        }
+      }));
+    });
+
+    ws.on('message', (raw) => {
+      let data;
+      try {
+        data = JSON.parse(raw.toString());
+      } catch (_err) {
+        finish(new Error('语音合成返回格式异常'));
+        return;
+      }
+
+      if (data.code !== 0) {
+        finish(new Error(data.message || `语音合成失败 (${data.code})`));
+        return;
+      }
+
+      if (data.data?.audio) {
+        audioChunks.push(Buffer.from(data.data.audio, 'base64'));
+      }
+      if (data.data?.status === 2) {
+        const audio = Buffer.concat(audioChunks);
+        if (!audio.length) {
+          finish(new Error('语音合成未返回音频'));
+          return;
+        }
+        finish(null, {
+          text: cleanText,
+          audioBase64: audio.toString('base64'),
+          mimeType: 'audio/mpeg',
+          extension: 'mp3',
+          provider: 'xfyun'
+        });
+      }
+    });
+
+    ws.on('error', (error) => {
+      finish(error);
+    });
+
+    ws.on('close', () => {
+      if (!settled) finish(new Error('语音合成连接已关闭'));
+    });
+  });
+}
+
+function parseIatWords(result) {
+  return (result?.ws || [])
+    .map((wordSlot) => wordSlot?.cw?.[0]?.w || '')
+    .join('');
+}
+
+export async function transcribeSpeech(audioBuffer, options = {}) {
+  if (!audioBuffer || !audioBuffer.length) {
+    const error = new Error('缺少录音文件');
+    error.statusCode = 400;
+    throw error;
+  }
+  if (!asrConfigured()) {
+    const error = new Error('讯飞语音听写未配置');
+    error.statusCode = 503;
+    throw error;
+  }
+  console.log(`ASR received audio: ${audioBuffer.length} bytes`);
+
+  return new Promise((resolve, reject) => {
+    const inputFormat = String(options.format || '').toLowerCase();
+    const isPcm = inputFormat === 'pcm' || inputFormat === 'raw';
+    const encoding = isPcm ? 'raw' : 'lame';
+    // 16k/16bit/mono PCM is 32 bytes per millisecond, so 1280 bytes
+    // matches the 40ms cadence expected by iFlytek's streaming ASR.
+    const frameSize = isPcm ? 1280 : 8000;
+    let offset = 0;
+    let text = '';
+    let settled = false;
+    let sentLastFrame = false;
+    const ws = new WebSocket(buildXfyunAsrUrl());
+    const timer = setTimeout(() => {
+      finish(new Error('语音识别超时'));
+    }, 22000);
+
+    function finish(error, result) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      try {
+        ws.close();
+      } catch (_err) {
+        // The socket may already be closed by the remote endpoint.
+      }
+      if (error) reject(error);
+      else resolve(result);
+    }
+
+    function nextFrame(status) {
+      const end = Math.min(offset + frameSize, audioBuffer.length);
+      const chunk = audioBuffer.subarray(offset, end);
+      offset = end;
+      if (status === 2) sentLastFrame = true;
+      return {
+        status,
+        format: 'audio/L16;rate=16000',
+        encoding,
+        audio: chunk.toString('base64')
+      };
+    }
+
+    function sendFrames() {
+      const firstIsLast = audioBuffer.length <= frameSize;
+      ws.send(JSON.stringify({
+        common: { app_id: env.xfyunAsrAppId },
+        business: {
+          language: 'zh_cn',
+          domain: 'iat',
+          accent: 'mandarin',
+          vad_eos: 3000
+        },
+        data: nextFrame(firstIsLast ? 2 : 0)
+      }));
+      if (firstIsLast) return;
+
+      const interval = setInterval(() => {
+        if (settled) {
+          clearInterval(interval);
+          return;
+        }
+        const isLast = offset + frameSize >= audioBuffer.length;
+        ws.send(JSON.stringify({ data: nextFrame(isLast ? 2 : 1) }));
+        if (isLast) clearInterval(interval);
+      }, 40);
+    }
+
+    ws.on('open', sendFrames);
+
+    ws.on('message', (raw) => {
+      let data;
+      try {
+        data = JSON.parse(raw.toString());
+      } catch (_err) {
+        finish(new Error('语音识别返回格式异常'));
+        return;
+      }
+
+      if (data.code !== 0) {
+        console.warn(`ASR response failed: ${data.code} ${data.message || ''}`);
+        finish(new Error(data.message || `语音识别失败 (${data.code})`));
+        return;
+      }
+
+      const words = parseIatWords(data.data?.result);
+      if (words) text += words;
+      if (data.data?.status === 2) {
+        const cleanText = text.replace(/\s+/g, '').trim();
+        console.log(`ASR recognized text: ${cleanText || '(empty)'}`);
+        finish(null, {
+          text: cleanText,
+          provider: 'xfyun',
+          generated: Boolean(cleanText)
+        });
+      }
+    });
+
+    ws.on('error', (error) => {
+      finish(error);
+    });
+
+    ws.on('close', (code, reason) => {
+      if (settled) return;
+      const closeReason = reason ? reason.toString() : '';
+      console.warn(`ASR websocket closed before final result: code=${code} reason=${closeReason || '(empty)'} sentLastFrame=${sentLastFrame}`);
+      if (sentLastFrame && text) {
+        const cleanText = text.replace(/\s+/g, '').trim();
+        finish(null, {
+          text: cleanText,
+          provider: 'xfyun',
+          generated: Boolean(cleanText),
+          partial: true
+        });
+        return;
+      }
+      finish(new Error(closeReason || `语音识别连接已关闭 (${code})`));
+    });
+  });
 }
 
 function chinaDateParts(date = new Date()) {
@@ -210,6 +491,47 @@ function fallbackDaily(character, date = new Date()) {
         ? '今天适合从收藏、安定与岁时更替里理解它。'
         : '今天适合从萌发、更新与生命力里理解它。';
   return trimText(`今日推荐“${character.char}”。${seasonal}${character.meaning || ''}`, 160);
+}
+
+function fallbackCharacterAnswer(contextChars, question) {
+  const target = contextChars[0];
+  if (!target) return '小字灵可以讲汉字的字形演变、部首、读音和含义。你可以换一个具体汉字问我。';
+
+  const stages = target.stages || [];
+  const earliest = stages.find((stage) => stage.description) || stages[0];
+  const stageNames = stages.map((stage) => stage.name).filter(Boolean).slice(0, 5).join('、');
+  const asksOrigin = /字源|来源|从哪|哪里来|为什么|本来/.test(question);
+  const asksOracle = /甲骨|最早|古文字|像什么/.test(question);
+  const asksMeaning = /意思|含义|什么意思|解释/.test(question);
+  const asksPinyin = /读音|怎么读|拼音/.test(question);
+
+  if (asksPinyin) {
+    return `“${target.char}”读作${target.pinyin || '可结合教材读音学习'}，部首是${target.radical || '暂未记录'}，共有${target.strokes || '若干'}画。`;
+  }
+  if (asksOracle && earliest) {
+    return `“${target.char}”的早期字形可以先看整体轮廓：${earliest.description || '它保留了古人观察事物后的形体线索'}后来逐步演变到今天的楷书。`;
+  }
+  if (asksOrigin && earliest) {
+    return `“${target.char}”的字源可以从${earliest.name || '古文字'}看起：${earliest.description || target.meaning || '它把古人对事物的观察藏进字形里'}。`;
+  }
+  if (asksMeaning) {
+    return `“${target.char}”的意思是${target.meaning || '可结合字形和语境理解'}。观察它的部首${target.radical || ''}和字形变化，能更容易记住这个字。`;
+  }
+  return `小字灵先按字形线索讲：“${target.char}”${target.meaning ? `表示${target.meaning}` : '可以从古文字形体来理解'}。${stageNames ? `它经历了${stageNames}这些阶段，` : ''}学习时先看轮廓，再看部首和笔画变化。`;
+}
+
+function isNoDataAnswer(text) {
+  const clean = String(text || '').replace(/\s+/g, '');
+  if (!clean) return false;
+  return [
+    /手头.*资料.*(没|未|没有).*收录/,
+    /(资料|数据库|字库|信息).*(没|未|没有).*(收录|覆盖|记录|找到)/,
+    /(没|未|没有).*(收录|覆盖|记录|找到).*(资料|信息|数据)/,
+    /(现有|目前|当前).*(资料|信息|数据).*(不足|有限|缺少|不完整)/,
+    /(没有|未能|无法).*(找到|查询到).*(该字|这个字|相关)/,
+    /暂(未|无).*(收录|资料|信息|数据)/,
+    /无法.*(回答|讲解|说明)/
+  ].some((pattern) => pattern.test(clean));
 }
 
 function seasonContext(date = new Date()) {
@@ -322,6 +644,8 @@ export async function answerCharacterQuestion(char, question) {
     '你是“小字灵”，《说文解字》与汉字字形演变方面的讲解员，语气温和活泼。',
     '回答用户关于汉字的问题：字形演变、字源、六书、部首、读音、含义等。',
     '如提供了相关汉字资料，优先依据资料；资料未覆盖时可用汉字常识合理讲解，但不要编造具体的考古发现或出土文献名称。',
+    '不要说“手头资料未收录”“数据库没有信息”“无法回答”这类拒答句；资料不足时也要围绕当前字给出可学习的观察方法或通用解释。',
+    '如果某个细节不确定，用“可以先这样观察”来讲，不要暴露系统资料不足。',
     '若问题与汉字无关，礼貌说明你只讲汉字。',
     '输出中文，不要 Markdown，不要列表，控制在140字以内。'
   ].join('\n');
@@ -332,12 +656,14 @@ export async function answerCharacterQuestion(char, question) {
     `\n用户问题：${cleanQuestion}`
   ].join('\n');
   const generated = await callLlm(instructions, input);
+  const fallbackAnswer = fallbackCharacterAnswer(contextChars, cleanQuestion);
+  const answer = isNoDataAnswer(generated) ? fallbackAnswer : (generated || fallbackAnswer);
 
   return {
     char: currentChar || (contextChars[0] && contextChars[0].char) || '',
     question: cleanQuestion,
-    answer: trimText(generated || '小字灵暂时无法连线，请稍后再试。', 240),
-    generated: Boolean(generated)
+    answer: trimText(answer, 240),
+    generated: Boolean(generated && answer === generated)
   };
 }
 

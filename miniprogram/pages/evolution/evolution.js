@@ -1,8 +1,10 @@
 const { request } = require('../../utils/request');
+const { ensureToken } = require('../../utils/auth');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
 const { getOracleSrc } = require('../../utils/oracleSVGs');
 const { getUserSettings, getPageClass, applyThemeChrome, recordQuizMistake } = require('../../utils/settings');
+const { loadHistoricalFonts } = require('../../utils/historicalFonts');
 
 const INDEX_LABELS = ['①', '②', '③', '④', '⑤'];
 const QUIZ_POOL = ['人', '水', '山', '日', '月', '火', '木', '大', '女', '子', '口', '手', '心', '目', '王', '土', '天', '禾', '竹', '生', '明', '龙', '家', '老', '雨', '鸟', '马', '鱼', '羊', '牛', '田', '风'];
@@ -73,6 +75,13 @@ Page({
     askLoading: false,
     askFocus: false,
     askPanelVisible: false,
+    ttsLoadingIndex: null,
+    ttsPlayingIndex: null,
+    voiceAvailable: false,
+    voiceListening: false,
+    voiceRecognizing: false,
+    voiceRecognizedText: '',
+    voiceTip: '按住说话问小字灵',
     aiPanelExpanded: true,
     suggestions: [],
     showSuggestions: false,
@@ -113,10 +122,17 @@ Page({
   _debounce: null,
   _charCache: null,
   _unlocked: null,
+  _voiceManager: null,
+  _voiceDraft: '',
+  _voiceCanceled: false,
+  _voiceStartAt: 0,
+  _ttsAudio: null,
 
   onLoad(options = {}) {
     this._charCache = {};
     this._unlocked = new Set();
+    const app = getApp();
+    loadHistoricalFonts(app.globalData && app.globalData.apiBaseUrl);
     const settings = getUserSettings();
     applyThemeChrome(settings);
     const searchHistory = wx.getStorageSync('searchHistory') || [];
@@ -142,6 +158,7 @@ Page({
     this._loadLearningPath();
     this._applyLearningDashboard();
     this._loadQuiz();
+    this._initVoiceAsk();
     this._loadCharacter(initialChar);
   },
 
@@ -162,6 +179,11 @@ Page({
 
   onUnload() {
     if (this._debounce) clearTimeout(this._debounce);
+    this._stopTts();
+    if (this._ttsAudio) {
+      this._ttsAudio.destroy();
+      this._ttsAudio = null;
+    }
   },
 
   openSearchPanel() {
@@ -268,6 +290,7 @@ Page({
   },
 
   closeAskPanel() {
+    this._stopTts();
     this.setData({ askPanelVisible: false, askFocus: false });
   },
 
@@ -848,6 +871,322 @@ Page({
 
   onAskInput(event) {
     this.setData({ askInput: event.detail.value });
+  },
+
+  _getTtsAudio() {
+    if (this._ttsAudio) return this._ttsAudio;
+    const audio = wx.createInnerAudioContext();
+    audio.obeyMuteSwitch = false;
+    audio.onEnded(() => {
+      this.setData({ ttsPlayingIndex: null });
+    });
+    audio.onStop(() => {
+      this.setData({ ttsPlayingIndex: null });
+    });
+    audio.onError((err = {}) => {
+      this.setData({ ttsLoadingIndex: null, ttsPlayingIndex: null });
+      const message = err.errMsg || '朗读失败，请稍后重试';
+      wx.showToast({ title: message.slice(0, 18), icon: 'none' });
+    });
+    this._ttsAudio = audio;
+    return audio;
+  },
+
+  _stopTts() {
+    if (!this._ttsAudio) {
+      this.setData({ ttsPlayingIndex: null });
+      return;
+    }
+    try {
+      this._ttsAudio.stop();
+    } catch (_err) {
+      this.setData({ ttsPlayingIndex: null });
+    }
+  },
+
+  _writeTtsFile(audioBase64, extension = 'mp3') {
+    return new Promise((resolve, reject) => {
+      const fs = wx.getFileSystemManager();
+      const safeExt = String(extension || 'mp3').replace(/[^a-z0-9]/gi, '') || 'mp3';
+      const filePath = `${wx.env.USER_DATA_PATH}/xiao-ziling-tts-${Date.now()}.${safeExt}`;
+      fs.writeFile({
+        filePath,
+        data: audioBase64,
+        encoding: 'base64',
+        success: () => resolve(filePath),
+        fail: reject
+      });
+    });
+  },
+
+  async toggleSpeakMessage(event) {
+    const index = Number(event.currentTarget.dataset.index);
+    if (this.data.ttsLoadingIndex !== null) return;
+    if (this.data.ttsPlayingIndex === index) {
+      this._stopTts();
+      return;
+    }
+
+    const item = (this.data.askMessages || [])[index];
+    const text = (item && item.text || '').trim();
+    if (!text) return;
+
+    this._stopTts();
+    this.setData({ ttsLoadingIndex: index });
+    try {
+      const data = await request('/api/ai/tts', 'POST', { text }, { timeout: 22000 });
+      if (!data || !data.audioBase64) {
+        throw new Error('语音合成未返回音频');
+      }
+      const filePath = await this._writeTtsFile(data.audioBase64, data.extension);
+      const audio = this._getTtsAudio();
+      audio.src = filePath;
+      this.setData({ ttsPlayingIndex: index });
+      audio.play();
+    } catch (err) {
+      const message = err && err.statusCode === 503 ? '语音合成未配置' : '暂时无法朗读';
+      wx.showToast({ title: message, icon: 'none' });
+    } finally {
+      this.setData({ ttsLoadingIndex: null });
+    }
+  },
+
+  _initVoiceAsk() {
+    if (this._voiceManager) return;
+    try {
+      if (typeof wx.getRecorderManager !== 'function') {
+        throw new Error('recorder unavailable');
+      }
+      const manager = wx.getRecorderManager();
+      this._voiceManager = manager;
+      this.setData({ voiceAvailable: true, voiceTip: '按住说话问小字灵' });
+
+      manager.onStart(() => {
+        this._voiceCanceled = false;
+        this._voiceStartAt = Date.now();
+        this.setData({
+          voiceListening: true,
+          voiceRecognizing: false,
+          voiceRecognizedText: '',
+          voiceTip: '正在听，松开发送'
+        });
+      });
+
+      manager.onStop(async (res = {}) => {
+        const duration = Date.now() - (this._voiceStartAt || Date.now());
+        this.setData({
+          voiceListening: false,
+          voiceRecognizing: true,
+          voiceTip: '正在识别...'
+        });
+        if (this._voiceCanceled) {
+          this.setData({ voiceRecognizing: false, voiceTip: '按住说话问小字灵' });
+          return;
+        }
+        if (duration < 800) {
+          this.setData({ voiceRecognizing: false, voiceTip: '按住说话问小字灵' });
+          wx.showToast({ title: '按住说满1秒再松开', icon: 'none' });
+          return;
+        }
+        if (!res.tempFilePath) {
+          this.setData({ voiceRecognizing: false, voiceTip: '按住说话问小字灵' });
+          wx.showToast({ title: '没有录到声音', icon: 'none' });
+          return;
+        }
+        try {
+          const data = await this._uploadVoiceFile(res.tempFilePath);
+          const text = (data && data.text || '').trim();
+          this.setData({
+            voiceRecognizing: false,
+            voiceRecognizedText: text,
+            voiceTip: '按住说话问小字灵'
+          });
+          if (!text) {
+            wx.showToast({ title: '没有听清，再试一次', icon: 'none' });
+            return;
+          }
+          this.setData({ askInput: text });
+          this.submitAsk();
+        } catch (_err) {
+          this.setData({ voiceRecognizing: false, voiceTip: '按住说话问小字灵' });
+          wx.showToast({ title: (_err.message || '语音识别失败').slice(0, 18), icon: 'none' });
+        }
+      });
+
+      manager.onError((res = {}) => {
+        const message = res.errMsg || '录音失败';
+        this.setData({
+          voiceListening: false,
+          voiceRecognizing: false,
+          voiceTip: '按住说话问小字灵'
+        });
+        wx.showToast({ title: String(message).slice(0, 18), icon: 'none' });
+      });
+    } catch (_err) {
+      this.setData({
+        voiceAvailable: false,
+        voiceTip: '当前微信版本不支持录音'
+      });
+    }
+  },
+
+  async _uploadVoiceFile(filePath) {
+    const app = getApp();
+    const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
+    let token = wx.getStorageSync('token') || '';
+    if (!token) {
+      try {
+        token = await ensureToken();
+      } catch (_err) {
+        token = wx.getStorageSync('token') || '';
+      }
+    }
+    await new Promise((resolve, reject) => {
+      wx.getFileInfo({
+        filePath,
+        success(info) {
+          if (!info.size || info.size < 1200) {
+            reject(new Error('录音太短，请说完整一句'));
+            return;
+          }
+          resolve(info);
+        },
+        fail: () => resolve()
+      });
+    });
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: `${baseUrl}/api/ai/asr`,
+        filePath,
+        name: 'audio',
+        timeout: 25000,
+        header: {
+          'x-openid': token
+        },
+        formData: {
+          format: 'pcm'
+        },
+        success(res) {
+          let data = {};
+          try {
+            data = JSON.parse(res.data || '{}');
+          } catch (_err) {
+            reject(new Error('语音识别返回格式异常'));
+            return;
+          }
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            resolve(data);
+            return;
+          }
+          reject(new Error(data.message || `语音识别失败 (${res.statusCode})`));
+        },
+        fail(err) {
+          reject(new Error(err.errMsg || '语音上传失败'));
+        }
+      });
+    }).catch(() => this._uploadVoiceFileAsBase64(filePath));
+  },
+
+  _uploadVoiceFileAsBase64(filePath) {
+    return new Promise((resolve, reject) => {
+      wx.getFileSystemManager().readFile({
+        filePath,
+        encoding: 'base64',
+        success: async (file) => {
+          try {
+            const data = await request('/api/ai/asr', 'POST', {
+              audioBase64: file.data,
+              format: 'pcm'
+            }, { timeout: 25000 });
+            resolve(data);
+          } catch (err) {
+            reject(err);
+          }
+        },
+        fail(err) {
+          reject(new Error(err.errMsg || '读取录音失败'));
+        }
+      });
+    });
+  },
+
+  _ensureRecordPermission() {
+    return new Promise((resolve, reject) => {
+      wx.getSetting({
+        success: (settings) => {
+          if (settings.authSetting['scope.record']) {
+            resolve();
+            return;
+          }
+          wx.authorize({
+            scope: 'scope.record',
+            success: resolve,
+            fail: () => {
+              wx.showModal({
+                title: '需要麦克风权限',
+                content: '请在设置中允许使用麦克风后，再按住说话问小字灵。',
+                confirmText: '去设置',
+                success: (res) => {
+                  if (res.confirm) wx.openSetting();
+                }
+              });
+              reject(new Error('未授权录音'));
+            }
+          });
+        },
+        fail: () => resolve()
+      });
+    });
+  },
+
+  async startVoiceAsk() {
+    if (this.data.askLoading || this.data.voiceListening || this.data.voiceRecognizing) return;
+    if (!this._voiceManager) this._initVoiceAsk();
+    if (!this._voiceManager) {
+      wx.showModal({
+        title: '语音输入未启用',
+        content: '当前微信版本暂不支持录音，请先用文字提问小字灵。',
+        showCancel: false
+      });
+      return;
+    }
+    try {
+      await this._ensureRecordPermission();
+      wx.vibrateShort({ type: 'light' });
+      this._voiceCanceled = false;
+      this._voiceManager.start({
+        duration: 60000,
+        sampleRate: 16000,
+        numberOfChannels: 1,
+        encodeBitRate: 96000,
+        format: 'pcm'
+      });
+    } catch (err) {
+      if (err && err.message === '未授权录音') return;
+      const message = (err && err.errMsg) || '暂时无法录音';
+      wx.showToast({ title: message.slice(0, 18), icon: 'none' });
+    }
+  },
+
+  finishVoiceAsk() {
+    if (!this._voiceManager || !this.data.voiceListening) return;
+    this.setData({ voiceTip: '正在识别...' });
+    try {
+      this._voiceManager.stop();
+    } catch (_err) {
+      this.setData({ voiceListening: false, voiceRecognizing: false });
+    }
+  },
+
+  cancelVoiceAsk() {
+    if (!this._voiceManager || !this.data.voiceListening) return;
+    this._voiceCanceled = true;
+    this.setData({ voiceTip: '已取消' });
+    try {
+      this._voiceManager.stop();
+    } catch (_err) {
+      this.setData({ voiceListening: false, voiceRecognizing: false });
+    }
   },
 
   async submitAsk() {

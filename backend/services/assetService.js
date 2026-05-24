@@ -38,7 +38,8 @@ export function normalizeExpires(expires) {
 }
 
 function buildLocalUrl(req, key) {
-  const protocol = req.protocol || 'http';
+  const forwardedProto = String(req.get('x-forwarded-proto') || '').split(',')[0].trim();
+  const protocol = forwardedProto || req.protocol || 'http';
   const host = req.get('host');
   return `${protocol}://${host}/assets/${encodeURI(key)}`;
 }

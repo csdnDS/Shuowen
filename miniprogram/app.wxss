@@ -613,6 +613,9 @@ button::after {
 .theme-dark .quiz-hint,
 .theme-dark .quiz-opt,
 .theme-dark .quiz-answer-char,
+.theme-dark .voice-ask-btn,
+.theme-dark .voice-ask-disabled,
+.theme-dark .ask-speak-btn,
 .theme-dark .quiz-action-secondary,
 .theme-dark .catalog-preview-char,
 .theme-dark .stroke-chip,
@@ -697,6 +700,7 @@ button::after {
 .theme-dark .quiz-question,
 .theme-dark .quiz-explain,
 .theme-dark .quiz-prev-score,
+.theme-dark .voice-ask-text,
 .theme-dark .catalog-preview-text,
 .theme-dark .catalog-pinyin,
 .theme-dark .cal-label,
@@ -744,9 +748,30 @@ button::after {
 .theme-dark .opt-wrong,
 .theme-dark .quiz-option.wrong,
 .theme-dark .quiz-msg-err,
-.theme-dark .mistake-chosen {
+.theme-dark .mistake-chosen,
+.theme-dark .voice-ask-recording {
   background: #3F1D1D;
   border-color: #7F1D1D;
+}
+
+.theme-dark .ask-speak-playing {
+  background: #1D2B45;
+  border-color: #1E40AF;
+  color: #BFDBFE;
+}
+
+.theme-dark .ask-speak-icon {
+  border-left-color: #D4D4D8;
+}
+
+.theme-dark .ask-speak-playing .ask-speak-icon {
+  border: 0;
+  background: #BFDBFE;
+}
+
+.theme-dark .ask-speak-loading .ask-speak-icon {
+  border-color: rgba(212, 212, 216, 0.24);
+  border-top-color: #D4D4D8;
 }
 
 .theme-dark .stage-dot {

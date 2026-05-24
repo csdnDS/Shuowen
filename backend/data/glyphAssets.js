@@ -1,3 +1,11 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const manifestPath = path.resolve(__dirname, '../assets/public/commons-glyph-manifest.json');
+
 export const coreGlyphChars = [
   '人', '水', '山', '日', '月', '火', '木', '文', '字', '说',
   '大', '女', '子', '口', '手', '心', '目', '王', '土', '天',
@@ -10,6 +18,16 @@ export const coreGlyphChars = [
   '采', '利', '初', '相', '主', '信', '仁', '安', '和', '道',
   '德', '善', '美', '思', '乐', '色', '长', '高', '多', '少'
 ];
+
+function loadCommonsManifest() {
+  try {
+    return JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  } catch (_error) {
+    return { assets: {} };
+  }
+}
+
+const commonsManifest = loadCommonsManifest();
 
 export const glyphCharVariants = {
   '说': ['說', '说'],
@@ -68,6 +86,10 @@ export const glyphStageMeta = [
   }
 ];
 
+function manifestAssetFor(char, era) {
+  return commonsManifest.assets?.[`${char}-${era}`] || null;
+}
+
 export function getGlyphAssetKey(char, era) {
   return `glyphs/${char}/${era}.svg`;
 }
@@ -95,20 +117,30 @@ export function enrichGlyphAssetStages(character) {
   const stages = (character.stages || []).map((stage, index) => {
     const meta = glyphStageMeta.find((item) => item.name === stage.name) || glyphStageMeta[index];
     if (!meta) return stage;
+    const manifestAsset = manifestAssetFor(character.char, stage.era || meta.era);
+    let manifestType = '';
+    if (manifestAsset?.type === 'stage-glyph-font-reference') {
+      manifestType = 'font';
+    } else if (manifestAsset?.assetType) {
+      manifestType = manifestAsset.assetType;
+    } else if (manifestAsset?.contentType === 'image/svg+xml') {
+      manifestType = 'svg';
+    }
 
     return {
       ...stage,
       era: stage.era || meta.era,
       label: stage.label || meta.label,
       period: stage.period || meta.period,
-      assetKey: Object.prototype.hasOwnProperty.call(stage, 'assetKey') ? stage.assetKey : getGlyphAssetKey(character.char, meta.era),
-      assetType: stage.assetType || 'svg',
-      assetSource: stage.assetSource || meta.assetSource,
-      assetStatus: stage.assetStatus || (meta.era === 'regular' ? 'reference' : 'draft'),
-      license: stage.license || '',
-      sourceUrl: stage.sourceUrl || '',
-      attribution: stage.attribution || '',
-      verifiedAt: stage.verifiedAt || ''
+      assetKey: manifestAsset?.assetKey || manifestAsset?.key || (Object.prototype.hasOwnProperty.call(stage, 'assetKey') ? stage.assetKey : getGlyphAssetKey(character.char, meta.era)),
+      assetType: manifestType || stage.assetType || 'svg',
+      assetSource: manifestAsset?.sourceName || manifestAsset?.sourceTitle || stage.assetSource || meta.assetSource,
+      assetStatus: manifestAsset?.status || stage.assetStatus || (meta.era === 'regular' ? 'reference' : 'draft'),
+      fontGlyph: manifestAsset?.fontGlyph || stage.fontGlyph || glyphCharVariants[character.char]?.[0] || '',
+      license: manifestAsset?.license || stage.license || '',
+      sourceUrl: manifestAsset?.sourceUrl || stage.sourceUrl || '',
+      attribution: manifestAsset?.attribution || stage.attribution || '',
+      verifiedAt: manifestAsset?.verifiedAt || stage.verifiedAt || ''
     };
   });
 

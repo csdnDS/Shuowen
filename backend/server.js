@@ -14,6 +14,7 @@ import { createSystemRouter } from './routes/system.js';
 const app = express();
 
 app.disable('x-powered-by');
+app.set('trust proxy', true);
 
 app.use((_req, res, next) => {
   res.set('X-Content-Type-Options', 'nosniff');
@@ -59,7 +60,7 @@ setInterval(() => {
   }
 }, RATE_LIMIT_WINDOW_MS).unref();
 
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: '4mb' }));
 app.use('/assets', express.static(localAssetRoot, {
   maxAge: '1y',
   immutable: true

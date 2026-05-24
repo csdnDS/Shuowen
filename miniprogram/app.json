@@ -6,6 +6,7 @@
     "pages/profile/profile"
   ],
   "entryPagePath": "pages/evolution/evolution",
+  "lazyCodeLoading": "requiredComponents",
   "subPackages": [],
   "window": {
     "navigationBarTitleText": "说文",

@@ -39,6 +39,8 @@ backend/
 - `GET /api/ai/learning-path`
 - `POST /api/ai/quiz/explain`
 - `POST /api/ai/ask`
+- `POST /api/ai/tts`
+- `POST /api/ai/asr`
 - `GET /api/progress`
 - `POST /api/progress/unlock`
 - `GET /api/leaderboard`
@@ -148,6 +150,8 @@ npm --prefix backend run mongo:import
 - `REDIS_URL`：解字排行榜缓存
 - `OSS_REGION` / `OSS_BUCKET` / `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET`：字形图、拓片、音频资产签名 URL
 - `DEEPSEEK_API_KEY` / `DEEPSEEK_MODEL` / `DEEPSEEK_BASE_URL`：AI 故事官、AI 每日一字、猜字讲解；未配置 key 时会返回本地兜底文案，便于比赛现场稳定演示
+- `XFYUN_TTS_APP_ID` / `XFYUN_TTS_API_KEY` / `XFYUN_TTS_API_SECRET` / `XFYUN_TTS_VOICE`：讯飞在线语音合成，用于“小字灵”把回答朗读出来；未配置时文字问答仍可正常使用
+- `XFYUN_ASR_APP_ID` / `XFYUN_ASR_API_KEY` / `XFYUN_ASR_API_SECRET`：讯飞语音听写，用于“按住说话问小字灵”；留空时会复用 TTS 的讯飞 WebAPI 鉴权信息
 
 如果这些变量为空，后端仍可启动，自动使用内存 fallback。
 
@@ -158,8 +162,11 @@ npm --prefix backend run mongo:import
 - 汉字故事官：在字形详情页点击“AI讲故事”，结合该字的释义和五段字形数据生成约 150 字起源故事。
 - AI 个性化学习路径：根据用户已解锁字、最近学习记录和核心字库覆盖情况，推荐下一组适合学习的汉字。
 - AI 猜字讲解与错因分析：学习页的字形测验答题后，AI 根据正确答案、用户选择和字形资料分析可能混淆点。
+- 讯飞语音听写提问：字形页问答面板支持按住说话，小程序录制 16k 单声道 MP3 后上传后端，由讯飞 ASR 转成文字并自动提问。
+- 讯飞语音合成朗读：小字灵回答后可点击“朗读”，由后端代理调用讯飞 TTS，前端播放本地临时音频文件，避免密钥进入小程序包。
 - AI 每日一字：学习页顶部根据日期、季节和用户学习历史推荐一个今日汉字。
 - 小字灵问答：围绕当前字和用户提到的其他汉字，回答字源、字形演变、部首、读音和含义问题。
+- 小字灵朗读回答：字形页问答面板支持把 AI 回答合成为语音播放，降低低龄儿童阅读长解释的理解门槛。
 - AI 学习看板：前端记录 AI 讲解、问答、测验讲解次数和猜字正确率，便于演示学习成效数据。
 
 ### 无障碍与体验细节
@@ -179,7 +186,7 @@ DEEPSEEK_MODEL=deepseek-v4-flash
 DEEPSEEK_BASE_URL=https://api.deepseek.com
 ```
 
-汉字故事官的语音播报建议使用微信“同声传译”插件。发布或真机测试前，需要先在微信公众平台的小程序后台添加该插件，再在 `miniprogram/app.json` 中加入 provider `wx069ba97219f66d99`；未添加插件时先不要声明，否则开发者工具可能编译失败。
+小字灵朗读和语音提问都走后端代理的讯飞 WebAPI，不需要在微信公众平台添加插件。TTS 负责把回答读出来，ASR 负责把孩子的录音识别成文字，密钥只保存在后端 `.env`。
 
 ### OSS 资产
 
