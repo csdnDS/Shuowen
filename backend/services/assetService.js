@@ -1,6 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getOssClient } from '../db/oss.js';
+import { env } from '../config/env.js';
 
 const DEFAULT_EXPIRES = 3600;
 const MAX_EXPIRES = 24 * 3600;
@@ -38,6 +38,8 @@ export function normalizeExpires(expires) {
 }
 
 function buildLocalUrl(req, key) {
+  const publicBaseUrl = env.publicBaseUrl.replace(/\/$/, '');
+  if (publicBaseUrl) return `${publicBaseUrl}/assets/${encodeURI(key)}`;
   const forwardedProto = String(req.get('x-forwarded-proto') || '').split(',')[0].trim();
   const protocol = forwardedProto || req.protocol || 'http';
   const host = req.get('host');
@@ -57,23 +59,11 @@ export async function signAsset(req, key, expires) {
     };
   }
 
-  const ossClient = await getOssClient();
-  if (!ossClient) {
-    return {
-      enabled: false,
-      provider: 'local',
-      key: normalizedKey,
-      url: buildLocalUrl(req, normalizedKey),
-      expires: safeExpires,
-      message: 'OSS 未配置，当前返回本地资产路径'
-    };
-  }
-
   return {
-    enabled: true,
-    provider: 'oss',
+    enabled: false,
+    provider: 'local',
     key: normalizedKey,
-    url: ossClient.signatureUrl(normalizedKey, { expires: safeExpires }),
+    url: buildLocalUrl(req, normalizedKey),
     expires: safeExpires
   };
 }

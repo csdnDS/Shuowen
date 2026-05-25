@@ -1,7 +1,6 @@
 import { TOTAL_SHUOWEN_COUNT } from '../data/seedData.js';
 import { coreGlyphChars } from '../data/glyphAssets.js';
 import { addUserUnlocked, getUserProgressEntries, getUserUnlocked, recordActivity } from '../repositories/userRepository.js';
-import { updateLeaderboard } from './leaderboardService.js';
 
 function toHistory(entries) {
   return entries
@@ -39,12 +38,13 @@ export async function unlockRandomCharacter(openid) {
 export async function unlockCharacter(openid, char) {
   const normalizedChar = Array.from(String(char || '').trim())[0];
   if (!normalizedChar) {
-    throw new Error('缺少要解锁的汉字');
+    const error = new Error('缺少要解锁的汉字');
+    error.statusCode = 400;
+    throw error;
   }
 
   await getUserProgressEntries(openid);
   const result = await addUserUnlocked(openid, normalizedChar);
-  await updateLeaderboard(openid, result.unlocked.length);
   await recordActivity(openid, 'unlock_character', {
     char: normalizedChar,
     isNew: result.isNew

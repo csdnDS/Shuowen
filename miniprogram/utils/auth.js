@@ -12,9 +12,13 @@ function wxLogin() {
   });
 }
 
-function postWechatAuth(code, profile = {}) {
+async function postWechatAuth(code, profile = {}) {
   const app = getApp();
+  if (app && app.globalData && app.globalData.backendReadyPromise) {
+    await app.globalData.backendReadyPromise.catch(() => '');
+  }
   const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
+  if (!baseUrl) throw new Error('后端地址未配置');
 
   return new Promise((resolve, reject) => {
     wx.request({

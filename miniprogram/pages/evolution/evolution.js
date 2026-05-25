@@ -1,4 +1,4 @@
-const { request } = require('../../utils/request');
+const { request, getReadyApiBaseUrl, shouldRetryBackend } = require('../../utils/request');
 const { ensureToken } = require('../../utils/auth');
 const fallback = require('../../utils/fallback');
 const glyphs = require('../../data/glyphs');
@@ -47,6 +47,10 @@ function readLearningMetrics() {
 function quizAccuracy(metrics) {
   if (!metrics.quizTotal) return '0';
   return String(Math.round(metrics.quizCorrect * 100 / metrics.quizTotal));
+}
+
+function firstValue(...values) {
+  return values.find((value) => value !== undefined && value !== null && value !== '') || '';
 }
 
 Page({
@@ -710,14 +714,31 @@ Page({
       pinyin: remote.pinyin || bundled.pinyin,
       meaning: remote.meaning || bundled.meaning,
       radical: remote.radical || bundled.radical,
-      stages: (bundled.stages || []).map((stage, idx) => ({
-        ...stage,
-        ...(remoteStages[idx] || {}),
-        era: stage.era,
-        label: stage.label,
-        glyph: (remoteStages[idx] && remoteStages[idx].glyph) || stage.glyph,
-        desc: stage.desc || (remoteStages[idx] && remoteStages[idx].desc)
-      }))
+      stages: (bundled.stages || []).map((stage, idx) =>
+        this._mergeStage(stage, remoteStages[idx] || {})
+      )
+    };
+  },
+
+  _mergeStage(localStage, remoteStage) {
+    return {
+      ...localStage,
+      ...remoteStage,
+      era: localStage.era,
+      label: localStage.label,
+      glyph: firstValue(remoteStage.glyph, localStage.glyph),
+      desc: firstValue(remoteStage.desc, localStage.desc),
+      assetKey: firstValue(remoteStage.assetKey, localStage.assetKey),
+      assetUrl: firstValue(remoteStage.assetUrl, localStage.assetUrl),
+      assetType: firstValue(remoteStage.assetType, localStage.assetType),
+      assetSource: firstValue(remoteStage.assetSource, localStage.assetSource),
+      assetStatus: firstValue(remoteStage.assetStatus, localStage.assetStatus),
+      assetProvider: firstValue(remoteStage.assetProvider, localStage.assetProvider),
+      sourceUrl: firstValue(remoteStage.sourceUrl, localStage.sourceUrl),
+      license: firstValue(remoteStage.license, localStage.license),
+      attribution: firstValue(remoteStage.attribution, localStage.attribution),
+      fontGlyph: firstValue(remoteStage.fontGlyph, localStage.fontGlyph),
+      assetEnabled: Boolean(remoteStage.assetEnabled || localStage.assetEnabled)
     };
   },
 
@@ -1031,8 +1052,6 @@ Page({
   },
 
   async _uploadVoiceFile(filePath) {
-    const app = getApp();
-    const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
     let token = wx.getStorageSync('token') || '';
     if (!token) {
       try {
@@ -1054,7 +1073,7 @@ Page({
         fail: () => resolve()
       });
     });
-    return new Promise((resolve, reject) => {
+    const uploadOnce = (baseUrl) => new Promise((resolve, reject) => {
       wx.uploadFile({
         url: `${baseUrl}/api/ai/asr`,
         filePath,
@@ -1081,10 +1100,19 @@ Page({
           reject(new Error(data.message || `语音识别失败 (${res.statusCode})`));
         },
         fail(err) {
-          reject(new Error(err.errMsg || '语音上传失败'));
+          const error = new Error(err.errMsg || '语音上传失败');
+          if (/timeout/i.test(error.message)) error.code = 'TIMEOUT';
+          else if (/fail/i.test(error.message)) error.code = 'NETWORK';
+          else error.code = 'UNKNOWN';
+          reject(error);
         }
       });
-    }).catch(() => this._uploadVoiceFileAsBase64(filePath));
+    });
+    const baseUrl = await getReadyApiBaseUrl();
+    return uploadOnce(baseUrl).catch(async (err) => {
+      if (!shouldRetryBackend(err)) throw err;
+      return this._uploadVoiceFileAsBase64(filePath);
+    });
   },
 
   _uploadVoiceFileAsBase64(filePath) {

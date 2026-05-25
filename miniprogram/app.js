@@ -1,42 +1,71 @@
-// Detect environment to choose API base URL.
-// In WeChat DevTools: __wxConfig.envVersion === 'develop'
-// Production mini-program should point to the real HTTPS backend domain.
 const { loadHistoricalFonts } = require('./utils/historicalFonts');
+const { apiBaseCandidates } = require('./config');
 
-const DEV_API_BASE_URL = 'https://sudden-delivered-packed-abilities.trycloudflare.com';
+const API_BASE_CANDIDATES = apiBaseCandidates
+  .map((baseUrl) => String(baseUrl || '').replace(/\/$/, ''))
+  .filter(Boolean);
 
-function resolveApiBase() {
-  try {
-    const env = __wxConfig && __wxConfig.envVersion;
-    if (env === 'release') return DEV_API_BASE_URL;
-    if (env === 'trial')   return DEV_API_BASE_URL;
-  } catch (e) { /* __wxConfig not available outside DevTools */ }
-  return DEV_API_BASE_URL;
+const BACKEND_STORAGE_KEY = 'shuowenApiBaseUrl';
+
+function uniq(items) {
+  return [...new Set(items.filter(Boolean))];
+}
+
+function pingBackend(baseUrl, timeout = 2500) {
+  return new Promise((resolve) => {
+    if (!baseUrl) {
+      resolve(false);
+      return;
+    }
+    wx.request({
+      url: `${baseUrl}/api/health`,
+      timeout,
+      success(res) {
+        resolve(res.statusCode >= 200 && res.statusCode < 300);
+      },
+      fail() {
+        resolve(false);
+      }
+    });
+  });
 }
 
 App({
   globalData: {
-    apiBaseUrl: resolveApiBase(),
-    backendUnreachable: false
+    apiBaseCandidates: API_BASE_CANDIDATES,
+    apiBaseUrl: API_BASE_CANDIDATES[0] || '',
+    backendUnreachable: false,
+    backendReadyPromise: null
   },
 
   onLaunch() {
-    loadHistoricalFonts(this.globalData.apiBaseUrl);
-    this._checkBackend();
+    this.globalData.backendReadyPromise = this.ensureBackendBase();
   },
 
-  // Proactively ping the backend so all pages inherit connectivity status.
-  async _checkBackend() {
-    const url = this.globalData.apiBaseUrl + '/api/characters?limit=1';
-    wx.request({
-      url,
-      timeout: 4000,
-      success: (res) => {
-        this.globalData.backendUnreachable = !(res.statusCode >= 200 && res.statusCode < 300);
-      },
-      fail: () => {
-        this.globalData.backendUnreachable = true;
+  async ensureBackendBase(options = {}) {
+    const preferred = String(options.preferred || '').replace(/\/$/, '');
+    const candidates = uniq([
+      ...(this.globalData.apiBaseCandidates || [])
+    ]);
+    const saved = String(wx.getStorageSync(BACKEND_STORAGE_KEY) || '').replace(/\/$/, '');
+    const orderedCandidates = uniq([
+      preferred,
+      ...candidates,
+      saved
+    ]);
+
+    for (const baseUrl of orderedCandidates) {
+      const ok = await pingBackend(baseUrl, options.timeout || 2500);
+      if (ok) {
+        this.globalData.apiBaseUrl = baseUrl;
+        this.globalData.backendUnreachable = false;
+        wx.setStorageSync(BACKEND_STORAGE_KEY, baseUrl);
+        loadHistoricalFonts(baseUrl);
+        return baseUrl;
       }
-    });
+    }
+
+    this.globalData.backendUnreachable = true;
+    return this.globalData.apiBaseUrl;
   }
 });

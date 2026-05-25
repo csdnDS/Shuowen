@@ -3,7 +3,6 @@ import cors from 'cors';
 import { env } from './config/env.js';
 import { localAssetRoot } from './services/assetService.js';
 import { createAiRouter } from './routes/ai.js';
-import { createAssetRouter } from './routes/assets.js';
 import { createAuthRouter } from './routes/auth.js';
 import { createCharacterRouter } from './routes/characters.js';
 import { createGlyphCoverageRouter } from './routes/glyphCoverage.js';
@@ -74,7 +73,6 @@ app.use('/api', createRadicalRouter());
 app.use('/api', createAiRouter());
 app.use('/api', createProgressRouter());
 app.use('/api', createAuthRouter());
-app.use('/api', createAssetRouter());
 app.use('/api', systemRouter);
 app.use(systemRouter);
 
@@ -83,6 +81,6 @@ app.use((error, _req, res, _next) => {
   res.status(500).json({ message: error.message || '服务器内部错误' });
 });
 
-app.listen(env.port, () => {
-  console.log(`Shuowen backend listening at http://localhost:${env.port}`);
+app.listen(env.port, env.host, () => {
+  console.log(`Shuowen backend listening at http://${env.host}:${env.port}`);
 });

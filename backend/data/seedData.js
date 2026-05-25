@@ -1,4 +1,4 @@
-// Seed data used when MongoDB/MySQL/Redis are not configured.
+// Seed data used when MongoDB/MySQL are not configured.
 
 export const presetCharacters = [
   '说', '文', '字', '人', '水', '山', '日', '月', '火', '木',

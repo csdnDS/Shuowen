@@ -1,6 +1,4 @@
 import { closeMysqlPool } from '../db/mysql.js';
-import { closeRedisClient } from '../db/redis.js';
-import { getLeaderboard } from '../services/leaderboardService.js';
 import { getProgress, unlockRandomCharacter } from '../services/progressService.js';
 import { findUser, listActivities, saveUser } from '../repositories/userRepository.js';
 
@@ -17,7 +15,6 @@ async function main() {
   const unlock = await unlockRandomCharacter(openid);
   const afterProgress = await getProgress(openid);
 
-  const leaderboard = await getLeaderboard(10);
   const activities = await listActivities(openid);
   const storedUser = await findUser(openid);
 
@@ -28,7 +25,6 @@ async function main() {
     beforeProgress,
     unlock,
     afterProgress,
-    leaderboardSample: leaderboard.slice(0, 5),
     activities: activities.slice(0, 5)
   }, null, 2));
 }
@@ -39,8 +35,5 @@ main()
     process.exitCode = 1;
   })
   .finally(async () => {
-    await Promise.all([
-      closeMysqlPool(),
-      closeRedisClient()
-    ]);
+    await closeMysqlPool();
   });

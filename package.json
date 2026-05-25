@@ -10,8 +10,8 @@
     "db:init": "npm --prefix backend run mysql:init && npm --prefix backend run mongo:import",
     "db:smoke": "npm --prefix backend run mysql:smoke",
     "commons:import": "npm --prefix backend run commons:import",
+    "glyph:generate": "npm --prefix backend run glyph:generate",
     "dev": "sh scripts/dev.sh",
-    "start:backend": "npm --prefix backend start",
-    "oss:upload": "npm --prefix backend run oss:upload"
+    "start:backend": "npm --prefix backend start"
   }
 }

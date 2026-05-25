@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { getLeaderboard } from '../services/leaderboardService.js';
 import { getProgress, unlockCharacter, unlockRandomCharacter } from '../services/progressService.js';
 import { asyncRoute, getOpenId } from '../utils/request.js';
 
@@ -16,12 +15,6 @@ export function createProgressRouter() {
     const data = char
       ? await unlockCharacter(getOpenId(req), char)
       : await unlockRandomCharacter(getOpenId(req));
-    res.json(data);
-  }));
-
-  router.get('/leaderboard', asyncRoute(async (req, res) => {
-    const limit = Math.min(100, Number(req.query.limit) || 20);
-    const data = await getLeaderboard(limit);
     res.json(data);
   }));
 

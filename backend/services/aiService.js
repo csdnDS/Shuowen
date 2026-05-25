@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { promisify } from 'node:util';
 import WebSocket from 'ws';
 import { env } from '../config/env.js';
-import { cacheGet, cacheSet } from '../db/redis.js';
+import { cacheGet, cacheSet } from './cacheService.js';
 import { coreGlyphChars } from '../data/glyphAssets.js';
 import { findCharacter } from '../repositories/characterRepository.js';
 import { getProgress } from './progressService.js';
@@ -281,8 +281,6 @@ export async function transcribeSpeech(audioBuffer, options = {}) {
     error.statusCode = 503;
     throw error;
   }
-  console.log(`ASR received audio: ${audioBuffer.length} bytes`);
-
   return new Promise((resolve, reject) => {
     const inputFormat = String(options.format || '').toLowerCase();
     const isPcm = inputFormat === 'pcm' || inputFormat === 'raw';
@@ -371,7 +369,6 @@ export async function transcribeSpeech(audioBuffer, options = {}) {
       if (words) text += words;
       if (data.data?.status === 2) {
         const cleanText = text.replace(/\s+/g, '').trim();
-        console.log(`ASR recognized text: ${cleanText || '(empty)'}`);
         finish(null, {
           text: cleanText,
           provider: 'xfyun',

@@ -1,6 +1,6 @@
 /**
- * Local fallback dataset used when the backend at localhost:3001 is
- * unreachable. Keeps the mini program demoable without running the API.
+ * Local fallback dataset used when the backend is unreachable. Keeps the
+ * mini program usable without a live API.
  */
 
 const characters = {

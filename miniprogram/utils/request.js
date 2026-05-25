@@ -10,44 +10,23 @@
 const { ensureToken } = require('./auth');
 
 const DEFAULT_TIMEOUT = 8000;
+const RETRYABLE_CODES = new Set(['TIMEOUT', 'NETWORK', 'UNKNOWN']);
 
-async function request(path, method = 'GET', data = {}, options = {}) {
-  const app = getApp();
-  const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
-  let token = wx.getStorageSync('token') || '';
-
-  if (!token && !options.skipAuth && path !== '/api/auth/wechat') {
-    try {
-      token = await ensureToken();
-    } catch (_err) {
-      token = wx.getStorageSync('token') || '';
-    }
-  }
-
+function wxRequest(params) {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: `${baseUrl}${path}`,
-      method,
-      data,
-      timeout: options.timeout || DEFAULT_TIMEOUT,
-      header: Object.assign(
-        {
-          'content-type': 'application/json',
-          'x-openid': token
-        },
-        options.header || {}
-      ),
+      ...params,
       success(res) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           resolve(res.data);
-        } else {
-          const err = new Error(
-            (res.data && res.data.message) || `请求失败 (${res.statusCode})`
-          );
-          err.code = 'HTTP_' + res.statusCode;
-          err.statusCode = res.statusCode;
-          reject(err);
+          return;
         }
+        const err = new Error(
+          (res.data && res.data.message) || `请求失败 (${res.statusCode})`
+        );
+        err.code = 'HTTP_' + res.statusCode;
+        err.statusCode = res.statusCode;
+        reject(err);
       },
       fail(rawErr) {
         const message = rawErr.errMsg || '网络请求失败';
@@ -61,7 +40,60 @@ async function request(path, method = 'GET', data = {}, options = {}) {
   });
 }
 
+async function request(path, method = 'GET', data = {}, options = {}) {
+  const app = getApp();
+  if (app && app.globalData && app.globalData.backendReadyPromise && !options.skipBackendReady) {
+    await app.globalData.backendReadyPromise.catch(() => '');
+  }
+  const baseUrl = (app && app.globalData && app.globalData.apiBaseUrl) || '';
+  if (!baseUrl) {
+    const err = new Error('后端地址未配置');
+    err.code = 'CONFIG';
+    throw err;
+  }
+  let token = wx.getStorageSync('token') || '';
+
+  if (!token && !options.skipAuth && path !== '/api/auth/wechat') {
+    try {
+      token = await ensureToken();
+    } catch (_err) {
+      token = wx.getStorageSync('token') || '';
+    }
+  }
+
+  const header = Object.assign(
+    {
+      'content-type': 'application/json',
+      'x-openid': token
+    },
+    options.header || {}
+  );
+  const params = {
+    url: `${baseUrl}${path}`,
+    method,
+    data,
+    timeout: options.timeout || DEFAULT_TIMEOUT,
+    header
+  };
+
+  return wxRequest(params);
+}
+
+async function getReadyApiBaseUrl() {
+  const app = getApp();
+  if (app && app.globalData && app.globalData.backendReadyPromise) {
+    await app.globalData.backendReadyPromise.catch(() => '');
+  }
+  return (app && app.globalData && app.globalData.apiBaseUrl) || '';
+}
+
+function shouldRetryBackend(err) {
+  return Boolean(err && RETRYABLE_CODES.has(err.code));
+}
+
 module.exports = {
   request,
-  DEFAULT_TIMEOUT
+  DEFAULT_TIMEOUT,
+  getReadyApiBaseUrl,
+  shouldRetryBackend
 };

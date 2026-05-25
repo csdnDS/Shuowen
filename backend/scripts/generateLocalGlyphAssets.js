@@ -2,7 +2,6 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
-import { getOssClient } from '../db/oss.js';
 import { coreGlyphChars, getGlyphAssetKey, glyphStageMeta } from '../data/glyphAssets.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -107,33 +106,5 @@ async function writeOracleAssets() {
   return manifest;
 }
 
-async function uploadManifest(manifest) {
-  const ossClient = await getOssClient();
-  if (!ossClient) {
-    console.log(`OSS 未配置，已生成本地资产：${generatedRoot}`);
-    return;
-  }
-
-  const assets = Object.values(manifest.assets);
-  for (const asset of assets) {
-    const filePath = path.join(generatedRoot, asset.key);
-    await ossClient.put(asset.key, filePath, {
-      headers: {
-        'Content-Type': asset.contentType,
-        'Cache-Control': 'public, max-age=31536000, immutable'
-      }
-    });
-    console.log(`uploaded ${asset.key}`);
-  }
-
-  await ossClient.put('manifest.json', manifestPath, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=300'
-    }
-  });
-  console.log('uploaded manifest.json');
-}
-
-const manifest = await writeOracleAssets();
-await uploadManifest(manifest);
+await writeOracleAssets();
+console.log(`已生成本地字形资产：${generatedRoot}`);
